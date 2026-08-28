@@ -61,6 +61,7 @@ body{
 table td{
     color: red;
     font-weight: bold;
+    border: 1px solid black;
 }
 
 .judul-pancasila{
