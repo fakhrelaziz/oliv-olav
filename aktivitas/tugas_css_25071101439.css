@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 30px 10%;
+    font-size: 16px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 22px;
+    background-color: aqua;
+    display: table;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+    background-color: blue;
+    color: white;
+    display: table;
+    margin: 5px auto 45px;
+}
+
+p {
+    text-align: justify;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.paragraf1 {
+    border: 2px solid red;
+    padding: 5px;
+}
+
+.hijau {
+    background-color: lime;
+}
+
+.kuning {
+    background-color: yellow;
+}
+
+.garis {
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.biru {
+    color: blue;
+    font-weight: bold;
+}
+
+a {
+    color: blue;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+a:hover {
+    color: red;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+td {
+    border: 2px solid gray;
+    height: 30px;
+    padding: 5px;
+    color: red;
+    font-weight: bold;
+}
+
+.pancasila {
+    background-color: aqua;
+    color: black;
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
+ol {
+    padding-left: 30px;
+}
+
+li {
+    background-color: yellow;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+    width: fit-content;
+    margin-bottom: 5px;
+}

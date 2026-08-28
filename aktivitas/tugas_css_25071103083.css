@@ -1,0 +1,122 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px 70px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.UUD {
+    font-weight: bold;
+    background-color: cyan;
+    width: fit-content;
+    margin: 0 auto 10px auto;
+}
+
+.Pembukaan {
+    font-weight: bold;
+    background-color: blue;
+    color: white;
+    width: fit-content;
+    margin: 0 auto 20px auto;
+}
+
+.paragraf_pertama {
+    background-color: white;
+    border: 1px solid red;
+    padding: 5px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+p {
+    text-align: justify;
+    margin-bottom: 15px;
+}
+
+
+/* Background warna*/
+.bg-hijau {
+    background-color: lime;
+}
+
+
+.bg-kuning {
+    background-color: yellow;
+}
+
+.teks-miring-garis {
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.teks-biru-tebal {
+    color: blue;
+    font-weight: bold;
+}
+
+/* Link sumber */
+a {
+    color: blue;
+    font-style: italic;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: red;
+}
+
+
+/*Tabel*/
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+td {
+    border: 1px solid black;
+    color: red;               
+    font-weight: bold;        
+    text-align: left;         
+    padding: 8px 12px;                  
+}
+
+
+/* pancasila */
+.pancasila {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+
+.pancasila-judul {
+    background-color: cyan;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 2px 8px;
+}
+
+
+.list-pancasila {
+    margin: 0;
+    padding-left: 40px;
+    list-style-position: inside;
+}
+
+
+.list-pancasila li {
+    background-color: yellow;   
+    font-weight: bold;           
+    font-style: italic;          
+    width: fit-content;          
+    margin-bottom: 6px;
+    padding-right: 4px;
+}
+
+.teks-sila {
+    text-decoration: underline; 
+}

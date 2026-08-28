@@ -1,0 +1,83 @@
+body{
+    color: black;
+    text-align: justify;
+}
+
+.header-container{
+    text-align: center;
+}
+
+.title-uud{
+    font-weight: bold;
+}
+.bg-cyan{
+    background-color: cyan
+}
+
+.title-pembukaan{
+    font-weight: bold;
+}
+.bg-biru{
+    color: white;
+    background-color: blue;
+}
+
+.border-paragraf{
+    border: 1.5px solid red;
+    padding: 6px 8px;
+    margin-bottom: 14px;
+}
+.bg-hijau{
+    background-color: #00ff00;
+}
+.bg-kuning{
+    background-color: yellow;
+}
+.garis-miring{
+    text-decoration: underline;
+    font-style: italic;
+}
+.bold-biru{
+    font-weight: bold;
+    color: blue;
+}
+
+.text-sumber{
+    font-weight: bold;
+}
+.url-sumber{
+    color: #0055cc;
+    text-decoration: underline;
+    font-style: italic;
+    font-weight: bold;
+}
+.url-sumber:hover{
+    color: red;
+}
+.url{
+    display: none;
+}
+
+table td{
+    color: red;
+    font-weight: bold;
+}
+
+.judul-pancasila{
+    font-weight: bold;
+    text-align: center;
+}
+.list-pancasila li{
+    margin-bottom: 2px;
+}
+li{
+    background-color: yellow;
+    list-style-position: inside;
+    width: fit-content;
+    text-align: left;
+}
+.item-pancasila{
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+}
