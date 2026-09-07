@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    margin: 40px 9%;
+    line-height: 1.35;
+}
+
+/* Judul UUD 1945 */
+.judul {
+    width: fit-content;
+    margin: 0 auto;
+    color: #9900ff;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Pembukaan */
+.pembukaan {
+    width: fit-content;
+    margin: 0 auto 25px auto;
+    color: #9900ff;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Paragraf */
+.paragraf {
+    text-align: justify;
+    margin: 0 0 18px 0;
+}
+
+/* Highlight pink */
+.highlight-pink {
+    background-color: #ff00ff;
+    font-weight: bold;
+}
+
+/* Highlight merah */
+.highlight-red {
+    background-color: #ff0000;
+    font-weight: bold;
+}
+
+/* Highlight hijau */
+.highlight-green {
+    background-color: #00ff00;
+}
+
+/* Highlight biru */
+.highlight-blue {
+    background-color: #0000ff;
+    color: white;
+    font-weight: bold;
+}
+
+/* Tulisan miring + garis bawah */
+.italic-underline {
+    font-style: italic;
+    text-decoration: underline;
+}
+
+/* Sumber */
+.sumber {
+    font-weight: bold;
+}
+
+/* Judul Pancasila */
+.pancasila {
+    width: fit-content;
+    margin: 25px auto 10px auto;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Daftar Pancasila */
+ol {
+    margin-top: 0;
+    padding-left: 45px;
+}
+
+/* Item Pancasila */
+li {
+    background-color: transparent;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    padding-left: 2px;
+    line-height: 1.35;
+}
+
+.kalimat nama{
+margin-top: 0;
+margin-bottom: 25px;
+font-weight: normal;
+}
