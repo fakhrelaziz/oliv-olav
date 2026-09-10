@@ -1,0 +1,207 @@
+body {
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #111;
+    margin: 0;
+}
+
+.container {
+    width: calc(100% - 66px);
+    margin: 0 33px;
+}
+
+/* Nama */
+.nama-saya {
+    margin-top: 20px;
+    margin-bottom: 28px;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    line-height: 1.25;
+    text-align: left;
+}
+
+/* Judul UUD */
+h1 {
+    margin: 0 auto 28px;
+    background-color: transparent;
+    color: #9900ff;
+    font-size: 21px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Paragraf */
+.container p {
+    font-size: 20px;
+    line-height: 1.35;
+    text-align: justify;
+    margin-top: 0;
+    margin-bottom: 28px;
+}
+
+.highlight-green {
+    background-color: #00ff00;
+}
+.highlight-red {
+    background-color: red;
+    font-weight: bold;
+}
+
+.highlight-yellow {
+    background-color: #ffff00;
+}
+
+.highlight-blue {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+}
+
+.sumber {
+    font-size: 16px !important;
+    text-align: left !important;
+    font-weight: bold;
+}
+
+.sumber a {
+    color: blue;
+    text-decoration: underline;
+}
+
+.sumber a:hover {
+    color: red;
+}
+
+.pancasila-title {
+    margin-top: 18px;
+    margin-bottom: 20px;
+    background-color: transparent;
+    color: #111;
+    font-size: 21px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.pancasila {
+    margin-top: 0;
+    padding-left: 85px;
+    font-size: 20px;
+}
+
+.pancasila li {
+    padding-left: 8px;
+    margin-bottom: 3px;
+    line-height: 1.25;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Kotak form */
+.form-box {
+    width: 540px;
+
+    padding: 28px 26px;
+
+    box-sizing: border-box;
+
+    background-color: white;
+
+    border: 1px solid #dedede;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.15),
+        0 4px 10px rgba(0, 0, 0, 0.10);
+}
+
+/* Judul form */
+.form-box h2 {
+    width: auto;
+    margin: 0 0 18px;
+    background-color: transparent;
+    color: #111;
+    font-size: 20px;
+    font-weight: normal;
+    text-align: left;
+}
+
+/* Label */
+.form-box label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 16px;
+
+    font-weight: normal;
+}
+
+/* Input */
+.form-box input {
+    width: 100%;
+    height: 46px;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    background-color: white;
+    border: 2px solid #1464e8;
+    border-radius: 9px;
+    font-size: 17px;
+    outline: none;
+}
+.form-box input:focus {
+    border-color: #1464e8;
+}
+
+/* Tombol */
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 28px;
+}
+
+.form-buttons button {
+    padding: 11px 25px;
+    border-radius: 24px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+/* Tombol Oke */
+
+.btn-oke {
+    background-color: #1464e8;
+    color: white;
+    border: none;
+    font-weight: bold;
+}
+
+.btn-oke:hover {
+    background-color: #0d52c4;
+}
+
+/* Tombol Batal */
+.btn-batal {
+    background-color: white;
+    color: #1464e8;
+    border: 1px solid #1464e8;
+}
+
+.btn-batal:hover {
+    background-color: #eef4ff;
+}
