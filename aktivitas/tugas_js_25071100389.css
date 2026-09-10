@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    width: 490px;
+    margin: 10px auto;
+}
+
+center {
+    color: #9900ff;
+}
+
+p {
+    text-align: justify;
+    line-height: 1.3;
+    margin-top: 20px;
+}
+
+.pink {
+    background-color: magenta;
+    font-weight: bold;
+}
+
+.red {
+    background-color: red;
+    font-weight: bold;
+}
+
+.green {
+    background-color: lime;
+}
+
+.blue {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+}
+
+.pancasila {
+    color: black;
+    margin-top: 20px;
+}
+
+ol {
+    text-align: justify;
+    line-height: 1.3;
+}
