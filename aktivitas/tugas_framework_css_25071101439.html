@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - SITEI UNRI</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-[#f7fcf5] flex items-center justify-center p-6">
+
+    <!-- CONTAINER UTAMA -->
+    <div class="w-full max-w-[1100px] h-[500px] bg-white rounded-xl shadow-lg overflow-hidden flex">
+
+        <!-- ================= BAGIAN KIRI ================= -->
+        <div class="w-[65%] h-full">
+
+            <img
+                src="slide_slow_jte_1.jpg"
+                alt="Sistem Informasi Teknik Elektro dan Informatika"
+                class="w-full h-full object-cover"
+            >
+
+        </div>
+
+
+        <!-- ================= BAGIAN KANAN ================= -->
+        <div class="w-[35%] h-full bg-white flex items-center justify-center px-8">
+    <div class="w-full max-w-[320px]">
+
+        <!-- Logo + Judul -->
+        <div class="flex items-center justify-center mb-6">
+            <img src="unri.webp"
+                 class="w-[65px] h-[65px] object-contain">
+
+            <div class="h-[75px] w-[2px] bg-green-700 mx-4"></div>
+
+            <div class="w-[180px]">
+                <h1 class="text-[19px] leading-[1.25] font-normal text-gray-900">
+                    Sistem Informasi<br>
+                    Teknik Elektro &<br>
+                    Informatika
+                </h1>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <form>
+            <div class="mb-3 relative">
+                <input type="text"
+                     class="w-full h-[52px] px-4 border border-gray-300 rounded-md text-[15px] outline-none">
+
+                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[15px] text-gray-500 pointer-events-none">
+                    NIP/NIM <span class="text-red-500">*</span>
+                </span>
+            </div>
+
+            <div class="mb-3 relative">
+                <input type="password"
+                    id="password"
+                    class="w-full h-[52px] px-4 pr-12 border border-gray-300 rounded-md text-[15px] outline-none">
+
+                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[15px] text-gray-500 pointer-events-none">
+                    Password <span class="text-red-500">*</span>
+                </span>
+
+                <span class="absolute right-4 top-1/2 -translate-y-1/2">
+                    ◉  
+                </span>
+            </div>
+
+            <button type="submit"
+                class="w-full h-[48px] bg-green-600 text-white text-[17px] rounded-md">
+                Masuk
+            </button>
+        </form>
+
+        <!-- Lupa Password -->
+        <div class="text-center mt-3">
+            <p class="text-[13px] leading-5 text-gray-800">
+                Belum Punya Akun atau Lupa Password<br>
+                (Hubungi Admin Prodi)
+            </p>
+        </div>
+
+        <!-- Garis -->
+        <div class="border-t border-dashed border-gray-400 my-2"></div>
+
+        <!-- Footer -->
+        <div class="text-center">
+            <p class="text-[13px] text-gray-700 mb-1">
+                Dikembangkan oleh:
+            </p>
+
+            <a href="#"
+                class="text-[13px] font-bold underline text-gray-800 whitespace-nowrap">
+                TIM PRODI TEKNIK INFORMATIKA
+            </a>
+
+            <p class="text-[12px] text-gray-400 mt-2">
+                2026 © SITEI JTE UNRI
+            </p>
+        </div>
+
+    </div>
+</div>
+
+    <!-- RESPONSIVE UNTUK HP -->
+    <style>
+        @media (max-width: 1024px) {
+
+            body {
+                padding: 20px;
+            }
+
+            .max-w-\[1470px\] {
+                height: auto;
+            }
+
+        }
+    </style>
+
+</body>
+</html>
