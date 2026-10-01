@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Wedding invitation — Section 05: Gallery"
+  />
+  <title>Olav &amp; Oliv — Section 05</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            moss: '#2C3424',
+            cypress: '#4C583E',
+            olive: '#768064',
+            cedar: '#959581',
+            aloe: '#DADED8',
+            cream: '#F3F0E7',
+            paper: '#E9E5D8',
+            ink: '#1F211B',
+            warmwhite: '#FAF9F4'
+          },
+          fontFamily: {
+            display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            body: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            script: ['"Caveat"', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="./section-05.css" />
+</head>
+
+<body class="bg-cream text-ink antialiased">
+  <main id="gallery">
+
+    <!-- =========================================================
+         SECTION 05 — GALLERY
+         ========================================================= -->
+
+    <!-- HERO -->
+    <section class="relative overflow-hidden bg-moss text-warmwhite">
+      <header class="relative z-20 mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-5 sm:px-8 lg:px-16">
+        <a href="#gallery" class="font-display text-2xl tracking-[-0.05em] sm:text-3xl">
+          LAV|LIV
+        </a>
+
+        <nav class="hidden items-center gap-7 lg:flex" aria-label="Navigasi utama">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#story" class="nav-link">Our Story</a>
+          <a href="#event" class="nav-link">Event</a>
+          <a href="#gallery" class="nav-link nav-link-active">Gallery</a>
+          <a href="#rsvp" class="nav-link">RSVP</a>
+        </nav>
+
+        <a
+          href="#rsvp"
+          class="hidden rounded-full border border-warmwhite/70 px-5 py-2.5 text-sm font-medium transition duration-300 hover:bg-warmwhite hover:text-moss lg:inline-flex"
+        >
+          Buka Undangan
+          <span class="ml-2" aria-hidden="true">✉</span>
+        </a>
+
+        <details class="relative lg:hidden">
+          <summary
+            class="flex cursor-pointer list-none items-center rounded-full border border-warmwhite/55 px-4 py-2 text-sm"
+            aria-label="Buka menu"
+          >
+            Menu
+          </summary>
+
+          <div class="absolute right-0 top-14 z-30 w-52 rounded-xl border border-warmwhite/15 bg-moss/95 p-4 shadow-2xl backdrop-blur-md">
+            <nav class="flex flex-col gap-1" aria-label="Navigasi mobile">
+              <a href="#home" class="mobile-nav-link">Home</a>
+              <a href="#about" class="mobile-nav-link">About</a>
+              <a href="#story" class="mobile-nav-link">Our Story</a>
+              <a href="#event" class="mobile-nav-link">Event</a>
+              <a href="#gallery" class="mobile-nav-link">Gallery</a>
+              <a href="#rsvp" class="mobile-nav-link">RSVP</a>
+            </nav>
+          </div>
+        </details>
+      </header>
+
+      <div class="relative mx-auto grid w-full max-w-7xl gap-8 px-6 pb-14 pt-8 sm:px-8 md:grid-cols-12 md:items-center md:gap-10 lg:px-16 lg:pb-20 lg:pt-12">
+        <div class="md:col-span-5">
+          <p class="text-[10px] uppercase tracking-[0.35em] text-warmwhite/70 sm:text-xs">
+            05 / 06
+          </p>
+
+          <p class="mt-6 text-[10px] uppercase tracking-[0.35em] text-warmwhite/75 sm:text-xs">
+            GALLERY
+          </p>
+
+          <h1 class="mt-5 max-w-xl font-display text-5xl leading-[0.88] tracking-[-0.03em] sm:text-6xl md:text-7xl">
+            Momen
+            <span class="block">Berharga</span>
+            <span class="block italic text-olive">Bersama</span>
+          </h1>
+
+          <div class="mt-7 h-px w-10 bg-warmwhite/55"></div>
+
+          <p class="mt-7 max-w-md text-sm leading-6 text-warmwhite/78 sm:text-base sm:leading-7">
+            Setiap foto menyimpan cerita, setiap momen menjadi bagian
+            dari perjalanan kami menuju hari yang istimewa.
+          </p>
+        </div>
+
+        <!-- HERO PHOTO PLACEHOLDER -->
+        <div class="md:col-span-7">
+          <div class="gallery-hero-photo relative aspect-[16/9] overflow-hidden bg-cypress">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-center">
+                <span class="photo-placeholder-icon">IMG</span>
+                <p class="mt-3 text-[11px] uppercase tracking-[0.28em] text-warmwhite/65">
+                  Gallery Hero Photo
+                </p>
+                <p class="mt-2 text-xs text-warmwhite/35">
+                  Replace with edited Canva photo
+                </p>
+              </div>
+            </div>
+
+            <div class="absolute bottom-5 right-5 max-w-[6rem] text-right font-script text-2xl leading-none text-warmwhite/90 sm:text-3xl">
+              Same<br />
+              People<br />
+              Brighter<br />
+              Days
+            </div>
+          </div>
+        </div>
+
+        <div class="pointer-events-none absolute bottom-0 left-0 hidden h-32 w-60 opacity-40 lg:block" aria-hidden="true">
+          <span class="hero-leaf leaf-a"></span>
+          <span class="hero-leaf leaf-b"></span>
+          <span class="hero-leaf leaf-c"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILTER + GALLERY -->
+    <section class="relative overflow-hidden bg-cream">
+      <div class="mx-auto w-full max-w-7xl px-4 py-10 sm:px-8 lg:px-16 lg:py-14">
+
+        <!-- Filter row -->
+        <div class="flex items-center justify-between gap-6">
+          <div class="flex min-w-0 gap-7 overflow-x-auto pb-2 text-sm sm:gap-10">
+            <button class="gallery-filter gallery-filter-active" type="button">
+              Semua
+            </button>
+            <button class="gallery-filter" type="button">
+              Prewedding
+            </button>
+            <button class="gallery-filter" type="button">
+              Acara
+            </button>
+            <button class="gallery-filter" type="button">
+              Keseharian
+            </button>
+          </div>
+
+          <div class="hidden shrink-0 items-center gap-3 sm:flex">
+            <button class="gallery-arrow" type="button" aria-label="Previous photos">
+              <span aria-hidden="true">‹</span>
+            </button>
+            <button class="gallery-arrow" type="button" aria-label="Next photos">
+              <span aria-hidden="true">›</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Gallery -->
+        <div class="gallery-grid mt-5">
+
+          <!-- 01 -->
+          <article class="gallery-item gallery-large">
+            <div class="gallery-photo">
+              <div class="photo-placeholder-copy">Gallery Photo 01</div>
+            </div>
+          </article>
+
+          <!-- 02 -->
+          <article class="gallery-item">
+            <div class="gallery-photo">
+              <div class="photo-placeholder-copy">Gallery Photo 02</div>
+            </div>
+          </article>
+
+          <!-- 03 -->
+          <article class="gallery-item">
+            <div class="gallery-photo">
+              <div class="photo-placeholder-copy">Gallery Photo 03</div>
+            </div>
+          </article>
+
+          <!-- 04 -->
+          <article class="gallery-item">
+            <div class="gallery-photo">
+              <div class="photo-placeholder-copy">Gallery Photo 04</div>
+            </div>
+          </article>
+
+          <!-- 05 -->
+          <article class="gallery-item">
+            <div class="gallery-photo">
+              <div class="photo-placeholder-copy">Gallery Photo 05</div>
+            </div>
+          </article>
+
+          <!-- 06 -->
+          <article class="gallery-item">
+            <div class="gallery-photo">
+              <div class="photo-placeholder-copy">Gallery Photo 06</div>
+            </div>
+          </article>
+
+          <!-- 07 -->
+          <article class="gallery-item">
+            <div class="gallery-photo">
+              <div class="photo-placeholder-copy">Gallery Photo 07</div>
+            </div>
+          </article>
+
+          <!-- 08 -->
+          <article class="gallery-item">
+            <div class="gallery-photo">
+              <div class="photo-placeholder-copy">Gallery Photo 08</div>
+            </div>
+          </article>
+
+          <!-- 09 -->
+          <article class="gallery-item">
+            <div class="gallery-photo">
+              <div class="photo-placeholder-copy">Gallery Photo 09</div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Quote -->
+        <div class="mx-auto max-w-3xl py-10 text-center sm:py-14">
+          <p class="font-display text-2xl italic leading-tight text-ink/80 sm:text-3xl">
+            “Bukan sekadar foto, tapi potongan kisah yang selalu ingin
+            kami kenang.”
+          </p>
+
+          <div class="mx-auto mt-5 h-px w-10 bg-cedar"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING VISUAL -->
+    <section class="relative overflow-hidden bg-moss text-warmwhite">
+      <!-- Background photo placeholder -->
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-cypress via-moss to-ink"
+        aria-hidden="true"
+      >
+        <div class="absolute inset-0 flex items-center justify-center">
+          <span class="text-[10px] uppercase tracking-[0.3em] text-warmwhite/15">
+            Closing Image Placeholder
+          </span>
+        </div>
+      </div>
+
+      <div class="absolute inset-0 bg-moss/35"></div>
+
+      <div class="relative mx-auto grid w-full max-w-7xl items-center gap-10 px-6 py-20 sm:px-8 md:grid-cols-[0.7fr_1.6fr_0.7fr] lg:px-16 lg:py-28">
+        <div class="hidden md:block">
+          <div class="h-16 w-px bg-warmwhite/50"></div>
+          <p class="mt-5 text-[10px] uppercase leading-7 tracking-[0.3em] text-warmwhite/80">
+            SAME<br />
+            PEOPLE<br />
+            BRIGHTER<br />
+            DAYS
+          </p>
+        </div>
+
+        <div class="text-center">
+          <p class="font-display text-5xl leading-none text-warmwhite/75 sm:text-6xl">
+            +
+          </p>
+
+          <p class="mt-5 font-display text-2xl italic leading-tight sm:text-3xl md:text-4xl">
+            More memories to come
+          </p>
+        </div>
+
+        <div class="hidden border-l border-warmwhite/35 pl-7 md:block">
+          <p class="font-script text-3xl leading-none text-warmwhite/90">
+            More<br />
+            Memories<br />
+            to Come ♡
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

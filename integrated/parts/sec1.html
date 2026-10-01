@@ -1,0 +1,88 @@
+    <!-- SECTION 1 - HERO -->
+    <section id="home" class="relative min-h-[100svh] w-full overflow-hidden bg-moss">
+      <!-- Background images -->
+      <picture class="absolute inset-0 z-0">
+        <source media="(min-width: 768px)" srcset="../aset/background_herosection(desktop).webp">
+        <img src="../aset/background_herosection.webp" alt="Olav & Oliv" class="h-full w-full object-cover object-center" />
+      </picture>
+      
+      <!-- Overlay gradient -->
+      <div class="absolute inset-0 z-0 bg-gradient-to-b from-moss/60 via-transparent to-moss/80"></div>
+      
+      <!-- Navbar -->
+      <header class="absolute top-0 left-0 w-full z-20 px-6 py-8 md:px-16 flex items-center justify-between">
+        <div class="text-2xl font-display uppercase tracking-widest text-warmwhite">LAV|LIV</div>
+        <nav class="hidden md:flex items-center gap-8 text-sm font-sans text-warmwhite/90">
+          <a href="#home" class="border-b border-warmwhite pb-1">Home</a>
+          <a href="#about" class="hover:border-b hover:border-warmwhite/50 pb-1 transition">About</a>
+          <a href="#story" class="hover:border-b hover:border-warmwhite/50 pb-1 transition">Our Story</a>
+          <a href="#event" class="hover:border-b hover:border-warmwhite/50 pb-1 transition">Event</a>
+          <a href="#gallery" class="hover:border-b hover:border-warmwhite/50 pb-1 transition">Gallery</a>
+          <a href="#rsvp" class="hover:border-b hover:border-warmwhite/50 pb-1 transition">RSVP</a>
+        </nav>
+        <a href="#about" class="hidden md:flex items-center gap-2 border border-warmwhite rounded-full px-5 py-2 text-sm text-warmwhite hover:bg-warmwhite hover:text-moss transition">
+          Buka Undangan <span>&#9993;</span>
+        </a>
+      </header>
+
+      <!-- Main content hero -->
+      <div class="relative z-10 flex h-full min-h-[100svh] flex-col justify-center px-6 md:px-16">
+        
+        <div class="max-w-xl mt-20">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="h-px w-12 bg-warmwhite"></div>
+            <p class="text-xs uppercase tracking-editorial text-warmwhite">THE WEDDING OF</p>
+          </div>
+          
+          <h1 class="font-display text-7xl md:text-9xl leading-none text-warmwhite font-light">
+            Olav<br>
+            <span class="font-script text-4xl md:text-6xl italic lowercase relative -top-2 left-4">and</span><br>
+            Oliv
+          </h1>
+          
+          <p class="mt-8 text-sm uppercase tracking-[0.3em] text-warmwhite">
+            25 OCTOBER 2026
+          </p>
+          
+          <div class="mt-16 md:mt-24">
+            <p class="text-lg md:text-xl font-display text-warmwhite">Kepada Yth,</p>
+            <p class="text-2xl md:text-3xl font-display text-warmwhite mb-4">Bapak/Ibu/Saudara/i</p>
+            <p class="text-sm md:text-base text-warmwhite/80 max-w-sm mb-6 leading-relaxed">
+              Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir dalam hari bahagia kami.
+            </p>
+            
+            <a href="#about" class="inline-flex items-center gap-4 bg-warmwhite text-moss px-6 py-3 rounded-full font-medium hover:bg-white transition">
+              Buka Undangan &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right sidebar text (Desktop) -->
+      <div class="absolute right-12 top-1/2 -translate-y-1/2 hidden md:flex flex-col items-end gap-2 text-right z-10">
+        <p class="text-xs uppercase tracking-editorial text-warmwhite/80 leading-loose">
+          SAME<br>PEOPLE<br>BRIGHTER<br>DAYS
+        </p>
+      </div>
+
+      <!-- Right bottom script text -->
+      <div class="absolute right-12 md:right-32 bottom-24 md:bottom-40 z-10 text-right rotate-[-10deg]">
+        <p class="font-script text-4xl md:text-5xl text-warmwhite">A new<br>chapter<br>together</p>
+      </div>
+
+      <!-- Bottom decorations -->
+      <picture class="absolute bottom-0 left-0 z-20 pointer-events-none w-[70%] md:w-[45%]">
+        <source media="(min-width: 768px)" srcset="../aset/elemen_bagian_hero_section(desktop)l.webp">
+        <img src="../aset/elemen_bagian_hero_section(mobile).webp" alt="Leaves decoration" class="w-full h-auto object-contain" />
+      </picture>
+
+      <div class="absolute bottom-8 left-6 md:left-16 z-30 flex flex-col items-start gap-4 text-xs uppercase tracking-[0.3em] text-warmwhite">
+        <p>SCROLL<br>DOWN</p>
+        <div class="h-10 w-px bg-warmwhite ml-2"></div>
+        <span class="ml-[3px] text-lg">&darr;</span>
+      </div>
+
+      <div class="absolute bottom-8 right-6 md:right-16 z-30 hidden md:block text-xs uppercase tracking-[0.3em] text-warmwhite/50">
+        JAKARTA, INDONESIA
+      </div>
+    </section>

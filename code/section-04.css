@@ -1,0 +1,277 @@
+/* ============================================================
+   Wedding Invitation — Section 04 / Detail Acara
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+/* Navigation */
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  padding-bottom: 0.4rem;
+  color: rgba(250, 249, 244, 0.82);
+  font-size: 0.875rem;
+  transition:
+    color 250ms ease,
+    opacity 250ms ease;
+}
+
+.nav-link:hover {
+  color: #FAF9F4;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: #FAF9F4;
+  transition: transform 250ms ease;
+}
+
+.nav-link:hover::after,
+.nav-link-active::after {
+  transform: scaleX(1);
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details > summary::marker {
+  display: none;
+}
+
+.mobile-nav-link {
+  display: block;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  color: rgba(250, 249, 244, 0.88);
+  font-size: 0.875rem;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+.mobile-nav-link:hover {
+  background: rgba(250, 249, 244, 0.08);
+  color: #FAF9F4;
+}
+
+/* Hero / event image placeholder */
+.photo-placeholder-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.6rem;
+  height: 3.6rem;
+  border: 1px solid rgba(250, 249, 244, 0.25);
+  border-radius: 999px;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: rgba(250, 249, 244, 0.68);
+}
+
+/* Event cards */
+.event-photo-placeholder {
+  position: relative;
+  display: flex;
+  min-height: 19rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      145deg,
+      #2C3424,
+      #4C583E 50%,
+      #768064
+    );
+  color: rgba(250, 249, 244, 0.68);
+}
+
+.event-photo-placeholder::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(250, 249, 244, 0.10),
+      transparent 30%
+    );
+}
+
+.event-photo-placeholder > div {
+  z-index: 1;
+  text-align: center;
+}
+
+.event-photo-placeholder p {
+  margin-top: 0.65rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+}
+
+.event-photo-light {
+  background:
+    linear-gradient(
+      145deg,
+      #768064,
+      #4C583E 55%,
+      #2C3424
+    );
+}
+
+.event-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.7rem;
+  height: 2.7rem;
+  border: 1px solid rgba(118, 128, 100, 0.55);
+  border-radius: 999px;
+  color: #4C583E;
+  font-size: 1rem;
+}
+
+.info-icon {
+  flex: 0 0 1.2rem;
+  color: #768064;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Location */
+.location-bullet {
+  display: inline-flex;
+  flex: 0 0 2rem;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: #2C3424;
+  color: #FAF9F4;
+  font-size: 0.85rem;
+}
+
+/* Venue photo placeholder */
+.venue-photo-placeholder {
+  display: flex;
+  min-height: 14rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(
+      145deg,
+      #4C583E,
+      #768064,
+      #2C3424
+    );
+  color: rgba(250, 249, 244, 0.7);
+}
+
+/* Map */
+.map-grid {
+  min-height: 24rem;
+  background-color: #d7d7cf;
+  background-image:
+    linear-gradient(
+      12deg,
+      transparent 48%,
+      rgba(90, 96, 87, 0.17) 49%,
+      rgba(90, 96, 87, 0.17) 51%,
+      transparent 52%
+    ),
+    linear-gradient(
+      88deg,
+      transparent 48%,
+      rgba(90, 96, 87, 0.14) 49%,
+      rgba(90, 96, 87, 0.14) 51%,
+      transparent 52%
+    ),
+    linear-gradient(
+      145deg,
+      transparent 49%,
+      rgba(255, 255, 255, 0.45) 50%,
+      transparent 51%
+    );
+  background-size: 13rem 9rem, 10rem 12rem, 16rem 16rem;
+}
+
+.map-label {
+  position: absolute;
+  font-size: 0.7rem;
+  color: rgba(31, 33, 27, 0.45);
+}
+
+.map-label-a {
+  left: 20%;
+  top: 44%;
+}
+
+.map-label-b {
+  right: 18%;
+  top: 26%;
+}
+
+.map-label-c {
+  left: 15%;
+  bottom: 24%;
+}
+
+/* Decorative leaves */
+.leaf {
+  position: absolute;
+  width: 5.5rem;
+  height: 1.5rem;
+  border-radius: 100% 0 100% 0;
+  border: 1px solid rgba(118, 128, 100, 0.65);
+  background: rgba(118, 128, 100, 0.08);
+  transform-origin: left center;
+}
+
+.leaf-1 {
+  right: 0;
+  bottom: 3rem;
+  transform: rotate(-28deg);
+}
+
+.leaf-2 {
+  right: 2rem;
+  bottom: 6rem;
+  transform: rotate(8deg);
+}
+
+.leaf-3 {
+  right: 3rem;
+  bottom: 1rem;
+  transform: rotate(34deg);
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #FAF9F4;
+  outline-offset: 3px;
+}
+
+@media (max-width: 767px) {
+  .map-grid {
+    min-height: 20rem;
+  }
+}

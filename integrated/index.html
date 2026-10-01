@@ -1,0 +1,858 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Olav & Oliv Wedding Invitation" />
+  <title>Olav & Oliv — Wedding Invitation</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            moss: '#2C3424',
+            mossDark: '#1a1f15',
+            mossLight: '#4a573d',
+            warmwhite: '#e8e6d9',
+            ink: '#1A1A1A',
+            cream: '#EFEFEA',
+            cedar: '#4A3B32',
+            aloe: '#8D9F87',
+            paper: '#dcd8c8',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['"Cormorant Garamond"', 'serif'],
+            script: ['Caveat', 'cursive']
+          },
+          letterSpacing: {
+            editorial: '0.32em'
+          }
+        }
+      }
+    }
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="bg-moss text-warmwhite antialiased overflow-x-hidden">
+  <main id="integrated-content">
+
+    <!-- SECTION 1 - HERO -->
+    <section id="home" class="relative min-h-[100svh] w-full overflow-hidden bg-moss">
+      <!-- Background images -->
+      <picture class="absolute inset-0 z-0">
+        <source media="(min-width: 768px)" srcset="../aset/background_herosection(desktop).webp">
+        <img src="../aset/background_herosection.webp" alt="Olav & Oliv" class="h-full w-full object-cover object-center" />
+      </picture>
+      
+      <!-- Overlay gradient -->
+      <div class="absolute inset-0 z-0 bg-gradient-to-b from-moss/60 via-transparent to-moss/80"></div>
+      
+      <!-- Navbar -->
+      <header class="absolute top-0 left-0 w-full z-20 px-6 py-8 md:px-16 flex items-center justify-between">
+        <div class="text-2xl font-display uppercase tracking-widest text-warmwhite">LAV|LIV</div>
+        <nav class="hidden md:flex items-center gap-8 text-sm font-sans text-warmwhite/90">
+          <a href="#home" class="border-b border-warmwhite pb-1">Home</a>
+          <a href="#about" class="hover:border-b hover:border-warmwhite/50 pb-1 transition">About</a>
+          <a href="#story" class="hover:border-b hover:border-warmwhite/50 pb-1 transition">Our Story</a>
+          <a href="#event" class="hover:border-b hover:border-warmwhite/50 pb-1 transition">Event</a>
+          <a href="#gallery" class="hover:border-b hover:border-warmwhite/50 pb-1 transition">Gallery</a>
+          <a href="#rsvp" class="hover:border-b hover:border-warmwhite/50 pb-1 transition">RSVP</a>
+        </nav>
+        <a href="#about" class="hidden md:flex items-center gap-2 border border-warmwhite rounded-full px-5 py-2 text-sm text-warmwhite hover:bg-warmwhite hover:text-moss transition">
+          Buka Undangan <span>&#9993;</span>
+        </a>
+      </header>
+
+      <!-- Main content hero -->
+      <div class="relative z-10 flex h-full min-h-[100svh] flex-col justify-center px-6 md:px-16">
+        
+        <div class="max-w-xl mt-20">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="h-px w-12 bg-warmwhite"></div>
+            <p class="text-xs uppercase tracking-editorial text-warmwhite">THE WEDDING OF</p>
+          </div>
+          
+          <h1 class="font-display text-7xl md:text-9xl leading-none text-warmwhite font-light">
+            Olav<br>
+            <span class="font-script text-4xl md:text-6xl italic lowercase relative -top-2 left-4">and</span><br>
+            Oliv
+          </h1>
+          
+          <p class="mt-8 text-sm uppercase tracking-[0.3em] text-warmwhite">
+            25 OCTOBER 2026
+          </p>
+          
+          <div class="mt-16 md:mt-24">
+            <p class="text-lg md:text-xl font-display text-warmwhite">Kepada Yth,</p>
+            <p class="text-2xl md:text-3xl font-display text-warmwhite mb-4">Bapak/Ibu/Saudara/i</p>
+            <p class="text-sm md:text-base text-warmwhite/80 max-w-sm mb-6 leading-relaxed">
+              Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir dalam hari bahagia kami.
+            </p>
+            
+            <a href="#about" class="inline-flex items-center gap-4 bg-warmwhite text-moss px-6 py-3 rounded-full font-medium hover:bg-white transition">
+              Buka Undangan &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right sidebar text (Desktop) -->
+      <div class="absolute right-12 top-1/2 -translate-y-1/2 hidden md:flex flex-col items-end gap-2 text-right z-10">
+        <p class="text-xs uppercase tracking-editorial text-warmwhite/80 leading-loose">
+          SAME<br>PEOPLE<br>BRIGHTER<br>DAYS
+        </p>
+      </div>
+
+      <!-- Right bottom script text -->
+      <div class="absolute right-12 md:right-32 bottom-24 md:bottom-40 z-10 text-right rotate-[-10deg]">
+        <p class="font-script text-4xl md:text-5xl text-warmwhite">A new<br>chapter<br>together</p>
+      </div>
+
+      <!-- Bottom decorations -->
+      <picture class="absolute bottom-0 left-0 z-20 pointer-events-none w-[70%] md:w-[45%]">
+        <source media="(min-width: 768px)" srcset="../aset/elemen_bagian_hero_section(desktop)l.webp">
+        <img src="../aset/elemen_bagian_hero_section(mobile).webp" alt="Leaves decoration" class="w-full h-auto object-contain" />
+      </picture>
+
+      <div class="absolute bottom-8 left-6 md:left-16 z-30 flex flex-col items-start gap-4 text-xs uppercase tracking-[0.3em] text-warmwhite">
+        <p>SCROLL<br>DOWN</p>
+        <div class="h-10 w-px bg-warmwhite ml-2"></div>
+        <span class="ml-[3px] text-lg">&darr;</span>
+      </div>
+
+      <div class="absolute bottom-8 right-6 md:right-16 z-30 hidden md:block text-xs uppercase tracking-[0.3em] text-warmwhite/50">
+        JAKARTA, INDONESIA
+      </div>
+    </section>
+
+    <!-- SECTION 2 - ABOUT & MEMPELAI -->
+    <section id="about" class="relative w-full overflow-hidden bg-moss text-warmwhite">
+      
+      <!-- Top Quote Area -->
+      <div class="relative w-full min-h-[90vh] flex flex-col justify-center px-6 md:px-16 py-20 overflow-hidden">
+        
+        <!-- Right side abstract background panel (gray+flowers) -->
+        <div class="absolute right-0 top-0 w-full md:w-[50%] h-[60%] md:h-full z-0 opacity-40 mix-blend-screen overflow-hidden">
+          <img src="../aset/section2.webp" alt="background panel" class="w-full h-full object-cover object-left" />
+        </div>
+        
+        <!-- Long vertical flower divider (center) -->
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-24 md:w-32 hidden md:block">
+          <img src="../aset/section2_bunga.webp" alt="Flower divider" class="w-full h-auto" />
+        </div>
+
+        <!-- Script text top right -->
+        <div class="absolute right-6 md:right-20 top-16 z-20 font-script text-4xl md:text-5xl rotate-[-5deg] text-warmwhite/80">
+          Some<br>People<br>Brighter<br>Days
+        </div>
+
+        <!-- Couple photo (tangan berpegangan) — bottom right of hero -->
+        <div class="absolute right-[5%] md:right-[10%] bottom-4 md:bottom-8 z-20 w-40 md:w-60 shadow-2xl">
+          <img src="../aset/section2_fotopengantin.webp" alt="Olav dan Oliv berpegangan tangan" class="w-full h-auto object-cover" />
+        </div>
+        
+        <!-- Torn paper note — floats near couple photo -->
+        <div class="absolute right-[30%] md:right-[36%] bottom-8 md:bottom-12 z-20 w-36 md:w-48 shadow-xl rotate-[4deg]">
+          <img src="../aset/section2_tulisan+BG.webp" alt="Terima kasih" class="w-full h-auto" />
+        </div>
+        
+        <!-- Left content: heading + paragraphs -->
+        <div class="relative z-10 max-w-xl md:max-w-lg mt-0">
+          <h2 class="font-display text-5xl md:text-7xl mb-8 leading-[1.1]">
+            Sebuah<br>Awal dari<br><span class="italic text-5xl md:text-8xl">Selamanya</span>
+          </h2>
+          <p class="mb-6 text-sm md:text-base leading-relaxed text-warmwhite/90 max-w-md">
+            Dengan penuh rasa syukur dan bahagia, kami mengundang Bapak/Ibu/Saudara/i untuk menjadi bagian dari hari istimewa dalam perjalanan hidup kami.
+          </p>
+          <p class="text-sm md:text-base leading-relaxed text-warmwhite/90 max-w-md">
+            Pernikahan ini bukan hanya tentang dua insan yang saling mencintai, tetapi juga tentang dua keluarga yang dipersatukan dalam doa, restu, dan kebahagiaan bersama.
+          </p>
+        </div>
+
+      </div>
+      
+      <!-- Profile Area (Mempelai Pria & Wanita) -->
+      <div class="relative w-full bg-paper text-moss px-6 md:px-24 py-32 overflow-hidden">
+        <!-- Botanical Decors corners -->
+        <img src="../aset/section2_bunga(2).webp" class="absolute top-0 left-0 w-48 md:w-64 opacity-90 pointer-events-none -translate-x-8 -translate-y-8 z-0" alt="" />
+        <img src="../aset/section2_bunga(3).webp" class="absolute bottom-0 right-0 w-48 md:w-64 opacity-90 pointer-events-none translate-x-8 translate-y-8 z-0" alt="" />
+        
+        <!-- Ampersand center -->
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0 hidden md:block">
+          <span class="font-display text-[10rem] text-moss/15 italic select-none">&</span>
+        </div>
+
+        <div class="flex flex-col gap-32 md:gap-40 relative z-10 mt-10">
+          
+          <!-- Groom: Olav — fotopengantin(2).webp adalah foto pria (Olav) -->
+          <div class="relative flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 w-full">
+            <div class="w-full md:w-[45%] lg:w-[40%] flex justify-center md:justify-end">
+              <div class="relative w-64 h-80 md:w-80 md:h-[28rem] shadow-xl">
+                <!-- Decorative offset box -->
+                <div class="absolute -top-4 -left-4 md:-top-6 md:-left-6 w-full h-full bg-moss/15 z-0"></div>
+                <img src="../aset/section2_fotopengantin(2).webp" alt="Olav" class="w-full h-full object-cover object-top relative z-10" />
+              </div>
+            </div>
+            <div class="w-full md:w-[55%] lg:w-[60%] flex flex-col justify-center text-center md:text-left z-20 pt-4 md:pt-20">
+              <p class="text-[10px] uppercase tracking-[0.35em] mb-3 font-semibold text-moss/70">MEMPELAI PRIA</p>
+              <h3 class="font-display text-6xl md:text-8xl mb-6 text-moss leading-[1]">Olav</h3>
+              <p class="font-script text-4xl md:text-5xl text-moss/40 -mt-2 mb-8">Pratama</p>
+              <div class="w-12 h-px bg-moss/30 mb-6 mx-auto md:mx-0"></div>
+              <p class="text-sm md:text-base leading-relaxed text-moss/80 max-w-sm mx-auto md:mx-0">
+                Putra pertama dari<br>
+                Bapak Surya Pratama<br>
+                dan Ibu Ratna Dewi
+              </p>
+            </div>
+          </div>
+
+          <!-- Bride: Oliv — fotopengantin(3).webp adalah foto wanita (Oliv) -->
+          <div class="relative flex flex-col md:flex-row-reverse items-center md:items-start gap-8 md:gap-16 w-full">
+            <div class="w-full md:w-[45%] lg:w-[40%] flex justify-center md:justify-start">
+              <div class="relative w-64 h-80 md:w-80 md:h-[28rem] shadow-xl">
+                <!-- Decorative offset box -->
+                <div class="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-full h-full bg-moss/15 z-0"></div>
+                <img src="../aset/section2_fotopengantin(3).webp" alt="Oliv" class="w-full h-full object-cover object-top relative z-10" />
+              </div>
+            </div>
+            <div class="w-full md:w-[55%] lg:w-[60%] flex flex-col justify-center text-center md:text-right z-20 pt-4 md:pt-20">
+              <p class="text-[10px] uppercase tracking-[0.35em] mb-3 font-semibold text-moss/70">MEMPELAI WANITA</p>
+              <h3 class="font-display text-6xl md:text-8xl mb-6 text-moss leading-[1]">Oliv</h3>
+              <p class="font-script text-4xl md:text-5xl text-moss/40 -mt-2 mb-8">Putri</p>
+              <div class="w-12 h-px bg-moss/30 mb-6 mx-auto md:mx-0 md:ml-auto"></div>
+              <p class="text-sm md:text-base leading-relaxed text-moss/80 max-w-sm mx-auto md:mx-0 md:ml-auto">
+                Putri kedua dari Bapak<br>
+                Hendra Wijaya dan<br>
+                Ibu Sari Lestari
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Bottom Quote Area -->
+      <div class="relative w-full py-32 px-6 flex items-center justify-center text-center overflow-hidden h-[60vh] md:h-[70vh]">
+        <div class="absolute inset-0 z-0">
+          <img src="../aset/section2_bagianbawah.webp" class="w-full h-full object-cover opacity-50 mix-blend-screen" alt="Background leaves" />
+        </div>
+        <div class="relative z-10 max-w-2xl text-warmwhite">
+          <p class="font-display text-3xl md:text-5xl leading-tight">
+            "Dua hati, satu tujuan,<br>melangkah bersama menuju selamanya."
+          </p>
+          <div class="h-px w-16 bg-warmwhite mx-auto mt-12"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SECTION 3 - OUR STORY -->
+    <section id="story" class="relative w-full bg-paper text-moss py-20 overflow-hidden">
+      
+      <!-- Top Title Area -->
+      <div class="bg-moss text-warmwhite px-6 md:px-16 pt-24 pb-16 flex flex-col md:flex-row justify-between relative overflow-hidden">
+        
+        <div class="relative z-10 w-full md:w-[45%] lg:w-[40%] flex flex-col justify-center mb-16 md:mb-0">
+          <p class="text-xs uppercase tracking-[0.3em] mb-6 text-warmwhite/70 font-semibold">04 // 06<br><br>OUR STORY</p>
+          <h2 class="font-display text-6xl md:text-8xl mb-8 leading-[1.1]">Kisah<br>Cinta Kami</h2>
+          <div class="w-16 h-px bg-warmwhite mb-8"></div>
+          <p class="text-sm md:text-base leading-relaxed text-warmwhite/90 max-w-sm">
+            Setiap perjalanan memiliki cerita, dan ini adalah cerita tentang dua hati yang dipertemukan, tumbuh bersama, dan memilih untuk melangkah ke masa depan yang sama.
+          </p>
+        </div>
+        
+        <!-- Top Right Images Collage -->
+        <div class="relative z-10 w-full md:w-[55%] lg:w-[60%] flex justify-end md:pr-12 lg:pr-24 h-[500px]">
+           <div class="relative w-[80%] md:w-[90%] max-w-md">
+             <!-- Big Polaroid -->
+             <div class="absolute top-0 right-0 w-full rotate-6 shadow-2xl bg-warmwhite p-3 md:p-4 pb-12 md:pb-16 transform-gpu">
+               <img src="../aset/section3(01).webp" class="w-full h-auto object-cover border border-moss/10" alt="Couple from back" />
+               <!-- Tape on top -->
+               <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-6 bg-warmwhite/40 backdrop-blur-sm -rotate-2"></div>
+             </div>
+             <!-- Text on the right of polaroid -->
+             <p class="absolute top-1/4 -right-16 font-script text-2xl md:text-3xl text-warmwhite rotate-6 hidden md:block">Some<br>People<br>Brighter<br>Days</p>
+             <!-- Small torn paper / polaroid below -->
+             <div class="absolute bottom-10 -left-10 md:-left-20 w-48 md:w-56 rotate-[-5deg] shadow-xl bg-warmwhite p-3 transform-gpu">
+               <p class="font-script text-2xl md:text-3xl text-moss text-center my-4">Different<br>Paths Same<br>Home<br>&hearts;</p>
+             </div>
+             <!-- Flower on the right edge -->
+             <img src="../aset/section3_bunga(2).webp" class="absolute top-1/2 -right-8 md:-right-16 w-32 md:w-48 opacity-90 transform-gpu z-20" alt="flower" />
+           </div>
+        </div>
+      </div>
+
+      <!-- Timeline Area -->
+      <div class="px-6 md:px-16 py-32 max-w-7xl mx-auto relative overflow-hidden">
+        <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-moss/20 md:-translate-x-1/2 ml-[7px] md:ml-0"></div>
+        
+        <!-- Timeline Item 1 -->
+        <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between mb-24 md:mb-32">
+          <div class="w-full md:w-5/12 flex justify-start md:justify-end pl-12 md:pl-0 mb-8 md:mb-0">
+            <div class="relative bg-warmwhite p-3 shadow-xl -rotate-3 w-64 md:w-80 z-10 transform-gpu">
+              <img src="../aset/section3_fotopengantin(2).webp" alt="First meeting" class="w-full h-auto" />
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-10 h-5 bg-warmwhite/60 backdrop-blur-sm shadow-sm rotate-2"></div>
+            </div>
+          </div>
+          
+          <!-- Circle -->
+          <div class="absolute left-6 md:left-1/2 top-4 md:top-1/2 -translate-x-[2px] md:-translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 border-moss bg-paper z-20"></div>
+          
+          <div class="w-full md:w-5/12 pl-12 md:pl-16 mt-0 bg-transparent z-10">
+            <p class="text-xs text-moss/60 mb-2 font-medium tracking-widest">12 MARET 2020</p>
+            <h3 class="font-display text-4xl md:text-5xl mb-4">Pertama Kali Bertemu</h3>
+            <p class="text-sm md:text-base leading-relaxed text-moss/80">Kami dipertemukan dalam keadaan yang sederhana, tanpa rencana, namun menjadi awal dari segalanya.</p>
+          </div>
+        </div>
+        
+        <!-- Timeline Item 2 -->
+        <div class="relative flex flex-col md:flex-row-reverse items-start md:items-center justify-between mb-24 md:mb-32">
+          <div class="w-full md:w-5/12 flex justify-start pl-12 md:pl-0 mb-8 md:mb-0">
+            <div class="relative bg-warmwhite p-3 shadow-xl rotate-3 w-64 md:w-80 z-10 transform-gpu">
+              <img src="../aset/section3_fotopengantin(3).webp" alt="Holding hands" class="w-full h-auto" />
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-10 h-5 bg-warmwhite/60 backdrop-blur-sm shadow-sm -rotate-2"></div>
+            </div>
+          </div>
+          
+          <div class="absolute left-6 md:left-1/2 top-4 md:top-1/2 -translate-x-[2px] md:-translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 border-moss bg-paper z-20"></div>
+          
+          <div class="w-full md:w-5/12 pl-12 md:pl-0 md:pr-16 mt-0 text-left md:text-right bg-transparent z-10">
+            <p class="text-xs text-moss/60 mb-2 font-medium tracking-widest">20 JUNI 2020</p>
+            <h3 class="font-display text-4xl md:text-5xl mb-4">Mulai Lebih Dekat</h3>
+            <p class="text-sm md:text-base leading-relaxed text-moss/80">Dari obrolan ringan hingga menjadi tempat bercerita favorit. Kami mulai merasa nyaman, dan semuanya terasa lebih berarti.</p>
+          </div>
+        </div>
+        
+        <!-- Timeline Item 3 -->
+        <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between mb-24 md:mb-32">
+          <div class="w-full md:w-5/12 flex justify-start md:justify-end pl-12 md:pl-0 mb-8 md:mb-0">
+            <div class="relative bg-warmwhite p-3 shadow-xl -rotate-2 w-64 md:w-80 z-10 transform-gpu">
+              <img src="../aset/section3_fotopengantin(4).webp" alt="Sitting on grass" class="w-full h-auto" />
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-10 h-5 bg-warmwhite/60 backdrop-blur-sm shadow-sm rotate-1"></div>
+              <p class="font-script text-2xl text-center mt-4 text-moss/90">Bertumbuh Bersama</p>
+            </div>
+          </div>
+          
+          <div class="absolute left-6 md:left-1/2 top-4 md:top-1/2 -translate-x-[2px] md:-translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 border-moss bg-paper z-20"></div>
+          
+          <div class="w-full md:w-5/12 pl-12 md:pl-16 mt-0 bg-transparent z-10">
+            <p class="text-xs text-moss/60 mb-2 font-medium tracking-widest">14 FEBRUARI 2022</p>
+            <h3 class="font-display text-4xl md:text-5xl mb-4">Jatuh Cinta</h3>
+            <p class="text-sm md:text-base leading-relaxed text-moss/80">Kami menyadari bahwa ini bukan hanya sekadar rasa suka, tapi cinta yang ingin terus dijaga, dalam suka maupun duka.</p>
+          </div>
+        </div>
+        
+        <!-- Timeline Item 4 -->
+        <div class="relative flex flex-col md:flex-row-reverse items-start md:items-center justify-between mb-24 md:mb-32">
+          <div class="w-full md:w-5/12 flex justify-start pl-12 md:pl-0 mb-8 md:mb-0">
+             <div class="relative bg-warmwhite p-3 shadow-xl rotate-2 w-64 md:w-80 z-10 transform-gpu">
+              <img src="../aset/section3_fotopengantin(5).webp" alt="Building" class="w-full h-auto" />
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-10 h-5 bg-warmwhite/60 backdrop-blur-sm shadow-sm -rotate-1"></div>
+            </div>
+          </div>
+          
+          <div class="absolute left-6 md:left-1/2 top-4 md:top-1/2 -translate-x-[2px] md:-translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 border-moss bg-paper z-20"></div>
+          
+          <div class="w-full md:w-5/12 pl-12 md:pl-0 md:pr-16 mt-0 text-left md:text-right bg-transparent z-10">
+            <p class="text-xs text-moss/60 mb-2 font-medium tracking-widest">10 NOVEMBER 2024</p>
+            <h3 class="font-display text-4xl md:text-5xl mb-4">Mantap Melangkah</h3>
+            <p class="text-sm md:text-base leading-relaxed text-moss/80">Dengan segala cerita, kami memilih untuk melangkah ke tahap yang lebih serius, menuju masa depan bersama.</p>
+          </div>
+        </div>
+        
+        <!-- Timeline Item 5 (Final) -->
+        <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between">
+          <div class="w-full md:w-5/12 flex justify-start md:justify-end pl-12 md:pl-0 mb-8 md:mb-0">
+            <div class="relative bg-warmwhite p-3 shadow-xl -rotate-6 w-64 md:w-80 z-10 transform-gpu mt-12 md:mt-0">
+              <img src="../aset/section3_fotopengantin(6).webp" alt="Rings" class="w-full h-auto" />
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-10 h-5 bg-warmwhite/60 backdrop-blur-sm shadow-sm rotate-2"></div>
+              <p class="font-script text-2xl md:text-3xl text-center mt-3 text-moss absolute -left-12 bottom-6 -rotate-[15deg]">Forever and<br>Always <br>&hearts;</p>
+            </div>
+          </div>
+          
+          <div class="absolute left-6 md:left-1/2 top-4 md:top-1/2 -translate-x-[2px] md:-translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 border-moss bg-paper z-20"></div>
+          
+          <div class="w-full md:w-5/12 pl-12 md:pl-16 mt-0 bg-transparent z-10">
+             <p class="text-xs text-moss/60 mb-2 font-medium tracking-widest">25 OKTOBER 2026</p>
+            <h3 class="font-display text-4xl md:text-5xl mb-4">Hari Bahagia</h3>
+            <p class="text-sm md:text-base leading-relaxed text-moss/80">Kini, kami siap memulai babak baru sebagai suami dan istri. Bukan akhir dari cerita, tapi awal dari selamanya.</p>
+          </div>
+        </div>
+        
+        <!-- Botanical Decors Background Timeline -->
+        <img src="../aset/section3_bunga.webp" class="absolute top-[20%] left-0 w-48 md:w-64 opacity-50 -translate-x-1/2 pointer-events-none mix-blend-multiply" alt="" />
+        <img src="../aset/section3_bunga(2).webp" class="absolute bottom-[30%] right-0 w-48 md:w-64 opacity-50 translate-x-1/4 pointer-events-none mix-blend-multiply" alt="" />
+      </div>
+
+      <!-- Bottom Quote Area Section 3 -->
+      <div class="relative w-full py-32 md:py-48 px-6 flex flex-col items-center justify-center text-center overflow-hidden bg-moss text-warmwhite">
+        <div class="absolute inset-0 z-0">
+          <img src="../aset/section3_bagianbawah.webp" class="w-full h-full object-cover object-bottom opacity-50 mix-blend-screen" alt="White flowers" />
+        </div>
+        
+        <div class="relative z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between">
+          <div class="text-center md:text-left w-full md:w-1/4 mb-16 md:mb-0 md:mt-24">
+            <p class="text-[10px] md:text-xs uppercase tracking-[0.3em] text-warmwhite/70 font-semibold leading-loose">SAME PEOPLE<br>BRIGHTER DAYS</p>
+          </div>
+          
+          <div class="text-center w-full md:w-1/2 mb-16 md:mb-0 relative">
+             <span class="text-8xl font-display text-warmwhite/30 absolute -top-12 left-4 md:-left-8">&ldquo;</span>
+             <p class="font-display text-3xl md:text-5xl italic leading-tight text-warmwhite relative z-10 max-w-lg mx-auto">
+               Bukan tentang siapa yang sempurna, tapi tentang dua orang yang memilih untuk selalu berjuang bersama.
+             </p>
+             <div class="w-16 h-px bg-warmwhite/40 mx-auto mt-10"></div>
+          </div>
+          
+          <div class="text-center md:text-left w-full md:w-1/4 border-t md:border-t-0 md:border-l border-warmwhite/30 pt-8 md:pt-0 md:pl-12 flex flex-col justify-center md:mt-24">
+            <p class="text-[10px] md:text-xs uppercase tracking-[0.3em] text-warmwhite/70 font-semibold leading-loose">A NEW<br>CHAPTER<br>TOGETHER</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4 - EVENTS -->
+    <section id="event" class="relative w-full overflow-hidden text-moss">
+      
+      <!-- Top Title Area -->
+      <div class="bg-moss text-warmwhite px-6 md:px-16 pt-24 pb-16 flex flex-col md:flex-row justify-between items-stretch relative overflow-hidden">
+        <div class="relative z-10 w-full md:w-1/2 md:pr-10 flex flex-col justify-center">
+          <p class="text-[10px] md:text-xs uppercase tracking-[0.3em] mb-6 text-warmwhite/70 font-semibold">02 // 06<br><br>DETAIL ACARA</p>
+          <h2 class="font-display text-5xl md:text-7xl mb-8 leading-[1.1]">Waktu<br>Pernikahan</h2>
+          <div class="w-16 h-px bg-warmwhite mb-8"></div>
+          <p class="text-sm md:text-base leading-relaxed text-warmwhite/90 max-w-sm">
+            Dengan penuh rasa syukur, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam rangkaian acara pernikahan kami.
+          </p>
+        </div>
+        
+        <div class="relative z-10 w-full md:w-1/2 mt-12 md:mt-0 flex justify-end min-h-[400px]">
+           <div class="absolute inset-y-0 right-[-2rem] md:right-[-4rem] w-full md:w-[120%]">
+             <img src="../aset/section3_fotopengantin.webp" class="w-full h-full object-cover" alt="Wedding Rings" />
+             <div class="absolute inset-0 bg-moss/20 mix-blend-multiply"></div>
+             <!-- Script A Special Day overlay on the image -->
+             <p class="absolute bottom-8 right-16 md:right-32 font-script text-4xl md:text-5xl text-moss rotate-[-5deg]">A Special<br>Day</p>
+           </div>
+        </div>
+        
+        <!-- Sidebar text -->
+        <div class="absolute right-6 top-6 hidden md:block text-[10px] uppercase tracking-[0.3em] text-warmwhite/70 text-right leading-loose font-semibold z-20">
+          SAME<br>PEOPLE<br>BRIGHTER<br>DAYS
+          <div class="w-px h-16 bg-warmwhite/40 ml-auto mt-4"></div>
+        </div>
+      </div>
+
+      <!-- Event Cards -->
+      <div class="bg-paper px-6 md:px-16 py-32 relative">
+        <img src="../aset/section4_bunga.webp" class="absolute top-0 right-0 w-48 md:w-64 opacity-80 pointer-events-none" alt="" />
+        <img src="../aset/section4_bunga(2).webp" class="absolute bottom-[40%] left-0 w-32 md:w-48 opacity-70 pointer-events-none -translate-x-1/2" alt="" />
+        
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 relative z-10">
+          
+          <!-- Akad Nikah -->
+          <div class="border border-moss/30 p-8 md:p-12 flex flex-col items-center text-center bg-transparent relative">
+            <div class="w-20 h-20 border border-moss rounded-full flex items-center justify-center mb-8">
+              <svg class="w-10 h-10 text-moss" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <!-- Rings icon -->
+                <circle cx="9" cy="12" r="4" stroke-width="1.5" />
+                <circle cx="15" cy="12" r="4" stroke-width="1.5" />
+              </svg>
+            </div>
+            <h3 class="font-display text-4xl md:text-5xl mb-10">Akad<br>Nikah</h3>
+            
+            <!-- Arch Image -->
+            <div class="w-full h-80 md:h-[28rem] rounded-t-full overflow-hidden mb-10 shadow-lg border border-moss/10">
+              <img src="../aset/section4_fotoakadnikah.webp" alt="Akad Nikah" class="w-full h-full object-cover" />
+            </div>
+            
+            <div class="w-full text-left space-y-6 px-4">
+              <div class="flex items-start gap-6 border-b border-moss/10 pb-4">
+                <span class="w-6 shrink-0 mt-1 text-xl">&#128197;</span>
+                <p class="text-sm md:text-base font-medium">Sabtu, 25 Oktober 2026</p>
+              </div>
+              <div class="flex items-start gap-6 border-b border-moss/10 pb-4">
+                <span class="w-6 shrink-0 mt-1 text-xl">&#128338;</span>
+                <p class="text-sm md:text-base font-medium">08.00 - 10.00 WIB</p>
+              </div>
+              <div class="flex items-start gap-6">
+                <span class="w-6 shrink-0 mt-1 text-xl">&#128205;</span>
+                <div>
+                  <p class="font-semibold text-sm md:text-base mb-1">Masjid Al-Falah</p>
+                  <p class="text-sm text-moss/70">Jl. Melawai No. 123, Jakarta Selatan</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Resepsi Pernikahan -->
+          <div class="border border-moss/30 p-8 md:p-12 flex flex-col items-center text-center bg-transparent relative">
+            <div class="w-20 h-20 border border-moss rounded-full flex items-center justify-center mb-8">
+              <svg class="w-10 h-10 text-moss" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <!-- Glasses icon -->
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21v-8m0 0l-3-3m3 3l3-3m-3-10v5a3 3 0 01-3 3H9a3 3 0 01-3-3V3h12v5a3 3 0 01-3 3h-3a3 3 0 01-3-3V3z" />
+              </svg>
+            </div>
+            <h3 class="font-display text-4xl md:text-5xl mb-10">Resepsi<br>Pernikahan</h3>
+            
+            <!-- Arch Image -->
+            <div class="w-full h-80 md:h-[28rem] rounded-t-full overflow-hidden mb-10 shadow-lg border border-moss/10">
+              <img src="../aset/section4_fotoresepsipernikahan.webp" alt="Resepsi Pernikahan" class="w-full h-full object-cover" />
+            </div>
+            
+            <div class="w-full text-left space-y-6 px-4">
+              <div class="flex items-start gap-6 border-b border-moss/10 pb-4">
+                <span class="w-6 shrink-0 mt-1 text-xl">&#128197;</span>
+                <p class="text-sm md:text-base font-medium">Sabtu, 25 Oktober 2026</p>
+              </div>
+              <div class="flex items-start gap-6 border-b border-moss/10 pb-4">
+                <span class="w-6 shrink-0 mt-1 text-xl">&#128338;</span>
+                <p class="text-sm md:text-base font-medium">19.00 - 22.00 WIB</p>
+              </div>
+              <div class="flex items-start gap-6">
+                <span class="w-6 shrink-0 mt-1 text-xl">&#128205;</span>
+                <div>
+                  <p class="font-semibold text-sm md:text-base mb-1">The Backyard Cafe</p>
+                  <p class="text-sm text-moss/70">Jl. Melawai No. 123, Jakarta Selatan</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- Location Map -->
+      <div class="bg-[#e4e1d5] px-6 md:px-16 py-32 relative overflow-hidden">
+        <img src="../aset/section4_bunga(3).webp" class="absolute bottom-0 right-0 w-64 md:w-96 opacity-60 pointer-events-none mix-blend-multiply" alt="" />
+        
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 md:gap-24 relative z-10 items-start">
+          <!-- Text left -->
+          <div class="w-full md:w-5/12">
+             <p class="text-[10px] md:text-xs uppercase tracking-[0.3em] font-semibold mb-6">LOKASI ACARA</p>
+             <h2 class="font-display text-5xl md:text-7xl mb-8 leading-[1.1]">Temui Kami<br>Di Sini</h2>
+             <div class="w-16 h-px bg-moss mb-8"></div>
+             <p class="text-sm md:text-base leading-relaxed mb-12 text-moss/80 max-w-sm">
+               Kami sangat berharap kehadiran Bapak/Ibu/Saudara/i untuk menjadi bagian dari hari istimewa ini.
+             </p>
+             
+             <div class="space-y-8">
+                <div class="flex items-start gap-6 border-b border-moss/20 pb-6">
+                  <div class="w-10 h-10 rounded-full bg-moss flex items-center justify-center shrink-0 shadow-md">
+                    <span class="text-warmwhite text-lg">&#128205;</span>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-sm md:text-base mb-1">The Backyard Cafe</p>
+                    <p class="text-sm text-moss/70">Jl. Melawai No. 123, Jakarta Selatan</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-6 border-b border-moss/20 pb-6">
+                  <div class="w-10 h-10 rounded-full bg-moss flex items-center justify-center shrink-0 shadow-md">
+                    <span class="text-warmwhite text-lg">&#128663;</span>
+                  </div>
+                  <p class="text-sm md:text-base font-medium">Tersedia area parkir</p>
+                </div>
+                <div class="flex items-center gap-6">
+                  <div class="w-10 h-10 rounded-full bg-moss flex items-center justify-center shrink-0 shadow-md">
+                    <span class="text-warmwhite text-lg">&#128647;</span>
+                  </div>
+                  <p class="text-sm md:text-base font-medium">Dapat diakses dengan transportasi umum</p>
+                </div>
+             </div>
+             
+             <!-- Venue photo using the correct asset -->
+             <div class="relative mt-20 max-w-md">
+               <img src="../aset/section4_bagianbawah.webp" alt="Our Wedding Venue" class="w-full h-auto drop-shadow-2xl" />
+             </div>
+          </div>
+          
+          <!-- Map Right -->
+          <div class="w-full md:w-7/12 flex flex-col">
+            <div class="w-full h-[500px] border border-moss/30 rounded-2xl overflow-hidden shadow-2xl bg-white p-2">
+              <div class="w-full h-full rounded-xl overflow-hidden relative">
+                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15865.1!2d106.79!3d-6.24!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1sen!2sid!4v1" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+              </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 mt-8">
+              <a href="#" class="flex-1 bg-moss text-warmwhite text-center py-4 px-6 rounded-xl font-medium hover:bg-mossLight transition flex items-center justify-center gap-3 shadow-lg">
+                <span class="text-xl">&#10148;</span> Buka di Google Maps
+              </a>
+              <a href="#" class="flex-1 bg-transparent border-2 border-moss text-moss text-center py-4 px-6 rounded-xl font-medium hover:bg-moss/5 transition flex items-center justify-center gap-3">
+                <span class="text-xl">&#128663;</span> Dapatkan Rute
+              </a>
+            </div>
+            
+            <div class="text-center mt-24">
+              <p class="font-display text-2xl md:text-4xl leading-relaxed italic text-moss/90">
+                "Tempat di mana cerita baru kami<br>dimulai bersama orang-orang tercinta."
+              </p>
+              <div class="h-px w-24 bg-moss/50 mx-auto mt-8"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+
+    <!-- SECTION 5 - GALLERY -->
+    <section id="gallery" class="relative w-full overflow-hidden bg-paper text-moss">
+      
+      <!-- Top Title Area -->
+      <div class="bg-moss text-warmwhite px-6 md:px-16 pt-24 pb-16 flex flex-col md:flex-row justify-between items-center relative overflow-hidden">
+        <div class="relative z-10 w-full md:w-5/12 mb-16 md:mb-0">
+          <p class="text-[10px] md:text-xs uppercase tracking-[0.3em] mb-6 text-warmwhite/70 font-semibold">05 // 06<br><br>Gallery</p>
+          <h2 class="font-display text-6xl md:text-8xl mb-8 leading-[1.1]">Momen<br>Berharga<br><span class="italic text-5xl md:text-7xl">Bersama</span></h2>
+          <div class="w-16 h-px bg-warmwhite mb-8"></div>
+          <p class="text-sm md:text-base leading-relaxed text-warmwhite/90 max-w-sm">
+            Setiap foto menyimpan cerita, setiap momen menjadi bagian dari perjalanan kami menuju hari yang istimewa.
+          </p>
+        </div>
+        
+        <div class="relative z-10 w-full md:w-7/12 flex justify-end">
+           <div class="relative w-full max-w-3xl">
+             <!-- Top-left rounded hero gallery image -->
+             <div class="w-full h-96 md:h-[40rem] rounded-tl-[10rem] md:rounded-tl-[16rem] overflow-hidden shadow-2xl">
+               <img src="../aset/section5_fotopengantin.webp" class="w-full h-full object-cover" alt="Gallery Hero" />
+             </div>
+             <!-- Leaf decoration -->
+             <img src="../aset/section5_bunga.webp" class="absolute -bottom-16 -left-16 md:-bottom-24 md:-left-24 w-48 md:w-80 z-20 pointer-events-none drop-shadow-xl" alt="" />
+             <!-- Script -->
+             <p class="absolute top-[20%] -right-8 md:-right-16 font-script text-4xl md:text-5xl text-warmwhite rotate-[10deg] drop-shadow-lg">Same<br>People<br>Brighter<br>Days</p>
+           </div>
+        </div>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="px-6 md:px-16 py-24 md:py-32 relative z-10">
+        <!-- Filters -->
+        <div class="flex flex-wrap items-center justify-between mb-16 border-b border-moss/20 pb-6">
+          <div class="flex items-center gap-8 md:gap-12 overflow-x-auto text-sm md:text-base font-medium">
+            <button class="border-b-2 border-moss pb-2 whitespace-nowrap text-moss">Semua</button>
+            <button class="text-moss/50 hover:text-moss transition pb-2 whitespace-nowrap">Prewedding</button>
+            <button class="text-moss/50 hover:text-moss transition pb-2 whitespace-nowrap">Acara</button>
+            <button class="text-moss/50 hover:text-moss transition pb-2 whitespace-nowrap">Keseharian</button>
+          </div>
+          <div class="hidden md:flex items-center gap-4">
+            <button class="w-12 h-12 rounded-full border border-moss/30 flex items-center justify-center hover:bg-moss/5 transition text-lg">&larr;</button>
+            <button class="w-12 h-12 rounded-full border border-moss flex items-center justify-center bg-moss text-warmwhite hover:bg-mossLight transition text-lg">&rarr;</button>
+          </div>
+        </div>
+        
+        <!-- Masonry Grid layout using CSS Grid or Columns -->
+        <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 space-y-6">
+          <div class="break-inside-avoid shadow-lg rounded-xl overflow-hidden group relative">
+            <img src="../aset/section5_galerifoto.webp" alt="Gallery 1" class="w-full h-auto transition duration-500 group-hover:scale-105" />
+          </div>
+          <div class="break-inside-avoid shadow-lg rounded-xl overflow-hidden group relative">
+            <img src="../aset/section5_galerifoto(2).webp" alt="Gallery 2" class="w-full h-auto transition duration-500 group-hover:scale-105" />
+          </div>
+          <div class="break-inside-avoid shadow-lg rounded-xl overflow-hidden group relative">
+            <img src="../aset/section5_galerifoto(3).webp" alt="Gallery 3" class="w-full h-auto transition duration-500 group-hover:scale-105" />
+          </div>
+          <div class="break-inside-avoid shadow-lg rounded-xl overflow-hidden group relative">
+            <img src="../aset/section5_galerifoto(4).webp" alt="Gallery 4" class="w-full h-auto transition duration-500 group-hover:scale-105" />
+          </div>
+          <div class="break-inside-avoid shadow-lg rounded-xl overflow-hidden group relative">
+            <img src="../aset/section5_galerifoto(5).webp" alt="Gallery 5" class="w-full h-auto transition duration-500 group-hover:scale-105" />
+          </div>
+          <div class="break-inside-avoid shadow-lg rounded-xl overflow-hidden group relative">
+            <img src="../aset/section5_galerifoto(6).webp" alt="Gallery 6" class="w-full h-auto transition duration-500 group-hover:scale-105" />
+          </div>
+          <div class="break-inside-avoid shadow-lg rounded-xl overflow-hidden group relative">
+            <img src="../aset/section5_galerifoto(7)webp.webp" alt="Gallery 7" class="w-full h-auto transition duration-500 group-hover:scale-105" />
+          </div>
+          <div class="break-inside-avoid shadow-lg rounded-xl overflow-hidden group relative">
+            <img src="../aset/section5_galerifoto(8).webp" alt="Gallery 8" class="w-full h-auto transition duration-500 group-hover:scale-105" />
+          </div>
+          <div class="break-inside-avoid shadow-lg rounded-xl overflow-hidden group relative">
+            <img src="../aset/section5_galerifoto(9).webp" alt="Gallery 9" class="w-full h-auto transition duration-500 group-hover:scale-105" />
+          </div>
+        </div>
+        
+        <img src="../aset/section5_bunga(2).webp" class="absolute -bottom-32 -right-16 w-64 md:w-96 opacity-90 pointer-events-none drop-shadow-xl" alt="" />
+      </div>
+
+      <!-- Bottom Quote Area Section 5 -->
+      <div class="relative w-full py-32 px-6 flex flex-col items-center justify-center text-center">
+        <p class="font-display text-3xl md:text-5xl italic leading-tight z-10 max-w-4xl text-moss">
+          “Bukan sekadar foto, tapi potongan kisah yang selalu ingin kami kenang.”
+        </p>
+        <div class="w-24 h-px bg-moss/50 mx-auto mt-10 z-10"></div>
+      </div>
+      
+      <!-- Footer-like banner image for section 5 -->
+      <div class="relative w-full h-[50vh] md:h-[60vh] bg-moss overflow-hidden">
+        <div class="absolute inset-0 z-0">
+          <img src="../aset/section5_bagianbawah.webp" class="w-full h-full object-cover opacity-60 mix-blend-screen" alt="Flowers background" />
+        </div>
+        
+        <div class="absolute inset-0 flex flex-col md:flex-row items-center justify-between px-6 md:px-24 z-10 pt-16 md:pt-0">
+          <div class="mb-12 md:mb-0">
+            <p class="text-[10px] md:text-xs uppercase tracking-[0.3em] text-warmwhite/80 border-l border-warmwhite/40 pl-6 py-2 font-semibold">
+              SAME<br>PEOPLE<br>BRIGHTER<br>DAYS
+            </p>
+          </div>
+          <div class="md:border-l border-warmwhite/40 md:pl-12 md:h-64 flex flex-col justify-center">
+            <p class="font-script text-6xl md:text-8xl text-warmwhite rotate-[-10deg] drop-shadow-lg">More<br>Memories<br>to Come &hearts;</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SECTION 6 - RSVP & WISHES -->
+    <section id="rsvp" class="relative w-full overflow-hidden bg-paper text-moss">
+      
+      <!-- Top Title Area -->
+      <div class="bg-moss text-warmwhite px-6 md:px-16 pt-24 pb-16 flex flex-col md:flex-row justify-between items-center relative overflow-hidden">
+        <div class="relative z-10 w-full md:w-[45%] lg:w-[40%] mb-16 md:mb-0">
+          <p class="text-[10px] md:text-xs uppercase tracking-[0.3em] mb-6 text-warmwhite/70 font-semibold">06 // 06<br><br>UCAPAN & RSVP</p>
+          <h2 class="font-display text-6xl md:text-8xl mb-8 leading-[1.1]">Doa dan<br>Ucapan</h2>
+          <div class="w-16 h-px bg-warmwhite mb-8"></div>
+          <p class="text-sm md:text-base leading-relaxed text-warmwhite/90 max-w-sm">
+            Terima kasih atas kehadiran, doa dan ucapan yang tulus untuk kami. Semoga segala kebaikan kembali kepada Anda.
+          </p>
+        </div>
+        
+        <div class="relative z-10 w-full md:w-[55%] lg:w-[60%] flex justify-end">
+           <div class="relative w-full max-w-xl md:-mr-12 lg:-mr-24 rotate-[2deg]">
+             <img src="../aset/section6(01).webp" class="w-full h-auto shadow-2xl" alt="Thank you card" />
+           </div>
+        </div>
+        
+        <div class="absolute right-6 top-6 hidden md:block text-[10px] uppercase tracking-[0.3em] text-warmwhite/70 text-right leading-loose font-semibold">
+          SAME<br>PEOPLE<br>BRIGHTER<br>DAYS
+          <div class="w-px h-16 bg-warmwhite/40 ml-auto mt-4"></div>
+        </div>
+      </div>
+
+      <!-- Forms and Messages Area -->
+      <div class="px-6 md:px-16 py-32 relative max-w-7xl mx-auto flex flex-col md:flex-row gap-16 md:gap-24">
+        
+        <!-- Form Left -->
+        <div class="w-full md:w-[45%]">
+          <h3 class="font-display text-4xl md:text-5xl mb-4">Kirim Ucapan</h3>
+          <p class="text-sm md:text-base text-moss/80 mb-10">Tuliskan doa, harapan, dan ucapan terbaik untuk kami.</p>
+          
+          <form class="space-y-6">
+            <div class="relative">
+              <span class="absolute left-4 top-4 text-moss/50 text-lg">&#128100;</span>
+              <input type="text" placeholder="Nama Anda" class="w-full bg-transparent border-2 border-moss/20 rounded-xl py-4 pl-14 pr-4 text-base focus:outline-none focus:border-moss transition" />
+            </div>
+            
+            <div class="relative">
+              <span class="absolute left-4 top-4 text-moss/50 text-lg">&#128172;</span>
+              <textarea placeholder="Tulis ucapan dan doa..." rows="5" class="w-full bg-transparent border-2 border-moss/20 rounded-xl py-4 pl-14 pr-4 text-base focus:outline-none focus:border-moss transition resize-none"></textarea>
+            </div>
+            
+            <div class="pt-6 border-t border-moss/10 mt-6">
+              <p class="text-base font-semibold mb-6">Konfirmasi Kehadiran</p>
+              <div class="flex flex-col sm:flex-row gap-4 bg-transparent border border-moss/20 rounded-xl p-3">
+                <label class="flex-1 flex items-center gap-3 cursor-pointer hover:bg-moss/5 p-3 rounded-lg transition">
+                  <input type="radio" name="attendance" class="w-4 h-4 accent-moss" checked />
+                  <span class="text-base font-medium">Hadir</span>
+                </label>
+                <label class="flex-1 flex items-center gap-3 cursor-pointer hover:bg-moss/5 p-3 rounded-lg transition">
+                  <input type="radio" name="attendance" class="w-4 h-4 accent-moss" />
+                  <span class="text-base font-medium">Tidak Hadir</span>
+                </label>
+                <label class="flex-1 flex items-center gap-3 cursor-pointer hover:bg-moss/5 p-3 rounded-lg transition">
+                  <input type="radio" name="attendance" class="w-4 h-4 accent-moss" />
+                  <span class="text-base font-medium">Masih Ragu</span>
+                </label>
+              </div>
+            </div>
+            
+            <button type="submit" class="w-full bg-moss text-warmwhite py-5 rounded-xl font-semibold flex items-center justify-center gap-3 mt-8 hover:bg-mossLight transition shadow-lg text-lg">
+              <span>&#10148;</span> Kirim Ucapan
+            </button>
+          </form>
+        </div>
+        
+        <!-- Messages Right -->
+        <div class="w-full md:w-[55%]">
+          <h3 class="font-display text-4xl md:text-5xl mb-10">Ucapan dari Tamu</h3>
+          
+          <div class="space-y-6 max-h-[600px] overflow-y-auto pr-4 custom-scrollbar">
+            <!-- Message 1 -->
+            <div class="bg-warmwhite p-6 rounded-2xl shadow-sm border border-moss/5">
+              <p class="font-semibold text-base mb-1">Siti Rahma</p>
+              <p class="text-xs text-moss/50 mb-4">4 hari yang lalu</p>
+              <p class="text-base text-moss/80 leading-relaxed">Selamat menempuh hidup baru Olav & Oliv. Semoga selalu bahagia, langgeng, dan penuh berkah. &#128150;</p>
+            </div>
+            <!-- Message 2 -->
+            <div class="bg-warmwhite p-6 rounded-2xl shadow-sm border border-moss/5">
+              <p class="font-semibold text-base mb-1">Dimas Pratama</p>
+              <p class="text-xs text-moss/50 mb-4">4 hari yang lalu</p>
+              <p class="text-base text-moss/80 leading-relaxed">Turut berbahagia! Semoga menjadi keluarga sakinah, mawaddah, warahmah.</p>
+            </div>
+            <!-- Message 3 -->
+            <div class="bg-warmwhite p-6 rounded-2xl shadow-sm border border-moss/5">
+              <p class="font-semibold text-base mb-1">Alya Putri</p>
+              <p class="text-xs text-moss/50 mb-4">4 hari yang lalu</p>
+              <p class="text-base text-moss/80 leading-relaxed">Selamat ya! Lancar sampai hari H, semoga selalu diberi kebahagiaan dalam setiap langkahnya : &#128150;</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Confirmation Status Box -->
+      <div class="px-6 md:px-16 pb-32 relative max-w-7xl mx-auto">
+        <div class="bg-[#b5b8a6] rounded-3xl p-10 md:p-16 flex flex-col lg:flex-row gap-12 items-center shadow-xl">
+          <div class="lg:w-1/3 text-center lg:text-left">
+            <h3 class="font-display text-4xl md:text-5xl mb-6">Konfirmasi<br>Kehadiran</h3>
+            <p class="text-sm md:text-base text-moss/90 leading-relaxed">Mohon konfirmasi kehadiran Anda agar kami dapat mempersiapkan segala sesuatunya dengan lebih baik.</p>
+          </div>
+          
+          <div class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-6 w-full">
+            <div class="bg-warmwhite border-2 border-moss rounded-2xl p-8 text-center shadow-md">
+              <span class="text-4xl mb-4 block">&#128101;</span>
+              <p class="font-semibold text-lg mb-2">Hadir</p>
+              <p class="text-sm text-moss/70">Dengan senang hati akan hadir.</p>
+            </div>
+            <div class="bg-warmwhite/40 border border-transparent rounded-2xl p-8 text-center hover:bg-warmwhite/60 transition">
+              <span class="text-4xl mb-4 block text-moss/50">&#10006;</span>
+              <p class="font-semibold text-lg mb-2 text-moss/80">Tidak Hadir</p>
+              <p class="text-sm text-moss/60">Maaf, belum bisa hadir.</p>
+            </div>
+            <div class="bg-warmwhite/40 border border-transparent rounded-2xl p-8 text-center hover:bg-warmwhite/60 transition">
+              <span class="text-4xl mb-4 block text-moss/50">&#10068;</span>
+              <p class="font-semibold text-lg mb-2 text-moss/80">Masih Ragu</p>
+              <p class="text-sm text-moss/60">Masih dalam konfirmasi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Closing Footer Area -->
+      <div class="px-6 md:px-16 py-32 flex flex-col md:flex-row items-center justify-between relative max-w-7xl mx-auto border-t border-moss/10">
+        <div class="w-full md:w-1/3 mb-24 md:mb-0">
+          <p class="font-script text-7xl md:text-8xl text-moss/40 -rotate-[15deg]">Terima<br>Kasih &hearts;</p>
+        </div>
+        
+        <div class="w-full md:w-1/2 text-center md:text-right">
+          <h2 class="font-display text-5xl md:text-6xl mb-8 leading-[1.1]">“Doa Anda adalah hadiah<br>terindah bagi kami.”</h2>
+          <div class="w-16 h-px bg-moss/50 mx-auto md:ml-auto md:mr-0 mb-8"></div>
+          <p class="text-base md:text-lg text-moss/80 mb-20 max-w-md mx-auto md:mx-0 md:ml-auto">
+            Terima kasih telah menjadi bagian dari hari istimewa kami.
+          </p>
+          
+          <div class="flex flex-col items-center md:items-end gap-3 relative">
+             <div class="w-24 h-px bg-moss/30 mb-4"></div>
+             <p class="text-[10px] md:text-xs uppercase tracking-[0.4em] font-semibold text-moss">OLAV & OLIV</p>
+             <p class="text-[10px] md:text-xs uppercase tracking-[0.4em] text-moss/60">25 OKTOBER 2026</p>
+             <img src="../aset/section2_bunga(2).webp" class="absolute -bottom-20 -right-4 md:-right-16 w-32 md:w-40 opacity-70 pointer-events-none drop-shadow-md" alt="" />
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+</body>
+</html>
+
