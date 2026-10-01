@@ -4,33 +4,33 @@
       <!-- Top Quote Area -->
       <div class="relative w-full min-h-[90vh] flex flex-col justify-center px-6 md:px-16 py-20 overflow-hidden">
         
-        <!-- Right side abstract background panel (gray+flowers) -->
-        <div class="absolute right-0 top-0 w-full md:w-[50%] h-[60%] md:h-full z-0 opacity-40 mix-blend-screen overflow-hidden">
-          <img src="../aset/section2.webp" alt="background panel" class="w-full h-full object-cover object-left" />
+        <!-- Layer 0: Couple photo — natural size, anchored bottom-right, paling belakang -->
+        <div class="absolute right-0 bottom-0 w-[45%] md:w-[30%] z-0 overflow-hidden">
+          <img src="../aset/section2_fotopengantin.webp" alt="Olav dan Oliv berpegangan tangan" class="w-full h-auto object-contain object-bottom-right" />
         </div>
-        
-        <!-- Long vertical flower divider (center) -->
-        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-24 md:w-32 hidden md:block">
+
+        <!-- Layer 1: Abstract gray+flower panel — DI ATAS foto tangan, blend multiply agar foto tembus -->
+        <div class="absolute right-0 top-0 w-full md:w-[52%] h-full z-[1] overflow-hidden pointer-events-none">
+          <img src="../aset/section2.webp" alt="background panel" class="w-full h-full object-cover object-left mix-blend-multiply opacity-80" />
+        </div>
+
+        <!-- Layer 2: Vertical flower divider (center boundary) -->
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[2] w-24 md:w-36 hidden md:block">
           <img src="../aset/section2_bunga.webp" alt="Flower divider" class="w-full h-auto" />
         </div>
-
-        <!-- Script text top right -->
-        <div class="absolute right-6 md:right-20 top-16 z-20 font-script text-4xl md:text-5xl rotate-[-5deg] text-warmwhite/80">
-          Some<br>People<br>Brighter<br>Days
-        </div>
-
-        <!-- Couple photo (tangan berpegangan) — bottom right of hero -->
-        <div class="absolute right-[5%] md:right-[10%] bottom-4 md:bottom-8 z-20 w-40 md:w-60 shadow-2xl">
-          <img src="../aset/section2_fotopengantin.webp" alt="Olav dan Oliv berpegangan tangan" class="w-full h-auto object-cover" />
-        </div>
         
-        <!-- Torn paper note — floats near couple photo -->
-        <div class="absolute right-[30%] md:right-[36%] bottom-8 md:bottom-12 z-20 w-36 md:w-48 shadow-xl rotate-[4deg]">
+        <!-- Layer 3: Torn paper note — on top of the photo -->
+        <div class="absolute md:right-[28%] md:bottom-16 right-[50%] bottom-8 z-[3] w-36 md:w-52 shadow-xl rotate-[4deg]">
           <img src="../aset/section2_tulisan+BG.webp" alt="Terima kasih" class="w-full h-auto" />
         </div>
+
+        <!-- Layer 4: Script text top right — topmost -->
+        <div class="absolute right-6 md:right-16 top-14 z-[4] font-script text-4xl md:text-5xl rotate-[-5deg] text-warmwhite drop-shadow-lg">
+          Some<br>People<br>Brighter<br>Days
+        </div>
         
-        <!-- Left content: heading + paragraphs -->
-        <div class="relative z-10 max-w-xl md:max-w-lg mt-0">
+        <!-- Left content: heading + paragraphs (z stays above bg, below script) -->
+        <div class="relative z-[3] max-w-xl md:max-w-lg mt-0">
           <h2 class="font-display text-5xl md:text-7xl mb-8 leading-[1.1]">
             Sebuah<br>Awal dari<br><span class="italic text-5xl md:text-8xl">Selamanya</span>
           </h2>

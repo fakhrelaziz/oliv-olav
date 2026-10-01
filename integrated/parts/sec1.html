@@ -70,17 +70,13 @@
         <p class="font-script text-4xl md:text-5xl text-warmwhite">A new<br>chapter<br>together</p>
       </div>
 
-      <!-- Bottom decorations -->
-      <picture class="absolute bottom-0 left-0 z-20 pointer-events-none w-[70%] md:w-[45%]">
+      <!-- Bottom decorations — full width, z BELOW text so teks tidak tertutup -->
+      <picture class="absolute bottom-0 left-0 z-[5] pointer-events-none w-full md:w-[75%]">
         <source media="(min-width: 768px)" srcset="../aset/elemen_bagian_hero_section(desktop)l.webp">
-        <img src="../aset/elemen_bagian_hero_section(mobile).webp" alt="Leaves decoration" class="w-full h-auto object-contain" />
+        <img src="../aset/elemen_bagian_hero_section(mobile).webp" alt="Leaves decoration" class="w-full h-auto object-contain object-bottom-left" />
       </picture>
 
-      <div class="absolute bottom-8 left-6 md:left-16 z-30 flex flex-col items-start gap-4 text-xs uppercase tracking-[0.3em] text-warmwhite">
-        <p>SCROLL<br>DOWN</p>
-        <div class="h-10 w-px bg-warmwhite ml-2"></div>
-        <span class="ml-[3px] text-lg">&darr;</span>
-      </div>
+
 
       <div class="absolute bottom-8 right-6 md:right-16 z-30 hidden md:block text-xs uppercase tracking-[0.3em] text-warmwhite/50">
         JAKARTA, INDONESIA
