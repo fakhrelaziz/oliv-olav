@@ -45,7 +45,7 @@ body {
     content: "";
     background:
       linear-gradient(rgba(44, 52, 36, 0.38), rgba(31, 33, 27, 0.58)),
-      url("../quality_restoration_20260929163900437.jpg.jpeg") center / cover;
+      url("../aset/versidesktop.jpeg") center / cover;
     filter: blur(18px);
     opacity: 0.8;
     transform: scale(1.05);
