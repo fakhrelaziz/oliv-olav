@@ -52,7 +52,7 @@ if ($index !== null && isset($tamuList[$index])) {
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="/style.css" />
 </head>
 <body class="bg-moss text-warmwhite antialiased overflow-x-hidden">
   <main id="integrated-content">
@@ -61,8 +61,8 @@ if ($index !== null && isset($tamuList[$index])) {
     <section id="home" class="relative min-h-[100svh] w-full overflow-hidden bg-moss">
       <!-- Background images -->
       <picture class="absolute inset-0 z-0">
-        <source media="(min-width: 768px)" srcset="../aset/background_herosection(desktop).webp">
-        <img src="../aset/background_herosection.webp" alt="Olav & Oliv" class="h-full w-full object-cover object-center" />
+        <source media="(min-width: 768px)" srcset="/aset/background_herosection(desktop).webp">
+        <img src="/aset/background_herosection.webp" alt="Olav & Oliv" class="h-full w-full object-cover object-center" />
       </picture>
       
       <!-- Overlay gradient -->
@@ -113,8 +113,8 @@ if ($index !== null && isset($tamuList[$index])) {
 
       <!-- Bottom decorations -->
       <picture class="absolute bottom-0 left-0 z-[5] pointer-events-none w-full md:w-[75%]">
-        <source media="(min-width: 768px)" srcset="../aset/elemen_bagian_hero_section(desktop).webp">
-        <img src="../aset/elemen_bagian_hero_section(mobile).webp" alt="Leaves decoration" class="w-full h-auto object-contain object-bottom-left" />
+        <source media="(min-width: 768px)" srcset="/aset/elemen_bagian_hero_section(desktop).webp">
+        <img src="/aset/elemen_bagian_hero_section(mobile).webp" alt="Leaves decoration" class="w-full h-auto object-contain object-bottom-left" />
       </picture>
 
       <div class="absolute bottom-8 right-6 md:right-16 z-30 hidden md:block text-xs uppercase tracking-[0.3em] text-warmwhite/50">
