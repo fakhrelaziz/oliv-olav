@@ -5,6 +5,7 @@ $tamuList = [
     3 => "Prabowo Subianto"
 ];
 
+
 $index = isset($_GET['tamu']) ? intval($_GET['tamu']) : null;
 $namaTamu = "Bapak/Ibu/Saudara/i";
 
