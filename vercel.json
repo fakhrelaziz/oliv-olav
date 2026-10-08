@@ -1,7 +1,10 @@
 {
   "functions": {
-    "aktivitas/*.php": {
+    "api/*.php": {
       "runtime": "vercel-php@0.7.4"
     }
-  }
+  },
+  "rewrites": [
+    { "source": "/aktivitas/tugas_php_25071104582.php", "destination": "/api/tugas_php_25071104582.php" }
+  ]
 }
