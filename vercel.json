@@ -5,6 +5,7 @@
     }
   },
   "rewrites": [
-    { "source": "/aktivitas/tugas_php_25071104582.php", "destination": "/api/tugas_php_25071104582.php" }
+    { "source": "/aktivitas/tugas_php_25071104582.php", "destination": "/api/tugas_php_25071104582.php" },
+    { "source": "/aktivitas/tugas_php_25071101439.php", "destination": "/api/tugas_php_25071101439.php" }
   ]
 }
