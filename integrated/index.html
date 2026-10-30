@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Olav & Oliv Wedding Invitation" />
-  <title>Olav & Oliv — Wedding Invitation</title>
+  <meta name="description" content="Fakhrel & Olivia Wedding Invitation" />
+  <title>Fakhrel & Olivia — Wedding Invitation</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -48,7 +48,7 @@
       <!-- Background images -->
       <picture class="absolute inset-0 z-0">
         <source media="(min-width: 768px)" srcset="../aset/background_herosection(desktop).webp">
-        <img src="../aset/background_herosection.webp" alt="Olav & Oliv" class="h-full w-full object-cover object-center" />
+        <img src="../aset/background_herosection.webp" alt="Fakhrel & Olivia" class="h-full w-full object-cover object-center" />
       </picture>
       
       <!-- Overlay gradient -->
@@ -56,7 +56,7 @@
       
       <!-- Navbar -->
       <header class="absolute top-0 left-0 w-full z-20 px-6 py-8 md:px-16 flex items-center justify-between">
-        <div class="text-2xl font-display uppercase tracking-widest text-warmwhite">LAV|LIV</div>
+        <div class="text-2xl font-display uppercase tracking-widest text-warmwhite">REL|LIV</div>
         <nav class="hidden md:flex items-center gap-8 text-sm font-sans text-warmwhite/90">
           <a href="#home" class="border-b border-warmwhite pb-1">Home</a>
           <a href="#about" class="hover:border-b hover:border-warmwhite/50 pb-1 transition">About</a>
@@ -80,9 +80,9 @@
           </div>
           
           <h1 class="font-display text-7xl md:text-9xl leading-none text-warmwhite font-light">
-            Olav<br>
+            Fakhrel<br>
             <span class="font-script text-4xl md:text-6xl italic lowercase relative -top-2 left-4">and</span><br>
-            Oliv
+            Olivia
           </h1>
           
           <p class="mt-8 text-sm uppercase tracking-[0.3em] text-warmwhite">
@@ -91,7 +91,7 @@
           
           <div class="mt-16 md:mt-24">
             <p class="text-lg md:text-xl font-display text-warmwhite">Kepada Yth,</p>
-            <p class="text-2xl md:text-3xl font-display text-warmwhite mb-4">Bapak/Ibu/Saudara/i</p>
+            <p id="nama-tamu" class="text-2xl md:text-4xl font-display text-warmwhite mb-4 leading-tight">Bapak/Ibu/Saudara/i</p>
             <p class="text-sm md:text-base text-warmwhite/80 max-w-sm mb-6 leading-relaxed">
               Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir dalam hari bahagia kami.
             </p>
@@ -117,7 +117,7 @@
 
       <!-- Bottom decorations — full width, z BELOW text so teks tidak tertutup -->
       <picture class="absolute bottom-0 left-0 z-[5] pointer-events-none w-full md:w-[75%]">
-        <source media="(min-width: 768px)" srcset="../aset/elemen_bagian_hero_section(desktop)l.webp">
+        <source media="(min-width: 768px)" srcset="../aset/elemen_bagian_hero_section(desktop).webp">
         <img src="../aset/elemen_bagian_hero_section(mobile).webp" alt="Leaves decoration" class="w-full h-auto object-contain object-bottom-left" />
       </picture>
 
@@ -136,7 +136,7 @@
         
         <!-- Layer 0: Couple photo — natural size, anchored bottom-right, paling belakang -->
         <div class="absolute right-0 bottom-0 w-[45%] md:w-[30%] z-0 overflow-hidden">
-          <img src="../aset/section2_fotopengantin.webp" alt="Olav dan Oliv berpegangan tangan" class="w-full h-auto object-contain object-bottom-right" />
+          <img src="../aset/section2_fotopengantin.webp" alt="Fakhrel dan Olivia berpegangan tangan" class="w-full h-auto object-contain object-bottom-right" />
         </div>
 
         <!-- Layer 1: Abstract gray+flower panel — DI ATAS foto tangan, blend multiply agar foto tembus -->
@@ -187,18 +187,18 @@
 
         <div class="flex flex-col gap-32 md:gap-40 relative z-10 mt-10">
           
-          <!-- Groom: Olav — fotopengantin(2).webp adalah foto pria (Olav) -->
+          <!-- Groom: Fakhrel — fotopengantin(2).webp adalah foto pria (Fakhrel) -->
           <div class="relative flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 w-full">
             <div class="w-full md:w-[45%] lg:w-[40%] flex justify-center md:justify-end">
               <div class="relative w-64 h-80 md:w-80 md:h-[28rem] shadow-xl">
                 <!-- Decorative offset box -->
                 <div class="absolute -top-4 -left-4 md:-top-6 md:-left-6 w-full h-full bg-moss/15 z-0"></div>
-                <img src="../aset/section2_fotopengantin(2).webp" alt="Olav" class="w-full h-full object-cover object-top relative z-10" />
+                <img src="../aset/section2_fotopengantin(2).webp" alt="Fakhrel" class="w-full h-full object-cover object-top relative z-10" />
               </div>
             </div>
             <div class="w-full md:w-[55%] lg:w-[60%] flex flex-col justify-center text-center md:text-left z-20 pt-4 md:pt-20">
               <p class="text-[10px] uppercase tracking-[0.35em] mb-3 font-semibold text-moss/70">MEMPELAI PRIA</p>
-              <h3 class="font-display text-6xl md:text-8xl mb-6 text-moss leading-[1]">Olav</h3>
+              <h3 class="font-display text-6xl md:text-8xl mb-6 text-moss leading-[1]">Fakhrel</h3>
               <p class="font-script text-4xl md:text-5xl text-moss/40 -mt-2 mb-8">Pratama</p>
               <div class="w-12 h-px bg-moss/30 mb-6 mx-auto md:mx-0"></div>
               <p class="text-sm md:text-base leading-relaxed text-moss/80 max-w-sm mx-auto md:mx-0">
@@ -209,18 +209,18 @@
             </div>
           </div>
 
-          <!-- Bride: Oliv — fotopengantin(3).webp adalah foto wanita (Oliv) -->
+          <!-- Bride: Olivia — fotopengantin(3).webp adalah foto wanita (Olivia) -->
           <div class="relative flex flex-col md:flex-row-reverse items-center md:items-start gap-8 md:gap-16 w-full">
             <div class="w-full md:w-[45%] lg:w-[40%] flex justify-center md:justify-start">
               <div class="relative w-64 h-80 md:w-80 md:h-[28rem] shadow-xl">
                 <!-- Decorative offset box -->
                 <div class="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-full h-full bg-moss/15 z-0"></div>
-                <img src="../aset/section2_fotopengantin(3).webp" alt="Oliv" class="w-full h-full object-cover object-top relative z-10" />
+                <img src="../aset/section2_fotopengantin(3).webp" alt="Olivia" class="w-full h-full object-cover object-top relative z-10" />
               </div>
             </div>
             <div class="w-full md:w-[55%] lg:w-[60%] flex flex-col justify-center text-center md:text-right z-20 pt-4 md:pt-20">
               <p class="text-[10px] uppercase tracking-[0.35em] mb-3 font-semibold text-moss/70">MEMPELAI WANITA</p>
-              <h3 class="font-display text-6xl md:text-8xl mb-6 text-moss leading-[1]">Oliv</h3>
+              <h3 class="font-display text-6xl md:text-8xl mb-6 text-moss leading-[1]">Olivia</h3>
               <p class="font-script text-4xl md:text-5xl text-moss/40 -mt-2 mb-8">Putri</p>
               <div class="w-12 h-px bg-moss/30 mb-6 mx-auto md:mx-0 md:ml-auto"></div>
               <p class="text-sm md:text-base leading-relaxed text-moss/80 max-w-sm mx-auto md:mx-0 md:ml-auto">
@@ -738,7 +738,7 @@
           <form class="space-y-6">
             <div class="relative">
               <span class="absolute left-4 top-4 text-moss/50 text-lg">&#128100;</span>
-              <input type="text" placeholder="Nama Anda" class="w-full bg-transparent border-2 border-moss/20 rounded-xl py-4 pl-14 pr-4 text-base focus:outline-none focus:border-moss transition" />
+              <input id="input-nama-tamu" type="text" placeholder="Nama Anda" class="w-full bg-transparent border-2 border-moss/20 rounded-xl py-4 pl-14 pr-4 text-base focus:outline-none focus:border-moss transition" />
             </div>
             
             <div class="relative">
@@ -779,7 +779,7 @@
             <div class="bg-warmwhite p-6 rounded-2xl shadow-sm border border-moss/5">
               <p class="font-semibold text-base mb-1">Siti Rahma</p>
               <p class="text-xs text-moss/50 mb-4">4 hari yang lalu</p>
-              <p class="text-base text-moss/80 leading-relaxed">Selamat menempuh hidup baru Olav & Oliv. Semoga selalu bahagia, langgeng, dan penuh berkah. &#128150;</p>
+              <p class="text-base text-moss/80 leading-relaxed">Selamat menempuh hidup baru Fakhrel & Olivia. Semoga selalu bahagia, langgeng, dan penuh berkah. &#128150;</p>
             </div>
             <!-- Message 2 -->
             <div class="bg-warmwhite p-6 rounded-2xl shadow-sm border border-moss/5">
@@ -840,7 +840,7 @@
           
           <div class="flex flex-col items-center md:items-end gap-3 relative">
              <div class="w-24 h-px bg-moss/30 mb-4"></div>
-             <p class="text-[10px] md:text-xs uppercase tracking-[0.4em] font-semibold text-moss">OLAV & OLIV</p>
+             <p class="text-[10px] md:text-xs uppercase tracking-[0.4em] font-semibold text-moss">FAKHREL & OLIVIA</p>
              <p class="text-[10px] md:text-xs uppercase tracking-[0.4em] text-moss/60">25 OKTOBER 2026</p>
              <img src="../aset/section2_bunga(2).webp" class="absolute -bottom-20 -right-4 md:-right-16 w-32 md:w-40 opacity-70 pointer-events-none drop-shadow-md" alt="" />
           </div>
@@ -849,6 +849,29 @@
 
     </section>
   </main>
+  <script>
+    // Ambil parameter tamu dari URL (?tamu=1 atau ?to=Nama) seperti di tugas PHP
+    const tamuList = {
+      1: "Susilo Bambang Yudhoyono",
+      2: "Joko Widodo",
+      3: "Prabowo Subianto"
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const tamuParam = urlParams.get('tamu') || urlParams.get('to');
+    const namaTamuEl = document.getElementById('nama-tamu');
+    const inputNamaEl = document.getElementById('input-nama-tamu');
+
+    if (tamuParam) {
+      const nama = tamuList[tamuParam] || decodeURIComponent(tamuParam).replace(/\+/g, ' ');
+      if (namaTamuEl) {
+        namaTamuEl.textContent = nama;
+      }
+      if (inputNamaEl) {
+        inputNamaEl.value = nama;
+      }
+    }
+  </script>
 </body>
 </html>
 

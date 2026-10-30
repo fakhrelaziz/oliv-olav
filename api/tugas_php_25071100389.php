@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 $tamuList = [
     1 => "Susilo Bambang Yudhoyono",
     2 => "Joko Widodo",
@@ -18,8 +18,8 @@ if ($index !== null && isset($tamuList[$index])) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Olav & Oliv Wedding Invitation" />
-  <title>Olav & Oliv — Wedding Invitation</title>
+  <meta name="description" content="Fakhrel & Olivia Wedding Invitation" />
+  <title>Fakhrel & Olivia — Wedding Invitation</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -63,7 +63,7 @@ if ($index !== null && isset($tamuList[$index])) {
       <!-- Background images -->
       <picture class="absolute inset-0 z-0">
         <source media="(min-width: 768px)" srcset="/aset/background_herosection(desktop).webp">
-        <img src="/aset/background_herosection.webp" alt="Olav & Oliv" class="h-full w-full object-cover object-center" />
+        <img src="/aset/background_herosection.webp" alt="Fakhrel & Olivia" class="h-full w-full object-cover object-center" />
       </picture>
       
       <!-- Overlay gradient -->
@@ -79,9 +79,9 @@ if ($index !== null && isset($tamuList[$index])) {
           </div>
           
           <h1 class="font-display text-7xl md:text-9xl leading-none text-warmwhite font-light">
-            Olav<br>
+            Fakhrel<br>
             <span class="font-script text-4xl md:text-6xl italic lowercase relative -top-2 left-4">and</span><br>
-            Oliv
+            Olivia
           </h1>
           
           <p class="mt-8 text-sm uppercase tracking-[0.3em] text-warmwhite">
