@@ -1349,6 +1349,94 @@ summary:focus-visible {
   outline-offset: 3px;
 }
 
+/* Audio player */
+.audio-player {
+  position: fixed;
+  right: max(1.5rem, env(safe-area-inset-right));
+  bottom: max(1.5rem, env(safe-area-inset-bottom));
+  z-index: 100;
+  display: grid;
+  place-items: center;
+}
+
+.audio-player audio {
+  display: none;
+}
+
+.audio-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.audio-toggle {
+  display: inline-flex;
+  width: 3.5rem;
+  height: 3.5rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(250, 249, 244, 0.5);
+  border-radius: 50%;
+  background: rgba(232, 230, 217, 0.2);
+  color: #FAF9F4;
+  cursor: pointer;
+  box-shadow:
+    0 8px 28px rgba(16, 22, 14, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.34);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease;
+}
+
+.audio-toggle:hover {
+  transform: translateY(-2px);
+  border-color: rgba(250, 249, 244, 0.75);
+  background: rgba(232, 230, 217, 0.32);
+  box-shadow:
+    0 12px 32px rgba(16, 22, 14, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
+}
+
+.audio-toggle:active {
+  transform: scale(0.96);
+}
+
+.audio-icon {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.audio-icon[hidden] {
+  display: none;
+}
+
+.audio-volume-label {
+  color: rgba(250, 249, 244, 0.78);
+  font-size: 0.7rem;
+}
+
+.audio-volume {
+  width: 5rem;
+  accent-color: #e8e6d9;
+  cursor: pointer;
+}
+
+@media (max-width: 639px) {
+  .audio-toggle {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
 
 /* === SECTION 6 === */
 /* ============================================================
@@ -1759,7 +1847,6 @@ summary:focus-visible {
   outline: 2px solid #2C3424;
   outline-offset: 3px;
 }
-
 /* Floating wedding navigation */
 .wedding-floating-nav {
   position: fixed;
