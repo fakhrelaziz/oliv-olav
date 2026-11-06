@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doa dan Ucapan — LAV | LIV</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            moss: '#2C3424',
+            mossDark: '#1E2519',
+            mossLight: '#3D4933',
+            cream: '#F6F5EE',
+            cardBg: '#FFFFFF',
+            cardMuted: '#FAF9F4',
+            ink: '#22251E',
+            inkMuted: '#6B7264',
+            borderSoft: '#E8E6DC',
+            badgeGreen: '#E2EBE0',
+            textGreen: '#2D5427',
+            badgeRed: '#FBE8E7',
+            textRed: '#8C322D',
+            badgeAmber: '#FBF2DE',
+            textAmber: '#87621E',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['"Cormorant Garamond"', 'serif'],
+            script: ['Caveat', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    .sidebar-bg { background-color: #262E20; }
+    .custom-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #D8D6CC; border-radius: 4px; }
+  </style>
+</head>
+<body class="bg-cream text-ink font-sans min-h-screen flex antialiased">
+
+  <!-- ==================== SIDEBAR ==================== -->
+  <aside class="sidebar-bg w-64 min-h-screen flex-shrink-0 flex flex-col justify-between relative overflow-hidden select-none z-20">
+    <div class="p-6 relative z-10">
+      <a href="index.html" class="flex items-center space-x-3 mb-10 block">
+        <span class="font-display text-2xl font-semibold tracking-[0.28em] text-[#FAF8F2]">LAV</span>
+        <span class="text-[#7A8672] text-xl font-light">|</span>
+        <span class="font-display text-2xl font-semibold tracking-[0.28em] text-[#FAF8F2]">LIV</span>
+      </a>
+
+      <nav class="space-y-1.5 text-sm font-medium">
+        <a href="index.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl text-[#C7CFBF] hover:text-white hover:bg-[#323E2A] transition">
+          <i data-lucide="home" class="w-4 h-4"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <a href="kelola-konten.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl text-[#C7CFBF] hover:text-white hover:bg-[#323E2A] transition">
+          <i data-lucide="file-text" class="w-4 h-4"></i>
+          <span>Kelola Konten</span>
+        </a>
+
+        <a href="galeri.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl text-[#C7CFBF] hover:text-white hover:bg-[#323E2A] transition">
+          <i data-lucide="image" class="w-4 h-4"></i>
+          <span>Galeri Foto</span>
+        </a>
+
+        <!-- Tamu & RSVP (Active) -->
+        <a href="rsvp.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl bg-[#37442F] text-[#FAF8F2] shadow-sm transition">
+          <i data-lucide="users" class="w-4 h-4"></i>
+          <span>Tamu & RSVP</span>
+        </a>
+
+        <a href="tamu.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl text-[#C7CFBF] hover:text-white hover:bg-[#323E2A] transition">
+          <i data-lucide="user-check" class="w-4 h-4"></i>
+          <span>Data Tamu</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="relative w-full pointer-events-none mt-auto">
+      <img src="../aset/section2_bunga.webp" alt="Botanical leaf" class="w-full opacity-20 filter invert object-contain translate-y-6">
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <div class="flex-1 flex flex-col min-w-0 overflow-y-auto custom-scroll">
+    
+    <!-- Topbar Header -->
+    <header class="h-20 bg-cream/90 backdrop-blur-md px-8 flex items-center justify-between border-b border-borderSoft/60 sticky top-0 z-10">
+      <div class="flex items-center space-x-4">
+        <h1 class="font-sans text-xl font-bold text-ink">Doa dan Ucapan</h1>
+        <span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#E7EFE3] text-[#345B2C] border border-[#D5E3D0]">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Website Aktif</span>
+        </span>
+      </div>
+
+      <div class="flex items-center space-x-3">
+        <a href="../integrated/index.html" target="_blank" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-cardBg border border-borderSoft text-xs font-medium text-ink hover:bg-cardMuted hover:border-moss/40 transition shadow-sm">
+          <i data-lucide="eye" class="w-3.5 h-3.5 text-inkMuted"></i>
+          <span>Lihat Website</span>
+        </a>
+        <button onclick="navigator.clipboard.writeText(window.location.origin + '/integrated/index.html'); alert('Tautan disalin!');" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-cardBg border border-borderSoft text-xs font-medium text-ink hover:bg-cardMuted hover:border-moss/40 transition shadow-sm">
+          <i data-lucide="share-2" class="w-3.5 h-3.5 text-inkMuted"></i>
+          <span>Bagikan</span>
+        </button>
+        <div class="relative">
+          <a href="login.html" title="Keluar / Logout" class="inline-flex items-center space-x-2.5 pl-2 pr-3 py-1.5 rounded-full bg-cardBg border border-borderSoft hover:border-rose-300 hover:text-rose-700 transition shadow-sm">
+            <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#35492E] flex items-center justify-center font-display font-semibold text-xs">OO</div>
+            <span class="text-xs font-medium text-ink">Olav & Oliv</span>
+            <i data-lucide="log-out" class="w-3.5 h-3.5 text-gray-400"></i>
+          </a>
+        </div>
+            <span class="text-xs font-medium text-ink">Olav & Oliv</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-400"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="p-8 space-y-6 max-w-[1440px] mx-auto w-full">
+
+      <!-- Hero Banner -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-8 bg-cardBg rounded-3xl p-7 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] relative overflow-hidden flex flex-col justify-between">
+          <img src="../aset/section2_bunga.webp" alt="floral" class="absolute -top-4 right-10 w-28 opacity-25 pointer-events-none">
+          <div class="relative z-10">
+            <span class="text-[11px] font-semibold uppercase tracking-widest text-moss">DOA & UCAPAN</span>
+            <h2 class="font-display text-4xl font-semibold text-ink mt-1">Terima Kasih atas Doa dan Ucapan</h2>
+            <p class="text-xs text-inkMuted mt-1 mb-5 max-w-lg leading-relaxed">
+              Setiap doa dan ucapan yang Anda kirimkan adalah hadiah yang sangat berarti bagi kami.
+            </p>
+            <div class="flex items-center space-x-3">
+              <a href="tamu.html" class="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-moss hover:bg-mossLight text-cream text-xs font-medium transition shadow-sm">
+                <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
+                <span>Kelola Data Tamu</span>
+              </a>
+              <span class="text-xs text-inkMuted">Terhubung langsung dengan form RSVP website</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-4 bg-cardBg rounded-3xl p-5 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] flex flex-col justify-center items-center text-center">
+          <div class="w-full h-32 rounded-2xl overflow-hidden bg-[#D8E4D5] relative group">
+            <img src="../aset/background_herosection(desktop).webp" alt="Preview Banner" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/25 flex items-center justify-center">
+              <a href="../integrated/index.html" target="_blank" class="px-3.5 py-1.5 rounded-full bg-white/95 text-[11px] font-semibold text-ink shadow">Preview Website</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Metric Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <!-- 1. Total Ucapan -->
+        <div class="bg-cardBg rounded-3xl p-5 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] relative overflow-hidden">
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-10 h-10 rounded-xl bg-[#EBEFE8] text-moss flex items-center justify-center">
+              <i data-lucide="message-square" class="w-5 h-5"></i>
+            </div>
+            <span class="text-xs font-medium text-inkMuted">Total Ucapan</span>
+          </div>
+          <span class="text-2xl font-bold text-ink">48</span>
+          <span class="text-[11px] text-inkMuted block mt-0.5">Ucapan diterima</span>
+          <img src="../aset/section2_bunga(2).webp" alt="deco" class="absolute -bottom-4 -right-4 w-16 opacity-15 pointer-events-none">
+        </div>
+
+        <!-- 2. Hadir -->
+        <div class="bg-cardBg rounded-3xl p-5 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] relative overflow-hidden">
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-10 h-10 rounded-xl bg-[#EBEFE8] text-moss flex items-center justify-center">
+              <i data-lucide="user-check" class="w-5 h-5"></i>
+            </div>
+            <span class="text-xs font-medium text-inkMuted">Hadir</span>
+          </div>
+          <span class="text-2xl font-bold text-emerald-700">42</span>
+          <span class="text-[11px] text-inkMuted block mt-0.5">Konfirmasi hadir</span>
+          <img src="../aset/section3_bunga.webp" alt="deco" class="absolute -bottom-4 -right-4 w-16 opacity-15 pointer-events-none">
+        </div>
+
+        <!-- 3. Tidak Hadir -->
+        <div class="bg-cardBg rounded-3xl p-5 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] relative overflow-hidden">
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-10 h-10 rounded-xl bg-[#EBEFE8] text-moss flex items-center justify-center">
+              <i data-lucide="user-x" class="w-5 h-5"></i>
+            </div>
+            <span class="text-xs font-medium text-inkMuted">Tidak Hadir</span>
+          </div>
+          <span class="text-2xl font-bold text-rose-700">4</span>
+          <span class="text-[11px] text-inkMuted block mt-0.5">Konfirmasi tidak hadir</span>
+          <img src="../aset/section4_bunga.webp" alt="deco" class="absolute -bottom-4 -right-4 w-16 opacity-15 pointer-events-none">
+        </div>
+
+        <!-- 4. Masih Ragu -->
+        <div class="bg-cardBg rounded-3xl p-5 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] relative overflow-hidden">
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-10 h-10 rounded-xl bg-[#EBEFE8] text-moss flex items-center justify-center">
+              <i data-lucide="help-circle" class="w-5 h-5"></i>
+            </div>
+            <span class="text-xs font-medium text-inkMuted">Masih Ragu</span>
+          </div>
+          <span class="text-2xl font-bold text-amber-700">2</span>
+          <span class="text-[11px] text-inkMuted block mt-0.5">Belum konfirmasi pasti</span>
+          <img src="../aset/section5_bunga.webp" alt="deco" class="absolute -bottom-4 -right-4 w-16 opacity-15 pointer-events-none">
+        </div>
+      </div>
+
+      <!-- Main Layout: Table Ucapan & Rasio Kehadiran -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Table Ucapan dari Tamu (8 Cols) -->
+        <div class="lg:col-span-8 bg-cardBg rounded-3xl p-6 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)]">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+            <h3 class="font-display text-2xl font-semibold text-ink">Ucapan dari Tamu</h3>
+            
+            <div class="flex items-center space-x-2.5">
+              <!-- Search Input -->
+              <div class="relative">
+                <i data-lucide="search" class="w-3.5 h-3.5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                <input 
+                  type="text" 
+                  id="searchWish"
+                  onkeyup="filterWishes()"
+                  placeholder="Cari nama atau pesan..." 
+                  class="pl-8 pr-3 py-1.5 text-xs bg-cardMuted border border-borderSoft rounded-xl focus:outline-none focus:border-moss"
+                >
+              </div>
+
+              <!-- Filter Dropdown -->
+              <select id="statusFilter" onchange="filterWishes()" class="px-3 py-1.5 text-xs bg-cardMuted border border-borderSoft rounded-xl text-ink focus:outline-none focus:border-moss">
+                <option value="all">Semua Status</option>
+                <option value="Hadir">Hadir</option>
+                <option value="Tidak Hadir">Tidak Hadir</option>
+                <option value="Masih Ragu">Masih Ragu</option>
+              </select>
+
+              <!-- Export Button -->
+              <button onclick="alert('Export data ucapan ke Excel/CSV');" class="px-3 py-1.5 text-xs bg-cardMuted hover:bg-[#EFECE0] border border-borderSoft rounded-xl text-ink flex items-center space-x-1 transition">
+                <i data-lucide="download" class="w-3.5 h-3.5 text-inkMuted"></i>
+                <span>Export</span>
+              </button>
+
+              <!-- Tambah Ucapan -->
+              <button onclick="openAddWishModal()" class="px-3 py-1.5 text-xs bg-moss hover:bg-mossLight text-cream rounded-xl flex items-center space-x-1 transition shadow-sm">
+                <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                <span>Tambah</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Table -->
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs" id="wishesTable">
+              <thead>
+                <tr class="border-b border-borderSoft text-inkMuted uppercase tracking-wider text-[11px]">
+                  <th class="py-3 px-3 font-medium">No</th>
+                  <th class="py-3 px-3 font-medium">Nama Tamu</th>
+                  <th class="py-3 px-3 font-medium">Status</th>
+                  <th class="py-3 px-4 font-medium">Ucapan & Doa</th>
+                  <th class="py-3 px-3 font-medium">Tanggal</th>
+                  <th class="py-3 px-3 font-medium text-center">Aksi</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-borderSoft/60">
+                
+                <!-- Row 1 -->
+                <tr class="wish-row hover:bg-cardMuted/80 transition">
+                  <td class="py-3 px-3 font-medium text-inkMuted">1</td>
+                  <td class="py-3 px-3">
+                    <div class="flex items-center space-x-2.5">
+                      <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center font-semibold text-[11px]">SR</div>
+                      <span class="font-semibold text-ink name-col">Siti Rahma</span>
+                    </div>
+                  </td>
+                  <td class="py-3 px-3 status-col">
+                    <span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
+                  </td>
+                  <td class="py-3 px-4 text-ink msg-col">Selamat yaa, semoga menjadi keluarga sakinah, mawadah, warahmah. 🤍</td>
+                  <td class="py-3 px-3 text-inkMuted font-mono text-[11px] whitespace-nowrap">25 Okt 2026</td>
+                  <td class="py-3 px-3 text-center">
+                    <button class="p-1 rounded-lg hover:bg-cream text-inkMuted hover:text-moss"><i data-lucide="more-vertical" class="w-4 h-4"></i></button>
+                  </td>
+                </tr>
+
+                <!-- Row 2 -->
+                <tr class="wish-row hover:bg-cardMuted/80 transition">
+                  <td class="py-3 px-3 font-medium text-inkMuted">2</td>
+                  <td class="py-3 px-3">
+                    <div class="flex items-center space-x-2.5">
+                      <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center font-semibold text-[11px]">AF</div>
+                      <span class="font-semibold text-ink name-col">Ahmad Fauzi</span>
+                    </div>
+                  </td>
+                  <td class="py-3 px-3 status-col">
+                    <span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
+                  </td>
+                  <td class="py-3 px-4 text-ink msg-col">Turut berbahagia, semoga lancar sampai hari H. Amin. 🙏</td>
+                  <td class="py-3 px-3 text-inkMuted font-mono text-[11px] whitespace-nowrap">25 Okt 2026</td>
+                  <td class="py-3 px-3 text-center">
+                    <button class="p-1 rounded-lg hover:bg-cream text-inkMuted hover:text-moss"><i data-lucide="more-vertical" class="w-4 h-4"></i></button>
+                  </td>
+                </tr>
+
+                <!-- Row 3 -->
+                <tr class="wish-row hover:bg-cardMuted/80 transition">
+                  <td class="py-3 px-3 font-medium text-inkMuted">3</td>
+                  <td class="py-3 px-3">
+                    <div class="flex items-center space-x-2.5">
+                      <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center font-semibold text-[11px]">DL</div>
+                      <span class="font-semibold text-ink name-col">Dewi Lestari</span>
+                    </div>
+                  </td>
+                  <td class="py-3 px-3 status-col">
+                    <span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-badgeRed text-textRed">Tidak Hadir</span>
+                  </td>
+                  <td class="py-3 px-4 text-ink msg-col">Maaf tidak bisa hadir, semoga selalu diberi keberkahan. 🙏</td>
+                  <td class="py-3 px-3 text-inkMuted font-mono text-[11px] whitespace-nowrap">24 Okt 2026</td>
+                  <td class="py-3 px-3 text-center">
+                    <button class="p-1 rounded-lg hover:bg-cream text-inkMuted hover:text-moss"><i data-lucide="more-vertical" class="w-4 h-4"></i></button>
+                  </td>
+                </tr>
+
+                <!-- Row 4 -->
+                <tr class="wish-row hover:bg-cardMuted/80 transition">
+                  <td class="py-3 px-3 font-medium text-inkMuted">4</td>
+                  <td class="py-3 px-3">
+                    <div class="flex items-center space-x-2.5">
+                      <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center font-semibold text-[11px]">RM</div>
+                      <span class="font-semibold text-ink name-col">Rizky Maulana</span>
+                    </div>
+                  </td>
+                  <td class="py-3 px-3 status-col">
+                    <span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
+                  </td>
+                  <td class="py-3 px-4 text-ink msg-col">Happy wedding! Semoga selalu bahagia dan diberi rezeki yang melimpah. 🤍</td>
+                  <td class="py-3 px-3 text-inkMuted font-mono text-[11px] whitespace-nowrap">24 Okt 2026</td>
+                  <td class="py-3 px-3 text-center">
+                    <button class="p-1 rounded-lg hover:bg-cream text-inkMuted hover:text-moss"><i data-lucide="more-vertical" class="w-4 h-4"></i></button>
+                  </td>
+                </tr>
+
+                <!-- Row 5 -->
+                <tr class="wish-row hover:bg-cardMuted/80 transition">
+                  <td class="py-3 px-3 font-medium text-inkMuted">5</td>
+                  <td class="py-3 px-3">
+                    <div class="flex items-center space-x-2.5">
+                      <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center font-semibold text-[11px]">NP</div>
+                      <span class="font-semibold text-ink name-col">Nadia Putri</span>
+                    </div>
+                  </td>
+                  <td class="py-3 px-3 status-col">
+                    <span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-badgeAmber text-textAmber">Masih Ragu</span>
+                  </td>
+                  <td class="py-3 px-4 text-ink msg-col">InsyaAllah berusaha hadir, mohon dikonfirmasi kembali. 🙏</td>
+                  <td class="py-3 px-3 text-inkMuted font-mono text-[11px] whitespace-nowrap">23 Okt 2026</td>
+                  <td class="py-3 px-3 text-center">
+                    <button class="p-1 rounded-lg hover:bg-cream text-inkMuted hover:text-moss"><i data-lucide="more-vertical" class="w-4 h-4"></i></button>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Right Side: Konfirmasi Kehadiran & Quote (4 Cols) -->
+        <div class="lg:col-span-4 space-y-6">
+          
+          <!-- Konfirmasi Kehadiran Progress Card -->
+          <div class="bg-cardBg rounded-3xl p-6 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] relative overflow-hidden">
+            <img src="../aset/section2_bunga.webp" alt="deco" class="absolute -top-3 -right-3 w-16 opacity-20 pointer-events-none">
+            <h3 class="font-display text-xl font-semibold text-ink mb-5">Konfirmasi Kehadiran</h3>
+            
+            <div class="space-y-4">
+              <!-- Hadir (87%) -->
+              <div>
+                <div class="flex items-center justify-between text-xs mb-1.5">
+                  <div class="flex items-center space-x-2">
+                    <div class="w-6 h-6 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center text-[10px]">
+                      <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
+                    </div>
+                    <span class="font-medium text-ink">Hadir (42 orang)</span>
+                  </div>
+                  <span class="font-semibold text-emerald-700">87%</span>
+                </div>
+                <div class="w-full bg-[#EBE9DE] h-2 rounded-full overflow-hidden">
+                  <div class="bg-emerald-600 h-full rounded-full" style="width: 87%;"></div>
+                </div>
+              </div>
+
+              <!-- Tidak Hadir (8%) -->
+              <div>
+                <div class="flex items-center justify-between text-xs mb-1.5">
+                  <div class="flex items-center space-x-2">
+                    <div class="w-6 h-6 rounded-full bg-[#FBE8E7] text-[#8C322D] flex items-center justify-center text-[10px]">
+                      <i data-lucide="user-x" class="w-3.5 h-3.5"></i>
+                    </div>
+                    <span class="font-medium text-ink">Tidak Hadir (4 orang)</span>
+                  </div>
+                  <span class="font-semibold text-rose-700">8%</span>
+                </div>
+                <div class="w-full bg-[#EBE9DE] h-2 rounded-full overflow-hidden">
+                  <div class="bg-rose-500 h-full rounded-full" style="width: 8%;"></div>
+                </div>
+              </div>
+
+              <!-- Masih Ragu (4%) -->
+              <div>
+                <div class="flex items-center justify-between text-xs mb-1.5">
+                  <div class="flex items-center space-x-2">
+                    <div class="w-6 h-6 rounded-full bg-[#FBF2DE] text-[#87621E] flex items-center justify-center text-[10px]">
+                      <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
+                    </div>
+                    <span class="font-medium text-ink">Masih Ragu (2 orang)</span>
+                  </div>
+                  <span class="font-semibold text-amber-700">4%</span>
+                </div>
+                <div class="w-full bg-[#EBE9DE] h-2 rounded-full overflow-hidden">
+                  <div class="bg-amber-500 h-full rounded-full" style="width: 4%;"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Quote Card -->
+          <div class="bg-cardBg rounded-3xl p-6 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] text-center relative overflow-hidden flex flex-col justify-center items-center">
+            <img src="../aset/section3_bunga.webp" alt="deco" class="absolute -bottom-4 -left-4 w-16 opacity-20 pointer-events-none">
+            <span class="font-serif text-3xl text-moss/30 leading-none">“</span>
+            <p class="font-display italic text-base text-ink/90 max-w-[240px] leading-relaxed -mt-2">
+              Terima kasih telah menjadi bagian dari hari istimewa kami.
+            </p>
+            <div class="w-10 h-0.5 bg-borderSoft mt-3"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    function filterWishes() {
+      const q = document.getElementById('searchWish').value.toLowerCase();
+      const status = document.getElementById('statusFilter').value;
+      const rows = document.querySelectorAll('.wish-row');
+
+      rows.forEach(r => {
+        const name = r.querySelector('.name-col').innerText.toLowerCase();
+        const msg = r.querySelector('.msg-col').innerText.toLowerCase();
+        const stat = r.querySelector('.status-col').innerText.trim();
+
+        const matchQuery = name.includes(q) || msg.includes(q);
+        const matchStatus = (status === 'all') || (stat === status);
+
+        if (matchQuery && matchStatus) {
+          r.style.display = '';
+        } else {
+          r.style.display = 'none';
+        }
+      });
+    }
+
+    function openAddWishModal() {
+      alert("Modal Tambah Ucapan Siap!");
+    }
+  </script>
+</body>
+</html>

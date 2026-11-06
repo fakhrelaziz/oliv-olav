@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Admin — LAV | LIV Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            moss: '#2C3424',
+            mossDark: '#1E2519',
+            mossLight: '#435137',
+            cream: '#F7F6EE',
+            cardBg: '#FCFCF9',
+            ink: '#22251E',
+            inkMuted: '#6B7264',
+            accentGold: '#9A8555',
+            borderSoft: '#E6E4D9'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['"Cormorant Garamond"', 'serif'],
+            script: ['Caveat', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    .bg-botanical {
+      background-color: #F7F5EE;
+      background-image: 
+        radial-gradient(circle at 10% 15%, rgba(67, 81, 55, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(67, 81, 55, 0.05) 0%, transparent 45%);
+    }
+  </style>
+</head>
+<body class="bg-botanical text-ink font-sans min-h-screen flex items-center justify-center p-4 relative overflow-hidden select-none">
+
+  <!-- Botanical corner ornaments -->
+  <img src="../aset/section2_bunga.webp" alt="Botanical Art" class="absolute -top-12 -left-12 w-64 md:w-80 opacity-40 pointer-events-none transform -rotate-12 select-none">
+  <img src="../aset/section2_bunga(2).webp" alt="Botanical Art" class="absolute -bottom-12 -right-12 w-64 md:w-80 opacity-40 pointer-events-none transform rotate-12 select-none">
+
+  <!-- Login Card -->
+  <div class="relative z-10 w-full max-w-[440px] bg-cardBg border border-borderSoft/80 rounded-3xl p-8 sm:p-10 shadow-[0_12px_40px_rgba(44,52,36,0.06)]">
+    
+    <!-- Brand & Header -->
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center justify-center space-x-3 mb-4">
+        <span class="font-display text-2xl tracking-[0.3em] font-semibold text-moss">LAV</span>
+        <span class="text-borderSoft text-xl">|</span>
+        <span class="font-display text-2xl tracking-[0.3em] font-semibold text-moss">LIV</span>
+      </div>
+      <h1 class="font-display text-3xl font-semibold text-ink tracking-tight">Selamat Datang Kembali</h1>
+      <p class="text-xs text-inkMuted mt-2 font-normal leading-relaxed">
+        Kelola undangan pernikahan Olav & Oliv dengan mudah.
+      </p>
+    </div>
+
+    <!-- Form -->
+    <form id="loginForm" class="space-y-4" onsubmit="handleLogin(event)">
+      <!-- Email Field -->
+      <div>
+        <label for="email" class="block text-xs font-medium text-ink mb-1.5">Email</label>
+        <div class="relative">
+          <input 
+            type="email" 
+            id="email" 
+            required 
+            placeholder="nama@email.com" 
+            value="admin@olavoliv.com"
+            class="w-full px-3.5 py-2.5 rounded-xl text-sm bg-white border border-borderSoft focus:outline-none focus:border-moss focus:ring-2 focus:ring-moss/10 transition text-ink placeholder:text-gray-400"
+          >
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div>
+        <label for="password" class="block text-xs font-medium text-ink mb-1.5">Password</label>
+        <div class="relative">
+          <input 
+            type="password" 
+            id="password" 
+            required 
+            placeholder="••••••••" 
+            value="wedding2026"
+            class="w-full pl-3.5 pr-10 py-2.5 rounded-xl text-sm bg-white border border-borderSoft focus:outline-none focus:border-moss focus:ring-2 focus:ring-moss/10 transition text-ink placeholder:text-gray-400"
+          >
+          <button 
+            type="button" 
+            onclick="togglePassword()" 
+            class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-ink transition"
+          >
+            <i id="eyeIcon" data-lucide="eye" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Options -->
+      <div class="flex items-center justify-between text-xs pt-1">
+        <label class="flex items-center space-x-2 cursor-pointer">
+          <input type="checkbox" checked class="w-3.5 h-3.5 rounded text-moss focus:ring-moss border-borderSoft">
+          <span class="text-inkMuted">Ingat saya</span>
+        </label>
+        <a href="#" class="text-inkMuted hover:text-moss underline decoration-borderSoft underline-offset-4 transition">
+          Lupa password?
+        </a>
+      </div>
+
+      <!-- Submit Button -->
+      <button 
+        type="submit" 
+        class="w-full py-3 px-4 rounded-xl bg-moss hover:bg-mossLight text-cream font-medium text-sm transition-all duration-200 shadow-sm hover:shadow active:scale-[0.99] flex items-center justify-center space-x-2 mt-2"
+      >
+        <span>Masuk</span>
+      </button>
+
+      <!-- Divider -->
+      <div class="relative py-2 flex items-center justify-center">
+        <div class="border-t border-borderSoft w-full"></div>
+        <span class="bg-cardBg px-3 text-[11px] text-inkMuted uppercase tracking-wider absolute">atau</span>
+      </div>
+
+      <!-- Google Button -->
+      <button 
+        type="button" 
+        onclick="window.location.href='index.html'"
+        class="w-full py-2.5 px-4 rounded-xl bg-white border border-borderSoft hover:border-moss/40 text-ink text-sm font-medium transition flex items-center justify-center space-x-3 hover:bg-[#F9F8F4]"
+      >
+        <svg class="w-4 h-4" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+        </svg>
+        <span>Masuk dengan Google</span>
+      </button>
+
+      <!-- Footer Sign Up -->
+      <div class="text-center pt-2">
+        <p class="text-xs text-inkMuted">
+          Belum punya akun? 
+          <a href="#" class="text-ink font-semibold hover:text-moss underline decoration-ink/40 underline-offset-4 transition">
+            Buat Undangan
+          </a>
+        </p>
+      </div>
+
+    </form>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    function togglePassword() {
+      const pwd = document.getElementById('password');
+      const icon = document.getElementById('eyeIcon');
+      if (pwd.type === 'password') {
+        pwd.type = 'text';
+        icon.setAttribute('data-lucide', 'eye-off');
+      } else {
+        pwd.type = 'password';
+        icon.setAttribute('data-lucide', 'eye');
+      }
+      lucide.createIcons();
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

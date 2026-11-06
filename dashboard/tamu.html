@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Tamu Undangan — LAV | LIV</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            moss: '#2C3424',
+            mossDark: '#1E2519',
+            mossLight: '#3D4933',
+            cream: '#F6F5EE',
+            cardBg: '#FFFFFF',
+            cardMuted: '#FAF9F4',
+            ink: '#22251E',
+            inkMuted: '#6B7264',
+            borderSoft: '#E8E6DC',
+            badgeGreen: '#E2EBE0',
+            textGreen: '#2D5427',
+            badgeRed: '#FBE8E7',
+            textRed: '#8C322D',
+            badgeAmber: '#FBF2DE',
+            textAmber: '#87621E',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['"Cormorant Garamond"', 'serif'],
+            script: ['Caveat', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    .sidebar-bg { background-color: #262E20; }
+    .custom-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #D8D6CC; border-radius: 4px; }
+  </style>
+</head>
+<body class="bg-cream text-ink font-sans min-h-screen flex antialiased">
+
+  <!-- ==================== SIDEBAR ==================== -->
+  <aside class="sidebar-bg w-64 min-h-screen flex-shrink-0 flex flex-col justify-between relative overflow-hidden select-none z-20">
+    <div class="p-6 relative z-10">
+      <a href="index.html" class="flex items-center space-x-3 mb-10 block">
+        <span class="font-display text-2xl font-semibold tracking-[0.28em] text-[#FAF8F2]">LAV</span>
+        <span class="text-[#7A8672] text-xl font-light">|</span>
+        <span class="font-display text-2xl font-semibold tracking-[0.28em] text-[#FAF8F2]">LIV</span>
+      </a>
+
+      <nav class="space-y-1.5 text-sm font-medium">
+        <a href="index.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl text-[#C7CFBF] hover:text-white hover:bg-[#323E2A] transition">
+          <i data-lucide="home" class="w-4 h-4"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <a href="kelola-konten.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl text-[#C7CFBF] hover:text-white hover:bg-[#323E2A] transition">
+          <i data-lucide="file-text" class="w-4 h-4"></i>
+          <span>Kelola Konten</span>
+        </a>
+
+        <a href="galeri.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl text-[#C7CFBF] hover:text-white hover:bg-[#323E2A] transition">
+          <i data-lucide="image" class="w-4 h-4"></i>
+          <span>Galeri Foto</span>
+        </a>
+
+        <a href="rsvp.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl text-[#C7CFBF] hover:text-white hover:bg-[#323E2A] transition">
+          <i data-lucide="users" class="w-4 h-4"></i>
+          <span>Tamu & RSVP</span>
+        </a>
+
+        <!-- Data Tamu (Active) -->
+        <a href="tamu.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl bg-[#37442F] text-[#FAF8F2] shadow-sm transition">
+          <i data-lucide="user-check" class="w-4 h-4"></i>
+          <span>Data Tamu</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="relative w-full pointer-events-none mt-auto">
+      <img src="../aset/section2_bunga.webp" alt="Botanical leaf" class="w-full opacity-20 filter invert object-contain translate-y-6">
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <div class="flex-1 flex flex-col min-w-0 overflow-y-auto custom-scroll">
+    
+    <!-- Topbar Header -->
+    <header class="h-20 bg-cream/90 backdrop-blur-md px-8 flex items-center justify-between border-b border-borderSoft/60 sticky top-0 z-10">
+      <div>
+        <h1 class="font-display text-2xl font-semibold text-ink">Data Tamu</h1>
+        <p class="text-xs text-inkMuted -mt-0.5">Kelola data tamu undangan dengan mudah.</p>
+      </div>
+
+      <div class="flex items-center space-x-3">
+        <a href="../integrated/index.html" target="_blank" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-cardBg border border-borderSoft text-xs font-medium text-ink hover:bg-cardMuted hover:border-moss/40 transition shadow-sm">
+          <i data-lucide="eye" class="w-3.5 h-3.5 text-inkMuted"></i>
+          <span>Lihat Website</span>
+        </a>
+        <button onclick="navigator.clipboard.writeText(window.location.origin + '/integrated/index.html'); alert('Tautan disalin!');" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-cardBg border border-borderSoft text-xs font-medium text-ink hover:bg-cardMuted hover:border-moss/40 transition shadow-sm">
+          <i data-lucide="share-2" class="w-3.5 h-3.5 text-inkMuted"></i>
+          <span>Bagikan</span>
+        </button>
+        <div class="relative">
+          <a href="login.html" title="Keluar / Logout" class="inline-flex items-center space-x-2.5 pl-2 pr-3 py-1.5 rounded-full bg-cardBg border border-borderSoft hover:border-rose-300 hover:text-rose-700 transition shadow-sm">
+            <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#35492E] flex items-center justify-center font-display font-semibold text-xs">OO</div>
+            <span class="text-xs font-medium text-ink">Olav & Oliv</span>
+            <i data-lucide="log-out" class="w-3.5 h-3.5 text-gray-400"></i>
+          </a>
+        </div>
+            <span class="text-xs font-medium text-ink">Admin</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-400"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="p-8 space-y-6 max-w-[1440px] mx-auto w-full">
+
+      <!-- 4 Stat Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <!-- 1. Total Tamu -->
+        <div class="bg-cardBg rounded-3xl p-5 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] relative overflow-hidden">
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-10 h-10 rounded-xl bg-[#EBEFE8] text-moss flex items-center justify-center">
+              <i data-lucide="users" class="w-5 h-5"></i>
+            </div>
+            <span class="text-xs font-medium text-inkMuted">Total Tamu</span>
+          </div>
+          <span class="text-2xl font-bold text-ink">120</span>
+          <span class="text-[11px] text-emerald-700 font-medium block mt-0.5">▲ +12 dari kemarin</span>
+          <img src="../aset/section2_bunga.webp" alt="deco" class="absolute -bottom-4 -right-4 w-16 opacity-15 pointer-events-none">
+        </div>
+
+        <!-- 2. Hadir -->
+        <div class="bg-cardBg rounded-3xl p-5 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] relative overflow-hidden">
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-10 h-10 rounded-xl bg-[#EBEFE8] text-moss flex items-center justify-center">
+              <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+            </div>
+            <span class="text-xs font-medium text-inkMuted">Hadir</span>
+          </div>
+          <span class="text-2xl font-bold text-emerald-700">85</span>
+          <div class="w-full bg-[#EBE9DE] h-1.5 rounded-full overflow-hidden mt-1.5 mb-1">
+            <div class="bg-emerald-600 h-full rounded-full" style="width: 70.8%;"></div>
+          </div>
+          <span class="text-[10px] text-inkMuted block">70,8% dari total</span>
+        </div>
+
+        <!-- 3. Tidak Hadir -->
+        <div class="bg-cardBg rounded-3xl p-5 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] relative overflow-hidden">
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-10 h-10 rounded-xl bg-[#EBEFE8] text-moss flex items-center justify-center">
+              <i data-lucide="x-circle" class="w-5 h-5"></i>
+            </div>
+            <span class="text-xs font-medium text-inkMuted">Tidak Hadir</span>
+          </div>
+          <span class="text-2xl font-bold text-rose-700">25</span>
+          <div class="w-full bg-[#EBE9DE] h-1.5 rounded-full overflow-hidden mt-1.5 mb-1">
+            <div class="bg-rose-500 h-full rounded-full" style="width: 20.8%;"></div>
+          </div>
+          <span class="text-[10px] text-inkMuted block">20,8% dari total</span>
+        </div>
+
+        <!-- 4. Belum Konfirmasi -->
+        <div class="bg-cardBg rounded-3xl p-5 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] relative overflow-hidden">
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-10 h-10 rounded-xl bg-[#EBEFE8] text-moss flex items-center justify-center">
+              <i data-lucide="mail" class="w-5 h-5"></i>
+            </div>
+            <span class="text-xs font-medium text-inkMuted">Belum Konfirmasi</span>
+          </div>
+          <span class="text-2xl font-bold text-amber-700">10</span>
+          <div class="w-full bg-[#EBE9DE] h-1.5 rounded-full overflow-hidden mt-1.5 mb-1">
+            <div class="bg-amber-500 h-full rounded-full" style="width: 8.3%;"></div>
+          </div>
+          <span class="text-[10px] text-inkMuted block">8,3% dari total</span>
+        </div>
+      </div>
+
+      <!-- Main Card: Daftar Tamu Table -->
+      <div class="bg-cardBg rounded-3xl p-7 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] relative overflow-hidden">
+        
+        <!-- Corner Floral Arts -->
+        <img src="../aset/section2_bunga.webp" alt="deco" class="absolute -bottom-6 -left-6 w-24 opacity-15 pointer-events-none">
+        <img src="../aset/section2_bunga(2).webp" alt="deco" class="absolute -bottom-6 -right-6 w-24 opacity-15 pointer-events-none">
+
+        <!-- Header Actions -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 relative z-10">
+          <div class="flex items-center space-x-3">
+            <img src="../aset/section3_bunga.webp" alt="deco" class="w-5 opacity-40">
+            <h3 class="font-display text-2xl font-semibold text-ink">Daftar Tamu</h3>
+          </div>
+
+          <div class="flex items-center space-x-3">
+            <!-- Search -->
+            <div class="relative w-64">
+              <i data-lucide="search" class="w-3.5 h-3.5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+              <input 
+                type="text" 
+                id="searchGuest"
+                onkeyup="filterGuests()"
+                placeholder="Cari nama tamu..." 
+                class="w-full pl-8 pr-3 py-2 text-xs bg-cardMuted border border-borderSoft rounded-xl focus:outline-none focus:border-moss"
+              >
+            </div>
+
+            <!-- Tambah Tamu Button -->
+            <button onclick="openModalGuest()" class="px-4 py-2 rounded-xl bg-moss hover:bg-mossLight text-cream text-xs font-medium flex items-center space-x-2 transition shadow-sm">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+              <span>Tambah Tamu</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto relative z-10">
+          <table class="w-full text-left text-xs" id="guestsTable">
+            <thead>
+              <tr class="border-b border-borderSoft text-inkMuted uppercase tracking-wider text-[11px] bg-cardMuted/50">
+                <th class="py-3 px-4 font-medium rounded-l-xl">No</th>
+                <th class="py-3 px-4 font-medium">Nama Tamu</th>
+                <th class="py-3 px-4 font-medium text-center">Jumlah Hadir</th>
+                <th class="py-3 px-4 font-medium">Status</th>
+                <th class="py-3 px-4 font-medium text-center rounded-r-xl">Aksi</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-borderSoft/60" id="guestRows">
+              
+              <!-- 1. Ahmad Fauzi -->
+              <tr class="guest-row hover:bg-cardMuted/80 transition">
+                <td class="py-3.5 px-4 text-inkMuted font-medium">1</td>
+                <td class="py-3.5 px-4 font-semibold text-ink guest-name">Ahmad Fauzi</td>
+                <td class="py-3.5 px-4 text-center font-mono text-ink">2</td>
+                <td class="py-3.5 px-4">
+                  <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
+                </td>
+                <td class="py-3.5 px-4 text-center">
+                  <div class="inline-flex items-center space-x-2 text-inkMuted">
+                    <button class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                    <button class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    <button onclick="copyGuestInvite('Ahmad Fauzi')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 2. Siti Nurhaliza -->
+              <tr class="guest-row hover:bg-cardMuted/80 transition">
+                <td class="py-3.5 px-4 text-inkMuted font-medium">2</td>
+                <td class="py-3.5 px-4 font-semibold text-ink guest-name">Siti Nurhaliza</td>
+                <td class="py-3.5 px-4 text-center font-mono text-ink">1</td>
+                <td class="py-3.5 px-4">
+                  <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-badgeAmber text-textAmber">Belum Konfirmasi</span>
+                </td>
+                <td class="py-3.5 px-4 text-center">
+                  <div class="inline-flex items-center space-x-2 text-inkMuted">
+                    <button class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                    <button class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    <button onclick="copyGuestInvite('Siti Nurhaliza')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 3. Rizky Maulana -->
+              <tr class="guest-row hover:bg-cardMuted/80 transition">
+                <td class="py-3.5 px-4 text-inkMuted font-medium">3</td>
+                <td class="py-3.5 px-4 font-semibold text-ink guest-name">Rizky Maulana</td>
+                <td class="py-3.5 px-4 text-center font-mono text-ink">3</td>
+                <td class="py-3.5 px-4">
+                  <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
+                </td>
+                <td class="py-3.5 px-4 text-center">
+                  <div class="inline-flex items-center space-x-2 text-inkMuted">
+                    <button class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                    <button class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    <button onclick="copyGuestInvite('Rizky Maulana')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 4. Dewi Lestari -->
+              <tr class="guest-row hover:bg-cardMuted/80 transition">
+                <td class="py-3.5 px-4 text-inkMuted font-medium">4</td>
+                <td class="py-3.5 px-4 font-semibold text-ink guest-name">Dewi Lestari</td>
+                <td class="py-3.5 px-4 text-center font-mono text-ink">2</td>
+                <td class="py-3.5 px-4">
+                  <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-badgeRed text-textRed">Tidak Hadir</span>
+                </td>
+                <td class="py-3.5 px-4 text-center">
+                  <div class="inline-flex items-center space-x-2 text-inkMuted">
+                    <button class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                    <button class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    <button onclick="copyGuestInvite('Dewi Lestari')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 5. Fajar Ramadhan -->
+              <tr class="guest-row hover:bg-cardMuted/80 transition">
+                <td class="py-3.5 px-4 text-inkMuted font-medium">5</td>
+                <td class="py-3.5 px-4 font-semibold text-ink guest-name">Fajar Ramadhan</td>
+                <td class="py-3.5 px-4 text-center font-mono text-ink">1</td>
+                <td class="py-3.5 px-4">
+                  <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
+                </td>
+                <td class="py-3.5 px-4 text-center">
+                  <div class="inline-flex items-center space-x-2 text-inkMuted">
+                    <button class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                    <button class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    <button onclick="copyGuestInvite('Fajar Ramadhan')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 6. Putri Ananda -->
+              <tr class="guest-row hover:bg-cardMuted/80 transition">
+                <td class="py-3.5 px-4 text-inkMuted font-medium">6</td>
+                <td class="py-3.5 px-4 font-semibold text-ink guest-name">Putri Ananda</td>
+                <td class="py-3.5 px-4 text-center font-mono text-ink">2</td>
+                <td class="py-3.5 px-4">
+                  <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
+                </td>
+                <td class="py-3.5 px-4 text-center">
+                  <div class="inline-flex items-center space-x-2 text-inkMuted">
+                    <button class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                    <button class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    <button onclick="copyGuestInvite('Putri Ananda')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 7. Budi Santoso -->
+              <tr class="guest-row hover:bg-cardMuted/80 transition">
+                <td class="py-3.5 px-4 text-inkMuted font-medium">7</td>
+                <td class="py-3.5 px-4 font-semibold text-ink guest-name">Budi Santoso</td>
+                <td class="py-3.5 px-4 text-center font-mono text-ink">1</td>
+                <td class="py-3.5 px-4">
+                  <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-badgeAmber text-textAmber">Belum Konfirmasi</span>
+                </td>
+                <td class="py-3.5 px-4 text-center">
+                  <div class="inline-flex items-center space-x-2 text-inkMuted">
+                    <button class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                    <button class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    <button onclick="copyGuestInvite('Budi Santoso')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 8. Nadia Rahma -->
+              <tr class="guest-row hover:bg-cardMuted/80 transition">
+                <td class="py-3.5 px-4 text-inkMuted font-medium">8</td>
+                <td class="py-3.5 px-4 font-semibold text-ink guest-name">Nadia Rahma</td>
+                <td class="py-3.5 px-4 text-center font-mono text-ink">2</td>
+                <td class="py-3.5 px-4">
+                  <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
+                </td>
+                <td class="py-3.5 px-4 text-center">
+                  <div class="inline-flex items-center space-x-2 text-inkMuted">
+                    <button class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                    <button class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    <button onclick="copyGuestInvite('Nadia Rahma')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-6 mt-4 border-t border-borderSoft/60 relative z-10 text-xs">
+          <span class="text-inkMuted">Menampilkan 1 - 8 dari 120 tamu</span>
+
+          <div class="flex items-center space-x-1.5">
+            <button class="w-7 h-7 rounded-lg border border-borderSoft bg-cardMuted text-inkMuted hover:bg-[#EFECE0] flex items-center justify-center transition">
+              <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i>
+            </button>
+            <button class="w-7 h-7 rounded-lg bg-moss text-cream font-semibold flex items-center justify-center shadow-sm">1</button>
+            <button class="w-7 h-7 rounded-lg border border-borderSoft bg-cardBg hover:bg-cardMuted text-ink flex items-center justify-center transition">2</button>
+            <button class="w-7 h-7 rounded-lg border border-borderSoft bg-cardBg hover:bg-cardMuted text-ink flex items-center justify-center transition">3</button>
+            <button class="w-7 h-7 rounded-lg border border-borderSoft bg-cardBg hover:bg-cardMuted text-ink flex items-center justify-center transition">4</button>
+            <button class="w-7 h-7 rounded-lg border border-borderSoft bg-cardBg hover:bg-cardMuted text-ink flex items-center justify-center transition">5</button>
+            <button class="w-7 h-7 rounded-lg border border-borderSoft bg-cardMuted text-inkMuted hover:bg-[#EFECE0] flex items-center justify-center transition">
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Modal Tambah Tamu -->
+  <div id="guestModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-cardBg w-full max-w-md rounded-3xl p-7 border border-borderSoft shadow-2xl relative">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="font-display text-xl font-semibold text-ink">Tambah Data Tamu</h3>
+        <button onclick="closeModalGuest()" class="text-gray-400 hover:text-ink"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <form onsubmit="handleSaveGuest(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-medium mb-1">Nama Lengkap Tamu</label>
+          <input type="text" id="newGuestName" required placeholder="Contoh: Raden Mas Danu" class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-medium mb-1">Jumlah Undangan</label>
+            <input type="number" id="newGuestPax" value="2" min="1" max="10" class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
+          </div>
+          <div>
+            <label class="block font-medium mb-1">Status Kehadiran</label>
+            <select id="newGuestStatus" class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
+              <option value="Hadir">Hadir</option>
+              <option value="Belum Konfirmasi" selected>Belum Konfirmasi</option>
+              <option value="Tidak Hadir">Tidak Hadir</option>
+            </select>
+          </div>
+        </div>
+        <div class="flex justify-end space-x-2 pt-3">
+          <button type="button" onclick="closeModalGuest()" class="px-4 py-2 rounded-xl border border-borderSoft text-ink hover:bg-cardMuted">Batal</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-moss text-cream font-medium hover:bg-mossLight">Simpan Tamu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    function filterGuests() {
+      const q = document.getElementById('searchGuest').value.toLowerCase();
+      const rows = document.querySelectorAll('.guest-row');
+
+      rows.forEach(r => {
+        const name = r.querySelector('.guest-name').innerText.toLowerCase();
+        if (name.includes(q)) {
+          r.style.display = '';
+        } else {
+          r.style.display = 'none';
+        }
+      });
+    }
+
+    function copyGuestInvite(guestName) {
+      const url = window.location.origin + "/integrated/index.html?to=" + encodeURIComponent(guestName);
+      navigator.clipboard.writeText(url).then(() => {
+        alert("Link undangan khusus untuk " + guestName + " berhasil disalin:\n" + url);
+      });
+    }
+
+    function openModalGuest() {
+      document.getElementById('guestModal').classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeModalGuest() {
+      document.getElementById('guestModal').classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function handleSaveGuest(e) {
+      e.preventDefault();
+      const name = document.getElementById('newGuestName').value;
+      const pax = document.getElementById('newGuestPax').value;
+      const status = document.getElementById('newGuestStatus').value;
+
+      let badgeClass = 'bg-badgeAmber text-textAmber';
+      if (status === 'Hadir') badgeClass = 'bg-badgeGreen text-textGreen';
+      if (status === 'Tidak Hadir') badgeClass = 'bg-badgeRed text-textRed';
+
+      const tbody = document.getElementById('guestRows');
+      const count = tbody.children.length + 1;
+
+      const tr = document.createElement('tr');
+      tr.className = 'guest-row hover:bg-cardMuted/80 transition';
+      tr.innerHTML = `
+        <td class="py-3.5 px-4 text-inkMuted font-medium">${count}</td>
+        <td class="py-3.5 px-4 font-semibold text-ink guest-name">${name}</td>
+        <td class="py-3.5 px-4 text-center font-mono text-ink">${pax}</td>
+        <td class="py-3.5 px-4">
+          <span class="px-3 py-1 rounded-full text-[11px] font-medium ${badgeClass}">${status}</span>
+        </td>
+        <td class="py-3.5 px-4 text-center">
+          <div class="inline-flex items-center space-x-2 text-inkMuted">
+            <button class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+            <button class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+            <button onclick="copyGuestInvite('${name}')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
+          </div>
+        </td>
+      `;
+      tbody.prepend(tr);
+      lucide.createIcons();
+      closeModalGuest();
+      alert("Tamu " + name + " berhasil ditambahkan!");
+    }
+  </script>
+</body>
+</html>

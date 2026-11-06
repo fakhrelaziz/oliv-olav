@@ -1847,83 +1847,144 @@ summary:focus-visible {
   outline: 2px solid #2C3424;
   outline-offset: 3px;
 }
-/* Floating wedding navigation */
+/* Floating vertical pill navigation */
 .wedding-floating-nav {
   position: fixed;
-  left: 50%;
-  bottom: 1.5rem;
-  z-index: 40;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
-  padding: 0.4rem;
-  border: 1px solid rgba(232, 230, 217, 0.2);
-  border-radius: 999px;
-  background: rgba(26, 31, 21, 0.86);
-  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(14px);
-  opacity: 0;
-  pointer-events: none;
-  transform: translate(-50%, 1rem);
+  gap: 0.35rem;
+  padding: 0.45rem 0.35rem;
+  width: 3.85rem;
+  border-radius: 9999px;
+  background: #F6EBDD;
+  border: 1px solid rgba(195, 187, 165, 0.55);
+  box-shadow:
+    0 12px 36px rgba(26, 31, 21, 0.22),
+    0 2px 8px rgba(26, 31, 21, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   transition:
     opacity 300ms ease,
-    transform 300ms ease;
-}
-
-.wedding-header-scrolled .wedding-floating-nav {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translate(-50%, 0);
+    transform 300ms ease,
+    box-shadow 300ms ease;
 }
 
 .wedding-nav-link {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 2.25rem;
-  padding: 0.45rem 0.85rem;
-  border-radius: 999px;
-  color: rgba(232, 230, 217, 0.68);
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
+  width: 100%;
+  min-height: 3.35rem;
+  padding: 0.45rem 0.15rem;
+  border-radius: 9999px;
+  color: #66643D;
+  text-decoration: none;
+  text-align: center;
   transition:
-    background-color 200ms ease,
-    color 200ms ease;
+    background-color 220ms ease,
+    color 220ms ease,
+    transform 180ms ease,
+    box-shadow 220ms ease;
+  user-select: none;
+  cursor: pointer;
 }
 
-.wedding-nav-link:hover,
-.wedding-nav-link-active {
-  background: rgba(232, 230, 217, 0.12);
-  color: #e8e6d9;
+.wedding-nav-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  margin-bottom: 0.2rem;
+  color: inherit;
 }
 
-@media (max-width: 767px) {
-  .wedding-header {
-    padding-top: 1.25rem;
-  }
+.wedding-nav-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  display: block;
+  color: inherit;
+}
 
+.wedding-nav-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  line-height: 1.15;
+  color: inherit;
+  letter-spacing: 0.01em;
+  white-space: normal;
+  text-align: center;
+}
+
+/* Hover for inactive */
+.wedding-nav-link:hover:not(.wedding-nav-link-active) {
+  background: rgba(102, 100, 61, 0.12);
+  color: #4A482A;
+}
+
+/* Active state matching screenshot: moss olive capsule */
+.wedding-nav-link.wedding-nav-link-active {
+  background: #66643D;
+  color: #FAF8F2;
+  box-shadow: 0 4px 12px rgba(102, 100, 61, 0.35);
+}
+
+.wedding-nav-link.wedding-nav-link-active .wedding-nav-icon-wrap {
+  color: #FAF8F2;
+}
+
+.wedding-nav-link.wedding-nav-link-active .wedding-nav-icon {
+  color: #FAF8F2;
+  stroke: #FAF8F2;
+}
+
+.wedding-nav-link.wedding-nav-link-active .wedding-nav-icon path[fill="currentColor"] {
+  fill: #FAF8F2;
+}
+
+/* Small screens / mobile */
+@media (max-width: 640px) {
   .wedding-floating-nav {
-    right: 0.75rem;
-    bottom: 0.75rem;
-    left: 0.75rem;
-    justify-content: space-between;
-    gap: 0;
-    padding: 0.35rem;
-    transform: translateY(1rem);
-  }
-
-  .wedding-header-scrolled .wedding-floating-nav {
-    transform: translateY(0);
+    right: 0.5rem;
+    width: 3.5rem;
+    padding: 0.35rem 0.25rem;
+    gap: 0.25rem;
   }
 
   .wedding-nav-link {
-    flex: 1;
-    min-width: 0;
-    padding-right: 0.25rem;
-    padding-left: 0.25rem;
-    font-size: 0.68rem;
-    letter-spacing: 0;
+    min-height: 2.95rem;
+    padding: 0.35rem 0.1rem;
+  }
+
+  .wedding-nav-icon-wrap {
+    width: 1.15rem;
+    height: 1.15rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .wedding-nav-icon {
+    width: 1.05rem;
+    height: 1.05rem;
+  }
+
+  .wedding-nav-label {
+    font-size: 0.52rem;
+    line-height: 1.1;
+  }
+}
+
+/* If screen height is very short (e.g. landscape phone) */
+@media (max-height: 540px) {
+  .wedding-floating-nav {
+    transform: translateY(-50%) scale(0.82);
+    transform-origin: right center;
   }
 }
 

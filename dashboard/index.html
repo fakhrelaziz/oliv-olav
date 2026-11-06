@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Overview — LAV | LIV</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            moss: '#2C3424',
+            mossDark: '#1E2519',
+            mossLight: '#3D4933',
+            mossAccent: '#48573D',
+            cream: '#F6F5EE',
+            cardBg: '#FFFFFF',
+            cardMuted: '#FAF9F4',
+            ink: '#22251E',
+            inkMuted: '#6B7264',
+            borderSoft: '#E8E6DC',
+            badgeGreen: '#E2EBE0',
+            textGreen: '#2D5427',
+            badgeRed: '#FBE8E7',
+            textRed: '#8C322D',
+            badgeAmber: '#FBF2DE',
+            textAmber: '#87621E',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['"Cormorant Garamond"', 'serif'],
+            script: ['Caveat', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    .sidebar-bg {
+      background-color: #262E20;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #D8D6CC;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-cream text-ink font-sans min-h-screen flex antialiased">
+
+  <!-- ==================== SIDEBAR ==================== -->
+  <aside class="sidebar-bg w-64 min-h-screen flex-shrink-0 flex flex-col justify-between relative overflow-hidden select-none z-20">
+    <!-- Top Branding & Navigation -->
+    <div class="p-6 relative z-10">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center space-x-3 mb-10 block">
+        <span class="font-display text-2xl font-semibold tracking-[0.28em] text-[#FAF8F2]">LAV</span>
+        <span class="text-[#7A8672] text-xl font-light">|</span>
+        <span class="font-display text-2xl font-semibold tracking-[0.28em] text-[#FAF8F2]">LIV</span>
+      </a>
+
+      <!-- Menu Items -->
+      <nav class="space-y-1.5 text-sm font-medium">
+        <!-- Dashboard (Active) -->
+        <a href="index.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl bg-[#37442F] text-[#FAF8F2] shadow-sm transition">
+          <i data-lucide="home" class="w-4 h-4"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <!-- Kelola Konten -->
+        <a href="kelola-konten.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl text-[#C7CFBF] hover:text-white hover:bg-[#323E2A] transition">
+          <i data-lucide="file-text" class="w-4 h-4"></i>
+          <span>Kelola Konten</span>
+        </a>
+
+        <!-- Galeri Foto -->
+        <a href="galeri.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl text-[#C7CFBF] hover:text-white hover:bg-[#323E2A] transition">
+          <i data-lucide="image" class="w-4 h-4"></i>
+          <span>Galeri Foto</span>
+        </a>
+
+        <!-- Tamu & RSVP -->
+        <a href="rsvp.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl text-[#C7CFBF] hover:text-white hover:bg-[#323E2A] transition">
+          <i data-lucide="users" class="w-4 h-4"></i>
+          <span>Tamu & RSVP</span>
+        </a>
+
+        <!-- Data Tamu -->
+        <a href="tamu.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl text-[#C7CFBF] hover:text-white hover:bg-[#323E2A] transition">
+          <i data-lucide="user-check" class="w-4 h-4"></i>
+          <span>Data Tamu</span>
+        </a>
+      </nav>
+    </div>
+
+    <!-- Bottom Botanical Ornament in Sidebar -->
+    <div class="relative w-full pointer-events-none mt-auto">
+      <img src="../aset/section2_bunga.webp" alt="Botanical leaf" class="w-full opacity-20 filter invert object-contain translate-y-6">
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <div class="flex-1 flex flex-col min-w-0 overflow-y-auto custom-scroll">
+    
+    <!-- Topbar Header -->
+    <header class="h-20 bg-cream/90 backdrop-blur-md px-8 flex items-center justify-between border-b border-borderSoft/60 sticky top-0 z-10">
+      <div class="flex items-center space-x-4">
+        <h1 class="font-sans text-xl font-bold text-ink">Dashboard</h1>
+        <span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#E7EFE3] text-[#345B2C] border border-[#D5E3D0]">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Website Aktif</span>
+        </span>
+      </div>
+
+      <!-- Action Buttons & Profile -->
+      <div class="flex items-center space-x-3">
+        <!-- Lihat Website -->
+        <a href="../integrated/index.html" target="_blank" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-cardBg border border-borderSoft text-xs font-medium text-ink hover:bg-cardMuted hover:border-moss/40 transition shadow-sm">
+          <i data-lucide="eye" class="w-3.5 h-3.5 text-inkMuted"></i>
+          <span>Lihat Website</span>
+        </a>
+
+        <!-- Bagikan -->
+        <button onclick="copyInviteLink()" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-cardBg border border-borderSoft text-xs font-medium text-ink hover:bg-cardMuted hover:border-moss/40 transition shadow-sm">
+          <i data-lucide="share-2" class="w-3.5 h-3.5 text-inkMuted"></i>
+          <span>Bagikan</span>
+        </button>
+
+        <!-- Profile Dropdown -->
+        <div class="relative">
+          <a href="login.html" title="Keluar / Logout" class="inline-flex items-center space-x-2.5 pl-2 pr-3 py-1.5 rounded-full bg-cardBg border border-borderSoft hover:border-rose-300 hover:text-rose-700 transition shadow-sm">
+            <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#35492E] flex items-center justify-center font-display font-semibold text-xs">OO</div>
+            <span class="text-xs font-medium text-ink">Olav & Oliv</span>
+            <i data-lucide="log-out" class="w-3.5 h-3.5 text-gray-400"></i>
+          </a>
+        </div>
+            <span class="text-xs font-medium text-ink">Olav & Oliv</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-400"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Body Container -->
+    <main class="p-8 space-y-6 max-w-[1440px] mx-auto w-full">
+
+      <!-- SECTION 1: Welcome & Completion Progress + Live Preview Box -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left: Welcome & Stepper Box (7 Cols) -->
+        <div class="lg:col-span-7 bg-cardBg rounded-3xl p-7 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] flex flex-col justify-between">
+          <div>
+            <h2 class="font-display text-3xl font-semibold text-ink leading-tight">Selamat datang, Admin!</h2>
+            <p class="text-xs text-inkMuted mt-1 mb-5">Kelola undangan pernikahan Anda dengan mudah.</p>
+            
+            <a href="kelola-konten.html" class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-moss hover:bg-mossLight text-cream text-xs font-medium transition shadow-sm">
+              <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+              <span>Lanjutkan Edit Undangan</span>
+            </a>
+          </div>
+
+          <!-- Progress Card -->
+          <div class="mt-8 pt-6 border-t border-borderSoft/60">
+            <div class="flex items-center justify-between mb-2.5">
+              <span class="text-xs font-semibold text-ink">Kelengkapan Undangan</span>
+              <span class="text-xs font-bold text-moss">5/6</span>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="w-full bg-[#EBE9DE] h-2 rounded-full overflow-hidden mb-6">
+              <div class="bg-moss h-full rounded-full transition-all duration-500" style="width: 83.3%;"></div>
+            </div>
+
+            <!-- Steps Icons -->
+            <div class="grid grid-cols-6 gap-2 text-center">
+              <!-- 1. Cover -->
+              <div class="flex flex-col items-center">
+                <div class="w-9 h-9 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center mb-1.5 shadow-sm">
+                  <i data-lucide="check" class="w-4 h-4 stroke-[2.5]"></i>
+                </div>
+                <span class="text-[11px] font-medium text-ink">Cover</span>
+              </div>
+
+              <!-- 2. Mempelai -->
+              <div class="flex flex-col items-center">
+                <div class="w-9 h-9 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center mb-1.5 shadow-sm">
+                  <i data-lucide="check" class="w-4 h-4 stroke-[2.5]"></i>
+                </div>
+                <span class="text-[11px] font-medium text-ink">Mempelai</span>
+              </div>
+
+              <!-- 3. Acara -->
+              <div class="flex flex-col items-center">
+                <div class="w-9 h-9 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center mb-1.5 shadow-sm">
+                  <i data-lucide="check" class="w-4 h-4 stroke-[2.5]"></i>
+                </div>
+                <span class="text-[11px] font-medium text-ink">Acara</span>
+              </div>
+
+              <!-- 4. Story -->
+              <div class="flex flex-col items-center">
+                <div class="w-9 h-9 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center mb-1.5 shadow-sm">
+                  <i data-lucide="check" class="w-4 h-4 stroke-[2.5]"></i>
+                </div>
+                <span class="text-[11px] font-medium text-ink">Story</span>
+              </div>
+
+              <!-- 5. Galeri -->
+              <div class="flex flex-col items-center">
+                <div class="w-9 h-9 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center mb-1.5 shadow-sm">
+                  <i data-lucide="check" class="w-4 h-4 stroke-[2.5]"></i>
+                </div>
+                <span class="text-[11px] font-medium text-ink">Galeri</span>
+              </div>
+
+              <!-- 6. RSVP (Pending) -->
+              <div class="flex flex-col items-center">
+                <div class="w-9 h-9 rounded-full bg-[#ECEAE0] text-gray-400 flex items-center justify-center mb-1.5">
+                  <i data-lucide="circle" class="w-3.5 h-3.5"></i>
+                </div>
+                <span class="text-[11px] font-medium text-inkMuted">RSVP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Website Mockup Hero Preview Card (5 Cols) -->
+        <div class="lg:col-span-5 bg-cardBg rounded-3xl p-6 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] flex flex-col justify-between">
+          <div class="relative w-full h-48 sm:h-56 rounded-2xl overflow-hidden bg-[#D7E3D4] flex items-center justify-center border border-borderSoft group">
+            <!-- Hero Mockup Thumbnail -->
+            <img src="../aset/background_herosection(desktop).webp" alt="Wedding Hero Preview" class="w-full h-full object-cover">
+            
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition flex items-center justify-center">
+              <a href="../integrated/index.html" target="_blank" class="px-4 py-2 rounded-full bg-white/90 backdrop-blur text-xs font-semibold text-ink shadow-md hover:bg-white transition flex items-center space-x-1.5">
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                <span>Preview Website Undangan</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between pt-4 mt-2 border-t border-borderSoft/60">
+            <div>
+              <p class="text-xs font-semibold text-ink">Tema Botanical Luxury</p>
+              <p class="text-[11px] text-inkMuted">Domain: fakhrel-olivia.wedding</p>
+            </div>
+            <a href="kelola-konten.html" class="text-xs font-medium text-moss hover:underline">Kelola &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SECTION 2: 3 Quick Metric Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Pengunjung -->
+        <div class="bg-cardBg rounded-3xl p-6 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] flex items-center space-x-5">
+          <div class="w-14 h-14 rounded-2xl bg-[#EBEFE8] text-moss flex items-center justify-center flex-shrink-0">
+            <i data-lucide="users" class="w-6 h-6 stroke-[1.8]"></i>
+          </div>
+          <div>
+            <span class="text-xs font-medium text-inkMuted block">Pengunjung</span>
+            <span class="text-2xl font-bold text-ink">1.284</span>
+            <span class="text-[11px] text-emerald-700 font-medium block mt-0.5">▲ +14% dari minggu lalu</span>
+          </div>
+        </div>
+
+        <!-- RSVP -->
+        <div class="bg-cardBg rounded-3xl p-6 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] flex items-center space-x-5">
+          <div class="w-14 h-14 rounded-2xl bg-[#EBEFE8] text-moss flex items-center justify-center flex-shrink-0">
+            <i data-lucide="mail-check" class="w-6 h-6 stroke-[1.8]"></i>
+          </div>
+          <div>
+            <span class="text-xs font-medium text-inkMuted block">RSVP</span>
+            <span class="text-2xl font-bold text-ink">176</span>
+            <span class="text-[11px] text-inkMuted font-medium block mt-0.5">85 Hadir • 25 Tidak • 10 Ragu</span>
+          </div>
+        </div>
+
+        <!-- Ucapan -->
+        <div class="bg-cardBg rounded-3xl p-6 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] flex items-center space-x-5">
+          <div class="w-14 h-14 rounded-2xl bg-[#EBEFE8] text-moss flex items-center justify-center flex-shrink-0">
+            <i data-lucide="message-square" class="w-6 h-6 stroke-[1.8]"></i>
+          </div>
+          <div>
+            <span class="text-xs font-medium text-inkMuted block">Ucapan</span>
+            <span class="text-2xl font-bold text-ink">98</span>
+            <span class="text-[11px] text-inkMuted font-medium block mt-0.5">Doa restu dari para sahabat</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3: Recent RSVP & Quick Event Info -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left: Recent RSVP Table (7 Cols) -->
+        <div class="lg:col-span-7 bg-cardBg rounded-3xl p-6 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)]">
+          <div class="flex items-center justify-between mb-5">
+            <h3 class="font-display text-xl font-semibold text-ink">Recent RSVP</h3>
+            <a href="rsvp.html" class="text-xs font-medium text-inkMuted hover:text-moss transition">Lihat Semua</a>
+          </div>
+
+          <div class="space-y-3.5">
+            <!-- Row 1: Budi Santo -->
+            <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-cardMuted transition border border-transparent hover:border-borderSoft/60">
+              <div class="flex items-center space-x-3.5">
+                <div class="w-9 h-9 rounded-full bg-cream border border-borderSoft flex items-center justify-center text-inkMuted">
+                  <i data-lucide="user" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <span class="text-xs font-semibold text-ink block">Budi Santo</span>
+                  <span class="text-[11px] text-inkMuted">Membawa 2 orang tamu</span>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <span class="px-2.5 py-1 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
+                <span class="text-[11px] text-inkMuted font-mono">25 Oct 2026, 10:00</span>
+              </div>
+            </div>
+
+            <!-- Row 2: Siti Nurhaliza -->
+            <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-cardMuted transition border border-transparent hover:border-borderSoft/60">
+              <div class="flex items-center space-x-3.5">
+                <div class="w-9 h-9 rounded-full bg-cream border border-borderSoft flex items-center justify-center text-inkMuted">
+                  <i data-lucide="user" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <span class="text-xs font-semibold text-ink block">Siti Nurhaliza</span>
+                  <span class="text-[11px] text-inkMuted">Berhalangan hadir</span>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <span class="px-2.5 py-1 rounded-full text-[11px] font-medium bg-badgeRed text-textRed">Tidak Hadir</span>
+                <span class="text-[11px] text-inkMuted font-mono">25 Oct 2026, 08:15</span>
+              </div>
+            </div>
+
+            <!-- Row 3: Andi Wijaya -->
+            <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-cardMuted transition border border-transparent hover:border-borderSoft/60">
+              <div class="flex items-center space-x-3.5">
+                <div class="w-9 h-9 rounded-full bg-cream border border-borderSoft flex items-center justify-center text-inkMuted">
+                  <i data-lucide="user" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <span class="text-xs font-semibold text-ink block">Andi Wijaya</span>
+                  <span class="text-[11px] text-inkMuted">Membawa 1 orang tamu</span>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <span class="px-2.5 py-1 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
+                <span class="text-[11px] text-inkMuted font-mono">25 Oct 2026, 19:35</span>
+              </div>
+            </div>
+
+            <!-- Row 4: Dewi Lestari -->
+            <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-cardMuted transition border border-transparent hover:border-borderSoft/60">
+              <div class="flex items-center space-x-3.5">
+                <div class="w-9 h-9 rounded-full bg-cream border border-borderSoft flex items-center justify-center text-inkMuted">
+                  <i data-lucide="user" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <span class="text-xs font-semibold text-ink block">Dewi Lestari</span>
+                  <span class="text-[11px] text-inkMuted">Berhalangan hadir</span>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <span class="px-2.5 py-1 rounded-full text-[11px] font-medium bg-badgeRed text-textRed">Tidak Hadir</span>
+                <span class="text-[11px] text-inkMuted font-mono">25 Oct 2026, 19:20</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: Info Acara Quick Cards (5 Cols) -->
+        <div class="lg:col-span-5 bg-cardBg rounded-3xl p-6 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)]">
+          <h3 class="font-display text-xl font-semibold text-ink mb-5">Info Acara</h3>
+          
+          <div class="grid grid-cols-3 gap-3.5">
+            <!-- Lokasi -->
+            <a href="pengantin.html" class="p-4 rounded-2xl bg-cardMuted hover:bg-[#F2EFE6] border border-borderSoft/70 flex flex-col items-center justify-center text-center group transition">
+              <div class="w-12 h-12 rounded-full bg-white text-moss flex items-center justify-center mb-3 shadow-sm group-hover:scale-105 transition">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <span class="text-xs font-semibold text-ink block">Lokasi</span>
+              <span class="text-[10px] text-inkMuted mt-0.5">The Backyard Cafe</span>
+            </a>
+
+            <!-- Tanggal & Waktu -->
+            <a href="pengantin.html" class="p-4 rounded-2xl bg-cardMuted hover:bg-[#F2EFE6] border border-borderSoft/70 flex flex-col items-center justify-center text-center group transition">
+              <div class="w-12 h-12 rounded-full bg-white text-moss flex items-center justify-center mb-3 shadow-sm group-hover:scale-105 transition">
+                <i data-lucide="calendar" class="w-5 h-5"></i>
+              </div>
+              <span class="text-xs font-semibold text-ink block">Tanggal & Waktu</span>
+              <span class="text-[10px] text-inkMuted mt-0.5">25 Okt 2026</span>
+            </a>
+
+            <!-- Lainnya -->
+            <a href="kelola-konten.html" class="p-4 rounded-2xl bg-cardMuted hover:bg-[#F2EFE6] border border-borderSoft/70 flex flex-col items-center justify-center text-center group transition">
+              <div class="w-12 h-12 rounded-full bg-white text-moss flex items-center justify-center mb-3 shadow-sm group-hover:scale-105 transition">
+                <i data-lucide="alert-circle" class="w-5 h-5"></i>
+              </div>
+              <span class="text-xs font-semibold text-ink block">Lainnya</span>
+              <span class="text-[10px] text-inkMuted mt-0.5">Detail Dresscode</span>
+            </a>
+          </div>
+
+          <!-- Quick Tip Card -->
+          <div class="mt-6 p-4 rounded-2xl bg-[#F4F6F1] border border-[#DEE7D9] flex items-start space-x-3">
+            <i data-lucide="sparkles" class="w-4 h-4 text-moss flex-shrink-0 mt-0.5"></i>
+            <p class="text-[11px] text-ink leading-relaxed">
+              <strong>Tips Admin:</strong> Pastikan seluruh nomor WhatsApp tamu telah diatur pada menu <a href="tamu.html" class="text-moss font-semibold underline">Data Tamu</a> untuk memudahkan broadcast link undangan.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Notification Toast Modal -->
+  <div id="toast" class="fixed bottom-6 right-6 bg-moss text-cream px-5 py-3 rounded-2xl shadow-xl flex items-center space-x-3 text-xs transition-opacity duration-300 opacity-0 pointer-events-none z-50">
+    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+    <span id="toastMsg">Link undangan berhasil disalin!</span>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    function copyInviteLink() {
+      const link = window.location.origin + "/integrated/index.html";
+      navigator.clipboard.writeText(link).then(() => {
+        showToast("Tautan undangan berhasil disalin!");
+      }).catch(() => {
+        showToast("Tautan undangan: " + link);
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.innerText = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
