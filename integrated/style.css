@@ -1760,3 +1760,89 @@ summary:focus-visible {
   outline-offset: 3px;
 }
 
+/* Floating wedding navigation */
+.wedding-floating-nav {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.4rem;
+  border: 1px solid rgba(232, 230, 217, 0.2);
+  border-radius: 999px;
+  background: rgba(26, 31, 21, 0.86);
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(14px);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 1rem);
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+}
+
+.wedding-header-scrolled .wedding-floating-nav {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+.wedding-nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.25rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  color: rgba(232, 230, 217, 0.68);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+.wedding-nav-link:hover,
+.wedding-nav-link-active {
+  background: rgba(232, 230, 217, 0.12);
+  color: #e8e6d9;
+}
+
+@media (max-width: 767px) {
+  .wedding-header {
+    padding-top: 1.25rem;
+  }
+
+  .wedding-floating-nav {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    justify-content: space-between;
+    gap: 0;
+    padding: 0.35rem;
+    transform: translateY(1rem);
+  }
+
+  .wedding-header-scrolled .wedding-floating-nav {
+    transform: translateY(0);
+  }
+
+  .wedding-nav-link {
+    flex: 1;
+    min-width: 0;
+    padding-right: 0.25rem;
+    padding-left: 0.25rem;
+    font-size: 0.68rem;
+    letter-spacing: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wedding-floating-nav,
+  .wedding-nav-link {
+    transition: none;
+  }
+}
