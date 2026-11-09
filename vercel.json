@@ -1,4 +1,6 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "functions": {
     "api/*.php": {
       "runtime": "vercel-php@0.7.4"
@@ -8,6 +10,16 @@
     { "source": "/aktivitas/tugas_php_25071104582.php", "destination": "/api/tugas_php_25071104582.php" },
     { "source": "/aktivitas/tugas_php_25071101439.php", "destination": "/api/tugas_php_25071101439.php" },
     { "source": "/aktivitas/tugas_php_25071100389.php", "destination": "/api/tugas_php_25071100389.php" },
-    { "source": "/aktivitas/tugas_php_25071103083.php", "destination": "/api/tugas_php_25071103083.php" }
+    { "source": "/aktivitas/tugas_php_25071103083.php", "destination": "/api/tugas_php_25071103083.php" },
+    { "source": "/kelola-konten", "destination": "/dashboard/kelola-konten.html" },
+    { "source": "/kelola-konten.html", "destination": "/dashboard/kelola-konten.html" },
+    { "source": "/dashboard/kelola-konten", "destination": "/dashboard/kelola-konten.html" },
+    { "source": "/dashboard/galeri", "destination": "/dashboard/galeri.html" },
+    { "source": "/dashboard/our-story", "destination": "/dashboard/our-story.html" },
+    { "source": "/dashboard/pengantin", "destination": "/dashboard/pengantin.html" },
+    { "source": "/dashboard/rsvp", "destination": "/dashboard/rsvp.html" },
+    { "source": "/dashboard/tamu", "destination": "/dashboard/tamu.html" },
+    { "source": "/dashboard/login", "destination": "/dashboard/login.html" },
+    { "source": "/dashboard", "destination": "/dashboard/index.html" }
   ]
 }
