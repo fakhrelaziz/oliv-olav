@@ -3,7 +3,79 @@
 // API KONTEN: Manajemen Konten 6 Section Undangan & Halaman Terpadu
 // ====================================================================
 
-require_once __DIR__ . '/lib/db.php';
+// Tangkap error fatal agar tidak menghasilkan layar hitam 500 FUNCTION_INVOCATION_FAILED di Vercel
+register_shutdown_function(function () {
+    $err = error_get_last();
+    if ($err && in_array($err['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR], true)) {
+        if (!headers_sent()) {
+            http_response_code(500);
+            header('Content-Type: application/json; charset=utf-8');
+        }
+        echo json_encode([
+            'success' => false,
+            'message' => 'Fatal PHP Error: ' . $err['message'],
+            'file'    => basename($err['file']),
+            'line'    => $err['line']
+        ], JSON_PRETTY_PRINT);
+    }
+});
+
+if (file_exists(__DIR__ . '/lib/db.php')) {
+    require_once __DIR__ . '/lib/db.php';
+} else {
+    // Fallback mandiri jika runtime serverless tidak menyertakan sub-folder api/lib/
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+    header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
+    if (($_SERVER['REQUEST_METHOD'] ?? '') === 'OPTIONS') {
+        http_response_code(200);
+        exit();
+    }
+    $host    = getenv('DB_HOST') ?: getenv('MYSQLHOST') ?: '127.0.0.1';
+    $port    = getenv('DB_PORT') ?: getenv('MYSQLPORT') ?: '3306';
+    $db      = getenv('DB_NAME') ?: getenv('MYSQLDATABASE') ?: 'db_fakhrel_olivia';
+    $user    = getenv('DB_USER') ?: getenv('MYSQLUSER') ?: 'root';
+    $pass    = getenv('DB_PASS') !== false ? getenv('DB_PASS') : (getenv('MYSQLPASSWORD') !== false ? getenv('MYSQLPASSWORD') : '');
+    $charset = 'utf8mb4';
+    $dbUrl   = getenv('MYSQL_URL') ?: getenv('DATABASE_URL');
+    if ($dbUrl && strpos($dbUrl, 'mysql://') === 0) {
+        $parsed = parse_url($dbUrl);
+        if ($parsed) {
+            $host = $parsed['host'] ?? $host;
+            $port = isset($parsed['port']) ? (string)$parsed['port'] : $port;
+            $user = $parsed['user'] ?? $user;
+            $pass = $parsed['pass'] ?? $pass;
+            if (!empty($parsed['path'])) $db = ltrim($parsed['path'], '/');
+        }
+    }
+    $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=$charset";
+    $options = [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+        PDO::ATTR_TIMEOUT            => 5,
+    ];
+    if ($host !== '127.0.0.1' && $host !== 'localhost' && defined('PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT')) {
+        $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = false;
+    }
+    try {
+        $pdo = new PDO($dsn, $user, $pass, $options);
+    } catch (\PDOException $e) {
+        $pdo = null;
+    }
+    function jsonResponse($data, $statusCode = 200) {
+        http_response_code($statusCode);
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        exit();
+    }
+    function getJsonInput() {
+        $input = file_get_contents('php://input');
+        if (empty($input)) return $_POST;
+        $decoded = json_decode($input, true);
+        return is_array($decoded) ? array_merge($_POST, $decoded) : $_POST;
+    }
+}
 
 $method = $_SERVER['REQUEST_METHOD'];
 $action = $_GET['action'] ?? '';
@@ -136,7 +208,7 @@ if ($action === 'setup') {
             'database' => $db,
             'tables'   => $tables
         ]);
-    } catch (\PDOException $e) {
+    } catch (\Throwable $e) {
         jsonResponse([
             'success' => false,
             'message' => 'Gagal menginisialisasi database: ' . $e->getMessage()
