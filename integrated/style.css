@@ -1280,40 +1280,40 @@ details > summary::marker {
     gap: 0.6rem;
   }
 
-  .gallery-item:nth-child(1) {
+  .gallery-grid > .gallery-item:nth-child(1) {
     grid-column: 1;
     grid-row: span 2;
   }
 
-  .gallery-item:nth-child(2) {
+  .gallery-grid > .gallery-item:nth-child(2) {
     grid-column: 2;
   }
 
-  .gallery-item:nth-child(3) {
+  .gallery-grid > .gallery-item:nth-child(3) {
     grid-column: 3;
   }
 
-  .gallery-item:nth-child(4) {
+  .gallery-grid > .gallery-item:nth-child(4) {
     grid-column: 4;
   }
 
-  .gallery-item:nth-child(5) {
+  .gallery-grid > .gallery-item:nth-child(5) {
     grid-column: 2;
   }
 
-  .gallery-item:nth-child(6) {
+  .gallery-grid > .gallery-item:nth-child(6) {
     grid-column: 3;
   }
 
-  .gallery-item:nth-child(7) {
+  .gallery-grid > .gallery-item:nth-child(7) {
     grid-column: 2;
   }
 
-  .gallery-item:nth-child(8) {
+  .gallery-grid > .gallery-item:nth-child(8) {
     grid-column: 3;
   }
 
-  .gallery-item:nth-child(9) {
+  .gallery-grid > .gallery-item:nth-child(9) {
     grid-column: 4;
     grid-row: span 2;
   }

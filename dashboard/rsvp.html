@@ -39,6 +39,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="auth-guard.js"></script>
   <style>
     .sidebar-bg { background-color: #262E20; }
     .custom-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
@@ -108,12 +109,13 @@
           <i data-lucide="share-2" class="w-3.5 h-3.5 text-inkMuted"></i>
           <span>Bagikan</span>
         </button>
+        <!-- Profile & Logout -->
         <div class="relative">
-          <a href="login.html" title="Keluar / Logout" class="inline-flex items-center space-x-2.5 pl-2 pr-3 py-1.5 rounded-full bg-cardBg border border-borderSoft hover:border-rose-300 hover:text-rose-700 transition shadow-sm">
+          <button onclick="handleLogout(event)" title="Keluar / Logout dari Admin Panel" class="inline-flex items-center space-x-2.5 pl-2 pr-3 py-1.5 rounded-full bg-cardBg border border-borderSoft hover:border-rose-300 hover:text-rose-700 transition shadow-sm">
             <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#35492E] flex items-center justify-center font-display font-semibold text-xs">FO</div>
-            <span class="text-xs font-medium text-ink">Fakhrel & Olivia</span>
+            <span class="text-xs font-medium text-ink admin-profile-name">Fakhrel &amp; Olivia</span>
             <i data-lucide="log-out" class="w-3.5 h-3.5 text-gray-400"></i>
-          </a>
+          </button>
         </div>
       </div>
     </header>
@@ -161,7 +163,7 @@
             </div>
             <span class="text-xs font-medium text-inkMuted">Total Ucapan</span>
           </div>
-          <span class="text-2xl font-bold text-ink">48</span>
+          <span id="statTotalUcapan" class="text-2xl font-bold text-ink">0</span>
           <span class="text-[11px] text-inkMuted block mt-0.5">Ucapan diterima</span>
           <img src="../aset/section2_bunga(2).webp" alt="deco" class="absolute -bottom-4 -right-4 w-16 opacity-15 pointer-events-none">
         </div>
@@ -174,7 +176,7 @@
             </div>
             <span class="text-xs font-medium text-inkMuted">Hadir</span>
           </div>
-          <span class="text-2xl font-bold text-emerald-700">42</span>
+          <span id="statHadirUcapan" class="text-2xl font-bold text-emerald-700">0</span>
           <span class="text-[11px] text-inkMuted block mt-0.5">Konfirmasi hadir</span>
           <img src="../aset/section3_bunga.webp" alt="deco" class="absolute -bottom-4 -right-4 w-16 opacity-15 pointer-events-none">
         </div>
@@ -187,7 +189,7 @@
             </div>
             <span class="text-xs font-medium text-inkMuted">Tidak Hadir</span>
           </div>
-          <span class="text-2xl font-bold text-rose-700">4</span>
+          <span id="statTidakHadirUcapan" class="text-2xl font-bold text-rose-700">0</span>
           <span class="text-[11px] text-inkMuted block mt-0.5">Konfirmasi tidak hadir</span>
           <img src="../aset/section4_bunga.webp" alt="deco" class="absolute -bottom-4 -right-4 w-16 opacity-15 pointer-events-none">
         </div>
@@ -200,7 +202,7 @@
             </div>
             <span class="text-xs font-medium text-inkMuted">Masih Ragu</span>
           </div>
-          <span class="text-2xl font-bold text-amber-700">2</span>
+          <span id="statRaguUcapan" class="text-2xl font-bold text-amber-700">0</span>
           <span class="text-[11px] text-inkMuted block mt-0.5">Belum konfirmasi pasti</span>
           <img src="../aset/section5_bunga.webp" alt="deco" class="absolute -bottom-4 -right-4 w-16 opacity-15 pointer-events-none">
         </div>
@@ -262,103 +264,18 @@
                   <th class="py-3 px-3 font-medium text-center">Aksi</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-borderSoft/60">
-                
-                <!-- Row 1 -->
-                <tr class="wish-row hover:bg-cardMuted/80 transition">
-                  <td class="py-3 px-3 font-medium text-inkMuted">1</td>
-                  <td class="py-3 px-3">
-                    <div class="flex items-center space-x-2.5">
-                      <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center font-semibold text-[11px]">SR</div>
-                      <span class="font-semibold text-ink name-col">Siti Rahma</span>
+              <tbody class="divide-y divide-borderSoft/60" id="wishesTableBody">
+                <tr id="wishLoadingRow">
+                  <td colspan="6" class="py-10 text-center text-inkMuted">
+                    <div class="inline-flex items-center space-x-2.5">
+                      <svg class="animate-spin h-4 w-4 text-moss" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                      </svg>
+                      <span>Menghubungkan ke basis data doa & ucapan...</span>
                     </div>
                   </td>
-                  <td class="py-3 px-3 status-col">
-                    <span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
-                  </td>
-                  <td class="py-3 px-4 text-ink msg-col">Selamat yaa, semoga menjadi keluarga sakinah, mawadah, warahmah. 🤍</td>
-                  <td class="py-3 px-3 text-inkMuted font-mono text-[11px] whitespace-nowrap">25 Okt 2026</td>
-                  <td class="py-3 px-3 text-center">
-                    <button class="p-1 rounded-lg hover:bg-cream text-inkMuted hover:text-moss"><i data-lucide="more-vertical" class="w-4 h-4"></i></button>
-                  </td>
                 </tr>
-
-                <!-- Row 2 -->
-                <tr class="wish-row hover:bg-cardMuted/80 transition">
-                  <td class="py-3 px-3 font-medium text-inkMuted">2</td>
-                  <td class="py-3 px-3">
-                    <div class="flex items-center space-x-2.5">
-                      <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center font-semibold text-[11px]">AF</div>
-                      <span class="font-semibold text-ink name-col">Ahmad Fauzi</span>
-                    </div>
-                  </td>
-                  <td class="py-3 px-3 status-col">
-                    <span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
-                  </td>
-                  <td class="py-3 px-4 text-ink msg-col">Turut berbahagia, semoga lancar sampai hari H. Amin. 🙏</td>
-                  <td class="py-3 px-3 text-inkMuted font-mono text-[11px] whitespace-nowrap">25 Okt 2026</td>
-                  <td class="py-3 px-3 text-center">
-                    <button class="p-1 rounded-lg hover:bg-cream text-inkMuted hover:text-moss"><i data-lucide="more-vertical" class="w-4 h-4"></i></button>
-                  </td>
-                </tr>
-
-                <!-- Row 3 -->
-                <tr class="wish-row hover:bg-cardMuted/80 transition">
-                  <td class="py-3 px-3 font-medium text-inkMuted">3</td>
-                  <td class="py-3 px-3">
-                    <div class="flex items-center space-x-2.5">
-                      <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center font-semibold text-[11px]">DL</div>
-                      <span class="font-semibold text-ink name-col">Dewi Lestari</span>
-                    </div>
-                  </td>
-                  <td class="py-3 px-3 status-col">
-                    <span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-badgeRed text-textRed">Tidak Hadir</span>
-                  </td>
-                  <td class="py-3 px-4 text-ink msg-col">Maaf tidak bisa hadir, semoga selalu diberi keberkahan. 🙏</td>
-                  <td class="py-3 px-3 text-inkMuted font-mono text-[11px] whitespace-nowrap">24 Okt 2026</td>
-                  <td class="py-3 px-3 text-center">
-                    <button class="p-1 rounded-lg hover:bg-cream text-inkMuted hover:text-moss"><i data-lucide="more-vertical" class="w-4 h-4"></i></button>
-                  </td>
-                </tr>
-
-                <!-- Row 4 -->
-                <tr class="wish-row hover:bg-cardMuted/80 transition">
-                  <td class="py-3 px-3 font-medium text-inkMuted">4</td>
-                  <td class="py-3 px-3">
-                    <div class="flex items-center space-x-2.5">
-                      <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center font-semibold text-[11px]">RM</div>
-                      <span class="font-semibold text-ink name-col">Rizky Maulana</span>
-                    </div>
-                  </td>
-                  <td class="py-3 px-3 status-col">
-                    <span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
-                  </td>
-                  <td class="py-3 px-4 text-ink msg-col">Happy wedding! Semoga selalu bahagia dan diberi rezeki yang melimpah. 🤍</td>
-                  <td class="py-3 px-3 text-inkMuted font-mono text-[11px] whitespace-nowrap">24 Okt 2026</td>
-                  <td class="py-3 px-3 text-center">
-                    <button class="p-1 rounded-lg hover:bg-cream text-inkMuted hover:text-moss"><i data-lucide="more-vertical" class="w-4 h-4"></i></button>
-                  </td>
-                </tr>
-
-                <!-- Row 5 -->
-                <tr class="wish-row hover:bg-cardMuted/80 transition">
-                  <td class="py-3 px-3 font-medium text-inkMuted">5</td>
-                  <td class="py-3 px-3">
-                    <div class="flex items-center space-x-2.5">
-                      <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center font-semibold text-[11px]">NP</div>
-                      <span class="font-semibold text-ink name-col">Nadia Putri</span>
-                    </div>
-                  </td>
-                  <td class="py-3 px-3 status-col">
-                    <span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-badgeAmber text-textAmber">Masih Ragu</span>
-                  </td>
-                  <td class="py-3 px-4 text-ink msg-col">InsyaAllah berusaha hadir, mohon dikonfirmasi kembali. 🙏</td>
-                  <td class="py-3 px-3 text-inkMuted font-mono text-[11px] whitespace-nowrap">23 Okt 2026</td>
-                  <td class="py-3 px-3 text-center">
-                    <button class="p-1 rounded-lg hover:bg-cream text-inkMuted hover:text-moss"><i data-lucide="more-vertical" class="w-4 h-4"></i></button>
-                  </td>
-                </tr>
-
               </tbody>
             </table>
           </div>
@@ -373,53 +290,54 @@
             <h3 class="font-display text-xl font-semibold text-ink mb-5">Konfirmasi Kehadiran</h3>
             
             <div class="space-y-4">
-              <!-- Hadir (87%) -->
+              <!-- Hadir -->
               <div>
                 <div class="flex items-center justify-between text-xs mb-1.5">
                   <div class="flex items-center space-x-2">
                     <div class="w-6 h-6 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center text-[10px]">
                       <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
                     </div>
-                    <span class="font-medium text-ink">Hadir (42 orang)</span>
+                    <span id="rsvpLabelHadir" class="font-medium text-ink">Hadir (0 orang)</span>
                   </div>
-                  <span class="font-semibold text-emerald-700">87%</span>
+                  <span id="rsvpPctHadir" class="font-semibold text-emerald-700">0%</span>
                 </div>
                 <div class="w-full bg-[#EBE9DE] h-2 rounded-full overflow-hidden">
-                  <div class="bg-emerald-600 h-full rounded-full" style="width: 87%;"></div>
+                  <div id="rsvpBarHadir" class="bg-emerald-600 h-full rounded-full transition-all duration-500" style="width: 0%;"></div>
                 </div>
               </div>
 
-              <!-- Tidak Hadir (8%) -->
+              <!-- Tidak Hadir -->
               <div>
                 <div class="flex items-center justify-between text-xs mb-1.5">
                   <div class="flex items-center space-x-2">
                     <div class="w-6 h-6 rounded-full bg-[#FBE8E7] text-[#8C322D] flex items-center justify-center text-[10px]">
                       <i data-lucide="user-x" class="w-3.5 h-3.5"></i>
                     </div>
-                    <span class="font-medium text-ink">Tidak Hadir (4 orang)</span>
+                    <span id="rsvpLabelTidakHadir" class="font-medium text-ink">Tidak Hadir (0 orang)</span>
                   </div>
-                  <span class="font-semibold text-rose-700">8%</span>
+                  <span id="rsvpPctTidakHadir" class="font-semibold text-rose-700">0%</span>
                 </div>
                 <div class="w-full bg-[#EBE9DE] h-2 rounded-full overflow-hidden">
-                  <div class="bg-rose-500 h-full rounded-full" style="width: 8%;"></div>
+                  <div id="rsvpBarTidakHadir" class="bg-rose-500 h-full rounded-full transition-all duration-500" style="width: 0%;"></div>
                 </div>
               </div>
 
-              <!-- Masih Ragu (4%) -->
+              <!-- Masih Ragu -->
               <div>
                 <div class="flex items-center justify-between text-xs mb-1.5">
                   <div class="flex items-center space-x-2">
                     <div class="w-6 h-6 rounded-full bg-[#FBF2DE] text-[#87621E] flex items-center justify-center text-[10px]">
                       <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
                     </div>
-                    <span class="font-medium text-ink">Masih Ragu (2 orang)</span>
+                    <span id="rsvpLabelRagu" class="font-medium text-ink">Masih Ragu (0 orang)</span>
                   </div>
-                  <span class="font-semibold text-amber-700">4%</span>
+                  <span id="rsvpPctRagu" class="font-semibold text-amber-700">0%</span>
                 </div>
                 <div class="w-full bg-[#EBE9DE] h-2 rounded-full overflow-hidden">
-                  <div class="bg-amber-500 h-full rounded-full" style="width: 4%;"></div>
+                  <div id="rsvpBarRagu" class="bg-amber-500 h-full rounded-full transition-all duration-500" style="width: 0%;"></div>
                 </div>
               </div>
+            </div>
 
             </div>
           </div>
@@ -509,74 +427,195 @@
       });
     }
 
-    function deleteWish(btn) {
-      if (confirm('Hapus ucapan ini?')) {
-        const row = btn.closest('.wish-row');
-        row.remove();
+    // ====================================================================
+    // API INTEGRATION & DYNAMIC RSVP
+    // ====================================================================
+    async function loadWishesFromAPI() {
+      const tbody = document.getElementById('wishesTableBody') || document.querySelector('#wishesTable tbody');
+      try {
+        const res = await fetch('../api/rsvp.php');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const json = await res.json();
+        if (json.success) {
+          renderWishesTable(json.data || []);
+          if (json.stats) renderWishesStats(json.stats);
+        } else {
+          throw new Error(json.message || 'Gagal memuat');
+        }
+      } catch (err) {
+        if (tbody) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="6" class="py-8 text-center text-rose-600 bg-rose-50/50 rounded-xl">
+                <i data-lucide="alert-circle" class="w-5 h-5 mx-auto mb-1"></i>
+                <span class="font-medium">Tidak dapat terhubung ke MySQL.</span>
+                <p class="text-[11px] text-inkMuted mt-1">Pastikan Laragon Apache & MySQL sudah di-START, lalu inisialisasi via <a href="../api/setup_db.php" target="_blank" class="underline text-moss font-semibold">api/setup_db.php</a>.</p>
+              </td>
+            </tr>
+          `;
+          lucide.createIcons();
+        }
+      }
+    }
+
+    function renderWishesTable(wishes) {
+      const tbody = document.getElementById('wishesTableBody') || document.querySelector('#wishesTable tbody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      if (wishes.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="py-10 text-center text-inkMuted">
+              <i data-lucide="message-square" class="w-8 h-8 mx-auto mb-2 opacity-40"></i>
+              <span class="block font-medium text-ink">Belum ada doa dan ucapan di basis data.</span>
+              <span class="text-[11px]">Doa dari tamu yang mengisi undangan di website publik akan otomatis muncul di sini.</span>
+            </td>
+          </tr>
+        `;
+        lucide.createIcons();
+        return;
+      }
+
+      wishes.forEach((w, idx) => {
+        let badgeClass = 'bg-badgeGreen text-textGreen';
+        if (w.status_kehadiran === 'Tidak Hadir') badgeClass = 'bg-badgeRed text-textRed';
+        if (w.status_kehadiran === 'Masih Ragu') badgeClass = 'bg-badgeAmber text-textAmber';
+
+        const tr = document.createElement('tr');
+        tr.className = 'wish-row hover:bg-cardMuted/80 transition';
+        tr.setAttribute('data-id', w.id);
+        tr.innerHTML = `
+          <td class="py-3 px-3 font-medium text-inkMuted">${idx + 1}</td>
+          <td class="py-3 px-3">
+            <div class="flex items-center space-x-2.5">
+              <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center font-semibold text-[11px]">${w.initials || 'TT'}</div>
+              <span class="font-semibold text-ink name-col">${w.nama_pengirim}</span>
+            </div>
+          </td>
+          <td class="py-3 px-3 status-col">
+            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium ${badgeClass}">${w.status_kehadiran}</span>
+          </td>
+          <td class="py-3 px-4 text-ink msg-col">${w.pesan_ucapan}</td>
+          <td class="py-3 px-3 text-inkMuted font-mono text-[11px] whitespace-nowrap">${w.formatted_date || 'Hari ini'}</td>
+          <td class="py-3 px-3 text-center">
+            <button onclick="deleteWish(this)" class="p-1 rounded-lg hover:bg-cream text-inkMuted hover:text-rose-600 transition" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+      lucide.createIcons();
+    }
+
+    function renderWishesStats(stats) {
+      // Top 4 Metric Cards
+      const elTotal = document.getElementById('statTotalUcapan');
+      const elHadir = document.getElementById('statHadirUcapan');
+      const elTidakHadir = document.getElementById('statTidakHadirUcapan');
+      const elRagu = document.getElementById('statRaguUcapan');
+
+      if (elTotal) elTotal.innerText = stats.total_ucapan ?? 0;
+      if (elHadir) elHadir.innerText = stats.hadir ?? 0;
+      if (elTidakHadir) elTidakHadir.innerText = stats.tidak_hadir ?? 0;
+      if (elRagu) elRagu.innerText = stats.masih_ragu ?? 0;
+
+      // Right Breakdown Bars & Percentages
+      const total = Number(stats.total_ucapan || 0);
+      const hadir = Number(stats.hadir || 0);
+      const tidakHadir = Number(stats.tidak_hadir || 0);
+      const ragu = Number(stats.masih_ragu || 0);
+
+      const pctHadir = total > 0 ? Math.round((hadir / total) * 100) : 0;
+      const pctTidakHadir = total > 0 ? Math.round((tidakHadir / total) * 100) : 0;
+      const pctRagu = total > 0 ? Math.round((ragu / total) * 100) : 0;
+
+      const lblHadir = document.getElementById('rsvpLabelHadir');
+      const lblTidakHadir = document.getElementById('rsvpLabelTidakHadir');
+      const lblRagu = document.getElementById('rsvpLabelRagu');
+
+      if (lblHadir) lblHadir.innerText = `Hadir (${hadir} orang)`;
+      if (lblTidakHadir) lblTidakHadir.innerText = `Tidak Hadir (${tidakHadir} orang)`;
+      if (lblRagu) lblRagu.innerText = `Masih Ragu (${ragu} orang)`;
+
+      const textHadir = document.getElementById('rsvpPctHadir');
+      const textTidakHadir = document.getElementById('rsvpPctTidakHadir');
+      const textRagu = document.getElementById('rsvpPctRagu');
+
+      if (textHadir) textHadir.innerText = `${pctHadir}%`;
+      if (textTidakHadir) textTidakHadir.innerText = `${pctTidakHadir}%`;
+      if (textRagu) textRagu.innerText = `${pctRagu}%`;
+
+      const barHadir = document.getElementById('rsvpBarHadir');
+      const barTidakHadir = document.getElementById('rsvpBarTidakHadir');
+      const barRagu = document.getElementById('rsvpBarRagu');
+
+      if (barHadir) barHadir.style.width = `${pctHadir}%`;
+      if (barTidakHadir) barTidakHadir.style.width = `${pctTidakHadir}%`;
+      if (barRagu) barRagu.style.width = `${pctRagu}%`;
+    }
+
+    loadWishesFromAPI();
+
+    async function deleteWish(btn) {
+      const row = btn.closest('.wish-row');
+      const wishId = row.getAttribute('data-id');
+      if (confirm('Apakah Anda yakin ingin menghapus ucapan ini?')) {
+        try {
+          if (wishId) {
+            const res = await fetch('../api/rsvp.php?action=delete', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id: wishId })
+            });
+            const json = await res.json();
+            if (!res.ok || !json.success) {
+              alert(json.message || 'Gagal menghapus ucapan.');
+              return;
+            }
+          }
+        } catch(err) {
+          alert('Terjadi kesalahan koneksi saat menghapus ucapan.');
+          return;
+        }
+
+        await loadWishesFromAPI();
         alert('Ucapan berhasil dihapus.');
       }
     }
 
-    function exportToCSV() {
-      const rows = document.querySelectorAll('.wish-row');
-      let csvContent = 'data:text/csv;charset=utf-8,No,Nama Tamu,Status,Ucapan,Tanggal\n';
-      
-      let index = 1;
-      rows.forEach(r => {
-        const name = r.querySelector('.name-col').innerText.replace(/"/g, '""');
-        const stat = r.querySelector('.status-col').innerText.trim().replace(/"/g, '""');
-        const msg = r.querySelector('.msg-col').innerText.replace(/"/g, '""');
-        const date = r.querySelector('td:nth-child(5)').innerText.replace(/"/g, '""');
-        csvContent += `"${index}","${name}","${stat}","${msg}","${date}"\n`;
-        index++;
-      });
-
-      const encodedUri = encodeURI(csvContent);
-      const link = document.createElement('a');
-      link.setAttribute('href', encodedUri);
-      link.setAttribute('download', 'doa_dan_ucapan_fakhrel_olivia.csv');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-
-    function handleSaveWish(e) {
+    async function handleSaveWish(e) {
       e.preventDefault();
-      const name = document.getElementById('newWishName').value;
+      const name = document.getElementById('newWishName').value.trim();
       const status = document.getElementById('newWishStatus').value;
-      const msg = document.getElementById('newWishMessage').value;
+      const msg = document.getElementById('newWishMessage').value.trim();
 
-      let badgeClass = 'bg-badgeGreen text-textGreen';
-      if (status === 'Tidak Hadir') badgeClass = 'bg-badgeRed text-textRed';
-      if (status === 'Masih Ragu') badgeClass = 'bg-badgeAmber text-textAmber';
+      if (!name || !msg) {
+        alert('Mohon isi nama pengirim dan pesan doa restu.');
+        return;
+      }
 
-      const initials = name.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase();
+      try {
+        const res = await fetch('../api/rsvp.php?action=create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nama_pengirim: name,
+            status_kehadiran: status,
+            pesan_ucapan: msg
+          })
+        });
+        const json = await res.json();
+        if (!res.ok || !json.success) {
+          alert(json.message || 'Gagal menyimpan ucapan.');
+          return;
+        }
+      } catch (err) {
+        alert('Terjadi gangguan jaringan saat menambahkan ucapan.');
+        return;
+      }
 
-      const tbody = document.querySelector('#wishesTable tbody');
-      const count = tbody.querySelectorAll('.wish-row').length + 1;
-
-      const tr = document.createElement('tr');
-      tr.className = 'wish-row hover:bg-cardMuted/80 transition';
-      tr.innerHTML = `
-        <td class="py-3 px-3 font-medium text-inkMuted">${count}</td>
-        <td class="py-3 px-3">
-          <div class="flex items-center space-x-2.5">
-            <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center font-semibold text-[11px]">${initials}</div>
-            <span class="font-semibold text-ink name-col">${name}</span>
-          </div>
-        </td>
-        <td class="py-3 px-3 status-col">
-          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium ${badgeClass}">${status}</span>
-        </td>
-        <td class="py-3 px-4 text-ink msg-col">${msg}</td>
-        <td class="py-3 px-3 text-inkMuted font-mono text-[11px] whitespace-nowrap">Hari ini</td>
-        <td class="py-3 px-3 text-center">
-          <button onclick="deleteWish(this)" class="p-1 rounded-lg hover:bg-cream text-inkMuted hover:text-rose-600 transition" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-        </td>
-      `;
-      tbody.prepend(tr);
-      lucide.createIcons();
       closeAddWishModal();
+      await loadWishesFromAPI();
       alert('Ucapan berhasil ditambahkan!');
     }
   </script>

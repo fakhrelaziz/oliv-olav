@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kelola Section 1: Hero & Pembuka — REL | LIV</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            moss: '#2C3424',
+            mossDark: '#1E2519',
+            mossLight: '#3D4933',
+            cream: '#F6F5EE',
+            cardBg: '#FFFFFF',
+            cardMuted: '#FAF9F4',
+            ink: '#22251E',
+            inkMuted: '#6B7264',
+            borderSoft: '#E8E6DC',
+            badgeGreen: '#E2EBE0',
+            textGreen: '#2D5427',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['"Cormorant Garamond"', 'serif'],
+            script: ['Caveat', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="auth-guard.js"></script>
+  <style>
+    .sidebar-bg { background-color: #262E20; }
+    .custom-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #D8D6CC; border-radius: 4px; }
+  </style>
+</head>
+<body class="bg-cream text-ink font-sans min-h-screen flex antialiased">
+
+  <!-- ==================== SIDEBAR ==================== -->
+  <aside class="sidebar-bg w-64 min-h-screen flex-shrink-0 flex flex-col justify-between relative overflow-hidden select-none z-20">
+    <div class="p-6 relative z-10">
+      <a href="index.html" class="flex items-center space-x-3 mb-10 block">
+        <span class="font-display text-2xl font-semibold tracking-[0.28em] text-[#FAF8F2]">REL</span>
+        <span class="text-[#7A8672] text-xl font-light">|</span>
+        <span class="font-display text-2xl font-semibold tracking-[0.28em] text-[#FAF8F2]">LIV</span>
+      </a>
+
+      <nav class="space-y-1.5 text-sm font-medium">
+        <a href="index.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl text-[#C7CFBF] hover:text-white hover:bg-[#323E2A] transition">
+          <i data-lucide="home" class="w-4 h-4"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <a href="kelola-konten.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl bg-[#37442F] text-[#FAF8F2] shadow-sm transition">
+          <i data-lucide="layers" class="w-4 h-4"></i>
+          <span>Kelola Konten</span>
+        </a>
+
+        <!-- Subhalaman Navigasi Cepat -->
+        <div class="pl-4 pr-1 py-1 space-y-1">
+          <a href="section-hero.html" class="flex items-center space-x-2.5 px-3 py-1.5 rounded-xl text-xs bg-[#405036] text-white font-medium transition">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span>Sec 1: Hero & Pembuka</span>
+          </a>
+          <a href="pengantin.html" class="flex items-center space-x-2.5 px-3 py-1.5 rounded-xl text-xs text-[#A8B39E] hover:text-white hover:bg-[#323E2A]/70 transition">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#7A8672]"></span>
+            <span>Sec 2: Mempelai</span>
+          </a>
+          <a href="our-story.html" class="flex items-center space-x-2.5 px-3 py-1.5 rounded-xl text-xs text-[#A8B39E] hover:text-white hover:bg-[#323E2A]/70 transition">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#7A8672]"></span>
+            <span>Sec 3: Our Story</span>
+          </a>
+          <a href="acara.html" class="flex items-center space-x-2.5 px-3 py-1.5 rounded-xl text-xs text-[#A8B39E] hover:text-white hover:bg-[#323E2A]/70 transition">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#7A8672]"></span>
+            <span>Sec 4: Waktu & Lokasi</span>
+          </a>
+          <a href="galeri.html" class="flex items-center space-x-2.5 px-3 py-1.5 rounded-xl text-xs text-[#A8B39E] hover:text-white hover:bg-[#323E2A]/70 transition">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#7A8672]"></span>
+            <span>Sec 5: Galeri Foto</span>
+          </a>
+          <a href="section-penutup.html" class="flex items-center space-x-2.5 px-3 py-1.5 rounded-xl text-xs text-[#A8B39E] hover:text-white hover:bg-[#323E2A]/70 transition">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#7A8672]"></span>
+            <span>Sec 6: RSVP & Penutup</span>
+          </a>
+        </div>
+
+        <a href="rsvp.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl text-[#C7CFBF] hover:text-white hover:bg-[#323E2A] transition">
+          <i data-lucide="message-square" class="w-4 h-4"></i>
+          <span>Tamu & RSVP</span>
+        </a>
+
+        <a href="tamu.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl text-[#C7CFBF] hover:text-white hover:bg-[#323E2A] transition">
+          <i data-lucide="users" class="w-4 h-4"></i>
+          <span>Data Tamu</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="relative w-full pointer-events-none mt-auto">
+      <img src="../aset/section2_bunga.webp" alt="Botanical leaf" class="w-full opacity-20 filter invert object-contain translate-y-6">
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <div class="flex-1 flex flex-col min-w-0 overflow-y-auto custom-scroll">
+    
+    <!-- Topbar Header -->
+    <header class="h-20 bg-cream/90 backdrop-blur-md px-8 flex items-center justify-between border-b border-borderSoft/60 sticky top-0 z-10">
+      <div class="flex items-center space-x-4">
+        <a href="kelola-konten.html" class="p-2 rounded-xl bg-cardBg border border-borderSoft text-ink hover:bg-cardMuted transition" title="Kembali ke Pusat Konten">
+          <i data-lucide="arrow-left" class="w-4 h-4 text-inkMuted"></i>
+        </a>
+        <div>
+          <div class="flex items-center space-x-2 text-[11px] text-inkMuted">
+            <a href="kelola-konten.html" class="hover:underline">Kelola Konten</a>
+            <span>/</span>
+            <span class="text-ink font-semibold">Section 1: Hero &amp; Pembuka</span>
+          </div>
+          <h1 class="font-sans text-lg font-bold text-ink">Hero &amp; Pembuka Undangan</h1>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-3">
+        <a href="../integrated/index.html#home" target="_blank" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-cardBg border border-borderSoft text-xs font-medium text-ink hover:bg-cardMuted hover:border-moss/40 transition shadow-sm">
+          <i data-lucide="eye" class="w-3.5 h-3.5 text-inkMuted"></i>
+          <span>Pratinjau di Web</span>
+        </a>
+        <button type="button" onclick="document.getElementById('formSectionHero').dispatchEvent(new Event('submit'))" class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-moss hover:bg-mossLight text-cream text-xs font-medium transition shadow-sm">
+          <i data-lucide="save" class="w-3.5 h-3.5"></i>
+          <span>Simpan Perubahan</span>
+        </button>
+        <button onclick="handleLogout(event)" title="Keluar / Logout dari Admin Panel" class="p-2.5 rounded-xl bg-cardBg border border-borderSoft text-ink hover:border-rose-300 hover:text-rose-700 transition shadow-sm">
+          <i data-lucide="log-out" class="w-4 h-4 text-gray-400"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="p-8 space-y-6 max-w-[1200px] mx-auto w-full">
+
+      <!-- Header Info Banner -->
+      <div class="bg-cardBg rounded-3xl p-6 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <span class="px-2.5 py-0.5 rounded-full bg-badgeGreen text-textGreen text-[11px] font-semibold">Section 01</span>
+          <h2 class="font-display text-2xl font-semibold text-ink mt-1">Pengaturan Hero &amp; Pembuka</h2>
+          <p class="text-xs text-inkMuted mt-1 leading-relaxed max-w-xl">
+            Section ini adalah tampilan pertama yang dilihat tamu saat membuka tautan undangan. Seluruh perubahan teks dan gambar di bawah ini langsung tersimpan ke basis data.
+          </p>
+        </div>
+        <div class="flex items-center space-x-2 text-xs text-inkMuted bg-cardMuted px-4 py-2 rounded-2xl border border-borderSoft">
+          <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+          <span>Terakhir diperbarui: <strong id="lastUpdatedLabel" class="text-ink">-</strong></span>
+        </div>
+      </div>
+
+      <!-- FORM SECTION HERO -->
+      <form id="formSectionHero" class="space-y-6">
+
+        <!-- Card 1: Teks Utama & Pasangan -->
+        <div class="bg-cardBg rounded-3xl p-7 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] space-y-5">
+          <h3 class="font-display text-xl font-semibold text-ink border-b border-borderSoft/60 pb-3 flex items-center space-x-2">
+            <i data-lucide="type" class="w-4 h-4 text-moss"></i>
+            <span>Teks Utama &amp; Judul Mempelai</span>
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs font-semibold text-ink mb-1.5">Tagline Atas</label>
+              <input type="text" id="input_tagline" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition" placeholder="THE WEDDING OF">
+              <span class="text-[10px] text-inkMuted mt-1 block">Teks kecil di atas judul utama</span>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-ink mb-1.5">Tanggal Pernikahan (Format Tampilan Hero)</label>
+              <input type="text" id="input_wedding_date" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition" placeholder="25 OCTOBER 2026">
+              <span class="text-[10px] text-inkMuted mt-1 block">Contoh: 25 OCTOBER 2026</span>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-ink mb-1.5">Nama Panggilan Mempelai Pria (Groom)</label>
+              <input type="text" id="input_groom_nickname" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition" placeholder="Fakhrel">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-ink mb-1.5">Nama Panggilan Mempelai Wanita (Bride)</label>
+              <input type="text" id="input_bride_nickname" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition" placeholder="Olivia">
+            </div>
+
+            <div class="md:col-span-2">
+              <label class="block text-xs font-semibold text-ink mb-1.5">Teks Salam Pembuka Undangan</label>
+              <textarea id="input_salam_text" rows="3" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition leading-relaxed resize-none" placeholder="Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir dalam hari bahagia kami."></textarea>
+              <span class="text-[10px] text-inkMuted mt-1 block">Ditampilkan di bawah nama tamu personal pada cover</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Ornamen Samping & Footer Hero -->
+        <div class="bg-cardBg rounded-3xl p-7 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] space-y-5">
+          <h3 class="font-display text-xl font-semibold text-ink border-b border-borderSoft/60 pb-3 flex items-center space-x-2">
+            <i data-lucide="feather" class="w-4 h-4 text-moss"></i>
+            <span>Ornamen Kaligrafi &amp; Lokasi Kota</span>
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div>
+              <label class="block text-xs font-semibold text-ink mb-1.5">Teks Ornamen Samping Kanan</label>
+              <textarea id="input_side_text" rows="4" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition leading-relaxed resize-none" placeholder="SAME&#10;PEOPLE&#10;BRIGHTER&#10;DAYS"></textarea>
+              <span class="text-[10px] text-inkMuted mt-1 block">Teks vertikal di sisi kanan layar desktop (gunakan baris baru)</span>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-ink mb-1.5">Teks Script Kaligrafi Bawah</label>
+              <textarea id="input_script_text" rows="4" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition leading-relaxed resize-none" placeholder="A new&#10;chapter&#10;together"></textarea>
+              <span class="text-[10px] text-inkMuted mt-1 block">Teks tulisan sambung miring di kanan bawah</span>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-ink mb-1.5">Kota / Lokasi Dasar</label>
+              <input type="text" id="input_city" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition" placeholder="JAKARTA, INDONESIA">
+              <span class="text-[10px] text-inkMuted mt-1 block">Teks kecil di sudut kanan bawah cover</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Background Hero Images -->
+        <div class="bg-cardBg rounded-3xl p-7 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] space-y-5">
+          <h3 class="font-display text-xl font-semibold text-ink border-b border-borderSoft/60 pb-3 flex items-center space-x-2">
+            <i data-lucide="image" class="w-4 h-4 text-moss"></i>
+            <span>Gambar Background Hero Cover</span>
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Desktop Background -->
+            <div class="space-y-3">
+              <label class="block text-xs font-semibold text-ink">Background Versi Desktop (Layar Lebar)</label>
+              <div onclick="document.getElementById('file_bg_desktop').click()" class="h-44 rounded-2xl overflow-hidden bg-cardMuted border border-borderSoft relative group cursor-pointer">
+                <img id="preview_bg_desktop" src="../asetV2/background_herosection(desktop).webp" alt="Preview Desktop" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                  <span class="px-3.5 py-1.5 rounded-full bg-white/95 text-[11px] font-semibold text-ink shadow flex items-center space-x-1.5">
+                    <i data-lucide="upload" class="w-3.5 h-3.5 text-moss"></i>
+                    <span>Klik untuk Ganti Foto</span>
+                  </span>
+                </div>
+              </div>
+              <input type="hidden" id="input_bg_desktop" value="../asetV2/background_herosection(desktop).webp">
+              <input type="file" id="file_bg_desktop" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" onchange="uploadPhotoFile(this, 'input_bg_desktop', 'preview_bg_desktop', 'status_bg_desktop', 'hero_desktop')">
+              <div class="flex items-center justify-between">
+                <button type="button" onclick="document.getElementById('file_bg_desktop').click()" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-cardMuted hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition">
+                  <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                  <span>Upload Foto Desktop</span>
+                </button>
+                <span id="status_bg_desktop" class="text-[10px] text-inkMuted block">Format JPG, PNG, WEBP (Maks 10MB)</span>
+              </div>
+            </div>
+
+            <!-- Mobile Background -->
+            <div class="space-y-3">
+              <label class="block text-xs font-semibold text-ink">Background Versi Mobile (Smartphone)</label>
+              <div onclick="document.getElementById('file_bg_mobile').click()" class="h-44 rounded-2xl overflow-hidden bg-cardMuted border border-borderSoft relative group cursor-pointer">
+                <img id="preview_bg_mobile" src="../asetV2/background_herosection.webp" alt="Preview Mobile" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                  <span class="px-3.5 py-1.5 rounded-full bg-white/95 text-[11px] font-semibold text-ink shadow flex items-center space-x-1.5">
+                    <i data-lucide="upload" class="w-3.5 h-3.5 text-moss"></i>
+                    <span>Klik untuk Ganti Foto</span>
+                  </span>
+                </div>
+              </div>
+              <input type="hidden" id="input_bg_mobile" value="../asetV2/background_herosection.webp">
+              <input type="file" id="file_bg_mobile" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" onchange="uploadPhotoFile(this, 'input_bg_mobile', 'preview_bg_mobile', 'status_bg_mobile', 'hero_mobile')">
+              <div class="flex items-center justify-between">
+                <button type="button" onclick="document.getElementById('file_bg_mobile').click()" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-cardMuted hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition">
+                  <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                  <span>Upload Foto Mobile</span>
+                </button>
+                <span id="status_bg_mobile" class="text-[10px] text-inkMuted block">Format JPG, PNG, WEBP (Maks 10MB)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button Bar -->
+        <div class="flex items-center justify-between pt-4 pb-12">
+          <a href="kelola-konten.html" class="inline-flex items-center space-x-2 text-xs font-medium text-inkMuted hover:text-moss transition">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            <span>Kembali ke Pusat Konten</span>
+          </a>
+
+          <button type="submit" id="submitBtn" class="inline-flex items-center space-x-2 px-6 py-3 rounded-2xl bg-moss hover:bg-mossLight text-cream text-xs font-medium transition shadow-md hover:shadow-lg">
+            <i data-lucide="save" class="w-4 h-4"></i>
+            <span>Simpan Perubahan Section 1</span>
+          </button>
+        </div>
+      </form>
+
+    </main>
+  </div>
+
+  <!-- Toast Notifikasi -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-moss text-cream px-5 py-3.5 rounded-2xl shadow-xl flex items-center space-x-3 transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none">
+    <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400"></i>
+    <span id="toastMsg" class="text-xs font-medium">Perubahan berhasil disimpan!</span>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.innerText = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+      }, 3500);
+    }
+
+    async function loadHeroData() {
+      try {
+        const res = await fetch('../api/konten.php?action=get_section&key=section_1_hero');
+        if (!res.ok) return;
+        const json = await res.json();
+        if (json.success && json.data) {
+          const d = json.data;
+          if (d.tagline) document.getElementById('input_tagline').value = d.tagline;
+          if (d.wedding_date) document.getElementById('input_wedding_date').value = d.wedding_date;
+          if (d.groom_nickname) document.getElementById('input_groom_nickname').value = d.groom_nickname;
+          if (d.bride_nickname) document.getElementById('input_bride_nickname').value = d.bride_nickname;
+          if (d.salam_text) document.getElementById('input_salam_text').value = d.salam_text;
+          if (d.side_text) document.getElementById('input_side_text').value = d.side_text;
+          if (d.script_text) document.getElementById('input_script_text').value = d.script_text;
+          if (d.city) document.getElementById('input_city').value = d.city;
+          if (d.bg_desktop) {
+            document.getElementById('input_bg_desktop').value = d.bg_desktop;
+            document.getElementById('preview_bg_desktop').src = d.bg_desktop;
+          }
+          if (d.bg_mobile) {
+            document.getElementById('input_bg_mobile').value = d.bg_mobile;
+            document.getElementById('preview_bg_mobile').src = d.bg_mobile;
+          }
+          if (json.updated_at) {
+            document.getElementById('lastUpdatedLabel').innerText = json.updated_at;
+          }
+        }
+      } catch (e) {
+        console.error('Error loadHeroData:', e);
+      }
+    }
+
+    document.getElementById('formSectionHero').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const origText = btn.innerHTML;
+      btn.innerHTML = '<span>Menyimpan ke database...</span>';
+      btn.disabled = true;
+
+      const payload = {
+        section_key: 'section_1_hero',
+        nama_section: 'Section 1: Hero & Pembuka',
+        data: {
+          tagline: document.getElementById('input_tagline').value.trim(),
+          wedding_date: document.getElementById('input_wedding_date').value.trim(),
+          groom_nickname: document.getElementById('input_groom_nickname').value.trim(),
+          bride_nickname: document.getElementById('input_bride_nickname').value.trim(),
+          couple_title: document.getElementById('input_groom_nickname').value.trim() + ' and ' + document.getElementById('input_bride_nickname').value.trim(),
+          salam_text: document.getElementById('input_salam_text').value.trim(),
+          side_text: document.getElementById('input_side_text').value.trim(),
+          script_text: document.getElementById('input_script_text').value.trim(),
+          city: document.getElementById('input_city').value.trim(),
+          bg_desktop: document.getElementById('input_bg_desktop').value.trim(),
+          bg_mobile: document.getElementById('input_bg_mobile').value.trim()
+        }
+      };
+
+      try {
+        const res = await fetch('../api/konten.php?action=save_section', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const json = await res.json();
+        if (json.success) {
+          showToast('Konten Section 1 berhasil disimpan ke database!');
+          if (json.updated_at) document.getElementById('lastUpdatedLabel').innerText = json.updated_at;
+        } else {
+          alert('Gagal menyimpan: ' + (json.message || 'Terjadi kesalahan'));
+        }
+      } catch (err) {
+        alert('Terjadi kesalahan jaringan.');
+      } finally {
+        btn.innerHTML = origText;
+        btn.disabled = false;
+        lucide.createIcons();
+      }
+    });
+
+    loadHeroData();
+  </script>
+</body>
+</html>
+

@@ -39,6 +39,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="auth-guard.js"></script>
   <style>
     .sidebar-bg { background-color: #262E20; }
     .custom-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
@@ -109,12 +110,13 @@
           <i data-lucide="share-2" class="w-3.5 h-3.5 text-inkMuted"></i>
           <span>Bagikan</span>
         </button>
+        <!-- Profile & Logout -->
         <div class="relative">
-          <a href="login.html" title="Keluar / Logout" class="inline-flex items-center space-x-2.5 pl-2 pr-3 py-1.5 rounded-full bg-cardBg border border-borderSoft hover:border-rose-300 hover:text-rose-700 transition shadow-sm">
+          <button onclick="handleLogout(event)" title="Keluar / Logout dari Admin Panel" class="inline-flex items-center space-x-2.5 pl-2 pr-3 py-1.5 rounded-full bg-cardBg border border-borderSoft hover:border-rose-300 hover:text-rose-700 transition shadow-sm">
             <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#35492E] flex items-center justify-center font-display font-semibold text-xs">FO</div>
-            <span class="text-xs font-medium text-ink">Fakhrel & Olivia</span>
+            <span class="text-xs font-medium text-ink admin-profile-name">Fakhrel &amp; Olivia</span>
             <i data-lucide="log-out" class="w-3.5 h-3.5 text-gray-400"></i>
-          </a>
+          </button>
         </div>
       </div>
     </header>
@@ -132,7 +134,7 @@
             </div>
             <span class="text-xs font-medium text-inkMuted">Total Tamu</span>
           </div>
-          <span id="statTotalTamu" class="text-2xl font-bold text-ink">120</span>
+          <span id="statTotalTamu" class="text-2xl font-bold text-ink">0</span>
           <span class="text-[11px] text-emerald-700 font-medium block mt-0.5">▲ Terdata aktif</span>
           <img src="../aset/section2_bunga.webp" alt="deco" class="absolute -bottom-4 -right-4 w-16 opacity-15 pointer-events-none">
         </div>
@@ -145,11 +147,11 @@
             </div>
             <span class="text-xs font-medium text-inkMuted">Hadir</span>
           </div>
-          <span id="statHadir" class="text-2xl font-bold text-emerald-700">85</span>
+          <span id="statHadir" class="text-2xl font-bold text-emerald-700">0</span>
           <div class="w-full bg-[#EBE9DE] h-1.5 rounded-full overflow-hidden mt-1.5 mb-1">
-            <div id="barHadir" class="bg-emerald-600 h-full rounded-full transition-all duration-300" style="width: 70.8%;"></div>
+            <div id="barHadir" class="bg-emerald-600 h-full rounded-full transition-all duration-300" style="width: 0%;"></div>
           </div>
-          <span id="pctHadir" class="text-[10px] text-inkMuted block">70,8% dari total</span>
+          <span id="pctHadir" class="text-[10px] text-inkMuted block">0% dari total</span>
         </div>
 
         <!-- 3. Tidak Hadir -->
@@ -160,11 +162,11 @@
             </div>
             <span class="text-xs font-medium text-inkMuted">Tidak Hadir</span>
           </div>
-          <span id="statTidakHadir" class="text-2xl font-bold text-rose-700">25</span>
+          <span id="statTidakHadir" class="text-2xl font-bold text-rose-700">0</span>
           <div class="w-full bg-[#EBE9DE] h-1.5 rounded-full overflow-hidden mt-1.5 mb-1">
-            <div id="barTidakHadir" class="bg-rose-500 h-full rounded-full transition-all duration-300" style="width: 20.8%;"></div>
+            <div id="barTidakHadir" class="bg-rose-500 h-full rounded-full transition-all duration-300" style="width: 0%;"></div>
           </div>
-          <span id="pctTidakHadir" class="text-[10px] text-inkMuted block">20,8% dari total</span>
+          <span id="pctTidakHadir" class="text-[10px] text-inkMuted block">0% dari total</span>
         </div>
 
         <!-- 4. Belum Konfirmasi -->
@@ -175,11 +177,11 @@
             </div>
             <span class="text-xs font-medium text-inkMuted">Belum Konfirmasi</span>
           </div>
-          <span id="statBelumKonfirmasi" class="text-2xl font-bold text-amber-700">10</span>
+          <span id="statBelumKonfirmasi" class="text-2xl font-bold text-amber-700">0</span>
           <div class="w-full bg-[#EBE9DE] h-1.5 rounded-full overflow-hidden mt-1.5 mb-1">
-            <div id="barBelumKonfirmasi" class="bg-amber-500 h-full rounded-full transition-all duration-300" style="width: 8.3%;"></div>
+            <div id="barBelumKonfirmasi" class="bg-amber-500 h-full rounded-full transition-all duration-300" style="width: 0%;"></div>
           </div>
-          <span id="pctBelumKonfirmasi" class="text-[10px] text-inkMuted block">8,3% dari total</span>
+          <span id="pctBelumKonfirmasi" class="text-[10px] text-inkMuted block">0% dari total</span>
         </div>
       </div>
 
@@ -231,150 +233,24 @@
               </tr>
             </thead>
             <tbody class="divide-y divide-borderSoft/60" id="guestRows">
-              
-              <!-- 1. Ahmad Fauzi -->
-              <tr class="guest-row hover:bg-cardMuted/80 transition">
-                <td class="py-3.5 px-4 text-inkMuted font-medium">1</td>
-                <td class="py-3.5 px-4 font-semibold text-ink guest-name">Ahmad Fauzi</td>
-                <td class="py-3.5 px-4 text-center font-mono text-ink">2</td>
-                <td class="py-3.5 px-4">
-                  <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
-                </td>
-                <td class="py-3.5 px-4 text-center">
-                  <div class="inline-flex items-center space-x-2 text-inkMuted">
-                    <button onclick="editGuest(this)" class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
-                    <button onclick="deleteGuest(this)" class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-                    <button onclick="copyGuestInvite('Ahmad Fauzi')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
+              <tr id="guestLoadingRow">
+                <td colspan="5" class="py-10 text-center text-inkMuted">
+                  <div class="inline-flex items-center space-x-2.5">
+                    <svg class="animate-spin h-4 w-4 text-moss" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                    </svg>
+                    <span>Menghubungkan ke basis data MySQL...</span>
                   </div>
                 </td>
               </tr>
-
-              <!-- 2. Siti Nurhaliza -->
-              <tr class="guest-row hover:bg-cardMuted/80 transition">
-                <td class="py-3.5 px-4 text-inkMuted font-medium">2</td>
-                <td class="py-3.5 px-4 font-semibold text-ink guest-name">Siti Nurhaliza</td>
-                <td class="py-3.5 px-4 text-center font-mono text-ink">1</td>
-                <td class="py-3.5 px-4">
-                  <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-badgeAmber text-textAmber">Belum Konfirmasi</span>
-                </td>
-                <td class="py-3.5 px-4 text-center">
-                  <div class="inline-flex items-center space-x-2 text-inkMuted">
-                    <button onclick="editGuest(this)" class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
-                    <button onclick="deleteGuest(this)" class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-                    <button onclick="copyGuestInvite('Siti Nurhaliza')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
-                  </div>
-                </td>
-              </tr>
-
-              <!-- 3. Rizky Maulana -->
-              <tr class="guest-row hover:bg-cardMuted/80 transition">
-                <td class="py-3.5 px-4 text-inkMuted font-medium">3</td>
-                <td class="py-3.5 px-4 font-semibold text-ink guest-name">Rizky Maulana</td>
-                <td class="py-3.5 px-4 text-center font-mono text-ink">3</td>
-                <td class="py-3.5 px-4">
-                  <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
-                </td>
-                <td class="py-3.5 px-4 text-center">
-                  <div class="inline-flex items-center space-x-2 text-inkMuted">
-                    <button onclick="editGuest(this)" class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
-                    <button onclick="deleteGuest(this)" class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-                    <button onclick="copyGuestInvite('Rizky Maulana')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
-                  </div>
-                </td>
-              </tr>
-
-              <!-- 4. Dewi Lestari -->
-              <tr class="guest-row hover:bg-cardMuted/80 transition">
-                <td class="py-3.5 px-4 text-inkMuted font-medium">4</td>
-                <td class="py-3.5 px-4 font-semibold text-ink guest-name">Dewi Lestari</td>
-                <td class="py-3.5 px-4 text-center font-mono text-ink">2</td>
-                <td class="py-3.5 px-4">
-                  <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-badgeRed text-textRed">Tidak Hadir</span>
-                </td>
-                <td class="py-3.5 px-4 text-center">
-                  <div class="inline-flex items-center space-x-2 text-inkMuted">
-                    <button onclick="editGuest(this)" class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
-                    <button onclick="deleteGuest(this)" class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-                    <button onclick="copyGuestInvite('Dewi Lestari')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
-                  </div>
-                </td>
-              </tr>
-
-              <!-- 5. Fajar Ramadhan -->
-              <tr class="guest-row hover:bg-cardMuted/80 transition">
-                <td class="py-3.5 px-4 text-inkMuted font-medium">5</td>
-                <td class="py-3.5 px-4 font-semibold text-ink guest-name">Fajar Ramadhan</td>
-                <td class="py-3.5 px-4 text-center font-mono text-ink">1</td>
-                <td class="py-3.5 px-4">
-                  <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
-                </td>
-                <td class="py-3.5 px-4 text-center">
-                  <div class="inline-flex items-center space-x-2 text-inkMuted">
-                    <button onclick="editGuest(this)" class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
-                    <button onclick="deleteGuest(this)" class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-                    <button onclick="copyGuestInvite('Fajar Ramadhan')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
-                  </div>
-                </td>
-              </tr>
-
-              <!-- 6. Putri Ananda -->
-              <tr class="guest-row hover:bg-cardMuted/80 transition">
-                <td class="py-3.5 px-4 text-inkMuted font-medium">6</td>
-                <td class="py-3.5 px-4 font-semibold text-ink guest-name">Putri Ananda</td>
-                <td class="py-3.5 px-4 text-center font-mono text-ink">2</td>
-                <td class="py-3.5 px-4">
-                  <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
-                </td>
-                <td class="py-3.5 px-4 text-center">
-                  <div class="inline-flex items-center space-x-2 text-inkMuted">
-                    <button onclick="editGuest(this)" class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
-                    <button onclick="deleteGuest(this)" class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-                    <button onclick="copyGuestInvite('Putri Ananda')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
-                  </div>
-                </td>
-              </tr>
-
-              <!-- 7. Budi Santoso -->
-              <tr class="guest-row hover:bg-cardMuted/80 transition">
-                <td class="py-3.5 px-4 text-inkMuted font-medium">7</td>
-                <td class="py-3.5 px-4 font-semibold text-ink guest-name">Budi Santoso</td>
-                <td class="py-3.5 px-4 text-center font-mono text-ink">1</td>
-                <td class="py-3.5 px-4">
-                  <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-badgeAmber text-textAmber">Belum Konfirmasi</span>
-                </td>
-                <td class="py-3.5 px-4 text-center">
-                  <div class="inline-flex items-center space-x-2 text-inkMuted">
-                    <button onclick="editGuest(this)" class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
-                    <button onclick="deleteGuest(this)" class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-                    <button onclick="copyGuestInvite('Budi Santoso')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
-                  </div>
-                </td>
-              </tr>
-
-              <!-- 8. Nadia Rahma -->
-              <tr class="guest-row hover:bg-cardMuted/80 transition">
-                <td class="py-3.5 px-4 text-inkMuted font-medium">8</td>
-                <td class="py-3.5 px-4 font-semibold text-ink guest-name">Nadia Rahma</td>
-                <td class="py-3.5 px-4 text-center font-mono text-ink">2</td>
-                <td class="py-3.5 px-4">
-                  <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
-                </td>
-                <td class="py-3.5 px-4 text-center">
-                  <div class="inline-flex items-center space-x-2 text-inkMuted">
-                    <button onclick="editGuest(this)" class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
-                    <button onclick="deleteGuest(this)" class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-                    <button onclick="copyGuestInvite('Nadia Rahma')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
-                  </div>
-                </td>
-              </tr>
-
             </tbody>
           </table>
         </div>
 
         <!-- Pagination -->
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-6 mt-4 border-t border-borderSoft/60 relative z-10 text-xs">
-          <span class="text-inkMuted">Menampilkan 1 - 8 dari 120 tamu</span>
+          <span id="paginationInfo" class="text-inkMuted">Menghubungkan data...</span>
 
           <div class="flex items-center space-x-1.5">
             <button class="w-7 h-7 rounded-lg border border-borderSoft bg-cardMuted text-inkMuted hover:bg-[#EFECE0] flex items-center justify-center transition">
@@ -521,76 +397,197 @@
       openModalEditGuest();
     }
 
-    function handleSaveEditGuest(e) {
-      e.preventDefault();
-      if (!activeEditRow) return;
-
-      const name = document.getElementById('editGuestName').value;
-      const pax = document.getElementById('editGuestPax').value;
-      const status = document.getElementById('editGuestStatus').value;
-
-      let badgeClass = 'bg-badgeAmber text-textAmber';
-      if (status === 'Hadir') badgeClass = 'bg-badgeGreen text-textGreen';
-      if (status === 'Tidak Hadir') badgeClass = 'bg-badgeRed text-textRed';
-
-      activeEditRow.querySelector('.guest-name').innerText = name;
-      activeEditRow.querySelector('td:nth-child(3)').innerText = pax;
-      activeEditRow.querySelector('td:nth-child(4)').innerHTML = `<span class="px-3 py-1 rounded-full text-[11px] font-medium ${badgeClass}">${status}</span>`;
-
-      // Update copy button onclick
-      const copyBtn = activeEditRow.querySelector('button[title="Salin Link Undangan"]');
-      if (copyBtn) copyBtn.setAttribute('onclick', `copyGuestInvite('${name}')`);
-
-      closeModalEditGuest();
-      recalculateStats();
-      alert('Data tamu berhasil diperbarui!');
-    }
-
-    function deleteGuest(btn) {
-      const row = btn.closest('.guest-row');
-      const name = row.querySelector('.guest-name').innerText.trim();
-      if (confirm(`Apakah Anda yakin ingin menghapus data tamu "${name}"?`)) {
-        row.remove();
-        recalculateStats();
-        alert(`Data tamu "${name}" telah dihapus.`);
+    // ====================================================================
+    // API INTEGRATION & DYNAMIC CRUD
+    // ====================================================================
+    async function loadGuestsFromAPI() {
+      const tbody = document.getElementById('guestRows');
+      const pageInfo = document.getElementById('paginationInfo');
+      try {
+        const res = await fetch('../api/tamu.php');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const json = await res.json();
+        if (json.success) {
+          renderGuestsTable(json.data || []);
+          if (json.stats) renderStatsFromAPI(json.stats);
+          if (pageInfo) pageInfo.innerText = `Menampilkan ${json.data ? json.data.length : 0} dari ${json.stats ? json.stats.total_tamu : 0} tamu terdaftar`;
+        } else {
+          throw new Error(json.message || 'Gagal memuat');
+        }
+      } catch (err) {
+        if (tbody) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="5" class="py-8 text-center text-rose-600 bg-rose-50/50 rounded-xl">
+                <i data-lucide="alert-circle" class="w-5 h-5 mx-auto mb-1"></i>
+                <span class="font-medium">Tidak dapat terhubung ke MySQL.</span>
+                <p class="text-[11px] text-inkMuted mt-1">Pastikan Laragon Apache & MySQL sudah di-START, lalu inisialisasi via <a href="../api/setup_db.php" target="_blank" class="underline text-moss font-semibold">api/setup_db.php</a>.</p>
+              </td>
+            </tr>
+          `;
+          lucide.createIcons();
+        }
+        if (pageInfo) pageInfo.innerText = 'Koneksi database gagal';
       }
     }
 
-    function handleSaveGuest(e) {
+    function renderGuestsTable(guests) {
+      const tbody = document.getElementById('guestRows');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      if (guests.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" class="py-10 text-center text-inkMuted">
+              <i data-lucide="users" class="w-8 h-8 mx-auto mb-2 opacity-40"></i>
+              <span class="block font-medium text-ink">Belum ada tamu di basis data.</span>
+              <span class="text-[11px]">Klik tombol "Tambah Tamu" di atas untuk menambahkan tamu pertama.</span>
+            </td>
+          </tr>
+        `;
+        lucide.createIcons();
+        return;
+      }
+
+      guests.forEach((g, idx) => {
+        let badgeClass = 'bg-badgeAmber text-textAmber';
+        if (g.status === 'Hadir') badgeClass = 'bg-badgeGreen text-textGreen';
+        if (g.status === 'Tidak Hadir') badgeClass = 'bg-badgeRed text-textRed';
+
+        const tr = document.createElement('tr');
+        tr.className = 'guest-row hover:bg-cardMuted/80 transition';
+        tr.setAttribute('data-id', g.id);
+        tr.innerHTML = `
+          <td class="py-3.5 px-4 text-inkMuted font-medium">${idx + 1}</td>
+          <td class="py-3.5 px-4 font-semibold text-ink guest-name">${g.nama}</td>
+          <td class="py-3.5 px-4 text-center font-mono text-ink">${g.jumlah_undangan}</td>
+          <td class="py-3.5 px-4">
+            <span class="px-3 py-1 rounded-full text-[11px] font-medium ${badgeClass}">${g.status}</span>
+          </td>
+          <td class="py-3.5 px-4 text-center">
+            <div class="inline-flex items-center space-x-2 text-inkMuted">
+              <button onclick="editGuest(this)" class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+              <button onclick="deleteGuest(this)" class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+              <button onclick="copyGuestInvite('${g.nama}')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+      lucide.createIcons();
+    }
+
+    function renderStatsFromAPI(stats) {
+      document.getElementById('statTotalTamu').innerText = stats.total_tamu;
+      document.getElementById('statHadir').innerText = stats.hadir;
+      document.getElementById('statTidakHadir').innerText = stats.tidak_hadir;
+      document.getElementById('statBelumKonfirmasi').innerText = stats.belum_konfirmasi;
+
+      document.getElementById('barHadir').style.width = stats.pct_hadir + '%';
+      document.getElementById('pctHadir').innerText = (stats.pct_hadir + '').replace('.', ',') + '% dari total';
+
+      document.getElementById('barTidakHadir').style.width = stats.pct_tidak_hadir + '%';
+      document.getElementById('pctTidakHadir').innerText = (stats.pct_tidak_hadir + '').replace('.', ',') + '% dari total';
+
+      document.getElementById('barBelumKonfirmasi').style.width = stats.pct_belum_konfirmasi + '%';
+      document.getElementById('pctBelumKonfirmasi').innerText = (stats.pct_belum_konfirmasi + '').replace('.', ',') + '% dari total';
+    }
+
+    // Panggil saat halaman dibuka
+    loadGuestsFromAPI();
+
+    async function handleSaveEditGuest(e) {
       e.preventDefault();
-      const name = document.getElementById('newGuestName').value;
+      if (!activeEditRow) return;
+
+      const guestId = activeEditRow.getAttribute('data-id');
+      const name = document.getElementById('editGuestName').value.trim();
+      const pax = document.getElementById('editGuestPax').value;
+      const status = document.getElementById('editGuestStatus').value;
+
+      if (!name) {
+        alert('Nama tamu tidak boleh kosong.');
+        return;
+      }
+
+      try {
+        if (guestId) {
+          const res = await fetch('../api/tamu.php?action=update', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: guestId, nama: name, jumlah_undangan: pax, status: status })
+          });
+          const result = await res.json();
+          if (!result.success) {
+            alert(result.message || 'Gagal memperbarui data tamu.');
+            return;
+          }
+        }
+        closeModalEditGuest();
+        await loadGuestsFromAPI();
+        alert('Data tamu berhasil diperbarui!');
+      } catch (err) {
+        alert('Terjadi kesalahan jaringan atau basis data.');
+      }
+    }
+
+    async function deleteGuest(btn) {
+      const row = btn.closest('.guest-row');
+      const guestId = row.getAttribute('data-id');
+      const name = row.querySelector('.guest-name').innerText.trim();
+
+      if (confirm(`Apakah Anda yakin ingin menghapus data tamu "${name}"?`)) {
+        try {
+          if (guestId) {
+            const res = await fetch('../api/tamu.php?action=delete', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id: guestId })
+            });
+            const result = await res.json();
+            if (!result.success) {
+              alert(result.message || 'Gagal menghapus data tamu.');
+              return;
+            }
+          }
+          await loadGuestsFromAPI();
+          alert(`Data tamu "${name}" telah dihapus.`);
+        } catch (err) {
+          alert('Gagal menghubungi server.');
+        }
+      }
+    }
+
+    async function handleSaveGuest(e) {
+      e.preventDefault();
+      const name = document.getElementById('newGuestName').value.trim();
       const pax = document.getElementById('newGuestPax').value;
       const status = document.getElementById('newGuestStatus').value;
 
-      let badgeClass = 'bg-badgeAmber text-textAmber';
-      if (status === 'Hadir') badgeClass = 'bg-badgeGreen text-textGreen';
-      if (status === 'Tidak Hadir') badgeClass = 'bg-badgeRed text-textRed';
+      if (!name) {
+        alert('Nama lengkap tamu wajib diisi.');
+        return;
+      }
 
-      const tbody = document.getElementById('guestRows');
-      const count = tbody.querySelectorAll('.guest-row').length + 1;
-
-      const tr = document.createElement('tr');
-      tr.className = 'guest-row hover:bg-cardMuted/80 transition';
-      tr.innerHTML = `
-        <td class="py-3.5 px-4 text-inkMuted font-medium">${count}</td>
-        <td class="py-3.5 px-4 font-semibold text-ink guest-name">${name}</td>
-        <td class="py-3.5 px-4 text-center font-mono text-ink">${pax}</td>
-        <td class="py-3.5 px-4">
-          <span class="px-3 py-1 rounded-full text-[11px] font-medium ${badgeClass}">${status}</span>
-        </td>
-        <td class="py-3.5 px-4 text-center">
-          <div class="inline-flex items-center space-x-2 text-inkMuted">
-            <button onclick="editGuest(this)" class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
-            <button onclick="deleteGuest(this)" class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-            <button onclick="copyGuestInvite('${name}')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
-          </div>
-        </td>
-      `;
-      tbody.prepend(tr);
-      lucide.createIcons();
-      closeModalGuest();
-      recalculateStats();
-      alert("Tamu " + name + " berhasil ditambahkan!");
+      try {
+        const res = await fetch('../api/tamu.php?action=create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nama: name, jumlah_undangan: pax, status: status })
+        });
+        const result = await res.json();
+        if (result.success) {
+          closeModalGuest();
+          document.getElementById('newGuestName').value = '';
+          await loadGuestsFromAPI();
+          alert(result.message || `Tamu "${name}" berhasil ditambahkan!`);
+        } else {
+          alert(result.message || 'Gagal menambahkan tamu.');
+        }
+      } catch (err) {
+        alert('Terjadi kesalahan jaringan atau database.');
+      }
     }
 
     function recalculateStats() {

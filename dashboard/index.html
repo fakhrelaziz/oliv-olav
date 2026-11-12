@@ -40,6 +40,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="auth-guard.js"></script>
   <style>
     .sidebar-bg {
       background-color: #262E20;
@@ -130,13 +131,13 @@
           <span>Bagikan</span>
         </button>
 
-        <!-- Profile Dropdown -->
+        <!-- Profile & Logout -->
         <div class="relative">
-          <a href="login.html" title="Keluar / Logout" class="inline-flex items-center space-x-2.5 pl-2 pr-3 py-1.5 rounded-full bg-cardBg border border-borderSoft hover:border-rose-300 hover:text-rose-700 transition shadow-sm">
+          <button onclick="handleLogout(event)" title="Keluar / Logout dari Admin Panel" class="inline-flex items-center space-x-2.5 pl-2 pr-3 py-1.5 rounded-full bg-cardBg border border-borderSoft hover:border-rose-300 hover:text-rose-700 transition shadow-sm">
             <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#35492E] flex items-center justify-center font-display font-semibold text-xs">FO</div>
-            <span class="text-xs font-medium text-ink">Fakhrel & Olivia</span>
+            <span class="text-xs font-medium text-ink admin-profile-name">Fakhrel &amp; Olivia</span>
             <i data-lucide="log-out" class="w-3.5 h-3.5 text-gray-400"></i>
-          </a>
+          </button>
         </div>
       </div>
     </header>
@@ -258,8 +259,8 @@
           </div>
           <div>
             <span class="text-xs font-medium text-inkMuted block">Pengunjung</span>
-            <span class="text-2xl font-bold text-ink">1.284</span>
-            <span class="text-[11px] text-emerald-700 font-medium block mt-0.5">▲ +14% dari minggu lalu</span>
+            <span id="metricTotalPengunjung" class="text-2xl font-bold text-ink">0</span>
+            <span id="metricGrowthPengunjung" class="text-[11px] text-inkMuted font-medium block mt-0.5">Memuat data...</span>
           </div>
         </div>
 
@@ -270,8 +271,8 @@
           </div>
           <div>
             <span class="text-xs font-medium text-inkMuted block">RSVP</span>
-            <span class="text-2xl font-bold text-ink">176</span>
-            <span class="text-[11px] text-inkMuted font-medium block mt-0.5">85 Hadir • 25 Tidak • 10 Ragu</span>
+            <span id="metricTotalRsvp" class="text-2xl font-bold text-ink">0</span>
+            <span id="metricSubRsvp" class="text-[11px] text-inkMuted font-medium block mt-0.5">Memuat data...</span>
           </div>
         </div>
 
@@ -282,8 +283,8 @@
           </div>
           <div>
             <span class="text-xs font-medium text-inkMuted block">Ucapan</span>
-            <span class="text-2xl font-bold text-ink">98</span>
-            <span class="text-[11px] text-inkMuted font-medium block mt-0.5">Doa restu dari para sahabat</span>
+            <span id="metricTotalUcapan" class="text-2xl font-bold text-ink">0</span>
+            <span id="metricSubUcapan" class="text-[11px] text-inkMuted font-medium block mt-0.5">Doa restu dari para sahabat</span>
           </div>
         </div>
       </div>
@@ -298,75 +299,14 @@
             <a href="rsvp.html" class="text-xs font-medium text-inkMuted hover:text-moss transition">Lihat Semua</a>
           </div>
 
-          <div class="space-y-3.5">
-            <!-- Row 1: Budi Santo -->
-            <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-cardMuted transition border border-transparent hover:border-borderSoft/60">
-              <div class="flex items-center space-x-3.5">
-                <div class="w-9 h-9 rounded-full bg-cream border border-borderSoft flex items-center justify-center text-inkMuted">
-                  <i data-lucide="user" class="w-4 h-4"></i>
-                </div>
-                <div>
-                  <span class="text-xs font-semibold text-ink block">Budi Santo</span>
-                  <span class="text-[11px] text-inkMuted">Membawa 2 orang tamu</span>
-                </div>
-              </div>
-              <div class="flex items-center space-x-4">
-                <span class="px-2.5 py-1 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
-                <span class="text-[11px] text-inkMuted font-mono">25 Oct 2026, 10:00</span>
-              </div>
+          <div class="space-y-3.5" id="recentRsvpList">
+            <div class="p-6 text-center text-inkMuted text-xs">
+              <svg class="animate-spin h-4 w-4 text-moss inline mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+              </svg>
+              <span>Memuat konfirmasi kehadiran terbaru...</span>
             </div>
-
-            <!-- Row 2: Siti Nurhaliza -->
-            <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-cardMuted transition border border-transparent hover:border-borderSoft/60">
-              <div class="flex items-center space-x-3.5">
-                <div class="w-9 h-9 rounded-full bg-cream border border-borderSoft flex items-center justify-center text-inkMuted">
-                  <i data-lucide="user" class="w-4 h-4"></i>
-                </div>
-                <div>
-                  <span class="text-xs font-semibold text-ink block">Siti Nurhaliza</span>
-                  <span class="text-[11px] text-inkMuted">Berhalangan hadir</span>
-                </div>
-              </div>
-              <div class="flex items-center space-x-4">
-                <span class="px-2.5 py-1 rounded-full text-[11px] font-medium bg-badgeRed text-textRed">Tidak Hadir</span>
-                <span class="text-[11px] text-inkMuted font-mono">25 Oct 2026, 08:15</span>
-              </div>
-            </div>
-
-            <!-- Row 3: Andi Wijaya -->
-            <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-cardMuted transition border border-transparent hover:border-borderSoft/60">
-              <div class="flex items-center space-x-3.5">
-                <div class="w-9 h-9 rounded-full bg-cream border border-borderSoft flex items-center justify-center text-inkMuted">
-                  <i data-lucide="user" class="w-4 h-4"></i>
-                </div>
-                <div>
-                  <span class="text-xs font-semibold text-ink block">Andi Wijaya</span>
-                  <span class="text-[11px] text-inkMuted">Membawa 1 orang tamu</span>
-                </div>
-              </div>
-              <div class="flex items-center space-x-4">
-                <span class="px-2.5 py-1 rounded-full text-[11px] font-medium bg-badgeGreen text-textGreen">Hadir</span>
-                <span class="text-[11px] text-inkMuted font-mono">25 Oct 2026, 19:35</span>
-              </div>
-            </div>
-
-            <!-- Row 4: Dewi Lestari -->
-            <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-cardMuted transition border border-transparent hover:border-borderSoft/60">
-              <div class="flex items-center space-x-3.5">
-                <div class="w-9 h-9 rounded-full bg-cream border border-borderSoft flex items-center justify-center text-inkMuted">
-                  <i data-lucide="user" class="w-4 h-4"></i>
-                </div>
-                <div>
-                  <span class="text-xs font-semibold text-ink block">Dewi Lestari</span>
-                  <span class="text-[11px] text-inkMuted">Berhalangan hadir</span>
-                </div>
-              </div>
-              <div class="flex items-center space-x-4">
-                <span class="px-2.5 py-1 rounded-full text-[11px] font-medium bg-badgeRed text-textRed">Tidak Hadir</span>
-                <span class="text-[11px] text-inkMuted font-mono">25 Oct 2026, 19:20</span>
-              </div>
-            </div>
-
           </div>
         </div>
 
@@ -376,21 +316,21 @@
           
           <div class="grid grid-cols-3 gap-3.5">
             <!-- Lokasi -->
-            <a href="pengantin.html" class="p-4 rounded-2xl bg-cardMuted hover:bg-[#F2EFE6] border border-borderSoft/70 flex flex-col items-center justify-center text-center group transition">
+            <a href="acara.html" class="p-4 rounded-2xl bg-cardMuted hover:bg-[#F2EFE6] border border-borderSoft/70 flex flex-col items-center justify-center text-center group transition">
               <div class="w-12 h-12 rounded-full bg-white text-moss flex items-center justify-center mb-3 shadow-sm group-hover:scale-105 transition">
                 <i data-lucide="map-pin" class="w-5 h-5"></i>
               </div>
               <span class="text-xs font-semibold text-ink block">Lokasi</span>
-              <span class="text-[10px] text-inkMuted mt-0.5">The Backyard Cafe</span>
+              <span id="quickEventLocation" class="text-[10px] text-inkMuted mt-0.5 line-clamp-1">The Backyard Cafe</span>
             </a>
 
             <!-- Tanggal & Waktu -->
-            <a href="pengantin.html" class="p-4 rounded-2xl bg-cardMuted hover:bg-[#F2EFE6] border border-borderSoft/70 flex flex-col items-center justify-center text-center group transition">
+            <a href="acara.html" class="p-4 rounded-2xl bg-cardMuted hover:bg-[#F2EFE6] border border-borderSoft/70 flex flex-col items-center justify-center text-center group transition">
               <div class="w-12 h-12 rounded-full bg-white text-moss flex items-center justify-center mb-3 shadow-sm group-hover:scale-105 transition">
                 <i data-lucide="calendar" class="w-5 h-5"></i>
               </div>
               <span class="text-xs font-semibold text-ink block">Tanggal & Waktu</span>
-              <span class="text-[10px] text-inkMuted mt-0.5">25 Okt 2026</span>
+              <span id="quickEventDate" class="text-[10px] text-inkMuted mt-0.5 line-clamp-1">25 Okt 2026</span>
             </a>
 
             <!-- Lainnya -->
@@ -398,8 +338,8 @@
               <div class="w-12 h-12 rounded-full bg-white text-moss flex items-center justify-center mb-3 shadow-sm group-hover:scale-105 transition">
                 <i data-lucide="alert-circle" class="w-5 h-5"></i>
               </div>
-              <span class="text-xs font-semibold text-ink block">Lainnya</span>
-              <span class="text-[10px] text-inkMuted mt-0.5">Detail Dresscode</span>
+              <span class="text-xs font-semibold text-ink block">Kelola Section</span>
+              <span class="text-[10px] text-inkMuted mt-0.5">6 Section</span>
             </a>
           </div>
 
@@ -444,6 +384,126 @@
         toast.classList.add('opacity-0', 'pointer-events-none');
       }, 3000);
     }
+
+    // Auto fetch live metrics & recent RSVPs from API
+    async function loadDashboardOverviewMetrics() {
+      try {
+        const [trackerRes, tamuRes, rsvpRes, eventRes] = await Promise.all([
+          fetch('../api/tracker.php?action=stats').catch(() => null),
+          fetch('../api/tamu.php').catch(() => null),
+          fetch('../api/rsvp.php?limit=5').catch(() => null),
+          fetch('../api/konten.php?action=get_section&key=section_4_event').catch(() => null)
+        ]);
+
+        const statCards = document.querySelectorAll('.grid.grid-cols-1.md\\:grid-cols-3 .bg-cardBg');
+
+        // 1. Tracker Pengunjung (Murni Real-time Database)
+        if (trackerRes && trackerRes.ok) {
+          const trackerJson = await trackerRes.json();
+          if (trackerJson.success && trackerJson.stats) {
+            const elTotal = document.getElementById('metricTotalPengunjung') || statCards[0]?.querySelector('.text-2xl');
+            const elGrowth = document.getElementById('metricGrowthPengunjung') || statCards[0]?.querySelector('.text-\\[11px\\]');
+            if (elTotal) elTotal.innerText = trackerJson.stats.total_display ?? trackerJson.stats.total_raw ?? '0';
+            if (elGrowth) {
+              elGrowth.innerText = trackerJson.stats.growth || '0 kunjungan hari ini';
+              if (trackerJson.stats.today > 0 || (trackerJson.stats.growth && trackerJson.stats.growth.includes('▲'))) {
+                elGrowth.className = 'text-[11px] text-emerald-700 font-medium block mt-0.5';
+              } else {
+                elGrowth.className = 'text-[11px] text-inkMuted font-medium block mt-0.5';
+              }
+            }
+          }
+        }
+
+        // 2. Data Tamu / RSVP
+        if (tamuRes && tamuRes.ok) {
+          const tamuJson = await tamuRes.json();
+          if (tamuJson.success && tamuJson.stats) {
+            const elTotal = document.getElementById('metricTotalRsvp') || statCards[1]?.querySelector('.text-2xl');
+            const elSub = document.getElementById('metricSubRsvp') || statCards[1]?.querySelector('.text-\\[11px\\]');
+            if (elTotal) elTotal.innerText = tamuJson.stats.total_tamu ?? '0';
+            if (elSub) elSub.innerText = `${tamuJson.stats.hadir ?? 0} Hadir • ${tamuJson.stats.tidak_hadir ?? 0} Tidak • ${tamuJson.stats.belum_konfirmasi ?? 0} Ragu`;
+          }
+        }
+
+        // 3. Data Ucapan & Recent RSVP
+        if (rsvpRes && rsvpRes.ok) {
+          const rsvpJson = await rsvpRes.json();
+          if (rsvpJson.success) {
+            if (rsvpJson.stats) {
+              const elTotal = document.getElementById('metricTotalUcapan') || statCards[2]?.querySelector('.text-2xl');
+              if (elTotal) elTotal.innerText = rsvpJson.stats.total_ucapan ?? '0';
+            }
+            if (Array.isArray(rsvpJson.data)) {
+              renderRecentRsvpList(rsvpJson.data);
+            }
+          }
+        }
+
+        // 4. Quick Event Info (Lokasi, Tanggal & Waktu)
+        if (eventRes && eventRes.ok) {
+          const eventJson = await eventRes.json();
+          if (eventJson.success && eventJson.data) {
+            const d = eventJson.data;
+            const elLoc = document.getElementById('quickEventLocation');
+            const elDate = document.getElementById('quickEventDate');
+            if (elLoc && (d.venue_name || d.akad_place || d.resepsi_place)) {
+              elLoc.innerText = d.venue_name || d.akad_place || d.resepsi_place;
+            }
+            if (elDate && (d.akad_date || d.resepsi_date)) {
+              elDate.innerText = d.akad_date || d.resepsi_date;
+            }
+          }
+        }
+      } catch (e) {
+        console.error('Error loadDashboardOverviewMetrics:', e);
+      }
+    }
+
+    function renderRecentRsvpList(items) {
+      const container = document.getElementById('recentRsvpList');
+      if (!container) return;
+      container.innerHTML = '';
+
+      if (items.length === 0) {
+        container.innerHTML = `
+          <div class="p-6 text-center text-inkMuted text-xs">
+            <i data-lucide="inbox" class="w-6 h-6 mx-auto mb-1 opacity-40"></i>
+            <span>Belum ada konfirmasi kehadiran dari tamu.</span>
+          </div>
+        `;
+        lucide.createIcons();
+        return;
+      }
+
+      items.forEach(item => {
+        let badgeClass = 'bg-badgeGreen text-textGreen';
+        if (item.status_kehadiran === 'Tidak Hadir') badgeClass = 'bg-badgeRed text-textRed';
+        if (item.status_kehadiran === 'Masih Ragu') badgeClass = 'bg-badgeAmber text-textAmber';
+
+        const row = document.createElement('div');
+        row.className = 'flex items-center justify-between p-3 rounded-2xl hover:bg-cardMuted transition border border-transparent hover:border-borderSoft/60';
+        row.innerHTML = `
+          <div class="flex items-center space-x-3.5">
+            <div class="w-9 h-9 rounded-full bg-cream border border-borderSoft flex items-center justify-center text-ink font-semibold text-xs">
+              ${item.initials || item.nama_pengirim.substring(0, 2).toUpperCase()}
+            </div>
+            <div>
+              <span class="text-xs font-semibold text-ink block">${item.nama_pengirim}</span>
+              <span class="text-[11px] text-inkMuted line-clamp-1 max-w-xs">${item.pesan_ucapan || (item.status_kehadiran === 'Hadir' ? 'Konfirmasi hadir' : 'Berhalangan')}</span>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <span class="px-2.5 py-1 rounded-full text-[11px] font-medium ${badgeClass}">${item.status_kehadiran}</span>
+            <span class="text-[11px] text-inkMuted font-mono whitespace-nowrap">${item.formatted_date || 'Hari ini'}</span>
+          </div>
+        `;
+        container.appendChild(row);
+      });
+      lucide.createIcons();
+    }
+
+    loadDashboardOverviewMetrics();
   </script>
 </body>
 </html>

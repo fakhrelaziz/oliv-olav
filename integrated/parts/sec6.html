@@ -32,7 +32,7 @@
           <h3 class="font-display text-3xl sm:text-4xl mb-2 text-moss">Kirim Ucapan</h3>
           <p class="text-xs sm:text-sm text-moss/80 mb-6">Tuliskan doa, harapan, dan ucapan terbaik untuk kami.</p>
           
-          <form class="space-y-4">
+          <form id="form-kirim-ucapan" class="space-y-4">
             <div class="relative">
               <span class="absolute left-4 top-1/2 -translate-y-1/2 text-moss/70">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
@@ -40,7 +40,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5.5 20a6.5 6.5 0 0113 0H5.5z" />
                 </svg>
               </span>
-              <input id="input-nama-tamu" type="text" placeholder="Nama Anda" class="w-full bg-warmwhite/50 border border-moss/20 rounded-xl py-3.5 pl-11 pr-4 text-xs sm:text-sm focus:outline-none focus:border-moss transition" />
+              <input id="input-nama-tamu" type="text" required placeholder="Nama Anda" class="w-full bg-warmwhite/50 border border-moss/20 rounded-xl py-3.5 pl-11 pr-4 text-xs sm:text-sm focus:outline-none focus:border-moss transition" />
             </div>
             
             <div class="relative">
@@ -50,22 +50,22 @@
                   <path stroke-linecap="round" d="M8 10h8M8 13h5" />
                 </svg>
               </span>
-              <textarea placeholder="Tulis ucapan dan doa..." rows="4" class="w-full bg-warmwhite/50 border border-moss/20 rounded-xl py-3.5 pl-11 pr-4 text-xs sm:text-sm focus:outline-none focus:border-moss transition resize-none"></textarea>
+              <textarea id="input-pesan-tamu" required placeholder="Tulis ucapan dan doa..." rows="4" class="w-full bg-warmwhite/50 border border-moss/20 rounded-xl py-3.5 pl-11 pr-4 text-xs sm:text-sm focus:outline-none focus:border-moss transition resize-none"></textarea>
             </div>
             
             <div class="pt-2">
               <p class="text-xs sm:text-sm font-medium mb-3 text-moss">Konfirmasi Kehadiran</p>
               <div class="flex flex-col sm:flex-row gap-2 bg-warmwhite/40 border border-moss/20 rounded-full p-2 px-4">
                 <label class="flex-1 flex items-center gap-2.5 cursor-pointer py-1.5 px-2 rounded-full transition">
-                  <input type="radio" name="attendance" class="w-4 h-4 accent-moss" checked />
+                  <input type="radio" name="attendance" value="Hadir" class="w-4 h-4 accent-moss" checked />
                   <span class="text-xs sm:text-sm font-medium">Hadir</span>
                 </label>
                 <label class="flex-1 flex items-center gap-2.5 cursor-pointer py-1.5 px-2 rounded-full transition">
-                  <input type="radio" name="attendance" class="w-4 h-4 accent-moss" />
+                  <input type="radio" name="attendance" value="Tidak Hadir" class="w-4 h-4 accent-moss" />
                   <span class="text-xs sm:text-sm font-medium">Tidak Hadir</span>
                 </label>
                 <label class="flex-1 flex items-center gap-2.5 cursor-pointer py-1.5 px-2 rounded-full transition">
-                  <input type="radio" name="attendance" class="w-4 h-4 accent-moss" />
+                  <input type="radio" name="attendance" value="Masih Ragu" class="w-4 h-4 accent-moss" />
                   <span class="text-xs sm:text-sm font-medium">Masih Ragu</span>
                 </label>
               </div>
@@ -85,7 +85,7 @@
           <h3 class="font-display text-3xl sm:text-4xl mb-2 text-moss">Ucapan dari Tamu</h3>
           <div class="w-10 h-px bg-moss/40 mb-6"></div>
           
-          <div class="space-y-4 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
+          <div id="wishes-feed-container" class="space-y-4 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
             <!-- Message 1 -->
             <div class="bg-warmwhite/75 p-5 rounded-xl shadow-sm border border-moss/10">
               <p class="font-serif font-semibold text-sm mb-0.5 text-moss">Siti Rahma</p>

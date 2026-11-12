@@ -33,6 +33,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="auth-guard.js"></script>
   <style>
     .sidebar-bg { background-color: #262E20; }
     .custom-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
@@ -56,16 +57,38 @@
           <span>Dashboard</span>
         </a>
 
-        <a href="kelola-konten.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl text-[#C7CFBF] hover:text-white hover:bg-[#323E2A] transition">
-          <i data-lucide="file-text" class="w-4 h-4"></i>
+        <a href="kelola-konten.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl bg-[#37442F] text-[#FAF8F2] shadow-sm transition">
+          <i data-lucide="layers" class="w-4 h-4"></i>
           <span>Kelola Konten</span>
         </a>
 
-        <!-- Galeri Foto (Active) -->
-        <a href="galeri.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl bg-[#37442F] text-[#FAF8F2] shadow-sm transition">
-          <i data-lucide="image" class="w-4 h-4"></i>
-          <span>Galeri Foto</span>
-        </a>
+        <!-- Subhalaman Navigasi Cepat -->
+        <div class="pl-4 pr-1 py-1 space-y-1">
+          <a href="section-hero.html" class="flex items-center space-x-2.5 px-3 py-1.5 rounded-xl text-xs text-[#A8B39E] hover:text-white hover:bg-[#323E2A]/70 transition">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#7A8672]"></span>
+            <span>Sec 1: Hero & Pembuka</span>
+          </a>
+          <a href="pengantin.html" class="flex items-center space-x-2.5 px-3 py-1.5 rounded-xl text-xs text-[#A8B39E] hover:text-white hover:bg-[#323E2A]/70 transition">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#7A8672]"></span>
+            <span>Sec 2: Mempelai</span>
+          </a>
+          <a href="our-story.html" class="flex items-center space-x-2.5 px-3 py-1.5 rounded-xl text-xs text-[#A8B39E] hover:text-white hover:bg-[#323E2A]/70 transition">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#7A8672]"></span>
+            <span>Sec 3: Our Story</span>
+          </a>
+          <a href="acara.html" class="flex items-center space-x-2.5 px-3 py-1.5 rounded-xl text-xs text-[#A8B39E] hover:text-white hover:bg-[#323E2A]/70 transition">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#7A8672]"></span>
+            <span>Sec 4: Waktu & Lokasi</span>
+          </a>
+          <a href="galeri.html" class="flex items-center space-x-2.5 px-3 py-1.5 rounded-xl text-xs bg-[#405036] text-white font-medium transition">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span>Sec 5: Galeri Foto</span>
+          </a>
+          <a href="section-penutup.html" class="flex items-center space-x-2.5 px-3 py-1.5 rounded-xl text-xs text-[#A8B39E] hover:text-white hover:bg-[#323E2A]/70 transition">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#7A8672]"></span>
+            <span>Sec 6: RSVP & Penutup</span>
+          </a>
+        </div>
 
         <a href="rsvp.html" class="flex items-center space-x-3.5 px-4 py-3 rounded-2xl text-[#C7CFBF] hover:text-white hover:bg-[#323E2A] transition">
           <i data-lucide="users" class="w-4 h-4"></i>
@@ -102,12 +125,13 @@
           <i data-lucide="share-2" class="w-3.5 h-3.5 text-inkMuted"></i>
           <span>Bagikan</span>
         </button>
+        <!-- Profile & Logout -->
         <div class="relative">
-          <a href="login.html" title="Keluar / Logout" class="inline-flex items-center space-x-2.5 pl-2 pr-3 py-1.5 rounded-full bg-cardBg border border-borderSoft hover:border-rose-300 hover:text-rose-700 transition shadow-sm">
+          <button onclick="handleLogout(event)" title="Keluar / Logout dari Admin Panel" class="inline-flex items-center space-x-2.5 pl-2 pr-3 py-1.5 rounded-full bg-cardBg border border-borderSoft hover:border-rose-300 hover:text-rose-700 transition shadow-sm">
             <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#35492E] flex items-center justify-center font-display font-semibold text-xs">FO</div>
-            <span class="text-xs font-medium text-ink">Fakhrel & Olivia</span>
+            <span class="text-xs font-medium text-ink admin-profile-name">Fakhrel &amp; Olivia</span>
             <i data-lucide="log-out" class="w-3.5 h-3.5 text-gray-400"></i>
-          </a>
+          </button>
         </div>
       </div>
     </header>
@@ -121,16 +145,23 @@
           <img src="../aset/section4_bunga.webp" alt="floral" class="absolute -top-4 right-10 w-28 opacity-25 pointer-events-none">
           <div class="relative z-10">
             <span class="text-[11px] font-semibold uppercase tracking-widest text-moss">GALERI</span>
-            <h2 class="font-display text-4xl font-semibold text-ink mt-1">Momen Berharga Bersama</h2>
-            <p class="text-xs text-inkMuted mt-1 mb-5 max-w-lg leading-relaxed">
+            <h2 id="displayGalleryHeadline" class="font-display text-4xl font-semibold text-ink mt-1">Momen Berharga Bersama</h2>
+            <p id="displayGalleryIntro" class="text-xs text-inkMuted mt-1 mb-5 max-w-lg leading-relaxed">
               Setiap foto menyimpan cerita. Setiap momen menjadi bagian dari perjalanan kami menuju hari yang istimewa.
             </p>
-            <div class="flex items-center space-x-3">
+            <div class="flex flex-wrap items-center gap-3">
+              <button onclick="openEditGalleryHeaderModal()" class="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-cardMuted hover:bg-[#F0EEE2] border border-borderSoft text-xs font-medium text-ink transition shadow-sm">
+                <i data-lucide="edit-3" class="w-3.5 h-3.5 text-moss"></i>
+                <span>Ubah Headline &amp; Quote Section 5</span>
+              </button>
               <button onclick="openUploadModal()" class="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-moss hover:bg-mossLight text-cream text-xs font-medium transition shadow-sm">
                 <i data-lucide="upload" class="w-3.5 h-3.5"></i>
                 <span>Unggah Foto Baru</span>
               </button>
-              <span class="text-xs text-inkMuted">Format JPG/PNG/WebP, maks 5MB</span>
+              <a href="../integrated/index.html#gallery" target="_blank" class="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-cardBg border border-borderSoft text-xs font-medium text-ink hover:bg-cardMuted transition shadow-sm">
+                <i data-lucide="eye" class="w-3.5 h-3.5 text-inkMuted"></i>
+                <span>Pratinjau di Web</span>
+              </a>
             </div>
           </div>
         </div>
@@ -176,97 +207,13 @@
 
       <!-- Photo Grid (5 Cols x 2 Rows) -->
       <div id="galleryGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-        
-        <!-- Photo 1 -->
-        <div data-category="prewedding" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto.webp');" onclick="viewPhoto('../aset/section5_galerifoto.webp')">
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-            <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
-              <i data-lucide="maximize-2" class="w-4 h-4"></i>
-            </div>
-          </div>
+        <div class="col-span-full py-16 text-center text-inkMuted text-xs">
+          <svg class="animate-spin h-5 w-5 text-moss inline mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+          </svg>
+          <span>Menghubungkan ke basis data foto galeri...</span>
         </div>
-
-        <!-- Photo 2 -->
-        <div data-category="prewedding" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(2).webp');" onclick="viewPhoto('../aset/section5_galerifoto(2).webp')">
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-            <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
-              <i data-lucide="maximize-2" class="w-4 h-4"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Photo 3 -->
-        <div data-category="prewedding" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(3).webp');" onclick="viewPhoto('../aset/section5_galerifoto(3).webp')">
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-            <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
-              <i data-lucide="maximize-2" class="w-4 h-4"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Photo 4 -->
-        <div data-category="prewedding" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(4).webp');" onclick="viewPhoto('../aset/section5_galerifoto(4).webp')">
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-            <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
-              <i data-lucide="maximize-2" class="w-4 h-4"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Photo 5 -->
-        <div data-category="keseharian" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(5).webp');" onclick="viewPhoto('../aset/section5_galerifoto(5).webp')">
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-            <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
-              <i data-lucide="maximize-2" class="w-4 h-4"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Photo 6 -->
-        <div data-category="keseharian" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(6).webp');" onclick="viewPhoto('../aset/section5_galerifoto(6).webp')">
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-            <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
-              <i data-lucide="maximize-2" class="w-4 h-4"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Photo 7 -->
-        <div data-category="acara" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(7)webp.webp');" onclick="viewPhoto('../aset/section5_galerifoto(7)webp.webp')">
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-            <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
-              <i data-lucide="maximize-2" class="w-4 h-4"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Photo 8 -->
-        <div data-category="acara" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(8).webp');" onclick="viewPhoto('../aset/section5_galerifoto(8).webp')">
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-            <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
-              <i data-lucide="maximize-2" class="w-4 h-4"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Photo 9 -->
-        <div data-category="prewedding" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(9).webp');" onclick="viewPhoto('../aset/section5_galerifoto(9).webp')">
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-            <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
-              <i data-lucide="maximize-2" class="w-4 h-4"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Photo 10 -->
-        <div data-category="prewedding" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_fotopengantin.webp');" onclick="viewPhoto('../aset/section5_fotopengantin.webp')">
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-            <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
-              <i data-lucide="maximize-2" class="w-4 h-4"></i>
-            </div>
-          </div>
-        </div>
-
       </div>
 
       <!-- Bottom Banner Quote -->
@@ -307,18 +254,17 @@
         </div>
 
         <div>
-          <label class="block font-medium mb-1">Pilih File Foto Master</label>
-          <select id="photoSource" class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
-            <option value="../aset/section5_galerifoto_tangan.webp">Foto Cincin & Tangan (Master)</option>
-            <option value="../aset/section5_galerifoto.webp">Foto 1 (Taman Hijau)</option>
-            <option value="../aset/section5_galerifoto(2).webp">Foto 2 (Bunga Putih)</option>
-            <option value="../aset/section5_galerifoto(3).webp">Foto 3 (Menatap Langit)</option>
-            <option value="../aset/section5_galerifoto(4).webp">Foto 4 (Danau / Arsitektur)</option>
-            <option value="../aset/section5_galerifoto(5).webp">Foto 5 (Pelukan Belakang)</option>
-            <option value="../aset/section5_galerifoto(6).webp">Foto 6 (Genggaman Tangan)</option>
-            <option value="../aset/section5_galerifoto(7)webp.webp">Foto 7 (Berdua di Padang)</option>
-            <option value="../aset/section5_galerifoto(8).webp">Foto 8 (Surat Undangan)</option>
-          </select>
+          <label class="block font-medium mb-1.5">Unggah File Foto dari Perangkat</label>
+          <div onclick="document.getElementById('fileNewGalleryPhoto').click()" class="w-full h-40 rounded-2xl border-2 border-dashed border-borderSoft hover:border-moss bg-cardMuted flex flex-col items-center justify-center cursor-pointer overflow-hidden relative group transition">
+            <img id="previewNewGalleryPhoto" src="" alt="Preview Upload" class="w-full h-full object-cover hidden">
+            <div class="flex flex-col items-center justify-center p-4 text-center">
+              <i data-lucide="upload-cloud" class="w-7 h-7 text-moss mb-1.5"></i>
+              <span class="text-xs font-semibold text-ink">Klik untuk Pilih Foto dari Perangkat</span>
+              <span id="statusNewGalleryPhoto" class="text-[10px] text-inkMuted mt-0.5">Mendukung JPG, PNG, WEBP (Maks 10MB)</span>
+            </div>
+          </div>
+          <input type="hidden" id="photoSource" value="">
+          <input type="file" id="fileNewGalleryPhoto" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" onchange="uploadPhotoFile(this, 'photoSource', 'previewNewGalleryPhoto', 'statusNewGalleryPhoto', 'gallery')">
         </div>
 
         <div class="flex justify-end space-x-2 pt-3">
@@ -340,8 +286,121 @@
     </div>
   </div>
 
+  <!-- Modal Ubah Headline & Quote Section 5 -->
+  <div id="editGalleryHeaderModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-cardBg w-full max-w-lg rounded-3xl p-7 border border-borderSoft shadow-2xl relative max-h-[90vh] overflow-y-auto custom-scroll">
+      <div class="flex items-center justify-between mb-5">
+        <h3 class="font-display text-2xl font-semibold text-ink">Ubah Teks, Foto &amp; Quote Section 5</h3>
+        <button onclick="closeEditGalleryHeaderModal()" class="text-gray-400 hover:text-ink"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+
+      <form onsubmit="handleSaveGalleryHeader(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-medium mb-1">Judul Headline Section</label>
+          <textarea id="inputGalleryHeadline" rows="2" required class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss" placeholder="Momen&#10;Berharga Bersama"></textarea>
+          <span class="text-[10px] text-inkMuted mt-1 block">Gunakan baris baru untuk memisahkan baris judul</span>
+        </div>
+
+        <div>
+          <label class="block font-medium mb-1">Teks Pengantar Galeri</label>
+          <textarea id="inputGalleryIntro" rows="3" required class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss" placeholder="Setiap foto menyimpan cerita..."></textarea>
+        </div>
+
+        <div>
+          <label class="block font-medium mb-1.5">Foto Hero Galeri Utama</label>
+          <div class="flex items-center space-x-3.5 p-3 rounded-2xl bg-cardMuted border border-borderSoft">
+            <img id="previewGalleryHeroPhoto" src="../aset/section5_fotopengantin.webp" alt="Preview Hero Galeri" onclick="document.getElementById('fileGalleryHeroPhoto').click()" class="w-20 h-14 object-cover rounded-xl border border-borderSoft shadow-sm cursor-pointer">
+            <div class="flex-1">
+              <input type="hidden" id="inputGalleryHeroPhoto" value="../aset/section5_fotopengantin.webp">
+              <input type="file" id="fileGalleryHeroPhoto" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" onchange="uploadPhotoFile(this, 'inputGalleryHeroPhoto', 'previewGalleryHeroPhoto', 'statusGalleryHeroPhoto', 'gallery_hero')">
+              <button type="button" onclick="document.getElementById('fileGalleryHeroPhoto').click()" class="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-white hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition shadow-sm">
+                <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                <span>Upload Foto Hero Galeri</span>
+              </button>
+              <span id="statusGalleryHeroPhoto" class="text-[10px] text-inkMuted block mt-1">Format JPG, PNG, WEBP</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-medium mb-1">Quote Penutup Section 5</label>
+          <textarea id="inputGalleryQuote" rows="2" required class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss" placeholder="Cinta bukan tentang mencari seseorang yang sempurna..."></textarea>
+        </div>
+
+        <div class="flex justify-end space-x-2 pt-4 border-t border-borderSoft/60">
+          <button type="button" onclick="closeEditGalleryHeaderModal()" class="px-4 py-2 rounded-xl border border-borderSoft text-ink hover:bg-cardMuted">Batal</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-moss text-cream font-medium hover:bg-mossLight transition shadow-sm">Simpan Perubahan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script>
     lucide.createIcons();
+
+    function openEditGalleryHeaderModal() {
+      document.getElementById('editGalleryHeaderModal').classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeEditGalleryHeaderModal() {
+      document.getElementById('editGalleryHeaderModal').classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    async function loadGalleryHeaderFromAPI() {
+      try {
+        const res = await fetch('../api/konten.php?action=get_section&key=section_5_gallery');
+        if (!res.ok) return;
+        const json = await res.json();
+        if (json.success && json.data) {
+          const d = json.data;
+          if (d.headline) {
+            document.getElementById('inputGalleryHeadline').value = d.headline;
+            document.getElementById('displayGalleryHeadline').innerText = d.headline.replace(/\n/g, ' ');
+          }
+          if (d.intro) {
+            document.getElementById('inputGalleryIntro').value = d.intro;
+            document.getElementById('displayGalleryIntro').innerText = d.intro;
+          }
+          if (d.hero_photo) {
+            document.getElementById('inputGalleryHeroPhoto').value = d.hero_photo;
+            const prevHero = document.getElementById('previewGalleryHeroPhoto');
+            if (prevHero) prevHero.src = d.hero_photo;
+          }
+          if (d.bottom_quote) document.getElementById('inputGalleryQuote').value = d.bottom_quote;
+        }
+      } catch(e) {}
+    }
+
+    async function handleSaveGalleryHeader(e) {
+      e.preventDefault();
+      const headline = document.getElementById('inputGalleryHeadline').value.trim();
+      const intro = document.getElementById('inputGalleryIntro').value.trim();
+      const hero = document.getElementById('inputGalleryHeroPhoto').value.trim();
+      const quote = document.getElementById('inputGalleryQuote').value.trim();
+      try {
+        await fetch('../api/konten.php?action=save_section', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            section_key: 'section_5_gallery',
+            nama_section: 'Section 5: Galeri Foto',
+            data: {
+              headline: headline,
+              intro: intro,
+              hero_photo: hero,
+              bottom_quote: quote
+            }
+          })
+        });
+        closeEditGalleryHeaderModal();
+        await loadGalleryHeaderFromAPI();
+        alert('Teks & Quote Section 5 berhasil disimpan ke database!');
+      } catch(err) {
+        alert('Gagal menyimpan.');
+      }
+    }
+
+    loadGalleryHeaderFromAPI();
 
     function openUploadModal() {
       document.getElementById('uploadModal').classList.remove('opacity-0', 'pointer-events-none');
@@ -380,30 +439,155 @@
       lb.classList.add('opacity-0', 'pointer-events-none');
     }
 
-    function handleSavePhoto(e) {
+    // ====================================================================
+    // API INTEGRATION: LOAD & DELETE PHOTOS FROM MYSQL
+    // ====================================================================
+    async function loadPhotosFromAPI() {
+      const grid = document.getElementById('galleryGrid');
+      try {
+        const res = await fetch('../api/galeri.php');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const json = await res.json();
+        if (json.success && Array.isArray(json.data)) {
+          renderPhotosGrid(json.data);
+        } else {
+          throw new Error(json.message || 'Gagal memuat');
+        }
+      } catch (err) {
+        if (grid) {
+          grid.innerHTML = `
+            <div class="col-span-full py-12 text-center text-rose-600 bg-rose-50/50 rounded-2xl border border-rose-200">
+              <i data-lucide="alert-circle" class="w-6 h-6 mx-auto mb-1"></i>
+              <span class="font-semibold block text-xs">Tidak dapat terhubung ke MySQL.</span>
+              <p class="text-[11px] text-inkMuted mt-1">Pastikan MySQL Laragon aktif dan inisialisasi via <a href="../api/setup_db.php" target="_blank" class="underline text-moss font-semibold">api/setup_db.php</a>.</p>
+            </div>
+          `;
+          lucide.createIcons();
+        }
+      }
+    }
+
+    function renderPhotosGrid(photos) {
+      const grid = document.getElementById('galleryGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      if (photos.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center text-inkMuted text-xs">
+            <i data-lucide="image" class="w-8 h-8 mx-auto mb-2 opacity-40"></i>
+            <span class="block font-medium text-ink">Belum ada foto di galeri basis data.</span>
+            <span class="text-[11px]">Klik tombol "Unggah Foto Baru" di atas untuk menambahkan foto pertama.</span>
+          </div>
+        `;
+        lucide.createIcons();
+        return;
+      }
+
+      photos.forEach(p => {
+        const photoDiv = document.createElement('div');
+        photoDiv.setAttribute('data-category', p.kategori);
+        photoDiv.className = 'photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer';
+        
+        let imgUrl = p.foto_url;
+        if (!imgUrl.startsWith('http') && !imgUrl.startsWith('../')) {
+          imgUrl = '../' + imgUrl.replace(/^\//, '');
+        }
+        photoDiv.style.backgroundImage = `url('${imgUrl}')`;
+
+        photoDiv.innerHTML = `
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+            <div class="flex items-center space-x-2">
+              <button onclick="event.stopPropagation(); viewPhoto('${imgUrl}')" class="w-8 h-8 rounded-full bg-white/95 text-moss hover:bg-white flex items-center justify-center shadow" title="Perbesar">
+                <i data-lucide="maximize-2" class="w-4 h-4"></i>
+              </button>
+              <button onclick="event.stopPropagation(); deletePhoto(${p.id}, '${p.judul.replace(/'/g, "\\'")}')" class="w-8 h-8 rounded-full bg-rose-600 hover:bg-rose-700 text-white flex items-center justify-center shadow" title="Hapus Foto">
+                <i data-lucide="trash-2" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+          <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-black/60 text-white text-[9px] font-medium backdrop-blur-sm truncate max-w-[80%]">${p.judul}</span>
+        `;
+        photoDiv.onclick = () => viewPhoto(imgUrl);
+        grid.appendChild(photoDiv);
+      });
+      lucide.createIcons();
+    }
+
+    async function deletePhoto(id, title) {
+      if (confirm(`Apakah Anda yakin ingin menghapus foto "${title}" dari galeri?`)) {
+        try {
+          const res = await fetch('../api/galeri.php?action=delete', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: id })
+          });
+          const json = await res.json();
+          if (!res.ok || !json.success) {
+            alert(json.message || 'Gagal menghapus foto.');
+            return;
+          }
+        } catch (err) {
+          alert('Terjadi kesalahan koneksi saat menghapus foto.');
+          return;
+        }
+
+        await loadPhotosFromAPI();
+        alert('Foto berhasil dihapus!');
+      }
+    }
+
+    async function handleSavePhoto(e) {
       e.preventDefault();
-      const title = document.getElementById('photoTitle').value;
+      const title = document.getElementById('photoTitle').value.trim();
       const cat = document.getElementById('photoCategory').value;
       const src = document.getElementById('photoSource').value;
 
-      const grid = document.getElementById('galleryGrid');
-      const photoDiv = document.createElement('div');
-      photoDiv.setAttribute('data-category', cat);
-      photoDiv.className = 'photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer';
-      photoDiv.style.backgroundImage = `url('${src}')`;
-      photoDiv.onclick = () => viewPhoto(src);
-      photoDiv.innerHTML = `
-        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-          <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
-            <i data-lucide="maximize-2" class="w-4 h-4"></i>
-          </div>
-        </div>
-      `;
-      grid.prepend(photoDiv);
-      lucide.createIcons();
+      if (!src) {
+        alert('Silakan pilih dan unggah file foto dari perangkat Anda terlebih dahulu.');
+        return;
+      }
+
+      try {
+        const res = await fetch('../api/galeri.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            judul: title,
+            kategori: cat,
+            foto_url: src
+          })
+        });
+        const json = await res.json();
+        if (!res.ok || !json.success) {
+          alert(json.message || 'Gagal menyimpan foto ke galeri.');
+          return;
+        }
+      } catch (err) {
+        alert('Terjadi kesalahan koneksi saat menyimpan foto.');
+        return;
+      }
+
+      // Reset modal state
+      document.getElementById('photoTitle').value = '';
+      document.getElementById('photoSource').value = '';
+      const prevImg = document.getElementById('previewNewGalleryPhoto');
+      if (prevImg) {
+        prevImg.src = '';
+        prevImg.classList.add('hidden');
+      }
+      const statusEl = document.getElementById('statusNewGalleryPhoto');
+      if (statusEl) {
+        statusEl.innerText = 'Mendukung JPG, PNG, WEBP (Maks 10MB)';
+        statusEl.className = 'text-[10px] text-inkMuted mt-0.5';
+      }
+
       closeUploadModal();
+      await loadPhotosFromAPI();
       alert(`Foto "${title}" berhasil ditambahkan ke galeri!`);
     }
+
+    loadPhotosFromAPI();
   </script>
 </body>
 </html>
