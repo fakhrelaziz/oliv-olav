@@ -3,7 +3,7 @@
 // API KONTEN: Manajemen Konten 6 Section Undangan & Halaman Terpadu
 // ====================================================================
 
-require_once __DIR__ . '/db.inc';
+require_once __DIR__ . '/lib/db.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 $action = $_GET['action'] ?? '';
@@ -114,14 +114,17 @@ if ($action === 'setup') {
         }
         $sqlContent = file_get_contents($sqlFile);
 
+        $setupOptions = $options;
+        $setupOptions[PDO::ATTR_EMULATE_PREPARES] = true;
+
         if ($host !== '127.0.0.1' && $host !== 'localhost') {
             // Mode Cloud (Railway / TiDB / Aiven): Gunakan database yang sudah disediakan oleh provider
-            $conn = new PDO("mysql:host=$host;port=$port;dbname=$db;charset=$charset", $user, $pass, $options);
+            $conn = new PDO("mysql:host=$host;port=$port;dbname=$db;charset=$charset", $user, $pass, $setupOptions);
             $sqlContent = preg_replace('/CREATE\s+DATABASE\s+IF\s+NOT\s+EXISTS\s+`?db_fakhrel_olivia`?[^;]*;/i', '', $sqlContent);
             $sqlContent = preg_replace('/USE\s+`?db_fakhrel_olivia`?\s*;/i', '', $sqlContent);
         } else {
             // Mode Lokal (Laragon): Buat database jika belum ada
-            $conn = new PDO("mysql:host=$host;port=$port;charset=$charset", $user, $pass, $options);
+            $conn = new PDO("mysql:host=$host;port=$port;charset=$charset", $user, $pass, $setupOptions);
         }
 
         $conn->exec($sqlContent);

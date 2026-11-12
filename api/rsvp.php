@@ -3,7 +3,7 @@
 // API RSVP: Doa & Ucapan Tamu (Front Website & Dashboard)
 // ====================================================================
 
-require_once __DIR__ . '/db.inc';
+require_once __DIR__ . '/lib/db.php';
 
 if (!$pdo) {
     jsonResponse([

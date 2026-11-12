@@ -4,7 +4,7 @@
 // ====================================================================
 
 session_start();
-require_once __DIR__ . '/db.inc';
+require_once __DIR__ . '/lib/db.php';
 
 $action = $_GET['action'] ?? 'check';
 

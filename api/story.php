@@ -3,7 +3,7 @@
 // API STORY: Manajemen Perjalanan Cinta (Our Story)
 // ====================================================================
 
-require_once __DIR__ . '/db.inc';
+require_once __DIR__ . '/lib/db.php';
 
 if (!$pdo) {
     jsonResponse([
