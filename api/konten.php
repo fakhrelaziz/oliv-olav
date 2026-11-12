@@ -104,25 +104,34 @@ if ($method === 'POST' && $action === 'upload') {
 }
 
 // --------------------------------------------------------------------
-// 0B. ACTION = SETUP: Inisialisasi Database & Seeder Otomatis
+// 0B. ACTION = SETUP: Inisialisasi Database & Seeder Otomatis (Lokal & Railway/Cloud)
 // --------------------------------------------------------------------
 if ($action === 'setup') {
     try {
-        $conn = new PDO("mysql:host=$host;port=$port;charset=$charset", $user, $pass, [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-        ]);
         $sqlFile = dirname(__DIR__) . '/database/schema.sql';
         if (!file_exists($sqlFile)) {
             jsonResponse(['success' => false, 'message' => 'File schema.sql tidak ditemukan.'], 404);
         }
         $sqlContent = file_get_contents($sqlFile);
+
+        if ($host !== '127.0.0.1' && $host !== 'localhost') {
+            // Mode Cloud (Railway / TiDB / Aiven): Gunakan database yang sudah disediakan oleh provider
+            $conn = new PDO("mysql:host=$host;port=$port;dbname=$db;charset=$charset", $user, $pass, $options);
+            $sqlContent = preg_replace('/CREATE\s+DATABASE\s+IF\s+NOT\s+EXISTS\s+`?db_fakhrel_olivia`?[^;]*;/i', '', $sqlContent);
+            $sqlContent = preg_replace('/USE\s+`?db_fakhrel_olivia`?\s*;/i', '', $sqlContent);
+        } else {
+            // Mode Lokal (Laragon): Buat database jika belum ada
+            $conn = new PDO("mysql:host=$host;port=$port;charset=$charset", $user, $pass, $options);
+        }
+
         $conn->exec($sqlContent);
-        $stmt = $conn->query("SHOW TABLES FROM `$db`");
+        $stmt = $conn->query("SHOW TABLES");
         $tables = $stmt->fetchAll(PDO::FETCH_COLUMN);
         jsonResponse([
-            'success' => true,
-            'message' => "Database `$db` dan seluruh tabel berhasil diinisialisasi!",
-            'tables'  => $tables
+            'success'  => true,
+            'message'  => "Database `$db` dan seluruh tabel berhasil diinisialisasi!",
+            'database' => $db,
+            'tables'   => $tables
         ]);
     } catch (\PDOException $e) {
         jsonResponse([
