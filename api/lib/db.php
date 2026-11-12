@@ -21,17 +21,42 @@ $user    = getenv('DB_USER') ?: getenv('MYSQLUSER') ?: 'root';
 $pass    = getenv('DB_PASS') !== false ? getenv('DB_PASS') : (getenv('MYSQLPASSWORD') !== false ? getenv('MYSQLPASSWORD') : '');
 $charset = 'utf8mb4';
 
-// Dukungan otomatis untuk MYSQL_URL / DATABASE_URL (format Railway)
-$dbUrl = getenv('MYSQL_URL') ?: getenv('DATABASE_URL');
-if ($dbUrl && strpos($dbUrl, 'mysql://') === 0) {
-    $parsed = parse_url($dbUrl);
-    if ($parsed) {
-        $host = $parsed['host'] ?? $host;
-        $port = isset($parsed['port']) ? (string)$parsed['port'] : $port;
-        $user = $parsed['user'] ?? $user;
-        $pass = $parsed['pass'] ?? $pass;
-        if (!empty($parsed['path'])) {
-            $db = ltrim($parsed['path'], '/');
+// Dukungan otomatis URL Railway: prioritaskan MYSQL_PUBLIC_URL agar bisa diakses dari Vercel,
+// dan fallback ke MYSQL_URL / DATABASE_URL / RAILWAY_TCP_PROXY_DOMAIN jika host internal.
+$candidateUrls = [
+    getenv('MYSQL_PUBLIC_URL'),
+    getenv('MYSQL_URL'),
+    getenv('DATABASE_URL'),
+];
+foreach ($candidateUrls as $candidateUrl) {
+    if (!$candidateUrl || strpos($candidateUrl, 'mysql://') !== 0) {
+        continue;
+    }
+    $parsed = parse_url($candidateUrl);
+    if (!$parsed || empty($parsed['host'])) {
+        continue;
+    }
+    $isInternal = substr($parsed['host'], -17) === '.railway.internal';
+    if ($isInternal && (getenv('MYSQL_PUBLIC_URL') || getenv('RAILWAY_TCP_PROXY_DOMAIN'))) {
+        continue;
+    }
+    $host = $parsed['host'];
+    $port = isset($parsed['port']) ? (string)$parsed['port'] : $port;
+    $user = $parsed['user'] ?? $user;
+    $pass = $parsed['pass'] ?? $pass;
+    if (!empty($parsed['path'])) {
+        $db = ltrim($parsed['path'], '/');
+    }
+    break;
+}
+
+if (substr($host, -17) === '.railway.internal') {
+    $proxyHost = getenv('RAILWAY_TCP_PROXY_DOMAIN');
+    $proxyPort = getenv('RAILWAY_TCP_PROXY_PORT');
+    if ($proxyHost) {
+        $host = $proxyHost;
+        if ($proxyPort) {
+            $port = (string)$proxyPort;
         }
     }
 }

@@ -37,7 +37,7 @@ if (file_exists(__DIR__ . '/lib/db.php')) {
     $user    = getenv('DB_USER') ?: getenv('MYSQLUSER') ?: 'root';
     $pass    = getenv('DB_PASS') !== false ? getenv('DB_PASS') : (getenv('MYSQLPASSWORD') !== false ? getenv('MYSQLPASSWORD') : '');
     $charset = 'utf8mb4';
-    $dbUrl   = getenv('MYSQL_URL') ?: getenv('DATABASE_URL');
+    $dbUrl   = getenv('MYSQL_PUBLIC_URL') ?: getenv('MYSQL_URL') ?: getenv('DATABASE_URL');
     if ($dbUrl && strpos($dbUrl, 'mysql://') === 0) {
         $parsed = parse_url($dbUrl);
         if ($parsed) {
@@ -47,6 +47,10 @@ if (file_exists(__DIR__ . '/lib/db.php')) {
             $pass = $parsed['pass'] ?? $pass;
             if (!empty($parsed['path'])) $db = ltrim($parsed['path'], '/');
         }
+    }
+    if (substr($host, -17) === '.railway.internal' && getenv('RAILWAY_TCP_PROXY_DOMAIN')) {
+        $host = getenv('RAILWAY_TCP_PROXY_DOMAIN');
+        if (getenv('RAILWAY_TCP_PROXY_PORT')) $port = (string)getenv('RAILWAY_TCP_PROXY_PORT');
     }
     $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=$charset";
     $options = [
@@ -209,9 +213,13 @@ if ($action === 'setup') {
             'tables'   => $tables
         ]);
     } catch (\Throwable $e) {
+        $msg = $e->getMessage();
+        if (strpos($msg, '.railway.internal') !== false) {
+            $msg .= ' — Host ".railway.internal" hanya bisa diakses dari jaringan internal Railway. Di Vercel Environment Variables, gunakan MYSQL_PUBLIC_URL (atau host *.proxy.rlwy.net + port publik Railway).';
+        }
         jsonResponse([
             'success' => false,
-            'message' => 'Gagal menginisialisasi database: ' . $e->getMessage()
+            'message' => 'Gagal menginisialisasi database: ' . $msg
         ], 500);
     }
 }
