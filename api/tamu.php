@@ -3,7 +3,7 @@
 // API TAMU: CRUD & Statistik Data Tamu Undangan
 // ====================================================================
 
-require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/db.inc';
 
 if (!$pdo) {
     jsonResponse([

@@ -3,17 +3,208 @@
 // API KONTEN: Manajemen Konten 6 Section Undangan & Halaman Terpadu
 // ====================================================================
 
-require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/db.inc';
+
+$method = $_SERVER['REQUEST_METHOD'];
+$action = $_GET['action'] ?? '';
+
+// --------------------------------------------------------------------
+// 0A. ACTION = UPLOAD: Layanan Unggah Gambar / Foto (Hybrid: Local Disk + Serverless Base64 Fallback)
+// --------------------------------------------------------------------
+if ($method === 'POST' && $action === 'upload') {
+    $file = $_FILES['file'] ?? $_FILES['photo'] ?? null;
+
+    if (!$file || !isset($file['tmp_name']) || empty($file['tmp_name'])) {
+        jsonResponse([
+            'success' => false,
+            'message' => 'Tidak ada file foto yang dipilih untuk diunggah.'
+        ], 400);
+    }
+
+    if ($file['error'] !== UPLOAD_ERR_OK) {
+        jsonResponse([
+            'success' => false,
+            'message' => 'Terjadi kesalahan saat mengunggah file (Kode: ' . $file['error'] . ').'
+        ], 400);
+    }
+
+    $maxSize = 10 * 1024 * 1024;
+    if ($file['size'] > $maxSize) {
+        jsonResponse([
+            'success' => false,
+            'message' => 'Ukuran file foto terlalu besar. Maksimal 10 MB.'
+        ], 400);
+    }
+
+    $allowedMimeTypes = [
+        'image/jpeg' => 'jpg',
+        'image/jpg'  => 'jpg',
+        'image/png'  => 'png',
+        'image/webp' => 'webp',
+        'image/gif'  => 'gif'
+    ];
+
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mimeType = finfo_file($finfo, $file['tmp_name']);
+    finfo_close($finfo);
+
+    $originalExt = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+    $allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+
+    if (!isset($allowedMimeTypes[$mimeType]) && !in_array($originalExt, $allowedExtensions, true)) {
+        jsonResponse([
+            'success' => false,
+            'message' => 'Format file tidak didukung. Harap unggah foto berformat JPG, PNG, WEBP, atau GIF.'
+        ], 400);
+    }
+
+    $ext = $allowedMimeTypes[$mimeType] ?? ($originalExt === 'jpeg' ? 'jpg' : $originalExt);
+    $sectionPrefix = preg_replace('/[^a-zA-Z0-9_-]/', '', $_POST['section'] ?? $_GET['section'] ?? 'img');
+    if (empty($sectionPrefix)) $sectionPrefix = 'img';
+
+    $uniqueName = $sectionPrefix . '_' . time() . '_' . bin2hex(random_bytes(3)) . '.' . $ext;
+    $uploadDir = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'uploads';
+
+    $savedToDisk = false;
+    if (is_dir($uploadDir) || @mkdir($uploadDir, 0775, true)) {
+        $targetPath = $uploadDir . DIRECTORY_SEPARATOR . $uniqueName;
+        if (@move_uploaded_file($file['tmp_name'], $targetPath)) {
+            $savedToDisk = true;
+        }
+    }
+
+    if ($savedToDisk) {
+        $relativeUrl = '../uploads/' . $uniqueName;
+        jsonResponse([
+            'success'    => true,
+            'message'    => 'Foto berhasil diunggah!',
+            'url'        => $relativeUrl,
+            'public_url' => 'uploads/' . $uniqueName,
+            'filename'   => $uniqueName
+        ], 201);
+    } else {
+        // Fallback untuk environment Serverless Read-Only (seperti Vercel): Gunakan Data URI Base64
+        $rawBytes = @file_get_contents($file['tmp_name']);
+        if ($rawBytes !== false) {
+            $actualMime = isset($allowedMimeTypes[$mimeType]) ? $mimeType : 'image/' . $ext;
+            $dataUri = 'data:' . $actualMime . ';base64,' . base64_encode($rawBytes);
+            jsonResponse([
+                'success'    => true,
+                'message'    => 'Foto berhasil diunggah (Mode Cloud)!',
+                'url'        => $dataUri,
+                'public_url' => $dataUri,
+                'filename'   => $uniqueName
+            ], 201);
+        }
+        jsonResponse([
+            'success' => false,
+            'message' => 'Gagal menyimpan file foto.'
+        ], 500);
+    }
+}
+
+// --------------------------------------------------------------------
+// 0B. ACTION = SETUP: Inisialisasi Database & Seeder Otomatis
+// --------------------------------------------------------------------
+if ($action === 'setup') {
+    try {
+        $conn = new PDO("mysql:host=$host;port=$port;charset=$charset", $user, $pass, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        ]);
+        $sqlFile = dirname(__DIR__) . '/database/schema.sql';
+        if (!file_exists($sqlFile)) {
+            jsonResponse(['success' => false, 'message' => 'File schema.sql tidak ditemukan.'], 404);
+        }
+        $sqlContent = file_get_contents($sqlFile);
+        $conn->exec($sqlContent);
+        $stmt = $conn->query("SHOW TABLES FROM `$db`");
+        $tables = $stmt->fetchAll(PDO::FETCH_COLUMN);
+        jsonResponse([
+            'success' => true,
+            'message' => "Database `$db` dan seluruh tabel berhasil diinisialisasi!",
+            'tables'  => $tables
+        ]);
+    } catch (\PDOException $e) {
+        jsonResponse([
+            'success' => false,
+            'message' => 'Gagal menginisialisasi database: ' . $e->getMessage()
+        ], 500);
+    }
+}
+
+// --------------------------------------------------------------------
+// 0C. ACTION = PENGANTIN: Data Mempelai & Rangkaian Acara
+// --------------------------------------------------------------------
+if ($action === 'pengantin') {
+    if (!$pdo) {
+        jsonResponse(['success' => false, 'message' => 'Koneksi ke database gagal.'], 500);
+    }
+    if ($method === 'GET') {
+        try {
+            $pengantin = $pdo->query("SELECT * FROM `pengantin` ORDER BY peran DESC")->fetchAll();
+            $acara = $pdo->query("SELECT * FROM `acara` ORDER BY urutan ASC")->fetchAll();
+            $groom = null;
+            $bride = null;
+            foreach ($pengantin as $p) {
+                if ($p['peran'] === 'groom') $groom = $p;
+                if ($p['peran'] === 'bride') $bride = $p;
+            }
+            jsonResponse(['success' => true, 'groom' => $groom, 'bride' => $bride, 'acara' => $acara]);
+        } catch (\PDOException $e) {
+            jsonResponse(['success' => false, 'message' => 'Error: ' . $e->getMessage()], 500);
+        }
+    }
+    if ($method === 'POST') {
+        $input = getJsonInput();
+        $groomName = trim($input['groom'] ?? $input['groom_name'] ?? '');
+        $groomP = trim($input['groomP'] ?? $input['groom_parents'] ?? '');
+        $brideName = trim($input['bride'] ?? $input['bride_name'] ?? '');
+        $brideP = trim($input['brideP'] ?? $input['bride_parents'] ?? '');
+        try {
+            if (!empty($groomName)) {
+                $pdo->prepare("UPDATE `pengantin` SET `nama_panggilan` = :name, `nama_lengkap` = :name, `nama_ayah` = :parents WHERE `peran` = 'groom'")
+                    ->execute([':name' => $groomName, ':parents' => $groomP]);
+            }
+            if (!empty($brideName)) {
+                $pdo->prepare("UPDATE `pengantin` SET `nama_panggilan` = :name, `nama_lengkap` = :name, `nama_ayah` = :parents WHERE `peran` = 'bride'")
+                    ->execute([':name' => $brideName, ':parents' => $brideP]);
+            }
+            jsonResponse(['success' => true, 'message' => 'Profil pengantin berhasil diperbarui!']);
+        } catch (\PDOException $e) {
+            jsonResponse(['success' => false, 'message' => 'Error: ' . $e->getMessage()], 500);
+        }
+    }
+}
 
 if (!$pdo) {
+    // Jika dipanggil dalam mode GET section (misal di Vercel tanpa Cloud DB), kembalikan default data agar halaman tetap tampil
+    if ($method === 'GET') {
+        $allDefaults = getDefaultSectionData();
+        if ($action === 'sections' || $action === 'get_all_sections') {
+            $final = [];
+            foreach ($allDefaults as $k => $def) $final[$k] = $def['data'];
+            jsonResponse(['success' => true, 'sections' => $final, 'fallback' => true]);
+        }
+        if ($action === 'get_section') {
+            $key = trim($_GET['key'] ?? 'section_1_hero');
+            $def = $allDefaults[$key] ?? null;
+            if ($def) {
+                jsonResponse([
+                    'success' => true,
+                    'key' => $key,
+                    'nama_section' => $def['nama_section'],
+                    'updated_at' => date('Y-m-d H:i:s'),
+                    'data' => $def['data'],
+                    'fallback' => true
+                ]);
+            }
+        }
+    }
     jsonResponse([
         'success' => false,
         'message' => 'Koneksi ke database gagal.'
     ], 500);
 }
-
-$method = $_SERVER['REQUEST_METHOD'];
-$action = $_GET['action'] ?? '';
 
 // Pastikan tabel section_konten ada
 try {

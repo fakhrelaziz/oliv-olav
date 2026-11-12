@@ -106,7 +106,7 @@ async function uploadPhotoFile(fileInput, hiddenInputId, previewImgId, statusId,
   formData.append('section', sectionName);
 
   try {
-    const res = await fetch('../api/upload.php', {
+    const res = await fetch('../api/konten.php?action=upload', {
       method: 'POST',
       body: formData
     });

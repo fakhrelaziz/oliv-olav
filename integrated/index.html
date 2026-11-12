@@ -1610,7 +1610,7 @@
     // Sync bride & groom profile from database if edited in dashboard
     async function syncProfileFromAPI() {
       try {
-        const res = await fetch('../api/pengantin.php');
+        const res = await fetch('../api/konten.php?action=pengantin');
         if (!res.ok) return;
         const json = await res.json();
         if (json.success && json.groom && json.bride) {
