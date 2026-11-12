@@ -1,33 +1,7 @@
 {
-  "functions": {
-    "api/*.php": {
-      "runtime": "vercel-php@0.7.4",
-      "includeFiles": "database/schema.sql"
-    }
-  },
-  "redirects": [
-    { "source": "/dashboard", "destination": "/dashboard/", "permanent": false },
-    { "source": "/integrated", "destination": "/integrated/", "permanent": false },
-    { "source": "/kelola-konten", "destination": "/dashboard/kelola-konten.html", "permanent": false },
-    { "source": "/kelola-konten.html", "destination": "/dashboard/kelola-konten.html", "permanent": false },
-    { "source": "/api/setup_db.php", "destination": "/api/konten.php?action=setup", "permanent": false }
-  ],
-  "rewrites": [
-    { "source": "/aktivitas/tugas_php_25071104582.php", "destination": "/api/tugas_php_25071104582.php" },
-    { "source": "/aktivitas/tugas_php_25071101439.php", "destination": "/api/tugas_php_25071101439.php" },
-    { "source": "/aktivitas/tugas_php_25071100389.php", "destination": "/api/tugas_php_25071100389.php" },
-    { "source": "/aktivitas/tugas_php_25071103083.php", "destination": "/api/tugas_php_25071103083.php" },
-    { "source": "/dashboard/kelola-konten", "destination": "/dashboard/kelola-konten.html" },
-    { "source": "/dashboard/section-hero", "destination": "/dashboard/section-hero.html" },
-    { "source": "/dashboard/acara", "destination": "/dashboard/acara.html" },
-    { "source": "/dashboard/section-penutup", "destination": "/dashboard/section-penutup.html" },
-    { "source": "/dashboard/galeri", "destination": "/dashboard/galeri.html" },
-    { "source": "/dashboard/our-story", "destination": "/dashboard/our-story.html" },
-    { "source": "/dashboard/pengantin", "destination": "/dashboard/pengantin.html" },
-    { "source": "/dashboard/rsvp", "destination": "/dashboard/rsvp.html" },
-    { "source": "/dashboard/tamu", "destination": "/dashboard/tamu.html" },
-    { "source": "/dashboard/login", "destination": "/dashboard/login.html" },
-    { "source": "/dashboard/", "destination": "/dashboard/index.html" },
-    { "source": "/integrated/", "destination": "/integrated/index.html" }
-  ]
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "framework": null,
+  "installCommand": "npm install",
+  "buildCommand": "node scripts/vercel/build.mjs"
 }

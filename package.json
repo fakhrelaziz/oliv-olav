@@ -1,0 +1,8 @@
+{
+  "name": "fakhrel-olivia",
+  "private": true,
+  "dependencies": {
+    "@libphp/amazon-linux-2023-v84": "0.0.9"
+  }
+}
+
