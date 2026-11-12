@@ -4,6 +4,12 @@
       "runtime": "vercel-php@0.7.4"
     }
   },
+  "redirects": [
+    { "source": "/dashboard", "destination": "/dashboard/", "permanent": false },
+    { "source": "/integrated", "destination": "/integrated/", "permanent": false },
+    { "source": "/kelola-konten", "destination": "/dashboard/kelola-konten.html", "permanent": false },
+    { "source": "/kelola-konten.html", "destination": "/dashboard/kelola-konten.html", "permanent": false }
+  ],
   "rewrites": [
     { "source": "/api/upload.php", "destination": "/api/konten.php?action=upload" },
     { "source": "/api/setup_db.php", "destination": "/api/konten.php?action=setup" },
@@ -12,8 +18,6 @@
     { "source": "/aktivitas/tugas_php_25071101439.php", "destination": "/api/tugas_php_25071101439.php" },
     { "source": "/aktivitas/tugas_php_25071100389.php", "destination": "/api/tugas_php_25071100389.php" },
     { "source": "/aktivitas/tugas_php_25071103083.php", "destination": "/api/tugas_php_25071103083.php" },
-    { "source": "/kelola-konten", "destination": "/dashboard/kelola-konten.html" },
-    { "source": "/kelola-konten.html", "destination": "/dashboard/kelola-konten.html" },
     { "source": "/dashboard/kelola-konten", "destination": "/dashboard/kelola-konten.html" },
     { "source": "/dashboard/section-hero", "destination": "/dashboard/section-hero.html" },
     { "source": "/dashboard/acara", "destination": "/dashboard/acara.html" },
@@ -24,7 +28,7 @@
     { "source": "/dashboard/rsvp", "destination": "/dashboard/rsvp.html" },
     { "source": "/dashboard/tamu", "destination": "/dashboard/tamu.html" },
     { "source": "/dashboard/login", "destination": "/dashboard/login.html" },
-    { "source": "/dashboard", "destination": "/dashboard/index.html" },
-    { "source": "/integrated", "destination": "/integrated/index.html" }
+    { "source": "/dashboard/", "destination": "/dashboard/index.html" },
+    { "source": "/integrated/", "destination": "/integrated/index.html" }
   ]
 }

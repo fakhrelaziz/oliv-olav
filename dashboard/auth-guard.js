@@ -4,8 +4,19 @@
  */
 
 (function () {
+  // Normalisasi trailing slash agar link relatif sidebar (index.html, rsvp.html, dll) selalu mengarah ke /dashboard/...
+  const currentPath = window.location.pathname;
+  if (currentPath === '/dashboard') {
+    window.location.replace('/dashboard/' + window.location.search + window.location.hash);
+    return;
+  }
+  if (currentPath === '/kelola-konten' || currentPath === '/kelola-konten.html') {
+    window.location.replace('/dashboard/kelola-konten.html' + window.location.search + window.location.hash);
+    return;
+  }
+
   // Hanya jalankan pengecekan jika bukan di halaman login
-  const isLoginPage = window.location.pathname.endsWith('login.html');
+  const isLoginPage = currentPath.endsWith('login.html');
 
   async function checkAuthentication() {
     try {
