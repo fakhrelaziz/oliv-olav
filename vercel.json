@@ -9,12 +9,10 @@
     { "source": "/dashboard", "destination": "/dashboard/", "permanent": false },
     { "source": "/integrated", "destination": "/integrated/", "permanent": false },
     { "source": "/kelola-konten", "destination": "/dashboard/kelola-konten.html", "permanent": false },
-    { "source": "/kelola-konten.html", "destination": "/dashboard/kelola-konten.html", "permanent": false }
+    { "source": "/kelola-konten.html", "destination": "/dashboard/kelola-konten.html", "permanent": false },
+    { "source": "/api/setup_db.php", "destination": "/api/konten.php?action=setup", "permanent": false }
   ],
   "rewrites": [
-    { "source": "/api/upload.php", "destination": "/api/konten.php?action=upload" },
-    { "source": "/api/setup_db.php", "destination": "/api/konten.php?action=setup" },
-    { "source": "/api/pengantin.php", "destination": "/api/konten.php?action=pengantin" },
     { "source": "/aktivitas/tugas_php_25071104582.php", "destination": "/api/tugas_php_25071104582.php" },
     { "source": "/aktivitas/tugas_php_25071101439.php", "destination": "/api/tugas_php_25071101439.php" },
     { "source": "/aktivitas/tugas_php_25071100389.php", "destination": "/api/tugas_php_25071100389.php" },
