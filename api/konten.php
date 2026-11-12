@@ -216,10 +216,24 @@ if ($action === 'setup') {
         $msg = $e->getMessage();
         if (strpos($msg, '.railway.internal') !== false) {
             $msg .= ' — Host ".railway.internal" hanya bisa diakses dari jaringan internal Railway. Di Vercel Environment Variables, gunakan MYSQL_PUBLIC_URL (atau host *.proxy.rlwy.net + port publik Railway).';
+        } elseif ($host === '127.0.0.1' || $host === 'localhost') {
+            $msg .= ' — PHP mencoba konek ke MySQL lokal (127.0.0.1:' . $port . '). Di Vercel, pastikan MYSQL_PUBLIC_URL (atau DB_HOST/MYSQLHOST) sudah diisi untuk environment Production lalu Redeploy.';
+        } else {
+            $msg .= ' — Gagal terhubung ke ' . $host . ':' . $port . '. Pastikan host/port MYSQL_PUBLIC_URL dari Railway benar dan service MySQL aktif.';
+        }
+        $envNames = ['MYSQL_PUBLIC_URL', 'MYSQL_URL', 'DATABASE_URL', 'MYSQLHOST', 'MYSQL_HOST', 'DB_HOST', 'RAILWAY_TCP_PROXY_DOMAIN'];
+        $envFlags = [];
+        foreach ($envNames as $envName) {
+            $val = getenv($envName);
+            $envFlags[$envName] = ($val !== false && trim((string)$val) !== '');
         }
         jsonResponse([
-            'success' => false,
-            'message' => 'Gagal menginisialisasi database: ' . $msg
+            'success'      => false,
+            'message'      => 'Gagal menginisialisasi database: ' . $msg,
+            'target_host'  => $host,
+            'target_port'  => $port,
+            'database'     => $db,
+            'env_detected' => $envFlags
         ], 500);
     }
 }

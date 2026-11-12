@@ -14,22 +14,40 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'OPTIONS') {
     exit();
 }
 
-$host    = getenv('DB_HOST') ?: getenv('MYSQLHOST') ?: '127.0.0.1';
-$port    = getenv('DB_PORT') ?: getenv('MYSQLPORT') ?: '3306';
-$db      = getenv('DB_NAME') ?: getenv('MYSQLDATABASE') ?: 'db_fakhrel_olivia';
-$user    = getenv('DB_USER') ?: getenv('MYSQLUSER') ?: 'root';
-$pass    = getenv('DB_PASS') !== false ? getenv('DB_PASS') : (getenv('MYSQLPASSWORD') !== false ? getenv('MYSQLPASSWORD') : '');
+/**
+ * Baca environment variable dari getenv / $_ENV / $_SERVER dan bersihkan tanda kutip atau spasi tak sengaja.
+ */
+function readDbEnv($name) {
+    $val = getenv($name);
+    if ($val === false && isset($_ENV[$name])) {
+        $val = $_ENV[$name];
+    }
+    if ($val === false && isset($_SERVER[$name])) {
+        $val = $_SERVER[$name];
+    }
+    if ($val === false || $val === null) {
+        return null;
+    }
+    $cleaned = trim((string)$val, " \t\n\r\0\x0B\"'");
+    return $cleaned === '' ? null : $cleaned;
+}
+
+$host    = readDbEnv('DB_HOST') ?? readDbEnv('MYSQLHOST') ?? readDbEnv('MYSQL_HOST') ?? '127.0.0.1';
+$port    = readDbEnv('DB_PORT') ?? readDbEnv('MYSQLPORT') ?? readDbEnv('MYSQL_PORT') ?? '3306';
+$db      = readDbEnv('DB_NAME') ?? readDbEnv('MYSQLDATABASE') ?? readDbEnv('MYSQL_DATABASE') ?? 'db_fakhrel_olivia';
+$user    = readDbEnv('DB_USER') ?? readDbEnv('MYSQLUSER') ?? readDbEnv('MYSQL_USER') ?? 'root';
+$pass    = readDbEnv('DB_PASS') ?? readDbEnv('MYSQLPASSWORD') ?? readDbEnv('MYSQL_PASSWORD') ?? '';
 $charset = 'utf8mb4';
 
 // Dukungan otomatis URL Railway: prioritaskan MYSQL_PUBLIC_URL agar bisa diakses dari Vercel,
 // dan fallback ke MYSQL_URL / DATABASE_URL / RAILWAY_TCP_PROXY_DOMAIN jika host internal.
 $candidateUrls = [
-    getenv('MYSQL_PUBLIC_URL'),
-    getenv('MYSQL_URL'),
-    getenv('DATABASE_URL'),
+    readDbEnv('MYSQL_PUBLIC_URL'),
+    readDbEnv('MYSQL_URL'),
+    readDbEnv('DATABASE_URL'),
 ];
 foreach ($candidateUrls as $candidateUrl) {
-    if (!$candidateUrl || strpos($candidateUrl, 'mysql://') !== 0) {
+    if (!$candidateUrl || stripos($candidateUrl, 'mysql://') !== 0) {
         continue;
     }
     $parsed = parse_url($candidateUrl);
@@ -37,13 +55,13 @@ foreach ($candidateUrls as $candidateUrl) {
         continue;
     }
     $isInternal = substr($parsed['host'], -17) === '.railway.internal';
-    if ($isInternal && (getenv('MYSQL_PUBLIC_URL') || getenv('RAILWAY_TCP_PROXY_DOMAIN'))) {
+    if ($isInternal && (readDbEnv('MYSQL_PUBLIC_URL') || readDbEnv('RAILWAY_TCP_PROXY_DOMAIN'))) {
         continue;
     }
     $host = $parsed['host'];
     $port = isset($parsed['port']) ? (string)$parsed['port'] : $port;
-    $user = $parsed['user'] ?? $user;
-    $pass = $parsed['pass'] ?? $pass;
+    $user = isset($parsed['user']) ? rawurldecode($parsed['user']) : $user;
+    $pass = isset($parsed['pass']) ? rawurldecode($parsed['pass']) : $pass;
     if (!empty($parsed['path'])) {
         $db = ltrim($parsed['path'], '/');
     }
@@ -51,8 +69,8 @@ foreach ($candidateUrls as $candidateUrl) {
 }
 
 if (substr($host, -17) === '.railway.internal') {
-    $proxyHost = getenv('RAILWAY_TCP_PROXY_DOMAIN');
-    $proxyPort = getenv('RAILWAY_TCP_PROXY_PORT');
+    $proxyHost = readDbEnv('RAILWAY_TCP_PROXY_DOMAIN');
+    $proxyPort = readDbEnv('RAILWAY_TCP_PROXY_PORT');
     if ($proxyHost) {
         $host = $proxyHost;
         if ($proxyPort) {
