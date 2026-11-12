@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data Tamu Undangan — LAV | LIV</title>
+  <title>Data Tamu Undangan — REL | LIV</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -132,8 +132,8 @@
             </div>
             <span class="text-xs font-medium text-inkMuted">Total Tamu</span>
           </div>
-          <span class="text-2xl font-bold text-ink">120</span>
-          <span class="text-[11px] text-emerald-700 font-medium block mt-0.5">▲ +12 dari kemarin</span>
+          <span id="statTotalTamu" class="text-2xl font-bold text-ink">120</span>
+          <span class="text-[11px] text-emerald-700 font-medium block mt-0.5">▲ Terdata aktif</span>
           <img src="../aset/section2_bunga.webp" alt="deco" class="absolute -bottom-4 -right-4 w-16 opacity-15 pointer-events-none">
         </div>
 
@@ -145,11 +145,11 @@
             </div>
             <span class="text-xs font-medium text-inkMuted">Hadir</span>
           </div>
-          <span class="text-2xl font-bold text-emerald-700">85</span>
+          <span id="statHadir" class="text-2xl font-bold text-emerald-700">85</span>
           <div class="w-full bg-[#EBE9DE] h-1.5 rounded-full overflow-hidden mt-1.5 mb-1">
-            <div class="bg-emerald-600 h-full rounded-full" style="width: 70.8%;"></div>
+            <div id="barHadir" class="bg-emerald-600 h-full rounded-full transition-all duration-300" style="width: 70.8%;"></div>
           </div>
-          <span class="text-[10px] text-inkMuted block">70,8% dari total</span>
+          <span id="pctHadir" class="text-[10px] text-inkMuted block">70,8% dari total</span>
         </div>
 
         <!-- 3. Tidak Hadir -->
@@ -160,11 +160,11 @@
             </div>
             <span class="text-xs font-medium text-inkMuted">Tidak Hadir</span>
           </div>
-          <span class="text-2xl font-bold text-rose-700">25</span>
+          <span id="statTidakHadir" class="text-2xl font-bold text-rose-700">25</span>
           <div class="w-full bg-[#EBE9DE] h-1.5 rounded-full overflow-hidden mt-1.5 mb-1">
-            <div class="bg-rose-500 h-full rounded-full" style="width: 20.8%;"></div>
+            <div id="barTidakHadir" class="bg-rose-500 h-full rounded-full transition-all duration-300" style="width: 20.8%;"></div>
           </div>
-          <span class="text-[10px] text-inkMuted block">20,8% dari total</span>
+          <span id="pctTidakHadir" class="text-[10px] text-inkMuted block">20,8% dari total</span>
         </div>
 
         <!-- 4. Belum Konfirmasi -->
@@ -175,11 +175,11 @@
             </div>
             <span class="text-xs font-medium text-inkMuted">Belum Konfirmasi</span>
           </div>
-          <span class="text-2xl font-bold text-amber-700">10</span>
+          <span id="statBelumKonfirmasi" class="text-2xl font-bold text-amber-700">10</span>
           <div class="w-full bg-[#EBE9DE] h-1.5 rounded-full overflow-hidden mt-1.5 mb-1">
-            <div class="bg-amber-500 h-full rounded-full" style="width: 8.3%;"></div>
+            <div id="barBelumKonfirmasi" class="bg-amber-500 h-full rounded-full transition-all duration-300" style="width: 8.3%;"></div>
           </div>
-          <span class="text-[10px] text-inkMuted block">8,3% dari total</span>
+          <span id="pctBelumKonfirmasi" class="text-[10px] text-inkMuted block">8,3% dari total</span>
         </div>
       </div>
 
@@ -242,8 +242,8 @@
                 </td>
                 <td class="py-3.5 px-4 text-center">
                   <div class="inline-flex items-center space-x-2 text-inkMuted">
-                    <button class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
-                    <button class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    <button onclick="editGuest(this)" class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                    <button onclick="deleteGuest(this)" class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
                     <button onclick="copyGuestInvite('Ahmad Fauzi')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
                   </div>
                 </td>
@@ -259,8 +259,8 @@
                 </td>
                 <td class="py-3.5 px-4 text-center">
                   <div class="inline-flex items-center space-x-2 text-inkMuted">
-                    <button class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
-                    <button class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    <button onclick="editGuest(this)" class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                    <button onclick="deleteGuest(this)" class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
                     <button onclick="copyGuestInvite('Siti Nurhaliza')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
                   </div>
                 </td>
@@ -276,8 +276,8 @@
                 </td>
                 <td class="py-3.5 px-4 text-center">
                   <div class="inline-flex items-center space-x-2 text-inkMuted">
-                    <button class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
-                    <button class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    <button onclick="editGuest(this)" class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                    <button onclick="deleteGuest(this)" class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
                     <button onclick="copyGuestInvite('Rizky Maulana')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
                   </div>
                 </td>
@@ -293,8 +293,8 @@
                 </td>
                 <td class="py-3.5 px-4 text-center">
                   <div class="inline-flex items-center space-x-2 text-inkMuted">
-                    <button class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
-                    <button class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    <button onclick="editGuest(this)" class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                    <button onclick="deleteGuest(this)" class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
                     <button onclick="copyGuestInvite('Dewi Lestari')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
                   </div>
                 </td>
@@ -310,8 +310,8 @@
                 </td>
                 <td class="py-3.5 px-4 text-center">
                   <div class="inline-flex items-center space-x-2 text-inkMuted">
-                    <button class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
-                    <button class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    <button onclick="editGuest(this)" class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                    <button onclick="deleteGuest(this)" class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
                     <button onclick="copyGuestInvite('Fajar Ramadhan')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
                   </div>
                 </td>
@@ -327,8 +327,8 @@
                 </td>
                 <td class="py-3.5 px-4 text-center">
                   <div class="inline-flex items-center space-x-2 text-inkMuted">
-                    <button class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
-                    <button class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    <button onclick="editGuest(this)" class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                    <button onclick="deleteGuest(this)" class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
                     <button onclick="copyGuestInvite('Putri Ananda')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
                   </div>
                 </td>
@@ -344,8 +344,8 @@
                 </td>
                 <td class="py-3.5 px-4 text-center">
                   <div class="inline-flex items-center space-x-2 text-inkMuted">
-                    <button class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
-                    <button class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    <button onclick="editGuest(this)" class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                    <button onclick="deleteGuest(this)" class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
                     <button onclick="copyGuestInvite('Budi Santoso')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
                   </div>
                 </td>
@@ -361,8 +361,8 @@
                 </td>
                 <td class="py-3.5 px-4 text-center">
                   <div class="inline-flex items-center space-x-2 text-inkMuted">
-                    <button class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
-                    <button class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    <button onclick="editGuest(this)" class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                    <button onclick="deleteGuest(this)" class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
                     <button onclick="copyGuestInvite('Nadia Rahma')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
                   </div>
                 </td>
@@ -410,7 +410,7 @@
         </div>
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="block font-medium mb-1">Jumlah Undangan</label>
+            <label class="block font-medium mb-1">Jumlah Undangan (Pax)</label>
             <input type="number" id="newGuestPax" value="2" min="1" max="10" class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
           </div>
           <div>
@@ -424,7 +424,42 @@
         </div>
         <div class="flex justify-end space-x-2 pt-3">
           <button type="button" onclick="closeModalGuest()" class="px-4 py-2 rounded-xl border border-borderSoft text-ink hover:bg-cardMuted">Batal</button>
-          <button type="submit" class="px-5 py-2 rounded-xl bg-moss text-cream font-medium hover:bg-mossLight">Simpan Tamu</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-moss text-cream font-medium hover:bg-mossLight transition shadow-sm">Simpan Tamu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Edit Tamu -->
+  <div id="editGuestModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-cardBg w-full max-w-md rounded-3xl p-7 border border-borderSoft shadow-2xl relative">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="font-display text-xl font-semibold text-ink">Edit Data Tamu</h3>
+        <button onclick="closeModalEditGuest()" class="text-gray-400 hover:text-ink"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <form onsubmit="handleSaveEditGuest(event)" class="space-y-4 text-xs">
+        <input type="hidden" id="editRowIndex">
+        <div>
+          <label class="block font-medium mb-1">Nama Lengkap Tamu</label>
+          <input type="text" id="editGuestName" required class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-medium mb-1">Jumlah Undangan (Pax)</label>
+            <input type="number" id="editGuestPax" min="1" max="10" class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
+          </div>
+          <div>
+            <label class="block font-medium mb-1">Status Kehadiran</label>
+            <select id="editGuestStatus" class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
+              <option value="Hadir">Hadir</option>
+              <option value="Belum Konfirmasi">Belum Konfirmasi</option>
+              <option value="Tidak Hadir">Tidak Hadir</option>
+            </select>
+          </div>
+        </div>
+        <div class="flex justify-end space-x-2 pt-3">
+          <button type="button" onclick="closeModalEditGuest()" class="px-4 py-2 rounded-xl border border-borderSoft text-ink hover:bg-cardMuted">Batal</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-moss text-cream font-medium hover:bg-mossLight transition shadow-sm">Simpan Perubahan</button>
         </div>
       </form>
     </div>
@@ -432,6 +467,8 @@
 
   <script>
     lucide.createIcons();
+
+    let activeEditRow = null;
 
     function filterGuests() {
       const q = document.getElementById('searchGuest').value.toLowerCase();
@@ -462,6 +499,63 @@
       document.getElementById('guestModal').classList.add('opacity-0', 'pointer-events-none');
     }
 
+    function openModalEditGuest() {
+      document.getElementById('editGuestModal').classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeModalEditGuest() {
+      document.getElementById('editGuestModal').classList.add('opacity-0', 'pointer-events-none');
+      activeEditRow = null;
+    }
+
+    function editGuest(btn) {
+      activeEditRow = btn.closest('.guest-row');
+      const name = activeEditRow.querySelector('.guest-name').innerText.trim();
+      const pax = activeEditRow.querySelector('td:nth-child(3)').innerText.trim();
+      const status = activeEditRow.querySelector('td:nth-child(4)').innerText.trim();
+
+      document.getElementById('editGuestName').value = name;
+      document.getElementById('editGuestPax').value = pax;
+      document.getElementById('editGuestStatus').value = status;
+
+      openModalEditGuest();
+    }
+
+    function handleSaveEditGuest(e) {
+      e.preventDefault();
+      if (!activeEditRow) return;
+
+      const name = document.getElementById('editGuestName').value;
+      const pax = document.getElementById('editGuestPax').value;
+      const status = document.getElementById('editGuestStatus').value;
+
+      let badgeClass = 'bg-badgeAmber text-textAmber';
+      if (status === 'Hadir') badgeClass = 'bg-badgeGreen text-textGreen';
+      if (status === 'Tidak Hadir') badgeClass = 'bg-badgeRed text-textRed';
+
+      activeEditRow.querySelector('.guest-name').innerText = name;
+      activeEditRow.querySelector('td:nth-child(3)').innerText = pax;
+      activeEditRow.querySelector('td:nth-child(4)').innerHTML = `<span class="px-3 py-1 rounded-full text-[11px] font-medium ${badgeClass}">${status}</span>`;
+
+      // Update copy button onclick
+      const copyBtn = activeEditRow.querySelector('button[title="Salin Link Undangan"]');
+      if (copyBtn) copyBtn.setAttribute('onclick', `copyGuestInvite('${name}')`);
+
+      closeModalEditGuest();
+      recalculateStats();
+      alert('Data tamu berhasil diperbarui!');
+    }
+
+    function deleteGuest(btn) {
+      const row = btn.closest('.guest-row');
+      const name = row.querySelector('.guest-name').innerText.trim();
+      if (confirm(`Apakah Anda yakin ingin menghapus data tamu "${name}"?`)) {
+        row.remove();
+        recalculateStats();
+        alert(`Data tamu "${name}" telah dihapus.`);
+      }
+    }
+
     function handleSaveGuest(e) {
       e.preventDefault();
       const name = document.getElementById('newGuestName').value;
@@ -473,7 +567,7 @@
       if (status === 'Tidak Hadir') badgeClass = 'bg-badgeRed text-textRed';
 
       const tbody = document.getElementById('guestRows');
-      const count = tbody.children.length + 1;
+      const count = tbody.querySelectorAll('.guest-row').length + 1;
 
       const tr = document.createElement('tr');
       tr.className = 'guest-row hover:bg-cardMuted/80 transition';
@@ -486,8 +580,8 @@
         </td>
         <td class="py-3.5 px-4 text-center">
           <div class="inline-flex items-center space-x-2 text-inkMuted">
-            <button class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
-            <button class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+            <button onclick="editGuest(this)" class="hover:text-moss" title="Edit"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+            <button onclick="deleteGuest(this)" class="hover:text-rose-600" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
             <button onclick="copyGuestInvite('${name}')" class="hover:text-moss" title="Salin Link Undangan"><i data-lucide="link" class="w-4 h-4"></i></button>
           </div>
         </td>
@@ -495,7 +589,43 @@
       tbody.prepend(tr);
       lucide.createIcons();
       closeModalGuest();
+      recalculateStats();
       alert("Tamu " + name + " berhasil ditambahkan!");
+    }
+
+    function recalculateStats() {
+      const rows = document.querySelectorAll('.guest-row');
+      let hadir = 0;
+      let tidakHadir = 0;
+      let belum = 0;
+
+      rows.forEach(r => {
+        const stat = r.querySelector('td:nth-child(4)').innerText.trim();
+        if (stat === 'Hadir') hadir++;
+        else if (stat === 'Tidak Hadir') tidakHadir++;
+        else belum++;
+      });
+
+      const total = rows.length;
+      document.getElementById('statTotalTamu').innerText = total;
+      document.getElementById('statHadir').innerText = hadir;
+      document.getElementById('statTidakHadir').innerText = tidakHadir;
+      document.getElementById('statBelumKonfirmasi').innerText = belum;
+
+      if (total > 0) {
+        const pctH = ((hadir / total) * 100).toFixed(1);
+        const pctTH = ((tidakHadir / total) * 100).toFixed(1);
+        const pctB = ((belum / total) * 100).toFixed(1);
+
+        document.getElementById('barHadir').style.width = pctH + '%';
+        document.getElementById('pctHadir').innerText = pctH.replace('.', ',') + '% dari total';
+
+        document.getElementById('barTidakHadir').style.width = pctTH + '%';
+        document.getElementById('pctTidakHadir').innerText = pctTH.replace('.', ',') + '% dari total';
+
+        document.getElementById('barBelumKonfirmasi').style.width = pctB + '%';
+        document.getElementById('pctBelumKonfirmasi').innerText = pctB.replace('.', ',') + '% dari total';
+      }
     }
   </script>
 </body>

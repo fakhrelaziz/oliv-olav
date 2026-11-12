@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Doa dan Ucapan — LAV | LIV</title>
+  <title>Doa dan Ucapan — REL | LIV</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -236,7 +236,7 @@
               </select>
 
               <!-- Export Button -->
-              <button onclick="alert('Export data ucapan ke Excel/CSV');" class="px-3 py-1.5 text-xs bg-cardMuted hover:bg-[#EFECE0] border border-borderSoft rounded-xl text-ink flex items-center space-x-1 transition">
+              <button onclick="exportToCSV()" class="px-3 py-1.5 text-xs bg-cardMuted hover:bg-[#EFECE0] border border-borderSoft rounded-xl text-ink flex items-center space-x-1 transition">
                 <i data-lucide="download" class="w-3.5 h-3.5 text-inkMuted"></i>
                 <span>Export</span>
               </button>
@@ -441,8 +441,52 @@
     </main>
   </div>
 
+  <!-- Modal Tambah Doa & Ucapan -->
+  <div id="addWishModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-cardBg w-full max-w-md rounded-3xl p-7 border border-borderSoft shadow-2xl relative">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="font-display text-xl font-semibold text-ink">Tambah Doa & Ucapan</h3>
+        <button onclick="closeAddWishModal()" class="text-gray-400 hover:text-ink"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+
+      <form onsubmit="handleSaveWish(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-medium mb-1">Nama Pengirim</label>
+          <input type="text" id="newWishName" required placeholder="Contoh: Raden Mas Danu" class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
+        </div>
+
+        <div>
+          <label class="block font-medium mb-1">Status Kehadiran</label>
+          <select id="newWishStatus" class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
+            <option value="Hadir">Hadir</option>
+            <option value="Tidak Hadir">Tidak Hadir</option>
+            <option value="Masih Ragu">Masih Ragu</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-medium mb-1">Pesan Doa & Ucapan</label>
+          <textarea id="newWishMessage" rows="3" required placeholder="Tuliskan ucapan selamat dan doa..." class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss resize-none"></textarea>
+        </div>
+
+        <div class="flex justify-end space-x-2 pt-3">
+          <button type="button" onclick="closeAddWishModal()" class="px-4 py-2 rounded-xl border border-borderSoft text-ink hover:bg-cardMuted">Batal</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-moss text-cream font-medium hover:bg-mossLight transition shadow-sm">Simpan Ucapan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script>
     lucide.createIcons();
+
+    function openAddWishModal() {
+      document.getElementById('addWishModal').classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeAddWishModal() {
+      document.getElementById('addWishModal').classList.add('opacity-0', 'pointer-events-none');
+    }
 
     function filterWishes() {
       const q = document.getElementById('searchWish').value.toLowerCase();
@@ -465,8 +509,75 @@
       });
     }
 
-    function openAddWishModal() {
-      alert("Modal Tambah Ucapan Siap!");
+    function deleteWish(btn) {
+      if (confirm('Hapus ucapan ini?')) {
+        const row = btn.closest('.wish-row');
+        row.remove();
+        alert('Ucapan berhasil dihapus.');
+      }
+    }
+
+    function exportToCSV() {
+      const rows = document.querySelectorAll('.wish-row');
+      let csvContent = 'data:text/csv;charset=utf-8,No,Nama Tamu,Status,Ucapan,Tanggal\n';
+      
+      let index = 1;
+      rows.forEach(r => {
+        const name = r.querySelector('.name-col').innerText.replace(/"/g, '""');
+        const stat = r.querySelector('.status-col').innerText.trim().replace(/"/g, '""');
+        const msg = r.querySelector('.msg-col').innerText.replace(/"/g, '""');
+        const date = r.querySelector('td:nth-child(5)').innerText.replace(/"/g, '""');
+        csvContent += `"${index}","${name}","${stat}","${msg}","${date}"\n`;
+        index++;
+      });
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement('a');
+      link.setAttribute('href', encodedUri);
+      link.setAttribute('download', 'doa_dan_ucapan_fakhrel_olivia.csv');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function handleSaveWish(e) {
+      e.preventDefault();
+      const name = document.getElementById('newWishName').value;
+      const status = document.getElementById('newWishStatus').value;
+      const msg = document.getElementById('newWishMessage').value;
+
+      let badgeClass = 'bg-badgeGreen text-textGreen';
+      if (status === 'Tidak Hadir') badgeClass = 'bg-badgeRed text-textRed';
+      if (status === 'Masih Ragu') badgeClass = 'bg-badgeAmber text-textAmber';
+
+      const initials = name.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase();
+
+      const tbody = document.querySelector('#wishesTable tbody');
+      const count = tbody.querySelectorAll('.wish-row').length + 1;
+
+      const tr = document.createElement('tr');
+      tr.className = 'wish-row hover:bg-cardMuted/80 transition';
+      tr.innerHTML = `
+        <td class="py-3 px-3 font-medium text-inkMuted">${count}</td>
+        <td class="py-3 px-3">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center font-semibold text-[11px]">${initials}</div>
+            <span class="font-semibold text-ink name-col">${name}</span>
+          </div>
+        </td>
+        <td class="py-3 px-3 status-col">
+          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium ${badgeClass}">${status}</span>
+        </td>
+        <td class="py-3 px-4 text-ink msg-col">${msg}</td>
+        <td class="py-3 px-3 text-inkMuted font-mono text-[11px] whitespace-nowrap">Hari ini</td>
+        <td class="py-3 px-3 text-center">
+          <button onclick="deleteWish(this)" class="p-1 rounded-lg hover:bg-cream text-inkMuted hover:text-rose-600 transition" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+        </td>
+      `;
+      tbody.prepend(tr);
+      lucide.createIcons();
+      closeAddWishModal();
+      alert('Ucapan berhasil ditambahkan!');
     }
   </script>
 </body>

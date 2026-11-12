@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeri Foto — LAV | LIV</title>
+  <title>Galeri Foto — REL | LIV</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -126,11 +126,11 @@
               Setiap foto menyimpan cerita. Setiap momen menjadi bagian dari perjalanan kami menuju hari yang istimewa.
             </p>
             <div class="flex items-center space-x-3">
-              <button onclick="alert('Buka dialog upload foto');" class="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-moss hover:bg-mossLight text-cream text-xs font-medium transition shadow-sm">
+              <button onclick="openUploadModal()" class="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-moss hover:bg-mossLight text-cream text-xs font-medium transition shadow-sm">
                 <i data-lucide="upload" class="w-3.5 h-3.5"></i>
                 <span>Unggah Foto Baru</span>
               </button>
-              <span class="text-xs text-inkMuted">Format JPG/PNG, maks 5MB</span>
+              <span class="text-xs text-inkMuted">Format JPG/PNG/WebP, maks 5MB</span>
             </div>
           </div>
         </div>
@@ -178,7 +178,7 @@
       <div id="galleryGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
         
         <!-- Photo 1 -->
-        <div class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto.webp');" onclick="viewPhoto('../aset/section5_galerifoto.webp')">
+        <div data-category="prewedding" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto.webp');" onclick="viewPhoto('../aset/section5_galerifoto.webp')">
           <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
             <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
               <i data-lucide="maximize-2" class="w-4 h-4"></i>
@@ -187,7 +187,7 @@
         </div>
 
         <!-- Photo 2 -->
-        <div class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(2).webp');" onclick="viewPhoto('../aset/section5_galerifoto(2).webp')">
+        <div data-category="prewedding" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(2).webp');" onclick="viewPhoto('../aset/section5_galerifoto(2).webp')">
           <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
             <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
               <i data-lucide="maximize-2" class="w-4 h-4"></i>
@@ -196,7 +196,7 @@
         </div>
 
         <!-- Photo 3 -->
-        <div class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(3).webp');" onclick="viewPhoto('../aset/section5_galerifoto(3).webp')">
+        <div data-category="prewedding" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(3).webp');" onclick="viewPhoto('../aset/section5_galerifoto(3).webp')">
           <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
             <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
               <i data-lucide="maximize-2" class="w-4 h-4"></i>
@@ -205,7 +205,7 @@
         </div>
 
         <!-- Photo 4 -->
-        <div class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(4).webp');" onclick="viewPhoto('../aset/section5_galerifoto(4).webp')">
+        <div data-category="prewedding" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(4).webp');" onclick="viewPhoto('../aset/section5_galerifoto(4).webp')">
           <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
             <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
               <i data-lucide="maximize-2" class="w-4 h-4"></i>
@@ -214,7 +214,7 @@
         </div>
 
         <!-- Photo 5 -->
-        <div class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(5).webp');" onclick="viewPhoto('../aset/section5_galerifoto(5).webp')">
+        <div data-category="keseharian" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(5).webp');" onclick="viewPhoto('../aset/section5_galerifoto(5).webp')">
           <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
             <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
               <i data-lucide="maximize-2" class="w-4 h-4"></i>
@@ -223,7 +223,7 @@
         </div>
 
         <!-- Photo 6 -->
-        <div class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(6).webp');" onclick="viewPhoto('../aset/section5_galerifoto(6).webp')">
+        <div data-category="keseharian" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(6).webp');" onclick="viewPhoto('../aset/section5_galerifoto(6).webp')">
           <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
             <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
               <i data-lucide="maximize-2" class="w-4 h-4"></i>
@@ -232,7 +232,7 @@
         </div>
 
         <!-- Photo 7 -->
-        <div class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(7)webp.webp');" onclick="viewPhoto('../aset/section5_galerifoto(7)webp.webp')">
+        <div data-category="acara" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(7)webp.webp');" onclick="viewPhoto('../aset/section5_galerifoto(7)webp.webp')">
           <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
             <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
               <i data-lucide="maximize-2" class="w-4 h-4"></i>
@@ -241,7 +241,7 @@
         </div>
 
         <!-- Photo 8 -->
-        <div class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(8).webp');" onclick="viewPhoto('../aset/section5_galerifoto(8).webp')">
+        <div data-category="acara" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(8).webp');" onclick="viewPhoto('../aset/section5_galerifoto(8).webp')">
           <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
             <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
               <i data-lucide="maximize-2" class="w-4 h-4"></i>
@@ -250,7 +250,7 @@
         </div>
 
         <!-- Photo 9 -->
-        <div class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(9).webp');" onclick="viewPhoto('../aset/section5_galerifoto(9).webp')">
+        <div data-category="prewedding" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_galerifoto(9).webp');" onclick="viewPhoto('../aset/section5_galerifoto(9).webp')">
           <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
             <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
               <i data-lucide="maximize-2" class="w-4 h-4"></i>
@@ -259,7 +259,7 @@
         </div>
 
         <!-- Photo 10 -->
-        <div class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_fotopengantin.webp');" onclick="viewPhoto('../aset/section5_fotopengantin.webp')">
+        <div data-category="prewedding" class="photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer" style="background-image: url('../aset/section5_fotopengantin.webp');" onclick="viewPhoto('../aset/section5_fotopengantin.webp')">
           <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
             <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
               <i data-lucide="maximize-2" class="w-4 h-4"></i>
@@ -283,19 +283,89 @@
     </main>
   </div>
 
+  <!-- Modal Unggah Foto Baru -->
+  <div id="uploadModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-cardBg w-full max-w-md rounded-3xl p-7 border border-borderSoft shadow-2xl relative">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="font-display text-xl font-semibold text-ink">Unggah Foto Galeri</h3>
+        <button onclick="closeUploadModal()" class="text-gray-400 hover:text-ink"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+
+      <form onsubmit="handleSavePhoto(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-medium mb-1">Judul / Keterangan Foto</label>
+          <input type="text" id="photoTitle" required placeholder="Contoh: Momen Bahagia di Taman" class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
+        </div>
+
+        <div>
+          <label class="block font-medium mb-1">Kategori</label>
+          <select id="photoCategory" class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
+            <option value="prewedding">Prewedding</option>
+            <option value="acara">Acara</option>
+            <option value="keseharian">Keseharian</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-medium mb-1">Pilih File Foto Master</label>
+          <select id="photoSource" class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
+            <option value="../aset/section5_galerifoto_tangan.webp">Foto Cincin & Tangan (Master)</option>
+            <option value="../aset/section5_galerifoto.webp">Foto 1 (Taman Hijau)</option>
+            <option value="../aset/section5_galerifoto(2).webp">Foto 2 (Bunga Putih)</option>
+            <option value="../aset/section5_galerifoto(3).webp">Foto 3 (Menatap Langit)</option>
+            <option value="../aset/section5_galerifoto(4).webp">Foto 4 (Danau / Arsitektur)</option>
+            <option value="../aset/section5_galerifoto(5).webp">Foto 5 (Pelukan Belakang)</option>
+            <option value="../aset/section5_galerifoto(6).webp">Foto 6 (Genggaman Tangan)</option>
+            <option value="../aset/section5_galerifoto(7)webp.webp">Foto 7 (Berdua di Padang)</option>
+            <option value="../aset/section5_galerifoto(8).webp">Foto 8 (Surat Undangan)</option>
+          </select>
+        </div>
+
+        <div class="flex justify-end space-x-2 pt-3">
+          <button type="button" onclick="closeUploadModal()" class="px-4 py-2 rounded-xl border border-borderSoft text-ink hover:bg-cardMuted">Batal</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-moss text-cream font-medium hover:bg-mossLight transition shadow-sm">Simpan ke Galeri</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- Lightbox Modal -->
-  <div id="lightbox" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300" onclick="closePhoto()">
-    <img id="lightboxImg" src="" alt="Enlarged" class="max-w-4xl max-h-[85vh] rounded-2xl shadow-2xl object-contain">
+  <div id="lightbox" class="fixed inset-0 bg-black/85 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300" onclick="closePhoto()">
+    <div class="relative max-w-4xl max-h-[85vh]" onclick="event.stopPropagation()">
+      <button onclick="closePhoto()" class="absolute -top-10 right-0 text-white/80 hover:text-white flex items-center space-x-1 text-xs">
+        <i data-lucide="x" class="w-5 h-5"></i>
+        <span>Tutup</span>
+      </button>
+      <img id="lightboxImg" src="" alt="Enlarged" class="rounded-2xl shadow-2xl object-contain max-h-[80vh] w-auto">
+    </div>
   </div>
 
   <script>
     lucide.createIcons();
+
+    function openUploadModal() {
+      document.getElementById('uploadModal').classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeUploadModal() {
+      document.getElementById('uploadModal').classList.add('opacity-0', 'pointer-events-none');
+    }
 
     function filterCategory(cat, btn) {
       document.querySelectorAll('.filter-tab').forEach(t => {
         t.className = 'filter-tab px-4 py-2 rounded-xl text-xs font-semibold bg-cardBg text-ink hover:bg-cardMuted border border-borderSoft transition';
       });
       btn.className = 'filter-tab px-4 py-2 rounded-xl text-xs font-semibold bg-moss text-cream shadow-sm transition';
+
+      const items = document.querySelectorAll('.photo-item');
+      items.forEach(it => {
+        const itemCat = it.getAttribute('data-category');
+        if (cat === 'all' || itemCat === cat) {
+          it.style.display = '';
+        } else {
+          it.style.display = 'none';
+        }
+      });
     }
 
     function viewPhoto(url) {
@@ -308,6 +378,31 @@
     function closePhoto() {
       const lb = document.getElementById('lightbox');
       lb.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function handleSavePhoto(e) {
+      e.preventDefault();
+      const title = document.getElementById('photoTitle').value;
+      const cat = document.getElementById('photoCategory').value;
+      const src = document.getElementById('photoSource').value;
+
+      const grid = document.getElementById('galleryGrid');
+      const photoDiv = document.createElement('div');
+      photoDiv.setAttribute('data-category', cat);
+      photoDiv.className = 'photo-item group aspect-[4/3] rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-sm relative cursor-pointer';
+      photoDiv.style.backgroundImage = `url('${src}')`;
+      photoDiv.onclick = () => viewPhoto(src);
+      photoDiv.innerHTML = `
+        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+          <div class="w-8 h-8 rounded-full bg-white/90 text-moss flex items-center justify-center shadow">
+            <i data-lucide="maximize-2" class="w-4 h-4"></i>
+          </div>
+        </div>
+      `;
+      grid.prepend(photoDiv);
+      lucide.createIcons();
+      closeUploadModal();
+      alert(`Foto "${title}" berhasil ditambahkan ke galeri!`);
     }
   </script>
 </body>

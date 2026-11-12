@@ -1,150 +1,177 @@
-    <!-- SECTION 6 - RSVP & WISHES -->
+<!-- SECTION 6 - RSVP & WISHES -->
     <section id="rsvp" class="relative w-full overflow-hidden bg-paper text-moss">
       
       <!-- Top Title Area -->
-      <div class="bg-moss text-warmwhite px-6 md:px-16 pt-24 pb-16 flex flex-col md:flex-row justify-between items-center relative overflow-hidden">
-        <div class="relative z-10 w-full md:w-[45%] lg:w-[40%] mb-16 md:mb-0">
-          <p class="text-[10px] md:text-xs uppercase tracking-[0.3em] mb-6 text-warmwhite/70 font-semibold">06 // 06<br><br>UCAPAN & RSVP</p>
-          <h2 class="font-display text-6xl md:text-8xl mb-8 leading-[1.1]">Doa dan<br>Ucapan</h2>
-          <div class="w-16 h-px bg-warmwhite mb-8"></div>
+      <div class="bg-moss text-warmwhite px-6 md:px-16 lg:px-24 pt-24 pb-12 md:pb-0 flex flex-col md:flex-row justify-between items-end relative">
+        <div class="relative z-10 w-full md:w-[42%] pb-8 md:pb-16">
+          <p class="text-[10px] md:text-xs uppercase tracking-[0.3em] mb-4 text-warmwhite/70 font-semibold">UCAPAN & RSVP</p>
+          <h2 class="font-display text-5xl sm:text-6xl md:text-7xl mb-6 leading-[1.08]">Doa dan<br>Ucapan</h2>
+          <div class="w-12 h-px bg-warmwhite/50 mb-6"></div>
           <p class="text-sm md:text-base leading-relaxed text-warmwhite/90 max-w-sm">
             Terima kasih atas kehadiran, doa dan ucapan yang tulus untuk kami. Semoga segala kebaikan kembali kepada Anda.
           </p>
         </div>
         
-        <div class="relative z-10 w-full md:w-[55%] lg:w-[60%] flex justify-end">
-           <div class="relative w-full max-w-xl md:-mr-12 lg:-mr-24 rotate-[2deg]">
-             <img src="../aset/section6(01).webp" class="w-full h-auto shadow-2xl" alt="Thank you card" />
+        <div class="relative z-20 w-full md:w-[58%] flex justify-end md:-mb-8">
+           <div class="relative w-full max-w-xl">
+             <img src="../aset/section6(01).webp" class="w-full h-auto drop-shadow-2xl block" alt="Terima kasih atas doa dan kehadirannya" />
            </div>
         </div>
         
-        <div class="absolute right-6 top-6 hidden md:block text-[10px] uppercase tracking-[0.3em] text-warmwhite/70 text-right leading-loose font-semibold">
+        <div class="absolute right-6 md:right-10 top-12 hidden md:block text-[10px] uppercase tracking-[0.3em] text-warmwhite/75 text-right leading-loose font-semibold z-20">
           SAME<br>PEOPLE<br>BRIGHTER<br>DAYS
-          <div class="w-px h-16 bg-warmwhite/40 ml-auto mt-4"></div>
+          <div class="w-px h-10 bg-warmwhite/40 ml-auto mt-3"></div>
         </div>
       </div>
 
       <!-- Forms and Messages Area -->
-      <div class="px-6 md:px-16 py-32 relative max-w-7xl mx-auto flex flex-col md:flex-row gap-16 md:gap-24">
+      <div class="px-6 sm:px-10 md:px-16 lg:px-20 pt-20 pb-16 relative max-w-6xl mx-auto flex flex-col md:flex-row gap-12 lg:gap-16">
         
         <!-- Form Left -->
-        <div class="w-full md:w-[45%]">
-          <h3 class="font-display text-4xl md:text-5xl mb-4">Kirim Ucapan</h3>
-          <p class="text-sm md:text-base text-moss/80 mb-10">Tuliskan doa, harapan, dan ucapan terbaik untuk kami.</p>
+        <div class="w-full md:w-[46%]">
+          <h3 class="font-display text-3xl sm:text-4xl mb-2 text-moss">Kirim Ucapan</h3>
+          <p class="text-xs sm:text-sm text-moss/80 mb-6">Tuliskan doa, harapan, dan ucapan terbaik untuk kami.</p>
           
-          <form class="space-y-6">
+          <form class="space-y-4">
             <div class="relative">
-              <span class="absolute left-4 top-4 text-moss/50 text-lg">&#128100;</span>
-              <input type="text" placeholder="Nama Anda" class="w-full bg-transparent border-2 border-moss/20 rounded-xl py-4 pl-14 pr-4 text-base focus:outline-none focus:border-moss transition" />
+              <span class="absolute left-4 top-1/2 -translate-y-1/2 text-moss/70">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+                  <circle cx="12" cy="8" r="3.5" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5.5 20a6.5 6.5 0 0113 0H5.5z" />
+                </svg>
+              </span>
+              <input id="input-nama-tamu" type="text" placeholder="Nama Anda" class="w-full bg-warmwhite/50 border border-moss/20 rounded-xl py-3.5 pl-11 pr-4 text-xs sm:text-sm focus:outline-none focus:border-moss transition" />
             </div>
             
             <div class="relative">
-              <span class="absolute left-4 top-4 text-moss/50 text-lg">&#128172;</span>
-              <textarea placeholder="Tulis ucapan dan doa..." rows="5" class="w-full bg-transparent border-2 border-moss/20 rounded-xl py-4 pl-14 pr-4 text-base focus:outline-none focus:border-moss transition resize-none"></textarea>
+              <span class="absolute left-4 top-4 text-moss/70">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 5h16a1 1 0 011 1v10a1 1 0 01-1 1H8l-4 3V6a1 1 0 011-1z" />
+                  <path stroke-linecap="round" d="M8 10h8M8 13h5" />
+                </svg>
+              </span>
+              <textarea placeholder="Tulis ucapan dan doa..." rows="4" class="w-full bg-warmwhite/50 border border-moss/20 rounded-xl py-3.5 pl-11 pr-4 text-xs sm:text-sm focus:outline-none focus:border-moss transition resize-none"></textarea>
             </div>
             
-            <div class="pt-6 border-t border-moss/10 mt-6">
-              <p class="text-base font-semibold mb-6">Konfirmasi Kehadiran</p>
-              <div class="flex flex-col sm:flex-row gap-4 bg-transparent border border-moss/20 rounded-xl p-3">
-                <label class="flex-1 flex items-center gap-3 cursor-pointer hover:bg-moss/5 p-3 rounded-lg transition">
+            <div class="pt-2">
+              <p class="text-xs sm:text-sm font-medium mb-3 text-moss">Konfirmasi Kehadiran</p>
+              <div class="flex flex-col sm:flex-row gap-2 bg-warmwhite/40 border border-moss/20 rounded-full p-2 px-4">
+                <label class="flex-1 flex items-center gap-2.5 cursor-pointer py-1.5 px-2 rounded-full transition">
                   <input type="radio" name="attendance" class="w-4 h-4 accent-moss" checked />
-                  <span class="text-base font-medium">Hadir</span>
+                  <span class="text-xs sm:text-sm font-medium">Hadir</span>
                 </label>
-                <label class="flex-1 flex items-center gap-3 cursor-pointer hover:bg-moss/5 p-3 rounded-lg transition">
+                <label class="flex-1 flex items-center gap-2.5 cursor-pointer py-1.5 px-2 rounded-full transition">
                   <input type="radio" name="attendance" class="w-4 h-4 accent-moss" />
-                  <span class="text-base font-medium">Tidak Hadir</span>
+                  <span class="text-xs sm:text-sm font-medium">Tidak Hadir</span>
                 </label>
-                <label class="flex-1 flex items-center gap-3 cursor-pointer hover:bg-moss/5 p-3 rounded-lg transition">
+                <label class="flex-1 flex items-center gap-2.5 cursor-pointer py-1.5 px-2 rounded-full transition">
                   <input type="radio" name="attendance" class="w-4 h-4 accent-moss" />
-                  <span class="text-base font-medium">Masih Ragu</span>
+                  <span class="text-xs sm:text-sm font-medium">Masih Ragu</span>
                 </label>
               </div>
             </div>
             
-            <button type="submit" class="w-full bg-moss text-warmwhite py-5 rounded-xl font-semibold flex items-center justify-center gap-3 mt-8 hover:bg-mossLight transition shadow-lg text-lg">
-              <span>&#10148;</span> Kirim Ucapan
+            <button type="submit" class="w-full bg-moss text-warmwhite py-3.5 rounded-full font-medium flex items-center justify-center gap-2.5 mt-4 hover:bg-mossLight transition shadow-md text-xs sm:text-sm">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+              </svg>
+              Kirim Ucapan
             </button>
           </form>
         </div>
         
         <!-- Messages Right -->
-        <div class="w-full md:w-[55%]">
-          <h3 class="font-display text-4xl md:text-5xl mb-10">Ucapan dari Tamu</h3>
+        <div class="w-full md:w-[54%]">
+          <h3 class="font-display text-3xl sm:text-4xl mb-2 text-moss">Ucapan dari Tamu</h3>
+          <div class="w-10 h-px bg-moss/40 mb-6"></div>
           
-          <div class="space-y-6 max-h-[600px] overflow-y-auto pr-4 custom-scrollbar">
+          <div class="space-y-4 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
             <!-- Message 1 -->
-            <div class="bg-warmwhite p-6 rounded-2xl shadow-sm border border-moss/5">
-              <p class="font-semibold text-base mb-1">Siti Rahma</p>
-              <p class="text-xs text-moss/50 mb-4">4 hari yang lalu</p>
-              <p class="text-base text-moss/80 leading-relaxed">Selamat menempuh hidup baru Fakhrel & Olivia. Semoga selalu bahagia, langgeng, dan penuh berkah. &#128150;</p>
+            <div class="bg-warmwhite/75 p-5 rounded-xl shadow-sm border border-moss/10">
+              <p class="font-serif font-semibold text-sm mb-0.5 text-moss">Siti Rahma</p>
+              <p class="text-[11px] text-moss/60 mb-2.5">4 hari yang lalu</p>
+              <p class="text-xs sm:text-sm text-moss/85 leading-relaxed">Selamat menempuh hidup baru Fakhrel &amp; Olivia. Semoga selalu bahagia, langgeng, dan penuh berkah. &#128150;</p>
             </div>
             <!-- Message 2 -->
-            <div class="bg-warmwhite p-6 rounded-2xl shadow-sm border border-moss/5">
-              <p class="font-semibold text-base mb-1">Dimas Pratama</p>
-              <p class="text-xs text-moss/50 mb-4">4 hari yang lalu</p>
-              <p class="text-base text-moss/80 leading-relaxed">Turut berbahagia! Semoga menjadi keluarga sakinah, mawaddah, warahmah.</p>
+            <div class="bg-warmwhite/75 p-5 rounded-xl shadow-sm border border-moss/10">
+              <p class="font-serif font-semibold text-sm mb-0.5 text-moss">Dimas Pratama</p>
+              <p class="text-[11px] text-moss/60 mb-2.5">4 hari yang lalu</p>
+              <p class="text-xs sm:text-sm text-moss/85 leading-relaxed">Turut berbahagia! Semoga menjadi keluarga sakinah, mawaddah, warahmah.</p>
             </div>
             <!-- Message 3 -->
-            <div class="bg-warmwhite p-6 rounded-2xl shadow-sm border border-moss/5">
-              <p class="font-semibold text-base mb-1">Alya Putri</p>
-              <p class="text-xs text-moss/50 mb-4">4 hari yang lalu</p>
-              <p class="text-base text-moss/80 leading-relaxed">Selamat ya! Lancar sampai hari H, semoga selalu diberi kebahagiaan dalam setiap langkahnya : &#128150;</p>
+            <div class="bg-warmwhite/75 p-5 rounded-xl shadow-sm border border-moss/10">
+              <p class="font-serif font-semibold text-sm mb-0.5 text-moss">Alya Putri</p>
+              <p class="text-[11px] text-moss/60 mb-2.5">4 hari yang lalu</p>
+              <p class="text-xs sm:text-sm text-moss/85 leading-relaxed">Selamat ya! Lancar sampai hari H, semoga selalu diberi kebahagiaan dalam setiap langkahnya : &#128150;</p>
             </div>
           </div>
         </div>
       </div>
       
-      <!-- Confirmation Status Box -->
-      <div class="px-6 md:px-16 pb-32 relative max-w-7xl mx-auto">
-        <div class="bg-[#b5b8a6] rounded-3xl p-10 md:p-16 flex flex-col lg:flex-row gap-12 items-center shadow-xl">
-          <div class="lg:w-1/3 text-center lg:text-left">
-            <h3 class="font-display text-4xl md:text-5xl mb-6">Konfirmasi<br>Kehadiran</h3>
-            <p class="text-sm md:text-base text-moss/90 leading-relaxed">Mohon konfirmasi kehadiran Anda agar kami dapat mempersiapkan segala sesuatunya dengan lebih baik.</p>
+      <!-- Confirmation Status Box (matching mockup/6.png) -->
+      <div class="px-6 sm:px-10 md:px-16 lg:px-20 pb-20 relative max-w-6xl mx-auto">
+        <div class="bg-[#b2b5a6]/80 rounded-2xl p-8 md:p-10 flex flex-col lg:flex-row gap-8 items-center shadow-md">
+          <div class="lg:w-[32%] text-center lg:text-left">
+            <h3 class="font-display text-2xl sm:text-3xl mb-3 text-moss leading-snug">Konfirmasi<br>Kehadiran</h3>
+            <p class="text-xs sm:text-sm text-moss/85 leading-relaxed">Mohon konfirmasi kehadiran Anda agar kami dapat mempersiapkan segala sesuatunya dengan lebih baik.</p>
           </div>
           
-          <div class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-6 w-full">
-            <div class="bg-warmwhite border-2 border-moss rounded-2xl p-8 text-center shadow-md">
-              <span class="text-4xl mb-4 block">&#128101;</span>
-              <p class="font-semibold text-lg mb-2">Hadir</p>
-              <p class="text-sm text-moss/70">Dengan senang hati akan hadir.</p>
+          <div class="lg:w-[68%] grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+            <!-- Hadir -->
+            <div class="bg-paper/90 border-2 border-moss/70 rounded-xl p-5 text-center shadow-sm flex flex-col items-center">
+              <svg class="w-6 h-6 text-moss mb-2.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 11a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm6 0a3 3 0 100-6 3 3 0 000 6zm-6 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm6 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45v2h6v-2c0-2.33-4.67-3.5-7-3.5z" />
+              </svg>
+              <p class="font-serif font-semibold text-sm mb-1.5 text-moss">Hadir</p>
+              <p class="text-xs text-moss/80 leading-relaxed">Dengan senang<br>hati akan hadir.</p>
             </div>
-            <div class="bg-warmwhite/40 border border-transparent rounded-2xl p-8 text-center hover:bg-warmwhite/60 transition">
-              <span class="text-4xl mb-4 block text-moss/50">&#10006;</span>
-              <p class="font-semibold text-lg mb-2 text-moss/80">Tidak Hadir</p>
-              <p class="text-sm text-moss/60">Maaf, belum bisa hadir.</p>
+            <!-- Tidak Hadir -->
+            <div class="bg-paper/65 border border-moss/15 rounded-xl p-5 text-center hover:bg-paper/80 transition flex flex-col items-center">
+              <svg class="w-6 h-6 text-moss/75 mb-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                <circle cx="12" cy="12" r="9" />
+                <path stroke-linecap="round" d="M15 9l-6 6M9 9l6 6" />
+              </svg>
+              <p class="font-serif font-semibold text-sm mb-1.5 text-moss/90">Tidak Hadir</p>
+              <p class="text-xs text-moss/75 leading-relaxed">Maaf, belum<br>bisa hadir.</p>
             </div>
-            <div class="bg-warmwhite/40 border border-transparent rounded-2xl p-8 text-center hover:bg-warmwhite/60 transition">
-              <span class="text-4xl mb-4 block text-moss/50">&#10068;</span>
-              <p class="font-semibold text-lg mb-2 text-moss/80">Masih Ragu</p>
-              <p class="text-sm text-moss/60">Masih dalam konfirmasi.</p>
+            <!-- Masih Ragu -->
+            <div class="bg-paper/65 border border-moss/15 rounded-xl p-5 text-center hover:bg-paper/80 transition flex flex-col items-center">
+              <svg class="w-6 h-6 text-moss/75 mb-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                <circle cx="12" cy="12" r="9" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.5 9.5a2.5 2.5 0 113.8 2.1c-.7.4-1.3 1-1.3 1.9m0 3h.01" />
+              </svg>
+              <p class="font-serif font-semibold text-sm mb-1.5 text-moss/90">Masih Ragu</p>
+              <p class="text-xs text-moss/75 leading-relaxed">Masih dalam<br>konfirmasi.</p>
             </div>
           </div>
         </div>
       </div>
       
-      <!-- Closing Footer Area -->
-      <div class="px-6 md:px-16 py-32 flex flex-col md:flex-row items-center justify-between relative max-w-7xl mx-auto border-t border-moss/10">
-        <div class="w-full md:w-1/3 mb-24 md:mb-0">
-          <p class="font-script text-7xl md:text-8xl text-moss/40 -rotate-[15deg]">Terima<br>Kasih &hearts;</p>
+      <!-- Closing Footer Area (matching mockup/6.png) -->
+      <div class="px-6 sm:px-10 md:px-16 lg:px-20 pb-20 pt-4 flex flex-col md:flex-row items-center justify-between relative max-w-6xl mx-auto">
+        <div class="w-full md:w-5/12 mb-12 md:mb-0 flex justify-center md:justify-start pl-0 md:pl-8">
+          <div class="text-center">
+            <p class="font-script text-5xl sm:text-6xl text-warmwhite drop-shadow-sm -rotate-[8deg] leading-[0.95]">Terima<br>Kasih</p>
+            <p class="text-warmwhite/70 text-lg mt-1">&hearts;</p>
+          </div>
         </div>
         
-        <div class="w-full md:w-1/2 text-center md:text-right">
-          <h2 class="font-display text-5xl md:text-6xl mb-8 leading-[1.1]">“Doa Anda adalah hadiah<br>terindah bagi kami.”</h2>
-          <div class="w-16 h-px bg-moss/50 mx-auto md:ml-auto md:mr-0 mb-8"></div>
-          <p class="text-base md:text-lg text-moss/80 mb-20 max-w-md mx-auto md:mx-0 md:ml-auto">
-            Terima kasih telah menjadi bagian dari hari istimewa kami.
-          </p>
-          
-          <div class="flex flex-col items-center md:items-end gap-3 relative">
-             <div class="w-24 h-px bg-moss/30 mb-4"></div>
-             <p class="text-[10px] md:text-xs uppercase tracking-[0.4em] font-semibold text-moss">FAKHREL & OLIVIA</p>
-             <p class="text-[10px] md:text-xs uppercase tracking-[0.4em] text-moss/60">25 OKTOBER 2026</p>
-             <img src="../aset/section2_bunga(2).webp" class="absolute -bottom-20 -right-4 md:-right-16 w-32 md:w-40 opacity-70 pointer-events-none drop-shadow-md" alt="" />
+        <div class="w-full md:w-7/12 flex flex-col items-center md:items-end">
+          <div class="w-full max-w-md text-center md:text-left">
+            <h2 class="font-display text-2xl sm:text-3xl md:text-4xl mb-4 leading-snug text-moss">&ldquo;Doa Anda adalah hadiah<br>terindah bagi kami.&rdquo;</h2>
+            <div class="w-10 h-px bg-moss/50 mx-auto md:mx-0 mb-4"></div>
+            <p class="text-xs sm:text-sm text-moss/85 mb-10 leading-relaxed">
+              Terima kasih telah menjadi<br>bagian dari hari istimewa kami.
+            </p>
+            
+            <div class="flex flex-col items-center relative pt-2">
+               <div class="w-10 h-px bg-moss/40 mb-4"></div>
+               <p class="text-[11px] uppercase tracking-[0.28em] font-medium text-warmwhite drop-shadow-sm mb-1">FAKHREL &amp; OLIVIA</p>
+               <p class="text-[11px] uppercase tracking-[0.28em] text-warmwhite/90 drop-shadow-sm">25 OKTOBER 2026</p>
+               <img src="../aset/section5_bunga(2).webp" class="absolute -top-4 right-2 sm:right-8 w-20 sm:w-24 opacity-90 pointer-events-none" alt="" />
+            </div>
           </div>
         </div>
       </div>
 
     </section>
-  </main>
-</body>
-</html>

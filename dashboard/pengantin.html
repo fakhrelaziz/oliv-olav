@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profil Pengantin — LAV | LIV</title>
+  <title>Profil Pengantin — REL | LIV</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -129,11 +129,11 @@
         <div class="lg:col-span-8 bg-cardBg rounded-3xl p-7 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] relative overflow-hidden flex flex-col justify-between">
           <img src="../aset/section2_bunga(3).webp" alt="floral" class="absolute -top-4 right-12 w-28 opacity-25 pointer-events-none">
           <div class="relative z-10">
-            <h2 class="font-display text-4xl font-semibold text-ink">Oliv & Olav</h2>
+            <h2 id="displayBannerNames" class="font-display text-4xl font-semibold text-ink">Fakhrel & Olivia</h2>
             <p class="text-xs text-inkMuted mt-1 mb-5 max-w-lg leading-relaxed">
               Pasangan yang dipersatukan dalam cinta, menuju hari yang penuh cerita.
             </p>
-            <button onclick="alert('Buka dialog edit profil');" class="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-moss hover:bg-mossLight text-cream text-xs font-medium transition shadow-sm">
+            <button onclick="openEditProfileModal()" class="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-moss hover:bg-mossLight text-cream text-xs font-medium transition shadow-sm">
               <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
               <span>Ubah Profil Pengantin</span>
             </button>
@@ -159,7 +159,7 @@
           </div>
           <div>
             <span class="text-[11px] text-inkMuted block">Nama Pengantin</span>
-            <span class="text-sm font-bold text-ink">Oliv & Olav</span>
+            <span id="statNames" class="text-sm font-bold text-ink">Fakhrel & Olivia</span>
             <span class="text-[10px] text-inkMuted block">Pasangan</span>
           </div>
         </div>
@@ -171,7 +171,7 @@
           </div>
           <div>
             <span class="text-[11px] text-inkMuted block">Tanggal Pernikahan</span>
-            <span class="text-sm font-bold text-ink">25 Oktober 2026</span>
+            <span id="statDate" class="text-sm font-bold text-ink">25 Oktober 2026</span>
             <span class="text-[10px] text-inkMuted block">Hari bahagia</span>
           </div>
         </div>
@@ -183,7 +183,7 @@
           </div>
           <div>
             <span class="text-[11px] text-inkMuted block">Lokasi Acara</span>
-            <span class="text-sm font-bold text-ink truncate block max-w-[120px]">The Backyard</span>
+            <span id="statLocation" class="text-sm font-bold text-ink truncate block max-w-[120px]">The Backyard</span>
             <span class="text-[10px] text-inkMuted block">Jakarta Selatan</span>
           </div>
         </div>
@@ -209,33 +209,32 @@
           <h3 class="font-display text-xl font-semibold text-ink mb-4">Profil Pengantin</h3>
           
           <div class="flex items-center justify-between gap-4 py-3 relative">
-            <!-- Olav (Groom) -->
+            <!-- Fakhrel (Groom) -->
             <div class="flex-1 text-center flex flex-col items-center">
-              <div class="w-24 h-28 rounded-2xl overflow-hidden bg-cover bg-center border-2 border-borderSoft shadow-sm mb-2.5" style="background-image: url('../aset/section2_fotopengantin(3).webp');"></div>
-              <h4 class="font-display text-lg font-semibold text-ink">Olav</h4>
-              <p class="text-[11px] text-inkMuted mt-0.5 leading-tight">
-                Putra pertama dari<br>Bapak Surya dan Ibu Ratna
+              <div class="w-24 h-28 rounded-2xl overflow-hidden bg-cover bg-center border-2 border-borderSoft shadow-sm mb-2.5" style="background-image: url('../aset/section2_fotopengantin(2).webp');"></div>
+              <h4 id="displayGroomName" class="font-display text-lg font-semibold text-ink">Fakhrel</h4>
+              <p id="displayGroomParents" class="text-[11px] text-inkMuted mt-0.5 leading-tight">
+                Putra pertama dari<br>Bapak Surya Pratama dan Ibu Ratna Dewi
               </p>
             </div>
 
-            <!-- Ampersand & Floral Divider -->
+            <!-- Ampersand Botanical Ornamen -->
             <div class="flex flex-col items-center justify-center flex-shrink-0 px-2">
-              <span class="font-display italic text-2xl font-light text-moss">&</span>
-              <img src="../aset/section3_bunga.webp" alt="deco" class="w-8 opacity-40 mt-1">
+              <img src="../aset/section2_ampersand_ornamen.webp" alt="&" class="w-10 sm:w-12 object-contain drop-shadow-sm">
             </div>
 
-            <!-- Oliv (Bride) -->
+            <!-- Olivia (Bride) -->
             <div class="flex-1 text-center flex flex-col items-center">
-              <div class="w-24 h-28 rounded-2xl overflow-hidden bg-cover bg-center border-2 border-borderSoft shadow-sm mb-2.5" style="background-image: url('../aset/section2_fotopengantin(2).webp');"></div>
-              <h4 class="font-display text-lg font-semibold text-ink">Oliv</h4>
-              <p class="text-[11px] text-inkMuted mt-0.5 leading-tight">
-                Putri kedua dari<br>Bapak Jenderal Wijaya dan Ibu Sari Lestari
+              <div class="w-24 h-28 rounded-2xl overflow-hidden bg-cover bg-center border-2 border-borderSoft shadow-sm mb-2.5" style="background-image: url('../aset/section2_fotopengantin(3).webp');"></div>
+              <h4 id="displayBrideName" class="font-display text-lg font-semibold text-ink">Olivia</h4>
+              <p id="displayBrideParents" class="text-[11px] text-inkMuted mt-0.5 leading-tight">
+                Putri kedua dari<br>Bapak Hendra Wijaya dan Ibu Sari Lestari
               </p>
             </div>
           </div>
 
           <div class="pt-4 border-t border-borderSoft/60 text-center">
-            <button class="text-xs font-medium text-moss hover:underline">Kelola Data Kedua Mempelai &rarr;</button>
+            <button onclick="openEditProfileModal()" class="text-xs font-medium text-moss hover:underline">Kelola Data Kedua Mempelai &rarr;</button>
           </div>
         </div>
 
@@ -331,8 +330,104 @@
     </main>
   </div>
 
+  <!-- Modal Ubah Profil Pengantin -->
+  <div id="editProfileModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-cardBg w-full max-w-lg rounded-3xl p-7 border border-borderSoft shadow-2xl relative max-h-[90vh] overflow-y-auto custom-scroll">
+      <div class="flex items-center justify-between mb-5">
+        <h3 class="font-display text-2xl font-semibold text-ink">Ubah Data Pengantin</h3>
+        <button onclick="closeEditProfileModal()" class="text-gray-400 hover:text-ink"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+
+      <form onsubmit="handleSaveProfile(event)" class="space-y-4 text-xs">
+        <div class="bg-cardMuted/60 p-4 rounded-2xl border border-borderSoft space-y-3">
+          <span class="font-semibold text-moss uppercase tracking-wider text-[10px]">Mempelai Pria</span>
+          <div>
+            <label class="block font-medium mb-1">Nama Panggilan</label>
+            <input type="text" id="inputGroomName" value="Fakhrel" required class="w-full px-3 py-2 rounded-xl bg-cardBg border border-borderSoft focus:outline-none focus:border-moss">
+          </div>
+          <div>
+            <label class="block font-medium mb-1">Nama Orang Tua</label>
+            <input type="text" id="inputGroomParents" value="Bapak Surya Pratama dan Ibu Ratna Dewi" required class="w-full px-3 py-2 rounded-xl bg-cardBg border border-borderSoft focus:outline-none focus:border-moss">
+          </div>
+        </div>
+
+        <div class="bg-cardMuted/60 p-4 rounded-2xl border border-borderSoft space-y-3">
+          <span class="font-semibold text-moss uppercase tracking-wider text-[10px]">Mempelai Wanita</span>
+          <div>
+            <label class="block font-medium mb-1">Nama Panggilan</label>
+            <input type="text" id="inputBrideName" value="Olivia" required class="w-full px-3 py-2 rounded-xl bg-cardBg border border-borderSoft focus:outline-none focus:border-moss">
+          </div>
+          <div>
+            <label class="block font-medium mb-1">Nama Orang Tua</label>
+            <input type="text" id="inputBrideParents" value="Bapak Hendra Wijaya dan Ibu Sari Lestari" required class="w-full px-3 py-2 rounded-xl bg-cardBg border border-borderSoft focus:outline-none focus:border-moss">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-medium mb-1">Tanggal Pernikahan</label>
+            <input type="text" id="inputWeddingDate" value="25 Oktober 2026" required class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
+          </div>
+          <div>
+            <label class="block font-medium mb-1">Lokasi Utama</label>
+            <input type="text" id="inputWeddingVenue" value="The Backyard Cafe, Jakarta Selatan" required class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
+          </div>
+        </div>
+
+        <div class="flex justify-end space-x-2 pt-4 border-t border-borderSoft/60">
+          <button type="button" onclick="closeEditProfileModal()" class="px-4 py-2 rounded-xl border border-borderSoft text-ink hover:bg-cardMuted">Batal</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-moss text-cream font-medium hover:bg-mossLight transition shadow-sm">Simpan Perubahan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script>
     lucide.createIcons();
+
+    function openEditProfileModal() {
+      document.getElementById('editProfileModal').classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeEditProfileModal() {
+      document.getElementById('editProfileModal').classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function handleSaveProfile(e) {
+      e.preventDefault();
+      const groom = document.getElementById('inputGroomName').value;
+      const groomP = document.getElementById('inputGroomParents').value;
+      const bride = document.getElementById('inputBrideName').value;
+      const brideP = document.getElementById('inputBrideParents').value;
+      const date = document.getElementById('inputWeddingDate').value;
+      const venue = document.getElementById('inputWeddingVenue').value;
+
+      const profileData = { groom, groomP, bride, brideP, date, venue };
+      localStorage.setItem('weddingProfile', JSON.stringify(profileData));
+      renderProfile(profileData);
+      closeEditProfileModal();
+      alert('Profil pengantin berhasil diperbarui!');
+    }
+
+    function renderProfile(data) {
+      if (!data) return;
+      if (data.groom && data.bride) {
+        document.getElementById('displayBannerNames').innerText = data.groom + ' & ' + data.bride;
+        document.getElementById('statNames').innerText = data.groom + ' & ' + data.bride;
+      }
+      if (data.groom) document.getElementById('displayGroomName').innerText = data.groom;
+      if (data.groomP) document.getElementById('displayGroomParents').innerHTML = 'Putra pertama dari<br>' + data.groomP;
+      if (data.bride) document.getElementById('displayBrideName').innerText = data.bride;
+      if (data.brideP) document.getElementById('displayBrideParents').innerHTML = 'Putri kedua dari<br>' + data.brideP;
+      if (data.date) document.getElementById('statDate').innerText = data.date;
+      if (data.venue) document.getElementById('statLocation').innerText = data.venue.split(',')[0];
+    }
+
+    // Load initial from localStorage
+    try {
+      const saved = localStorage.getItem('weddingProfile');
+      if (saved) renderProfile(JSON.parse(saved));
+    } catch(e) {}
   </script>
 </body>
 </html>

@@ -1,38 +1,41 @@
-    <!-- SECTION 2 - ABOUT & MEMPELAI -->
+<!-- SECTION 2 - ABOUT & MEMPELAI -->
     <section id="about" class="relative w-full overflow-hidden bg-moss text-warmwhite">
       
       <!-- Top Quote Area -->
-      <div class="relative w-full min-h-[90vh] flex flex-col justify-center px-6 md:px-16 py-20 overflow-hidden">
+      <div class="relative w-full min-h-[75vh] md:min-h-[85vh] flex flex-col justify-center px-6 md:px-16 lg:px-24 py-20 md:py-28 overflow-hidden">
         
-        <!-- Layer 0: Couple photo — natural size, anchored bottom-right, paling belakang -->
-        <div class="absolute right-0 bottom-0 w-[45%] md:w-[30%] z-0 overflow-hidden">
-          <img src="../aset/section2_fotopengantin.webp" alt="Fakhrel dan Olivia berpegangan tangan" class="w-full h-auto object-contain object-bottom-right" />
-        </div>
+        <!-- Right Collage Area (Photo + Translucent Bars + Wildflower Stem + Torn Note) -->
+        <div class="relative md:absolute md:right-0 md:top-0 w-full md:w-[52%] h-[420px] sm:h-[500px] md:h-full z-[1] mt-10 md:mt-0 order-2 md:order-none">
+          <!-- Couple holding hands photo (right side) -->
+          <div class="absolute right-0 top-6 md:top-14 bottom-0 w-[88%] md:w-[85%] overflow-hidden">
+            <img src="../aset/section2_fotopengantin.webp" alt="Fakhrel dan Olivia berpegangan tangan" class="w-full h-full object-cover object-center opacity-85" />
+            <div class="absolute inset-0 bg-moss/25 mix-blend-multiply"></div>
+          </div>
 
-        <!-- Layer 1: Abstract gray+flower panel — DI ATAS foto tangan, blend multiply agar foto tembus -->
-        <div class="absolute right-0 top-0 w-full md:w-[52%] h-full z-[1] overflow-hidden pointer-events-none">
-          <img src="../aset/section2.webp" alt="background panel" class="w-full h-full object-cover object-left mix-blend-multiply opacity-80" />
-        </div>
+          <!-- Vertical translucent bar along the left seam of the photo (matching mockup/2.png) -->
+          <div class="absolute left-[10%] md:left-[12%] top-2 md:top-6 bottom-0 w-28 sm:w-36 md:w-44 bg-[#9ca395]/25 backdrop-blur-[1px] pointer-events-none z-[2]"></div>
+          <div class="absolute left-[4%] md:left-[6%] top-16 md:top-24 bottom-12 w-10 md:w-14 bg-[#9ca395]/15 pointer-events-none z-[2]"></div>
 
-        <!-- Layer 2: Vertical flower divider (center boundary) -->
-        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[2] w-24 md:w-36 hidden md:block">
-          <img src="../aset/section2_bunga.webp" alt="Flower divider" class="w-full h-auto" />
+          <!-- Vertical flower stem right on the seam -->
+          <div class="absolute left-[3%] md:left-[5%] top-12 md:top-16 w-24 sm:w-28 md:w-36 z-[3] pointer-events-none">
+            <img src="../aset/section2_bunga.webp" alt="Flower divider" class="w-full h-auto drop-shadow-lg" />
+          </div>
+
+          <!-- Script text top right -->
+          <div class="absolute right-6 md:right-12 top-8 md:top-12 z-[4] font-script text-3xl sm:text-4xl md:text-5xl rotate-[-4deg] text-warmwhite drop-shadow-lg leading-[0.95]">
+            Some<br>People<br>Brighter<br>Days <span class="text-lg align-bottom">&hearts;</span>
+          </div>
+
+          <!-- Torn paper note bottom right -->
+          <div class="absolute right-2 sm:right-6 md:right-8 -bottom-2 md:bottom-0 z-[4] w-48 sm:w-56 md:w-64 lg:w-72 drop-shadow-2xl">
+            <img src="../aset/section2_tulisan+BG.webp" alt="Terima kasih telah menjadi bagian dari kisah indah ini" class="w-full h-auto" />
+          </div>
         </div>
         
-        <!-- Layer 3: Torn paper note — on top of the photo -->
-        <div class="absolute md:right-[28%] md:bottom-16 right-[50%] bottom-8 z-[3] w-36 md:w-52 shadow-xl rotate-[4deg]">
-          <img src="../aset/section2_tulisan+BG.webp" alt="Terima kasih" class="w-full h-auto" />
-        </div>
-
-        <!-- Layer 4: Script text top right — topmost -->
-        <div class="absolute right-6 md:right-16 top-14 z-[4] font-script text-4xl md:text-5xl rotate-[-5deg] text-warmwhite drop-shadow-lg">
-          Some<br>People<br>Brighter<br>Days
-        </div>
-        
-        <!-- Left content: heading + paragraphs (z stays above bg, below script) -->
-        <div class="relative z-[3] max-w-xl md:max-w-lg mt-0">
-          <h2 class="font-display text-5xl md:text-7xl mb-8 leading-[1.1]">
-            Sebuah<br>Awal dari<br><span class="italic text-5xl md:text-8xl">Selamanya</span>
+        <!-- Left content: heading + paragraphs -->
+        <div class="relative z-[3] max-w-xl md:max-w-md lg:max-w-lg order-1 md:order-none">
+          <h2 class="font-display text-5xl sm:text-6xl md:text-7xl mb-8 leading-[1.08]">
+            Sebuah<br>Awal dari<br><span class="italic text-5xl sm:text-6xl md:text-7xl text-warmwhite/85">Selamanya</span>
           </h2>
           <p class="mb-6 text-sm md:text-base leading-relaxed text-warmwhite/90 max-w-md">
             Dengan penuh rasa syukur dan bahagia, kami mengundang Bapak/Ibu/Saudara/i untuk menjadi bagian dari hari istimewa dalam perjalanan hidup kami.
@@ -44,60 +47,103 @@
 
       </div>
       
-      <!-- Profile Area (Mempelai Pria & Wanita) -->
-      <div class="relative w-full bg-paper text-moss px-6 md:px-24 py-32 overflow-hidden">
+      <!-- Profile Area (Mempelai Pria & Wanita — Side-by-Side on Desktop matching mockup/2.png) -->
+      <div class="relative w-full bg-paper text-moss px-6 sm:px-10 md:px-16 lg:px-20 py-20 md:py-28 overflow-hidden">
         <!-- Botanical Decors corners -->
-        <img src="../aset/section2_bunga(2).webp" class="absolute top-0 left-0 w-48 md:w-64 opacity-90 pointer-events-none -translate-x-8 -translate-y-8 z-0" alt="" />
-        <img src="../aset/section2_bunga(3).webp" class="absolute bottom-0 right-0 w-48 md:w-64 opacity-90 pointer-events-none translate-x-8 translate-y-8 z-0" alt="" />
-        
-        <!-- Ampersand center -->
-        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0 hidden md:block">
-          <span class="font-display text-[10rem] text-moss/15 italic select-none">&</span>
-        </div>
+        <img src="../aset/section2_bunga(2).webp" class="absolute top-2 left-0 w-32 sm:w-40 md:w-48 opacity-40 pointer-events-none -translate-x-4 z-0" alt="" />
+        <img src="../aset/section2_bunga(3).webp" class="absolute bottom-0 right-0 w-28 sm:w-36 md:w-44 opacity-95 pointer-events-none translate-x-2 translate-y-2 z-20" alt="" />
 
-        <div class="flex flex-col gap-32 md:gap-40 relative z-10 mt-10">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-11 gap-16 lg:gap-4 items-center relative z-10">
           
-          <!-- Groom: Fakhrel — fotopengantin(2).webp adalah foto pria (Fakhrel) -->
-          <div class="relative flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 w-full">
-            <div class="w-full md:w-[45%] lg:w-[40%] flex justify-center md:justify-end">
-              <div class="relative w-64 h-80 md:w-80 md:h-[28rem] shadow-xl">
-                <!-- Decorative offset box -->
-                <div class="absolute -top-4 -left-4 md:-top-6 md:-left-6 w-full h-full bg-moss/15 z-0"></div>
-                <img src="../aset/section2_fotopengantin(2).webp" alt="Fakhrel" class="w-full h-full object-cover object-top relative z-10" />
+          <!-- Groom Column (Left, 5 cols) -->
+          <div class="lg:col-span-5 relative flex flex-col items-center lg:items-start">
+            <div class="relative w-full max-w-[360px] sm:max-w-[400px] lg:max-w-none flex flex-col">
+              <!-- Groom Photo Wrapper aligned right within left column -->
+              <div class="relative w-60 sm:w-68 md:w-72 h-80 sm:h-96 self-center lg:self-end lg:mr-4">
+                <!-- Translucent offset box top-right -->
+                <div class="absolute -top-3 -right-3 w-full h-full bg-moss/30 z-0"></div>
+                <img src="../aset/section2_fotopengantin(2).webp" alt="Fakhrel" class="w-full h-full object-cover object-top relative z-10 shadow-xl" />
               </div>
-            </div>
-            <div class="w-full md:w-[55%] lg:w-[60%] flex flex-col justify-center text-center md:text-left z-20 pt-4 md:pt-20">
-              <p class="text-[10px] uppercase tracking-[0.35em] mb-3 font-semibold text-moss/70">MEMPELAI PRIA</p>
-              <h3 class="font-display text-6xl md:text-8xl mb-6 text-moss leading-[1]">Fakhrel</h3>
-              <p class="font-script text-4xl md:text-5xl text-moss/40 -mt-2 mb-8">Pratama</p>
-              <div class="w-12 h-px bg-moss/30 mb-6 mx-auto md:mx-0"></div>
-              <p class="text-sm md:text-base leading-relaxed text-moss/80 max-w-sm mx-auto md:mx-0">
-                Putra pertama dari<br>
-                Bapak Surya Pratama<br>
-                dan Ibu Ratna Dewi
-              </p>
+
+              <!-- Groom Text overlapping bottom-left on desktop as in mockup/2.png -->
+              <div class="relative lg:absolute lg:left-0 lg:bottom-8 z-20 mt-6 lg:mt-0 text-center lg:text-left bg-paper/85 lg:bg-transparent backdrop-blur-[2px] lg:backdrop-blur-none p-4 lg:p-0 rounded-xl lg:rounded-none">
+                <p class="text-[10px] uppercase tracking-[0.28em] mb-2 font-semibold text-moss/80">MEMPELAI PRIA</p>
+                <h3 class="font-display text-4xl sm:text-5xl mb-3 text-moss leading-none drop-shadow-sm">Fakhrel</h3>
+                <p class="font-display text-2xl sm:text-3xl text-moss/85 mb-4">Pratama</p>
+                <p class="text-xs sm:text-sm leading-relaxed text-moss/90 font-medium">
+                  Putra pertama dari<br>
+                  Bapak Surya Pratama<br>
+                  dan Ibu Ratna Dewi
+                </p>
+              </div>
+
+              <!-- Social / Profile Icons bottom-left -->
+              <div class="flex items-center justify-center lg:justify-start gap-4 mt-6 lg:mt-8 text-moss/80">
+                <a href="#about" aria-label="Profil Fakhrel" class="hover:text-moss transition">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                    <circle cx="12" cy="8" r="3.5" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.5 20a6.5 6.5 0 0113 0H5.5z" />
+                  </svg>
+                </a>
+                <span class="w-px h-4 bg-moss/30"></span>
+                <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram Fakhrel" class="hover:text-moss transition">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                    <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 
-          <!-- Bride: Olivia — fotopengantin(3).webp adalah foto wanita (Olivia) -->
-          <div class="relative flex flex-col md:flex-row-reverse items-center md:items-start gap-8 md:gap-16 w-full">
-            <div class="w-full md:w-[45%] lg:w-[40%] flex justify-center md:justify-start">
-              <div class="relative w-64 h-80 md:w-80 md:h-[28rem] shadow-xl">
-                <!-- Decorative offset box -->
-                <div class="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-full h-full bg-moss/15 z-0"></div>
-                <img src="../aset/section2_fotopengantin(3).webp" alt="Olivia" class="w-full h-full object-cover object-top relative z-10" />
+          <!-- Center Botanical Ampersand (1 col) -->
+          <div class="lg:col-span-1 flex justify-center items-center my-2 lg:my-0">
+            <img src="../aset/section2_ampersand_ornamen.webp" alt="&" class="w-24 sm:w-28 lg:w-32 h-auto select-none pointer-events-none" />
+          </div>
+
+          <!-- Bride Column (Right, 5 cols) -->
+          <div class="lg:col-span-5 relative flex flex-col items-center lg:items-end">
+            <div class="relative w-full max-w-[360px] sm:max-w-[400px] lg:max-w-none flex flex-col">
+              <!-- Bride Photo Wrapper aligned left within right column -->
+              <div class="relative w-60 sm:w-68 md:w-72 h-80 sm:h-96 self-center lg:self-start lg:ml-6">
+                <!-- Two overlapping translucent offset boxes top-right matching mockup/2.png -->
+                <div class="absolute -top-5 left-16 w-[80%] h-[70%] bg-moss/35 z-0"></div>
+                <div class="absolute top-0 -right-12 sm:-right-20 w-36 sm:w-44 h-28 sm:h-32 bg-[#9aa091]/45 z-20 flex items-center justify-center overflow-hidden pointer-events-none">
+                  <img src="../aset/section5_bunga(2).webp" alt="" class="w-28 opacity-25 rotate-[115deg] grayscale" />
+                </div>
+                <img src="../aset/section2_fotopengantin(3).webp" alt="Olivia" class="w-full h-full object-cover object-top relative z-10 shadow-xl" />
               </div>
-            </div>
-            <div class="w-full md:w-[55%] lg:w-[60%] flex flex-col justify-center text-center md:text-right z-20 pt-4 md:pt-20">
-              <p class="text-[10px] uppercase tracking-[0.35em] mb-3 font-semibold text-moss/70">MEMPELAI WANITA</p>
-              <h3 class="font-display text-6xl md:text-8xl mb-6 text-moss leading-[1]">Olivia</h3>
-              <p class="font-script text-4xl md:text-5xl text-moss/40 -mt-2 mb-8">Putri</p>
-              <div class="w-12 h-px bg-moss/30 mb-6 mx-auto md:mx-0 md:ml-auto"></div>
-              <p class="text-sm md:text-base leading-relaxed text-moss/80 max-w-sm mx-auto md:mx-0 md:ml-auto">
-                Putri kedua dari Bapak<br>
-                Hendra Wijaya dan<br>
-                Ibu Sari Lestari
-              </p>
+
+              <!-- Bride Text overlapping bottom-right on desktop as in mockup/2.png -->
+              <div class="relative lg:absolute lg:right-0 lg:bottom-8 z-20 mt-6 lg:mt-0 text-center lg:text-left bg-paper/85 lg:bg-transparent backdrop-blur-[2px] lg:backdrop-blur-none p-4 lg:p-0 rounded-xl lg:rounded-none lg:max-w-[190px]">
+                <p class="text-[10px] uppercase tracking-[0.28em] mb-2 font-semibold text-moss/80">MEMPELAI WANITA</p>
+                <h3 class="font-display text-4xl sm:text-5xl mb-3 text-moss leading-none drop-shadow-sm">Olivia</h3>
+                <p class="font-display text-2xl sm:text-3xl text-moss/85 mb-4">Putri</p>
+                <p class="text-xs sm:text-sm leading-relaxed text-moss/90 font-medium">
+                  Putri kedua dari Bapak<br>
+                  Hendra Wijaya dan<br>
+                  Ibu Sari Lestari
+                </p>
+              </div>
+
+              <!-- Social / Profile Icons bottom-right -->
+              <div class="flex items-center justify-center lg:justify-end gap-4 mt-6 lg:mt-8 lg:pr-12 text-moss/80">
+                <a href="#about" aria-label="Profil Olivia" class="hover:text-moss transition">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                    <circle cx="12" cy="8" r="3.5" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.5 20a6.5 6.5 0 0113 0H5.5z" />
+                  </svg>
+                </a>
+                <span class="w-px h-4 bg-moss/30"></span>
+                <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram Olivia" class="hover:text-moss transition">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                    <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 

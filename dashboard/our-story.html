@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Story — LAV | LIV</title>
+  <title>Our Story — REL | LIV</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -156,11 +156,14 @@
         <div class="lg:col-span-7 bg-cardBg rounded-3xl p-7 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] relative">
           <div class="flex items-center justify-between mb-6">
             <h3 class="font-display text-2xl font-semibold text-ink">Timeline Perjalanan</h3>
-            <span class="text-xs text-inkMuted">5 Momen Terpilih</span>
+            <button onclick="openModalMoment()" class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-moss hover:bg-mossLight text-cream text-xs font-medium transition shadow-sm">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+              <span>Tambah Momen</span>
+            </button>
           </div>
 
           <!-- Vertical Timeline -->
-          <div class="relative border-l-2 border-borderSoft ml-4 pl-6 space-y-7">
+          <div id="timelineContainer" class="relative border-l-2 border-borderSoft ml-4 pl-6 space-y-7">
 
             <!-- Item 1: Pertama Kali Bertemu -->
             <div class="relative group">
@@ -269,8 +272,82 @@
     </main>
   </div>
 
+  <!-- Modal Tambah Momen Cerita -->
+  <div id="momentModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-cardBg w-full max-w-md rounded-3xl p-7 border border-borderSoft shadow-2xl relative">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="font-display text-xl font-semibold text-ink">Tambah Momen Cerita</h3>
+        <button onclick="closeModalMoment()" class="text-gray-400 hover:text-ink"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+
+      <form onsubmit="handleSaveMoment(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-medium mb-1">Judul Momen</label>
+          <input type="text" id="momentTitle" required placeholder="Contoh: Pertama Kali Bertemu" class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
+        </div>
+        <div>
+          <label class="block font-medium mb-1">Tanggal</label>
+          <input type="text" id="momentDate" required placeholder="Contoh: 12 Maret 2020" class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
+        </div>
+        <div>
+          <label class="block font-medium mb-1">Pilihan Foto Master</label>
+          <select id="momentPhoto" class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
+            <option value="../aset/section3_fotopengantin(3).webp">Foto 1 (Taman Hijau)</option>
+            <option value="../aset/section3_fotopengantin(4).webp">Foto 2 (Pohon Tua)</option>
+            <option value="../aset/section3_fotopengantin(5).webp">Foto 3 (Menatap Langit)</option>
+            <option value="../aset/section3_fotopengantin(6).webp">Foto 4 (Tampak Belakang)</option>
+            <option value="../aset/section3_fotopengantin.webp">Foto 5 (Hari Bahagia)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-medium mb-1">Deskripsi Cerita</label>
+          <textarea id="momentDesc" rows="3" required placeholder="Tuliskan kisah singkat perjalanan ini..." class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss resize-none"></textarea>
+        </div>
+
+        <div class="flex justify-end space-x-2 pt-3">
+          <button type="button" onclick="closeModalMoment()" class="px-4 py-2 rounded-xl border border-borderSoft text-ink hover:bg-cardMuted">Batal</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-moss text-cream font-medium hover:bg-mossLight transition shadow-sm">Simpan Momen</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script>
     lucide.createIcons();
+
+    function openModalMoment() {
+      document.getElementById('momentModal').classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeModalMoment() {
+      document.getElementById('momentModal').classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function handleSaveMoment(e) {
+      e.preventDefault();
+      const title = document.getElementById('momentTitle').value;
+      const date = document.getElementById('momentDate').value;
+      const photo = document.getElementById('momentPhoto').value;
+      const desc = document.getElementById('momentDesc').value;
+
+      const container = document.getElementById('timelineContainer');
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'relative group';
+      itemDiv.innerHTML = `
+        <div class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-moss border-2 border-white shadow-sm"></div>
+        <div class="flex items-start space-x-4">
+          <div class="w-16 h-16 rounded-xl overflow-hidden bg-cover bg-center border border-borderSoft flex-shrink-0" style="background-image: url('${photo}');"></div>
+          <div class="flex-1">
+            <span class="text-[10px] font-mono font-medium text-inkMuted">${date}</span>
+            <h4 class="font-display text-base font-semibold text-ink mt-0.5">${title}</h4>
+            <p class="text-xs text-inkMuted mt-1 leading-relaxed">${desc}</p>
+          </div>
+        </div>
+      `;
+      container.prepend(itemDiv);
+      closeModalMoment();
+      alert('Momen cerita baru berhasil ditambahkan!');
+    }
   </script>
 </body>
 </html>
