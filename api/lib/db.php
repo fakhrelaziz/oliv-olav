@@ -109,13 +109,107 @@ try {
 }
 
 /**
- * Helper untuk response JSON
+ * Helper untuk response JSON (dengan header anti-cache agar perubahan admin langsung tampil)
  */
 function jsonResponse($data, $statusCode = 200) {
     http_response_code($statusCode);
     header('Content-Type: application/json; charset=utf-8');
+    header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+    header('Pragma: no-cache');
+    header('Expires: 0');
     echo json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     exit();
+}
+
+/**
+ * Pastikan kolom URL gambar bertipe LONGTEXT agar Data URI (mode serverless) tidak terpotong.
+ */
+function ensureFotoUrlLongText($pdo) {
+    static $checked = false;
+    if ($checked || !$pdo) return;
+    $checked = true;
+
+    $targets = [
+        'galeri_foto' => 'foto_url',
+        'cerita_cinta' => 'foto_url',
+        'pengantin' => 'foto_url',
+    ];
+
+    foreach ($targets as $table => $column) {
+        try {
+            $stmt = $pdo->prepare("
+                SELECT DATA_TYPE
+                FROM INFORMATION_SCHEMA.COLUMNS
+                WHERE TABLE_SCHEMA = DATABASE()
+                  AND TABLE_NAME = :tbl
+                  AND COLUMN_NAME = :col
+                LIMIT 1
+            ");
+            $stmt->execute([':tbl' => $table, ':col' => $column]);
+            $type = strtolower((string)$stmt->fetchColumn());
+            if ($type && $type !== 'longtext') {
+                $nullability = ($table === 'galeri_foto') ? 'NOT NULL' : 'DEFAULT NULL';
+                $pdo->exec("ALTER TABLE `$table` MODIFY COLUMN `$column` LONGTEXT $nullability");
+            }
+        } catch (\Throwable $e) {
+            // Abaikan bila tidak memiliki izin ALTER atau tabel belum dibuat
+        }
+    }
+}
+
+/**
+ * Hapus file upload lokal lama di folder /uploads jika sudah tidak dipakai di tabel mana pun.
+ */
+function cleanupLocalUploadIfUnused($oldUrl, $pdo = null) {
+    $url = trim((string)$oldUrl);
+    if ($url === '' || strpos($url, 'data:') === 0 || preg_match('#^https?://#i', $url)) {
+        return false;
+    }
+
+    $normalized = ltrim(str_replace('\\', '/', $url), '/');
+    while (strpos($normalized, '../') === 0) {
+        $normalized = substr($normalized, 3);
+    }
+
+    // Hanya hapus file yang berada tepat di folder uploads/
+    if (strpos($normalized, 'uploads/') !== 0) {
+        return false;
+    }
+
+    $filename = basename($normalized);
+    if ($filename === '' || $filename === '.' || $filename === '..') {
+        return false;
+    }
+
+    if ($pdo) {
+        $like = '%' . $filename . '%';
+        $queries = [
+            "SELECT COUNT(*) FROM `section_konten` WHERE `konten_json` LIKE :pat",
+            "SELECT COUNT(*) FROM `galeri_foto` WHERE `foto_url` LIKE :pat",
+            "SELECT COUNT(*) FROM `cerita_cinta` WHERE `foto_url` LIKE :pat",
+            "SELECT COUNT(*) FROM `pengantin` WHERE `foto_url` LIKE :pat",
+        ];
+        foreach ($queries as $sql) {
+            try {
+                $st = $pdo->prepare($sql);
+                $st->execute([':pat' => $like]);
+                if ((int)$st->fetchColumn() > 0) {
+                    return false;
+                }
+            } catch (\Throwable $e) {}
+        }
+    }
+
+    $uploadDir = realpath(dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'uploads');
+    if (!$uploadDir) {
+        return false;
+    }
+
+    $targetFile = realpath($uploadDir . DIRECTORY_SEPARATOR . $filename);
+    if ($targetFile && strpos($targetFile, $uploadDir . DIRECTORY_SEPARATOR) === 0 && is_file($targetFile)) {
+        return @unlink($targetFile);
+    }
+    return false;
 }
 
 /**

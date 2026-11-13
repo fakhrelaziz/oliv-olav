@@ -182,6 +182,28 @@
               <label class="block text-xs font-semibold text-ink mb-1.5">Teks Pengantar Undangan Acara</label>
               <textarea id="input_intro" rows="2" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition leading-relaxed resize-none" placeholder="Dengan penuh rasa syukur, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam rangkaian acara pernikahan kami."></textarea>
             </div>
+
+            <div class="md:col-span-2">
+              <label class="block text-xs font-semibold text-ink mb-1.5">Foto Banner Header Section 4</label>
+              <div class="flex items-center space-x-3.5 p-3 rounded-2xl bg-cardMuted border border-borderSoft">
+                <img id="preview_header_photo" src="../aset/section4_header_cincin.webp" alt="Header Acara" onclick="document.getElementById('file_header_photo').click()" class="w-24 h-14 object-cover rounded-xl border border-borderSoft shadow-sm cursor-pointer hover:opacity-90 transition">
+                <div class="flex-1">
+                  <input type="hidden" id="input_header_photo" value="../aset/section4_header_cincin.webp">
+                  <input type="file" id="file_header_photo" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" onchange="uploadPhotoFile(this, 'input_header_photo', 'preview_header_photo', 'status_header_photo', 'event_header')">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <button type="button" onclick="document.getElementById('file_header_photo').click()" class="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-white hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition shadow-sm">
+                      <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                      <span>Upload Foto Header</span>
+                    </button>
+                    <button type="button" onclick="resetPhotoFieldToDefault('section_4_event', 'header_photo', '../aset/section4_header_cincin.webp', 'input_header_photo', 'preview_header_photo', 'status_header_photo')" class="inline-flex items-center space-x-1 px-2.5 py-2 rounded-xl bg-white hover:bg-rose-50 border border-borderSoft text-[11px] font-medium text-inkMuted hover:text-rose-600 transition">
+                      <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                      <span>Reset</span>
+                    </button>
+                  </div>
+                  <span id="status_header_photo" class="text-[10px] text-inkMuted block mt-1">Format JPG, PNG, WEBP</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -231,10 +253,16 @@
                 <div class="flex-1">
                   <input type="hidden" id="input_akad_photo" value="../asetV2/dekorasi_akad_hd.webp">
                   <input type="file" id="file_akad_photo" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" onchange="uploadPhotoFile(this, 'input_akad_photo', 'preview_akad_photo', 'status_akad_photo', 'event_akad')">
-                  <button type="button" onclick="document.getElementById('file_akad_photo').click()" class="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-white hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition shadow-sm">
-                    <i data-lucide="upload" class="w-3.5 h-3.5"></i>
-                    <span>Upload Foto Akad</span>
-                  </button>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <button type="button" onclick="document.getElementById('file_akad_photo').click()" class="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-white hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition shadow-sm">
+                      <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                      <span>Upload Foto Akad</span>
+                    </button>
+                    <button type="button" onclick="resetPhotoFieldToDefault('section_4_event', 'akad_photo', '../asetV2/dekorasi_akad_hd.webp', 'input_akad_photo', 'preview_akad_photo', 'status_akad_photo')" class="inline-flex items-center space-x-1 px-2.5 py-2 rounded-xl bg-white hover:bg-rose-50 border border-borderSoft text-[11px] font-medium text-inkMuted hover:text-rose-600 transition">
+                      <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                      <span>Reset</span>
+                    </button>
+                  </div>
                   <span id="status_akad_photo" class="text-[10px] text-inkMuted block mt-1">Format JPG, PNG, WEBP</span>
                 </div>
               </div>
@@ -280,14 +308,20 @@
             <div>
               <label class="block text-xs font-semibold text-ink mb-1">Foto / Dekorasi Lengkung Resepsi</label>
               <div class="flex items-center space-x-3.5 p-3 rounded-2xl bg-cardMuted border border-borderSoft">
-                <img id="preview_resepsi_photo" src="../aset/section4_fotopengantin(2).webp" alt="Dekorasi Resepsi" onclick="document.getElementById('file_resepsi_photo').click()" class="w-14 h-18 object-cover rounded-xl border border-borderSoft shadow-sm cursor-pointer hover:opacity-90 transition">
+                <img id="preview_resepsi_photo" src="../asetV2/tata_meja_taman_hd.webp" alt="Dekorasi Resepsi" onclick="document.getElementById('file_resepsi_photo').click()" class="w-14 h-18 object-cover rounded-xl border border-borderSoft shadow-sm cursor-pointer hover:opacity-90 transition">
                 <div class="flex-1">
-                  <input type="hidden" id="input_resepsi_photo" value="../aset/section4_fotopengantin(2).webp">
+                  <input type="hidden" id="input_resepsi_photo" value="../asetV2/tata_meja_taman_hd.webp">
                   <input type="file" id="file_resepsi_photo" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" onchange="uploadPhotoFile(this, 'input_resepsi_photo', 'preview_resepsi_photo', 'status_resepsi_photo', 'event_resepsi')">
-                  <button type="button" onclick="document.getElementById('file_resepsi_photo').click()" class="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-white hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition shadow-sm">
-                    <i data-lucide="upload" class="w-3.5 h-3.5"></i>
-                    <span>Upload Foto Resepsi</span>
-                  </button>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <button type="button" onclick="document.getElementById('file_resepsi_photo').click()" class="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-white hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition shadow-sm">
+                      <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                      <span>Upload Foto Resepsi</span>
+                    </button>
+                    <button type="button" onclick="resetPhotoFieldToDefault('section_4_event', 'resepsi_photo', '../asetV2/tata_meja_taman_hd.webp', 'input_resepsi_photo', 'preview_resepsi_photo', 'status_resepsi_photo')" class="inline-flex items-center space-x-1 px-2.5 py-2 rounded-xl bg-white hover:bg-rose-50 border border-borderSoft text-[11px] font-medium text-inkMuted hover:text-rose-600 transition">
+                      <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                      <span>Reset</span>
+                    </button>
+                  </div>
                   <span id="status_resepsi_photo" class="text-[10px] text-inkMuted block mt-1">Format JPG, PNG, WEBP</span>
                 </div>
               </div>
@@ -315,8 +349,23 @@
             </div>
 
             <div class="md:col-span-2">
+              <label class="block text-xs font-semibold text-ink mb-1.5">Teks Pengantar Lokasi Venue</label>
+              <textarea id="input_venue_intro" rows="2" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition leading-relaxed resize-none" placeholder="Kami sangat berharap kehadiran Bapak/Ibu/Saudara/i untuk menjadi bagian dari hari istimewa ini."></textarea>
+            </div>
+
+            <div class="md:col-span-2">
               <label class="block text-xs font-semibold text-ink mb-1.5">Alamat Lengkap Venue</label>
               <input type="text" id="input_venue_address" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition" placeholder="Jl. Melawai No. 123, Jakarta Selatan">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-ink mb-1.5">Info Fasilitas Parkir</label>
+              <input type="text" id="input_features_parking" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition" placeholder="Tersedia area parkir">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-ink mb-1.5">Info Akses Transportasi</label>
+              <input type="text" id="input_features_transit" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition" placeholder="Dapat diakses dengan transportasi umum">
             </div>
 
             <div class="md:col-span-2">
@@ -332,16 +381,28 @@
             </div>
 
             <div>
+              <label class="block text-xs font-semibold text-ink mb-1.5">Link Dapatkan Rute (Tombol Rute)</label>
+              <input type="text" id="input_routes_link" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition" placeholder="https://maps.google.com">
+              <span class="text-[10px] text-inkMuted mt-1 block">Tautan rute perjalanan saat tamu mengklik tombol 'Dapatkan Rute'</span>
+            </div>
+
+            <div>
               <label class="block text-xs font-semibold text-ink mb-1.5">Foto Polaroid Venue / Suasana</label>
               <div class="flex items-center space-x-3.5 p-2.5 rounded-2xl bg-cardMuted border border-borderSoft">
                 <img id="preview_venue_photo" src="../aset/section4_bagianbawah.webp" alt="Foto Venue" onclick="document.getElementById('file_venue_photo').click()" class="w-16 h-12 object-cover rounded-xl border border-borderSoft shadow-sm cursor-pointer hover:opacity-90 transition">
                 <div class="flex-1">
                   <input type="hidden" id="input_venue_photo" value="../aset/section4_bagianbawah.webp">
                   <input type="file" id="file_venue_photo" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" onchange="uploadPhotoFile(this, 'input_venue_photo', 'preview_venue_photo', 'status_venue_photo', 'event_venue')">
-                  <button type="button" onclick="document.getElementById('file_venue_photo').click()" class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-white hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition shadow-sm">
-                    <i data-lucide="upload" class="w-3.5 h-3.5"></i>
-                    <span>Upload Foto Venue</span>
-                  </button>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <button type="button" onclick="document.getElementById('file_venue_photo').click()" class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-white hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition shadow-sm">
+                      <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                      <span>Upload Foto Venue</span>
+                    </button>
+                    <button type="button" onclick="resetPhotoFieldToDefault('section_4_event', 'venue_photo', '../aset/section4_bagianbawah.webp', 'input_venue_photo', 'preview_venue_photo', 'status_venue_photo')" class="inline-flex items-center space-x-1 px-2.5 py-1.5 rounded-xl bg-white hover:bg-rose-50 border border-borderSoft text-[11px] font-medium text-inkMuted hover:text-rose-600 transition">
+                      <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                      <span>Reset</span>
+                    </button>
+                  </div>
                   <span id="status_venue_photo" class="text-[10px] text-inkMuted block mt-0.5">Format JPG, PNG, WEBP</span>
                 </div>
               </div>
@@ -355,16 +416,22 @@
         </div>
 
         <!-- Submit Button Bar -->
-        <div class="flex items-center justify-between pt-4 pb-12">
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-4 pb-12">
           <a href="kelola-konten.html" class="inline-flex items-center space-x-2 text-xs font-medium text-inkMuted hover:text-moss transition">
             <i data-lucide="arrow-left" class="w-4 h-4"></i>
             <span>Kembali ke Pusat Konten</span>
           </a>
 
-          <button type="submit" id="submitBtn" class="inline-flex items-center space-x-2 px-6 py-3 rounded-2xl bg-moss hover:bg-mossLight text-cream text-xs font-medium transition shadow-md hover:shadow-lg">
-            <i data-lucide="save" class="w-4 h-4"></i>
-            <span>Simpan Perubahan Section 4</span>
-          </button>
+          <div class="flex items-center space-x-3">
+            <button type="button" onclick="resetSectionToDefault('section_4_event', loadAcaraData, 'Section 4 (Waktu & Lokasi Acara)')" class="inline-flex items-center space-x-2 px-4 py-3 rounded-2xl bg-white hover:bg-rose-50 border border-borderSoft text-xs font-medium text-inkMuted hover:text-rose-600 transition">
+              <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+              <span>Reset ke Default</span>
+            </button>
+            <button type="submit" id="submitBtn" class="inline-flex items-center space-x-2 px-6 py-3 rounded-2xl bg-moss hover:bg-mossLight text-cream text-xs font-medium transition shadow-md hover:shadow-lg">
+              <i data-lucide="save" class="w-4 h-4"></i>
+              <span>Simpan Perubahan Section 4</span>
+            </button>
+          </div>
         </div>
       </form>
 
@@ -390,47 +457,60 @@
       }, 3500);
     }
 
+    attachImageFallback(document.getElementById('preview_header_photo'), '../aset/section4_header_cincin.webp');
+    attachImageFallback(document.getElementById('preview_akad_photo'), '../asetV2/dekorasi_akad_hd.webp');
+    attachImageFallback(document.getElementById('preview_resepsi_photo'), '../asetV2/tata_meja_taman_hd.webp');
+    attachImageFallback(document.getElementById('preview_venue_photo'), '../aset/section4_bagianbawah.webp');
+
     async function loadAcaraData() {
       try {
-        const res = await fetch('../api/konten.php?action=get_section&key=section_4_event');
+        const res = await fetch('../api/konten.php?action=get_section&key=section_4_event', { cache: 'no-store' });
         if (!res.ok) return;
         const json = await res.json();
         if (json.success && json.data) {
           const d = json.data;
-          if (d.headline) document.getElementById('input_headline').value = d.headline;
-          if (d.intro) document.getElementById('input_intro').value = d.intro;
+          document.getElementById('input_headline').value = d.headline || '';
+          document.getElementById('input_intro').value = d.intro || '';
+          if (d.header_photo) {
+            document.getElementById('input_header_photo').value = d.header_photo;
+            document.getElementById('preview_header_photo').src = normalizeAssetUrl(d.header_photo, '../aset/section4_header_cincin.webp');
+          }
           
-          if (d.akad_name) document.getElementById('input_akad_name').value = d.akad_name;
-          if (d.akad_date) document.getElementById('input_akad_date').value = d.akad_date;
-          if (d.akad_time) document.getElementById('input_akad_time').value = d.akad_time;
-          if (d.akad_place) document.getElementById('input_akad_place').value = d.akad_place;
-          if (d.akad_address) document.getElementById('input_akad_address').value = d.akad_address;
+          document.getElementById('input_akad_name').value = d.akad_name || '';
+          document.getElementById('input_akad_date').value = d.akad_date || '';
+          document.getElementById('input_akad_time').value = d.akad_time || '';
+          document.getElementById('input_akad_place').value = d.akad_place || '';
+          document.getElementById('input_akad_address').value = d.akad_address || '';
           if (d.akad_photo) {
             document.getElementById('input_akad_photo').value = d.akad_photo;
-            document.getElementById('preview_akad_photo').src = d.akad_photo;
+            document.getElementById('preview_akad_photo').src = normalizeAssetUrl(d.akad_photo, '../asetV2/dekorasi_akad_hd.webp');
           }
 
-          if (d.resepsi_name) document.getElementById('input_resepsi_name').value = d.resepsi_name;
-          if (d.resepsi_date) document.getElementById('input_resepsi_date').value = d.resepsi_date;
-          if (d.resepsi_time) document.getElementById('input_resepsi_time').value = d.resepsi_time;
-          if (d.resepsi_place) document.getElementById('input_resepsi_place').value = d.resepsi_place;
-          if (d.resepsi_address) document.getElementById('input_resepsi_address').value = d.resepsi_address;
+          document.getElementById('input_resepsi_name').value = d.resepsi_name || '';
+          document.getElementById('input_resepsi_date').value = d.resepsi_date || '';
+          document.getElementById('input_resepsi_time').value = d.resepsi_time || '';
+          document.getElementById('input_resepsi_place').value = d.resepsi_place || '';
+          document.getElementById('input_resepsi_address').value = d.resepsi_address || '';
           if (d.resepsi_photo) {
             document.getElementById('input_resepsi_photo').value = d.resepsi_photo;
-            document.getElementById('preview_resepsi_photo').src = d.resepsi_photo;
+            document.getElementById('preview_resepsi_photo').src = normalizeAssetUrl(d.resepsi_photo, '../asetV2/tata_meja_taman_hd.webp');
           }
 
-          if (d.venue_headline) document.getElementById('input_venue_headline').value = d.venue_headline;
-          if (d.venue_name) document.getElementById('input_venue_name').value = d.venue_name;
-          if (d.venue_address) document.getElementById('input_venue_address').value = d.venue_address;
-          if (d.maps_embed) document.getElementById('input_maps_embed').value = d.maps_embed;
-          if (d.maps_link) document.getElementById('input_maps_link').value = d.maps_link;
+          document.getElementById('input_venue_headline').value = d.venue_headline || '';
+          document.getElementById('input_venue_intro').value = d.venue_intro || '';
+          document.getElementById('input_venue_name').value = d.venue_name || '';
+          document.getElementById('input_venue_address').value = d.venue_address || '';
+          document.getElementById('input_features_parking').value = d.features_parking || '';
+          document.getElementById('input_features_transit').value = d.features_transit || '';
+          document.getElementById('input_maps_embed').value = d.maps_embed || '';
+          document.getElementById('input_maps_link').value = d.maps_link || '';
+          document.getElementById('input_routes_link').value = d.routes_link || d.maps_link || '';
           if (d.venue_photo) {
             document.getElementById('input_venue_photo').value = d.venue_photo;
             const prevVenue = document.getElementById('preview_venue_photo');
-            if (prevVenue) prevVenue.src = d.venue_photo;
+            if (prevVenue) prevVenue.src = normalizeAssetUrl(d.venue_photo, '../aset/section4_bagianbawah.webp');
           }
-          if (d.bottom_quote) document.getElementById('input_bottom_quote').value = d.bottom_quote;
+          document.getElementById('input_bottom_quote').value = d.bottom_quote || '';
 
           if (json.updated_at) {
             document.getElementById('lastUpdatedLabel').innerText = json.updated_at;
@@ -454,6 +534,7 @@
         data: {
           headline: document.getElementById('input_headline').value.trim(),
           intro: document.getElementById('input_intro').value.trim(),
+          header_photo: document.getElementById('input_header_photo').value.trim(),
           akad_name: document.getElementById('input_akad_name').value.trim(),
           akad_date: document.getElementById('input_akad_date').value.trim(),
           akad_time: document.getElementById('input_akad_time').value.trim(),
@@ -467,10 +548,14 @@
           resepsi_address: document.getElementById('input_resepsi_address').value.trim(),
           resepsi_photo: document.getElementById('input_resepsi_photo').value.trim(),
           venue_headline: document.getElementById('input_venue_headline').value.trim(),
+          venue_intro: document.getElementById('input_venue_intro').value.trim(),
           venue_name: document.getElementById('input_venue_name').value.trim(),
           venue_address: document.getElementById('input_venue_address').value.trim(),
+          features_parking: document.getElementById('input_features_parking').value.trim(),
+          features_transit: document.getElementById('input_features_transit').value.trim(),
           maps_embed: document.getElementById('input_maps_embed').value.trim(),
           maps_link: document.getElementById('input_maps_link').value.trim(),
+          routes_link: document.getElementById('input_routes_link').value.trim(),
           venue_photo: document.getElementById('input_venue_photo').value.trim(),
           bottom_quote: document.getElementById('input_bottom_quote').value.trim()
         }

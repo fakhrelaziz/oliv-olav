@@ -167,6 +167,10 @@
                 <i data-lucide="edit-3" class="w-3.5 h-3.5 text-moss"></i>
                 <span>Ubah Teks &amp; Quote Section 3</span>
               </button>
+              <button onclick="resetSectionToDefault('section_3_story', loadStoryHeaderFromAPI, 'Header & Quote Section 3')" class="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-white hover:bg-rose-50 border border-borderSoft text-xs font-medium text-inkMuted hover:text-rose-600 transition shadow-sm">
+                <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                <span>Reset Header</span>
+              </button>
               <a href="../integrated/index.html#story" target="_blank" class="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-moss hover:bg-mossLight text-cream text-xs font-medium transition shadow-sm">
                 <i data-lucide="eye" class="w-3.5 h-3.5"></i>
                 <span>Lihat Timeline di Website</span>
@@ -225,11 +229,8 @@
           </div>
 
           <!-- Highlight Photo Card -->
-          <div class="bg-cardBg rounded-3xl p-6 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] flex flex-col items-center">
-            <div id="displayStoryHeroPhoto" class="w-full h-56 rounded-2xl overflow-hidden bg-cover bg-center border border-borderSoft shadow-inner mb-4" style="background-image: url('../aset/section5_fotopengantin.webp');"></div>
-            
-            <span class="text-[10px] font-semibold tracking-[0.25em] text-inkMuted uppercase">SAME PEOPLE BRIGHTER DAYS</span>
-            <div class="w-10 h-0.5 bg-borderSoft mt-2"></div>
+          <div class="bg-cardBg rounded-3xl p-6 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] flex flex-col items-center justify-center">
+            <img id="displayStoryHeroPhoto" src="../aset/section3_fotopengantin.webp" alt="Foto Highlight Section 3" class="w-full h-56 rounded-2xl object-cover border border-borderSoft shadow-inner">
           </div>
 
         </div>
@@ -391,9 +392,14 @@
       document.getElementById('editStoryHeaderModal').classList.add('opacity-0', 'pointer-events-none');
     }
 
+    attachImageFallback(document.getElementById('displayStoryHeroPhoto'), '../aset/section3_fotopengantin.webp');
+    attachImageFallback(document.getElementById('previewMomentPhoto'), '../aset/section3_fotopengantin(3).webp');
+    attachImageFallback(document.getElementById('previewEditMomentPhoto'), '../aset/section3_fotopengantin(3).webp');
+    attachImageFallback(document.getElementById('previewStoryPhotoHero'), '../aset/section3_fotopengantin.webp');
+
     async function loadStoryHeaderFromAPI() {
       try {
-        const res = await fetch('../api/konten.php?action=get_section&key=section_3_story');
+        const res = await fetch('../api/konten.php?action=get_section&key=section_3_story', { cache: 'no-store' });
         if (!res.ok) return;
         const json = await res.json();
         if (json.success && json.data) {
@@ -407,10 +413,11 @@
             document.getElementById('displayStoryIntro').innerText = d.intro;
           }
           if (d.photo_hero) {
+            const heroUrl = normalizeAssetUrl(d.photo_hero, '../aset/section3_fotopengantin.webp');
             document.getElementById('inputStoryPhotoHero').value = d.photo_hero;
-            document.getElementById('previewStoryPhotoHero').src = d.photo_hero;
+            document.getElementById('previewStoryPhotoHero').src = heroUrl;
             const heroCard = document.getElementById('displayStoryHeroPhoto');
-            if (heroCard) heroCard.style.backgroundImage = `url('${d.photo_hero}')`;
+            if (heroCard) heroCard.src = heroUrl;
           }
           if (d.bottom_quote) {
             document.getElementById('inputStoryQuote').value = d.bottom_quote;
@@ -429,9 +436,10 @@
       const quote = document.getElementById('inputStoryQuote').value.trim();
 
       try {
-        await fetch('../api/konten.php?action=save_section', {
+        const res = await fetch('../api/konten.php?action=save_section', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
+          cache: 'no-store',
           body: JSON.stringify({
             section_key: 'section_3_story',
             nama_section: 'Section 3: Our Story',
@@ -443,6 +451,11 @@
             }
           })
         });
+        const json = await res.json();
+        if (!res.ok || !json.success) {
+          alert(json.message || 'Gagal menyimpan ke database.');
+          return;
+        }
         closeEditStoryHeaderModal();
         await loadStoryHeaderFromAPI();
         alert('Teks, Foto & Quote Section 3 berhasil disimpan ke database!');
@@ -469,7 +482,7 @@
     async function loadStoriesFromAPI() {
       const container = document.getElementById('timelineContainer');
       try {
-        const res = await fetch('../api/story.php');
+        const res = await fetch('../api/story.php', { cache: 'no-store' });
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const json = await res.json();
         if (json.success && Array.isArray(json.data)) {
@@ -510,10 +523,7 @@
       }
 
       stories.forEach((st, idx) => {
-        let imgUrl = st.foto_url;
-        if (!imgUrl.startsWith('http') && !imgUrl.startsWith('../')) {
-          imgUrl = '../' + imgUrl.replace(/^\//, '');
-        }
+        const imgUrl = normalizeAssetUrl(st.foto_url, '../aset/section3_fotopengantin(2).webp');
 
         const isLast = (idx === stories.length - 1);
         const dotColor = isLast ? 'bg-emerald-600' : 'bg-moss';
@@ -521,27 +531,59 @@
 
         const itemDiv = document.createElement('div');
         itemDiv.className = 'relative group';
-        itemDiv.innerHTML = `
-          <div class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full ${dotColor} border-2 border-white shadow-sm"></div>
-          <div class="flex items-start justify-between space-x-4">
-            <div class="flex items-start space-x-4 flex-1">
-              <div class="w-16 h-16 rounded-xl overflow-hidden bg-cover bg-center border border-borderSoft flex-shrink-0 shadow-sm" style="background-image: url('${imgUrl}');"></div>
-              <div class="flex-1">
-                <span class="text-[10px] font-mono ${dateColor}">${st.tanggal_momen}</span>
-                <h4 class="font-display text-base font-semibold text-ink mt-0.5">${st.judul}</h4>
-                <p class="text-xs text-inkMuted mt-1 leading-relaxed">${st.deskripsi}</p>
-              </div>
-            </div>
-            <div class="flex items-center space-x-1 opacity-0 group-hover:opacity-100 transition">
-              <button onclick="openEditMomentModal(${st.id})" class="p-1.5 rounded-lg text-inkMuted hover:text-moss hover:bg-[#EBEFE8] transition" title="Edit Momen">
-                <i data-lucide="edit-3" class="w-4 h-4"></i>
-              </button>
-              <button onclick="deleteStory(${st.id}, '${st.judul.replace(/'/g, "\\'")}')" class="p-1.5 rounded-lg text-inkMuted hover:text-rose-600 hover:bg-rose-50 transition" title="Hapus Momen">
-                <i data-lucide="trash-2" class="w-4 h-4"></i>
-              </button>
-            </div>
-          </div>
-        `;
+
+        const dotDiv = document.createElement('div');
+        dotDiv.className = `absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full ${dotColor} border-2 border-white shadow-sm`;
+        itemDiv.appendChild(dotDiv);
+
+        const rowDiv = document.createElement('div');
+        rowDiv.className = 'flex items-start justify-between space-x-4';
+
+        const leftDiv = document.createElement('div');
+        leftDiv.className = 'flex items-start space-x-4 flex-1';
+
+        const thumbWrap = document.createElement('div');
+        thumbWrap.className = 'w-16 h-16 rounded-xl overflow-hidden border border-borderSoft flex-shrink-0 shadow-sm bg-cardMuted';
+        const thumbImg = document.createElement('img');
+        thumbImg.src = imgUrl;
+        thumbImg.alt = st.judul || 'Foto Momen';
+        thumbImg.className = 'w-full h-full object-cover';
+        attachImageFallback(thumbImg, '../aset/section3_fotopengantin(2).webp');
+        thumbWrap.appendChild(thumbImg);
+
+        const textWrap = document.createElement('div');
+        textWrap.className = 'flex-1';
+        const dateSpan = document.createElement('span');
+        dateSpan.className = `text-[10px] font-mono ${dateColor}`;
+        dateSpan.textContent = st.tanggal_momen || '';
+        const titleEl = document.createElement('h4');
+        titleEl.className = 'font-display text-base font-semibold text-ink mt-0.5';
+        titleEl.textContent = st.judul || '';
+        const descEl = document.createElement('p');
+        descEl.className = 'text-xs text-inkMuted mt-1 leading-relaxed';
+        descEl.textContent = st.deskripsi || '';
+        textWrap.append(dateSpan, titleEl, descEl);
+
+        leftDiv.append(thumbWrap, textWrap);
+
+        const actionsDiv = document.createElement('div');
+        actionsDiv.className = 'flex items-center space-x-1 opacity-0 group-hover:opacity-100 transition';
+
+        const editBtn = document.createElement('button');
+        editBtn.className = 'p-1.5 rounded-lg text-inkMuted hover:text-moss hover:bg-[#EBEFE8] transition';
+        editBtn.title = 'Edit Momen';
+        editBtn.innerHTML = '<i data-lucide="edit-3" class="w-4 h-4"></i>';
+        editBtn.onclick = () => openEditMomentModal(st.id);
+
+        const delBtn = document.createElement('button');
+        delBtn.className = 'p-1.5 rounded-lg text-inkMuted hover:text-rose-600 hover:bg-rose-50 transition';
+        delBtn.title = 'Hapus Momen';
+        delBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
+        delBtn.onclick = () => deleteStory(st.id, st.judul || 'momen');
+
+        actionsDiv.append(editBtn, delBtn);
+        rowDiv.append(leftDiv, actionsDiv);
+        itemDiv.appendChild(rowDiv);
         container.appendChild(itemDiv);
       });
       lucide.createIcons();
@@ -553,10 +595,13 @@
       document.getElementById('editMomentId').value = st.id;
       document.getElementById('editMomentTitle').value = st.judul;
       document.getElementById('editMomentDate').value = st.tanggal_momen;
-      const imgUrl = st.foto_url.startsWith('http') || st.foto_url.startsWith('../') ? st.foto_url : '../' + st.foto_url;
+      const imgUrl = normalizeAssetUrl(st.foto_url, '../aset/section3_fotopengantin(3).webp');
       document.getElementById('editMomentPhoto').value = imgUrl;
       const previewEl = document.getElementById('previewEditMomentPhoto');
-      if (previewEl) previewEl.src = imgUrl;
+      if (previewEl) {
+        delete previewEl.dataset.fallbackApplied;
+        previewEl.src = imgUrl;
+      }
       const statusEl = document.getElementById('statusEditMomentPhoto');
       if (statusEl) {
         statusEl.innerText = 'Klik untuk mengganti foto momen';

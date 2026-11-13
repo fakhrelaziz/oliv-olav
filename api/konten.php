@@ -289,7 +289,7 @@ if (!$pdo) {
         if ($action === 'sections' || $action === 'get_all_sections') {
             $final = [];
             foreach ($allDefaults as $k => $def) $final[$k] = $def['data'];
-            jsonResponse(['success' => true, 'sections' => $final, 'fallback' => true]);
+            jsonResponse(['success' => true, 'sections' => $final, 'data' => $final, 'fallback' => true]);
         }
         if ($action === 'get_section') {
             $key = trim($_GET['key'] ?? 'section_1_hero');
@@ -404,7 +404,7 @@ function getDefaultSectionData($key = null) {
                 'resepsi_time' => '11.00 - 14.00 WIB',
                 'resepsi_place' => 'The Glass House, Jakarta',
                 'resepsi_address' => 'Jl. Bunga Melati No. 12, Jakarta Selatan',
-                'resepsi_photo' => '../aset/section4_fotopengantin(2).webp',
+                'resepsi_photo' => '../asetV2/tata_meja_taman_hd.webp',
                 'venue_headline' => 'Temui Kami Di Sini',
                 'venue_intro' => 'Kami sangat berharap kehadiran Bapak/Ibu/Saudara/i untuk menjadi bagian dari hari istimewa ini.',
                 'venue_name' => 'The Backyard Cafe',
@@ -412,6 +412,7 @@ function getDefaultSectionData($key = null) {
                 'venue_photo' => '../aset/section4_bagianbawah.webp',
                 'maps_embed' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15865.1!2d106.79!3d-6.24!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1sen!2sid!4v1',
                 'maps_link' => 'https://maps.google.com',
+                'routes_link' => 'https://maps.google.com',
                 'features_parking' => 'Tersedia area parkir',
                 'features_transit' => 'Dapat diakses dengan transportasi umum',
                 'bottom_quote' => 'Tempat di mana cerita baru kami dimulai bersama orang-orang tercinta.'
@@ -476,7 +477,11 @@ if ($method === 'GET' && ($action === 'sections' || $action === 'get_all_section
 
         foreach ($allDefaults as $k => $def) {
             if (isset($dbData[$k]) && is_array($dbData[$k])) {
-                $finalSections[$k] = array_merge($def['data'], $dbData[$k]);
+                $mergedSec = array_merge($def['data'], $dbData[$k]);
+                if ($k === 'section_4_event' && ($mergedSec['resepsi_photo'] ?? '') === '../aset/section4_fotopengantin(2).webp') {
+                    $mergedSec['resepsi_photo'] = '../asetV2/tata_meja_taman_hd.webp';
+                }
+                $finalSections[$k] = $mergedSec;
             } else {
                 $finalSections[$k] = $def['data'];
             }
@@ -484,14 +489,15 @@ if ($method === 'GET' && ($action === 'sections' || $action === 'get_all_section
 
         jsonResponse([
             'success' => true,
-            'sections' => $finalSections
+            'sections' => $finalSections,
+            'data' => $finalSections
         ]);
     } catch (\PDOException $e) {
         // Fallback ke default
         $allDefaults = getDefaultSectionData();
         $final = [];
         foreach ($allDefaults as $k => $def) $final[$k] = $def['data'];
-        jsonResponse(['success' => true, 'sections' => $final, 'warning' => $e->getMessage()]);
+        jsonResponse(['success' => true, 'sections' => $final, 'data' => $final, 'warning' => $e->getMessage()]);
     }
 }
 
@@ -584,6 +590,9 @@ if ($method === 'GET' && ($action === 'get_section' || !empty($_GET['key']))) {
             }
             $updatedAt = $row['updated_at'];
         }
+        if ($key === 'section_4_event' && ($data['resepsi_photo'] ?? '') === '../aset/section4_fotopengantin(2).webp') {
+            $data['resepsi_photo'] = '../asetV2/tata_meja_taman_hd.webp';
+        }
 
         jsonResponse([
             'success' => true,
@@ -632,16 +641,30 @@ if ($method === 'POST' && ($action === 'save_section' || $action === 'save')) {
         $stmtExisting->execute([':key' => $key]);
         $existingRow = $stmtExisting->fetch();
 
+        $prev = [];
         $merged = $default['data'];
         if ($existingRow) {
-            $prev = json_decode($existingRow['konten_json'], true);
-            if ($prev && is_array($prev)) {
+            $prevDecoded = json_decode($existingRow['konten_json'], true);
+            if ($prevDecoded && is_array($prevDecoded)) {
+                $prev = $prevDecoded;
                 $merged = array_merge($merged, $prev);
             }
         }
 
         if (is_array($data)) {
             $merged = array_merge($merged, $data);
+        }
+
+        // Pastikan field gambar yang dikosongkan otomatis kembali ke default valid (mencegah broken image)
+        $imageKeys = [
+            'bg_desktop', 'bg_mobile', 'photo_couple', 'groom_photo', 'bride_photo',
+            'photo_hero', 'header_photo', 'akad_photo', 'resepsi_photo', 'venue_photo',
+            'hero_photo', 'banner_photo'
+        ];
+        foreach ($imageKeys as $imgKey) {
+            if (array_key_exists($imgKey, $merged) && trim((string)$merged[$imgKey]) === '' && isset($default['data'][$imgKey])) {
+                $merged[$imgKey] = $default['data'][$imgKey];
+            }
         }
 
         $jsonPayload = json_encode($merged, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
@@ -663,24 +686,36 @@ if ($method === 'POST' && ($action === 'save_section' || $action === 'save')) {
             ':json_up' => $jsonPayload
         ]);
 
+        // Bersihkan file upload lokal lama jika sudah diganti & tidak dipakai section lain
+        foreach ($imageKeys as $imgKey) {
+            $oldUrl = $prev[$imgKey] ?? '';
+            $newUrl = $merged[$imgKey] ?? '';
+            if (!empty($oldUrl) && $oldUrl !== $newUrl) {
+                cleanupLocalUploadIfUnused($oldUrl, $pdo);
+            }
+        }
+
         // Sinkronisasi khusus ke tabel lain bila relevan
         // Section 2: Sinkron ke tabel pengantin
         if ($key === 'section_2_about') {
+            ensureFotoUrlLongText($pdo);
             try {
                 if (!empty($merged['groom_nickname'])) {
-                    $pdo->prepare("UPDATE `pengantin` SET `nama_panggilan` = :nick, `nama_lengkap` = :full, `foto_url` = :foto, `instagram` = :ig WHERE `peran` = 'groom'")
+                    $pdo->prepare("UPDATE `pengantin` SET `nama_panggilan` = :nick, `nama_lengkap` = :full, `nama_ayah` = :parents, `urutan_anak` = '', `foto_url` = :foto, `instagram` = :ig WHERE `peran` = 'groom'")
                         ->execute([
                             ':nick' => $merged['groom_nickname'],
                             ':full' => trim(($merged['groom_nickname'] ?? '') . ' ' . ($merged['groom_fullname'] ?? '')),
+                            ':parents' => $merged['groom_parents'] ?? '',
                             ':foto' => $merged['groom_photo'] ?? '',
                             ':ig' => $merged['groom_instagram'] ?? ''
                         ]);
                 }
                 if (!empty($merged['bride_nickname'])) {
-                    $pdo->prepare("UPDATE `pengantin` SET `nama_panggilan` = :nick, `nama_lengkap` = :full, `foto_url` = :foto, `instagram` = :ig WHERE `peran` = 'bride'")
+                    $pdo->prepare("UPDATE `pengantin` SET `nama_panggilan` = :nick, `nama_lengkap` = :full, `nama_ayah` = :parents, `urutan_anak` = '', `foto_url` = :foto, `instagram` = :ig WHERE `peran` = 'bride'")
                         ->execute([
                             ':nick' => $merged['bride_nickname'],
                             ':full' => trim(($merged['bride_nickname'] ?? '') . ' ' . ($merged['bride_fullname'] ?? '')),
+                            ':parents' => $merged['bride_parents'] ?? '',
                             ':foto' => $merged['bride_photo'] ?? '',
                             ':ig' => $merged['bride_instagram'] ?? ''
                         ]);
@@ -711,6 +746,87 @@ if ($method === 'POST' && ($action === 'save_section' || $action === 'save')) {
         ]);
     } catch (\PDOException $e) {
         jsonResponse(['success' => false, 'message' => 'Gagal menyimpan: ' . $e->getMessage()], 500);
+    }
+}
+
+// --------------------------------------------------------------------
+// 4B. POST / DELETE: Reset / Hapus Kustomisasi Konten Section ke Default
+// --------------------------------------------------------------------
+if (($method === 'POST' && ($action === 'reset_section' || $action === 'delete_section')) || ($method === 'DELETE' && $action === 'reset_section')) {
+    $input = getJsonInput();
+    $key = trim($input['section_key'] ?? $_GET['key'] ?? '');
+    $field = trim($input['field'] ?? '');
+
+    if (empty($key)) {
+        jsonResponse(['success' => false, 'message' => 'Parameter section_key wajib diisi.'], 400);
+    }
+
+    $default = getDefaultSectionData($key);
+    if (!$default) {
+        jsonResponse(['success' => false, 'message' => 'Section key tidak dikenali.'], 404);
+    }
+
+    try {
+        $stmtOld = $pdo->prepare("SELECT `konten_json` FROM `section_konten` WHERE `section_key` = :key LIMIT 1");
+        $stmtOld->execute([':key' => $key]);
+        $oldRow = $stmtOld->fetch();
+        $oldData = $oldRow ? (json_decode($oldRow['konten_json'], true) ?: []) : [];
+
+        if ($field !== '') {
+            if (!array_key_exists($field, $default['data'])) {
+                jsonResponse(['success' => false, 'message' => 'Field section tidak valid.'], 400);
+            }
+            $oldFieldVal = $oldData[$field] ?? '';
+            $merged = array_merge($default['data'], $oldData);
+            $merged[$field] = $default['data'][$field];
+
+            $jsonPayload = json_encode($merged, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+            $pdo->prepare("
+                INSERT INTO `section_konten` (`section_key`, `nama_section`, `konten_json`)
+                VALUES (:key, :nama, :json)
+                ON DUPLICATE KEY UPDATE
+                    `nama_section` = :nama_up,
+                    `konten_json` = :json_up,
+                    `updated_at` = NOW()
+            ")->execute([
+                ':key' => $key,
+                ':nama' => $default['nama_section'],
+                ':json' => $jsonPayload,
+                ':nama_up' => $default['nama_section'],
+                ':json_up' => $jsonPayload
+            ]);
+
+            if (!empty($oldFieldVal) && $oldFieldVal !== $default['data'][$field]) {
+                cleanupLocalUploadIfUnused($oldFieldVal, $pdo);
+            }
+
+            jsonResponse([
+                'success' => true,
+                'message' => 'Field berhasil dikembalikan ke bawaan default!',
+                'key' => $key,
+                'updated_at' => date('Y-m-d H:i:s'),
+                'data' => $merged
+            ]);
+        }
+
+        // Reset seluruh section: hapus override dari section_konten & bersihkan upload lama
+        $pdo->prepare("DELETE FROM `section_konten` WHERE `section_key` = :key")->execute([':key' => $key]);
+
+        foreach ($oldData as $val) {
+            if (is_string($val)) {
+                cleanupLocalUploadIfUnused($val, $pdo);
+            }
+        }
+
+        jsonResponse([
+            'success' => true,
+            'message' => $default['nama_section'] . ' berhasil dikembalikan ke konten default!',
+            'key' => $key,
+            'updated_at' => date('Y-m-d H:i:s'),
+            'data' => $default['data']
+        ]);
+    } catch (\PDOException $e) {
+        jsonResponse(['success' => false, 'message' => 'Gagal mereset section: ' . $e->getMessage()], 500);
     }
 }
 

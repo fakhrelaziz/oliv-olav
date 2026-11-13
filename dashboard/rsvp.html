@@ -395,6 +395,43 @@
     </div>
   </div>
 
+  <!-- MODAL: EDIT DOA & UCAPAN -->
+  <div id="editWishModal" class="hidden fixed inset-0 z-50 bg-ink/40 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-cardBg border border-borderSoft rounded-3xl p-6 w-full max-w-md shadow-2xl">
+      <div class="flex items-center justify-between border-b border-borderSoft pb-3 mb-4">
+        <h3 class="font-display text-xl font-semibold text-ink">Edit Doa &amp; Ucapan</h3>
+        <button type="button" onclick="closeEditWishModal()" class="p-1.5 rounded-lg hover:bg-cardMuted text-inkMuted transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <form onsubmit="handleEditWish(event)" class="space-y-4 text-xs">
+        <input type="hidden" id="editWishId">
+        <div>
+          <label class="block text-inkMuted font-medium mb-1">Nama Pengirim</label>
+          <input type="text" id="editWishName" required class="w-full px-3.5 py-2.5 rounded-xl bg-cream border border-borderSoft focus:outline-none focus:border-moss">
+        </div>
+        <div>
+          <label class="block text-inkMuted font-medium mb-1">Status Kehadiran</label>
+          <select id="editWishStatus" class="w-full px-3.5 py-2.5 rounded-xl bg-cream border border-borderSoft focus:outline-none focus:border-moss">
+            <option value="Hadir">Hadir</option>
+            <option value="Masih Ragu">Masih Ragu</option>
+            <option value="Tidak Hadir">Tidak Hadir</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-inkMuted font-medium mb-1">Pesan / Doa Restu</label>
+          <textarea id="editWishMessage" rows="3" required class="w-full px-3.5 py-2.5 rounded-xl bg-cream border border-borderSoft focus:outline-none focus:border-moss resize-none"></textarea>
+        </div>
+        <div class="flex items-center space-x-2">
+          <input type="checkbox" id="editWishVisible" class="rounded border-borderSoft text-moss focus:ring-moss">
+          <label for="editWishVisible" class="text-ink font-medium cursor-pointer">Tampilkan di halaman publik website</label>
+        </div>
+        <div class="flex justify-end space-x-2 pt-3">
+          <button type="button" onclick="closeEditWishModal()" class="px-4 py-2 rounded-xl border border-borderSoft text-ink hover:bg-cardMuted">Batal</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-moss text-cream font-medium hover:bg-mossLight transition shadow-sm">Simpan Perubahan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script>
     lucide.createIcons();
 
@@ -430,14 +467,22 @@
     // ====================================================================
     // API INTEGRATION & DYNAMIC RSVP
     // ====================================================================
+    let wishesCache = [];
+
+    function escWishHtml(str) {
+      if (typeof escapeHtml === 'function') return escapeHtml(str);
+      return String(str ?? '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+    }
+
     async function loadWishesFromAPI() {
       const tbody = document.getElementById('wishesTableBody') || document.querySelector('#wishesTable tbody');
       try {
-        const res = await fetch('../api/rsvp.php');
+        const res = await fetch('../api/rsvp.php?include_hidden=1', { cache: 'no-store' });
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const json = await res.json();
         if (json.success) {
-          renderWishesTable(json.data || []);
+          wishesCache = json.data || [];
+          renderWishesTable(wishesCache);
           if (json.stats) renderWishesStats(json.stats);
         } else {
           throw new Error(json.message || 'Gagal memuat');
@@ -481,25 +526,33 @@
         let badgeClass = 'bg-badgeGreen text-textGreen';
         if (w.status_kehadiran === 'Tidak Hadir') badgeClass = 'bg-badgeRed text-textRed';
         if (w.status_kehadiran === 'Masih Ragu') badgeClass = 'bg-badgeAmber text-textAmber';
+        const isVisible = Number(w.is_tampil ?? 1) === 1;
 
         const tr = document.createElement('tr');
-        tr.className = 'wish-row hover:bg-cardMuted/80 transition';
+        tr.className = `wish-row hover:bg-cardMuted/80 transition ${isVisible ? '' : 'opacity-65 bg-stone-50/60'}`;
         tr.setAttribute('data-id', w.id);
         tr.innerHTML = `
           <td class="py-3 px-3 font-medium text-inkMuted">${idx + 1}</td>
           <td class="py-3 px-3">
             <div class="flex items-center space-x-2.5">
-              <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center font-semibold text-[11px]">${w.initials || 'TT'}</div>
-              <span class="font-semibold text-ink name-col">${w.nama_pengirim}</span>
+              <div class="w-7 h-7 rounded-full bg-[#E5ECE0] text-[#345230] flex items-center justify-center font-semibold text-[11px]">${escWishHtml(w.initials || 'TT')}</div>
+              <div>
+                <span class="font-semibold text-ink name-col block">${escWishHtml(w.nama_pengirim)}</span>
+                ${isVisible ? '' : '<span class="text-[10px] font-medium text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded">Disembunyikan</span>'}
+              </div>
             </div>
           </td>
           <td class="py-3 px-3 status-col">
-            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium ${badgeClass}">${w.status_kehadiran}</span>
+            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium ${badgeClass}">${escWishHtml(w.status_kehadiran)}</span>
           </td>
-          <td class="py-3 px-4 text-ink msg-col">${w.pesan_ucapan}</td>
-          <td class="py-3 px-3 text-inkMuted font-mono text-[11px] whitespace-nowrap">${w.formatted_date || 'Hari ini'}</td>
+          <td class="py-3 px-4 text-ink msg-col">${escWishHtml(w.pesan_ucapan)}</td>
+          <td class="py-3 px-3 text-inkMuted font-mono text-[11px] whitespace-nowrap">${escWishHtml(w.formatted_date || 'Hari ini')}</td>
           <td class="py-3 px-3 text-center">
-            <button onclick="deleteWish(this)" class="p-1 rounded-lg hover:bg-cream text-inkMuted hover:text-rose-600 transition" title="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+            <div class="flex items-center justify-center space-x-1">
+              <button onclick="openEditWishModal(${w.id})" class="p-1.5 rounded-lg hover:bg-cream text-inkMuted hover:text-moss transition" title="Edit Ucapan"><i data-lucide="pencil" class="w-3.5 h-3.5"></i></button>
+              <button onclick="toggleWishVisibility(${w.id})" class="p-1.5 rounded-lg hover:bg-cream text-inkMuted hover:text-amber-700 transition" title="${isVisible ? 'Sembunyikan dari Publik' : 'Tampilkan ke Publik'}"><i data-lucide="${isVisible ? 'eye' : 'eye-off'}" class="w-3.5 h-3.5"></i></button>
+              <button onclick="deleteWish(this)" class="p-1.5 rounded-lg hover:bg-cream text-inkMuted hover:text-rose-600 transition" title="Hapus"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i></button>
+            </div>
           </td>
         `;
         tbody.appendChild(tr);
@@ -617,6 +670,73 @@
       closeAddWishModal();
       await loadWishesFromAPI();
       alert('Ucapan berhasil ditambahkan!');
+    }
+
+    function openEditWishModal(id) {
+      const wish = wishesCache.find(w => Number(w.id) === Number(id));
+      if (!wish) return;
+      document.getElementById('editWishId').value = wish.id;
+      document.getElementById('editWishName').value = wish.nama_pengirim || '';
+      document.getElementById('editWishStatus').value = wish.status_kehadiran || 'Hadir';
+      document.getElementById('editWishMessage').value = wish.pesan_ucapan || '';
+      document.getElementById('editWishVisible').checked = Number(wish.is_tampil ?? 1) === 1;
+      document.getElementById('editWishModal').classList.remove('hidden');
+    }
+
+    function closeEditWishModal() {
+      document.getElementById('editWishModal').classList.add('hidden');
+    }
+
+    async function handleEditWish(e) {
+      e.preventDefault();
+      const id = document.getElementById('editWishId').value;
+      const nama_pengirim = document.getElementById('editWishName').value.trim();
+      const status_kehadiran = document.getElementById('editWishStatus').value;
+      const pesan_ucapan = document.getElementById('editWishMessage').value.trim();
+      const is_tampil = document.getElementById('editWishVisible').checked ? 1 : 0;
+
+      if (!id || !nama_pengirim || !pesan_ucapan) {
+        alert('Mohon lengkapi nama pengirim dan pesan doa.');
+        return;
+      }
+
+      try {
+        const res = await fetch('../api/rsvp.php?action=update', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id, nama_pengirim, status_kehadiran, pesan_ucapan, is_tampil })
+        });
+        const json = await res.json();
+        if (!res.ok || !json.success) {
+          alert(json.message || 'Gagal memperbarui ucapan.');
+          return;
+        }
+      } catch (err) {
+        alert('Terjadi gangguan jaringan saat memperbarui ucapan.');
+        return;
+      }
+
+      closeEditWishModal();
+      await loadWishesFromAPI();
+      alert('Ucapan berhasil diperbarui!');
+    }
+
+    async function toggleWishVisibility(id) {
+      try {
+        const res = await fetch('../api/rsvp.php?action=toggle_visibility', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id })
+        });
+        const json = await res.json();
+        if (!res.ok || !json.success) {
+          alert(json.message || 'Gagal mengubah visibilitas ucapan.');
+          return;
+        }
+        await loadWishesFromAPI();
+      } catch (err) {
+        alert('Terjadi gangguan jaringan saat mengubah visibilitas.');
+      }
     }
   </script>
 </body>

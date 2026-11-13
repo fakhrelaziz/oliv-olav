@@ -252,12 +252,18 @@
               </div>
               <input type="hidden" id="input_bg_desktop" value="../asetV2/background_herosection(desktop).webp">
               <input type="file" id="file_bg_desktop" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" onchange="uploadPhotoFile(this, 'input_bg_desktop', 'preview_bg_desktop', 'status_bg_desktop', 'hero_desktop')">
-              <div class="flex items-center justify-between">
-                <button type="button" onclick="document.getElementById('file_bg_desktop').click()" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-cardMuted hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition">
-                  <i data-lucide="upload" class="w-3.5 h-3.5"></i>
-                  <span>Upload Foto Desktop</span>
-                </button>
-                <span id="status_bg_desktop" class="text-[10px] text-inkMuted block">Format JPG, PNG, WEBP (Maks 10MB)</span>
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <div class="flex items-center space-x-2">
+                  <button type="button" onclick="document.getElementById('file_bg_desktop').click()" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-cardMuted hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition">
+                    <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                    <span>Upload Foto Desktop</span>
+                  </button>
+                  <button type="button" onclick="resetPhotoFieldToDefault('section_1_hero', 'bg_desktop', '../asetV2/background_herosection(desktop).webp', 'input_bg_desktop', 'preview_bg_desktop', 'status_bg_desktop')" class="inline-flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-white hover:bg-rose-50 border border-borderSoft text-[11px] font-medium text-inkMuted hover:text-rose-600 transition" title="Kembalikan Foto Default">
+                    <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                    <span>Reset</span>
+                  </button>
+                </div>
+                <span id="status_bg_desktop" class="text-[10px] text-inkMuted block">Format JPG, PNG, WEBP</span>
               </div>
             </div>
 
@@ -275,28 +281,40 @@
               </div>
               <input type="hidden" id="input_bg_mobile" value="../asetV2/background_herosection.webp">
               <input type="file" id="file_bg_mobile" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" onchange="uploadPhotoFile(this, 'input_bg_mobile', 'preview_bg_mobile', 'status_bg_mobile', 'hero_mobile')">
-              <div class="flex items-center justify-between">
-                <button type="button" onclick="document.getElementById('file_bg_mobile').click()" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-cardMuted hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition">
-                  <i data-lucide="upload" class="w-3.5 h-3.5"></i>
-                  <span>Upload Foto Mobile</span>
-                </button>
-                <span id="status_bg_mobile" class="text-[10px] text-inkMuted block">Format JPG, PNG, WEBP (Maks 10MB)</span>
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <div class="flex items-center space-x-2">
+                  <button type="button" onclick="document.getElementById('file_bg_mobile').click()" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-cardMuted hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition">
+                    <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                    <span>Upload Foto Mobile</span>
+                  </button>
+                  <button type="button" onclick="resetPhotoFieldToDefault('section_1_hero', 'bg_mobile', '../asetV2/background_herosection.webp', 'input_bg_mobile', 'preview_bg_mobile', 'status_bg_mobile')" class="inline-flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-white hover:bg-rose-50 border border-borderSoft text-[11px] font-medium text-inkMuted hover:text-rose-600 transition" title="Kembalikan Foto Default">
+                    <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                    <span>Reset</span>
+                  </button>
+                </div>
+                <span id="status_bg_mobile" class="text-[10px] text-inkMuted block">Format JPG, PNG, WEBP</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Submit Button Bar -->
-        <div class="flex items-center justify-between pt-4 pb-12">
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-4 pb-12">
           <a href="kelola-konten.html" class="inline-flex items-center space-x-2 text-xs font-medium text-inkMuted hover:text-moss transition">
             <i data-lucide="arrow-left" class="w-4 h-4"></i>
             <span>Kembali ke Pusat Konten</span>
           </a>
 
-          <button type="submit" id="submitBtn" class="inline-flex items-center space-x-2 px-6 py-3 rounded-2xl bg-moss hover:bg-mossLight text-cream text-xs font-medium transition shadow-md hover:shadow-lg">
-            <i data-lucide="save" class="w-4 h-4"></i>
-            <span>Simpan Perubahan Section 1</span>
-          </button>
+          <div class="flex items-center space-x-3">
+            <button type="button" onclick="resetSectionToDefault('section_1_hero', loadHeroData, 'Section 1 (Hero)')" class="inline-flex items-center space-x-2 px-4 py-3 rounded-2xl bg-white hover:bg-rose-50 border border-borderSoft text-xs font-medium text-inkMuted hover:text-rose-600 transition">
+              <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+              <span>Reset ke Default</span>
+            </button>
+            <button type="submit" id="submitBtn" class="inline-flex items-center space-x-2 px-6 py-3 rounded-2xl bg-moss hover:bg-mossLight text-cream text-xs font-medium transition shadow-md hover:shadow-lg">
+              <i data-lucide="save" class="w-4 h-4"></i>
+              <span>Simpan Perubahan Section 1</span>
+            </button>
+          </div>
         </div>
       </form>
 
@@ -322,28 +340,31 @@
       }, 3500);
     }
 
+    attachImageFallback(document.getElementById('preview_bg_desktop'), '../asetV2/background_herosection(desktop).webp');
+    attachImageFallback(document.getElementById('preview_bg_mobile'), '../asetV2/background_herosection.webp');
+
     async function loadHeroData() {
       try {
-        const res = await fetch('../api/konten.php?action=get_section&key=section_1_hero');
+        const res = await fetch('../api/konten.php?action=get_section&key=section_1_hero', { cache: 'no-store' });
         if (!res.ok) return;
         const json = await res.json();
         if (json.success && json.data) {
           const d = json.data;
-          if (d.tagline) document.getElementById('input_tagline').value = d.tagline;
-          if (d.wedding_date) document.getElementById('input_wedding_date').value = d.wedding_date;
-          if (d.groom_nickname) document.getElementById('input_groom_nickname').value = d.groom_nickname;
-          if (d.bride_nickname) document.getElementById('input_bride_nickname').value = d.bride_nickname;
-          if (d.salam_text) document.getElementById('input_salam_text').value = d.salam_text;
-          if (d.side_text) document.getElementById('input_side_text').value = d.side_text;
-          if (d.script_text) document.getElementById('input_script_text').value = d.script_text;
-          if (d.city) document.getElementById('input_city').value = d.city;
+          document.getElementById('input_tagline').value = d.tagline || '';
+          document.getElementById('input_wedding_date').value = d.wedding_date || '';
+          document.getElementById('input_groom_nickname').value = d.groom_nickname || '';
+          document.getElementById('input_bride_nickname').value = d.bride_nickname || '';
+          document.getElementById('input_salam_text').value = d.salam_text || '';
+          document.getElementById('input_side_text').value = d.side_text || '';
+          document.getElementById('input_script_text').value = d.script_text || '';
+          document.getElementById('input_city').value = d.city || '';
           if (d.bg_desktop) {
             document.getElementById('input_bg_desktop').value = d.bg_desktop;
-            document.getElementById('preview_bg_desktop').src = d.bg_desktop;
+            document.getElementById('preview_bg_desktop').src = normalizeAssetUrl(d.bg_desktop, '../asetV2/background_herosection(desktop).webp');
           }
           if (d.bg_mobile) {
             document.getElementById('input_bg_mobile').value = d.bg_mobile;
-            document.getElementById('preview_bg_mobile').src = d.bg_mobile;
+            document.getElementById('preview_bg_mobile').src = normalizeAssetUrl(d.bg_mobile, '../asetV2/background_herosection.webp');
           }
           if (json.updated_at) {
             document.getElementById('lastUpdatedLabel').innerText = json.updated_at;

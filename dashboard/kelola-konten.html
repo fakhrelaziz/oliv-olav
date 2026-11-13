@@ -480,11 +480,26 @@
     // Refresh dynamic thumbnail and update status from API
     async function loadSectionOverview() {
       try {
-        const res = await fetch('../api/konten.php?action=list_sections');
+        const res = await fetch('../api/konten.php?action=list_sections', { cache: 'no-store' });
         if (!res.ok) return;
         const json = await res.json();
         if (json.success && Array.isArray(json.data)) {
-          // Cards already rendered beautifully
+          json.data.forEach(item => {
+            if (!item || !item.subpage) return;
+            const link = document.querySelector(`#sectionCardsContainer a[href="${item.subpage}"]`);
+            if (!link) return;
+            const card = link.closest('.bg-cardBg');
+            if (!card) return;
+            const img = card.querySelector('img');
+            if (img && item.thumbnail) {
+              const fallback = img.getAttribute('src') || '../aset/default-image.jpg';
+              const resolved = typeof normalizeAssetUrl === 'function' ? normalizeAssetUrl(item.thumbnail, fallback) : item.thumbnail;
+              img.src = resolved;
+              if (typeof attachImageFallback === 'function') {
+                attachImageFallback(img, fallback);
+              }
+            }
+          });
         }
       } catch (e) {
         console.warn('Load section overview warning:', e);

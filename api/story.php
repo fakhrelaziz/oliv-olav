@@ -48,6 +48,8 @@ if ($method === 'POST' && ($action === 'create' || empty($action))) {
         jsonResponse(['success' => false, 'message' => 'Judul dan deskripsi cerita wajib diisi.'], 400);
     }
 
+    ensureFotoUrlLongText($pdo);
+
     try {
         $stmt = $pdo->prepare("
             INSERT INTO `cerita_cinta` (`user_id`, `judul`, `tanggal_momen`, `deskripsi`, `foto_url`, `urutan`)
@@ -95,7 +97,14 @@ if ($method === 'PUT' || ($method === 'POST' && $action === 'update')) {
         jsonResponse(['success' => false, 'message' => 'ID dan judul cerita wajib diisi.'], 400);
     }
 
+    ensureFotoUrlLongText($pdo);
+
     try {
+        $stmtOld = $pdo->prepare("SELECT `foto_url` FROM `cerita_cinta` WHERE `id` = :id LIMIT 1");
+        $stmtOld->execute([':id' => $id]);
+        $oldUrl = (string)$stmtOld->fetchColumn();
+        $finalFoto = $fotoUrl !== '' ? $fotoUrl : $oldUrl;
+
         $stmt = $pdo->prepare("
             UPDATE `cerita_cinta` 
             SET `judul` = :judul, `tanggal_momen` = :tanggal, `deskripsi` = :deskripsi, `foto_url` = :foto 
@@ -105,9 +114,13 @@ if ($method === 'PUT' || ($method === 'POST' && $action === 'update')) {
             ':judul' => $judul,
             ':tanggal' => $tanggal,
             ':deskripsi' => $deskripsi,
-            ':foto' => $fotoUrl,
+            ':foto' => $finalFoto,
             ':id' => $id
         ]);
+
+        if ($oldUrl !== '' && $oldUrl !== $finalFoto) {
+            cleanupLocalUploadIfUnused($oldUrl, $pdo);
+        }
 
         jsonResponse([
             'success' => true,
@@ -130,8 +143,16 @@ if ($method === 'DELETE' || ($method === 'POST' && $action === 'delete')) {
     }
 
     try {
+        $stmtOld = $pdo->prepare("SELECT `foto_url` FROM `cerita_cinta` WHERE `id` = :id LIMIT 1");
+        $stmtOld->execute([':id' => $id]);
+        $oldUrl = (string)$stmtOld->fetchColumn();
+
         $stmt = $pdo->prepare("DELETE FROM `cerita_cinta` WHERE `id` = :id");
         $stmt->execute([':id' => $id]);
+
+        if ($oldUrl !== '') {
+            cleanupLocalUploadIfUnused($oldUrl, $pdo);
+        }
 
         jsonResponse([
             'success' => true,

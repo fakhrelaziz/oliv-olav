@@ -196,10 +196,16 @@
                 <div class="flex-1">
                   <input type="hidden" id="input_photo_couple" value="../aset/section2_fotopengantin.webp">
                   <input type="file" id="file_photo_couple" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" onchange="uploadPhotoFile(this, 'input_photo_couple', 'preview_photo_couple', 'status_photo_couple', 'couple')">
-                  <button type="button" onclick="document.getElementById('file_photo_couple').click()" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-white hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition shadow-sm">
-                    <i data-lucide="upload" class="w-3.5 h-3.5"></i>
-                    <span>Pilih / Upload Foto Pasangan</span>
-                  </button>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <button type="button" onclick="document.getElementById('file_photo_couple').click()" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-white hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition shadow-sm">
+                      <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                      <span>Pilih / Upload Foto Pasangan</span>
+                    </button>
+                    <button type="button" onclick="resetPhotoFieldToDefault('section_2_about', 'photo_couple', '../aset/section2_fotopengantin.webp', 'input_photo_couple', 'preview_photo_couple', 'status_photo_couple')" class="inline-flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-white hover:bg-rose-50 border border-borderSoft text-[11px] font-medium text-inkMuted hover:text-rose-600 transition">
+                      <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                      <span>Reset Default</span>
+                    </button>
+                  </div>
                   <span id="status_photo_couple" class="text-[10px] text-inkMuted block mt-1">Klik tombol untuk memilih foto dari perangkat (JPG, PNG, WEBP)</span>
                 </div>
               </div>
@@ -248,10 +254,16 @@
                 <div class="flex-1">
                   <input type="hidden" id="input_groom_photo" value="../aset/section2_fotopengantin(2).webp">
                   <input type="file" id="file_groom_photo" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" onchange="uploadPhotoFile(this, 'input_groom_photo', 'preview_groom_photo', 'status_groom_photo', 'groom')">
-                  <button type="button" onclick="document.getElementById('file_groom_photo').click()" class="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-white hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition shadow-sm">
-                    <i data-lucide="upload" class="w-3.5 h-3.5"></i>
-                    <span>Upload Foto Mempelai Pria</span>
-                  </button>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <button type="button" onclick="document.getElementById('file_groom_photo').click()" class="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-white hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition shadow-sm">
+                      <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                      <span>Upload Foto Mempelai Pria</span>
+                    </button>
+                    <button type="button" onclick="resetPhotoFieldToDefault('section_2_about', 'groom_photo', '../aset/section2_fotopengantin(2).webp', 'input_groom_photo', 'preview_groom_photo', 'status_groom_photo')" class="inline-flex items-center space-x-1 px-2.5 py-2 rounded-xl bg-white hover:bg-rose-50 border border-borderSoft text-[11px] font-medium text-inkMuted hover:text-rose-600 transition">
+                      <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                      <span>Reset</span>
+                    </button>
+                  </div>
                   <span id="status_groom_photo" class="text-[10px] text-inkMuted block mt-1">Format JPG, PNG, WEBP</span>
                 </div>
               </div>
@@ -296,10 +308,16 @@
                 <div class="flex-1">
                   <input type="hidden" id="input_bride_photo" value="../aset/section2_fotopengantin(3).webp">
                   <input type="file" id="file_bride_photo" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" onchange="uploadPhotoFile(this, 'input_bride_photo', 'preview_bride_photo', 'status_bride_photo', 'bride')">
-                  <button type="button" onclick="document.getElementById('file_bride_photo').click()" class="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-white hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition shadow-sm">
-                    <i data-lucide="upload" class="w-3.5 h-3.5"></i>
-                    <span>Upload Foto Mempelai Wanita</span>
-                  </button>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <button type="button" onclick="document.getElementById('file_bride_photo').click()" class="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-white hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition shadow-sm">
+                      <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                      <span>Upload Foto Mempelai Wanita</span>
+                    </button>
+                    <button type="button" onclick="resetPhotoFieldToDefault('section_2_about', 'bride_photo', '../aset/section2_fotopengantin(3).webp', 'input_bride_photo', 'preview_bride_photo', 'status_bride_photo')" class="inline-flex items-center space-x-1 px-2.5 py-2 rounded-xl bg-white hover:bg-rose-50 border border-borderSoft text-[11px] font-medium text-inkMuted hover:text-rose-600 transition">
+                      <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                      <span>Reset</span>
+                    </button>
+                  </div>
                   <span id="status_bride_photo" class="text-[10px] text-inkMuted block mt-1">Format JPG, PNG, WEBP</span>
                 </div>
               </div>
@@ -323,16 +341,22 @@
         </div>
 
         <!-- Submit Button Bar -->
-        <div class="flex items-center justify-between pt-4 pb-12">
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-4 pb-12">
           <a href="kelola-konten.html" class="inline-flex items-center space-x-2 text-xs font-medium text-inkMuted hover:text-moss transition">
             <i data-lucide="arrow-left" class="w-4 h-4"></i>
             <span>Kembali ke Pusat Konten</span>
           </a>
 
-          <button type="submit" id="submitBtn" class="inline-flex items-center space-x-2 px-6 py-3 rounded-2xl bg-moss hover:bg-mossLight text-cream text-xs font-medium transition shadow-md hover:shadow-lg">
-            <i data-lucide="save" class="w-4 h-4"></i>
-            <span>Simpan Perubahan Section 2</span>
-          </button>
+          <div class="flex items-center space-x-3">
+            <button type="button" onclick="resetSectionToDefault('section_2_about', loadMempelaiData, 'Section 2 (Mempelai)')" class="inline-flex items-center space-x-2 px-4 py-3 rounded-2xl bg-white hover:bg-rose-50 border border-borderSoft text-xs font-medium text-inkMuted hover:text-rose-600 transition">
+              <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+              <span>Reset ke Default</span>
+            </button>
+            <button type="submit" id="submitBtn" class="inline-flex items-center space-x-2 px-6 py-3 rounded-2xl bg-moss hover:bg-mossLight text-cream text-xs font-medium transition shadow-md hover:shadow-lg">
+              <i data-lucide="save" class="w-4 h-4"></i>
+              <span>Simpan Perubahan Section 2</span>
+            </button>
+          </div>
         </div>
       </form>
 
@@ -358,40 +382,44 @@
       }, 3500);
     }
 
+    attachImageFallback(document.getElementById('preview_photo_couple'), '../aset/section2_fotopengantin.webp');
+    attachImageFallback(document.getElementById('preview_groom_photo'), '../aset/section2_fotopengantin(2).webp');
+    attachImageFallback(document.getElementById('preview_bride_photo'), '../aset/section2_fotopengantin(3).webp');
+
     async function loadMempelaiData() {
       try {
-        const res = await fetch('../api/konten.php?action=get_section&key=section_2_about');
+        const res = await fetch('../api/konten.php?action=get_section&key=section_2_about', { cache: 'no-store' });
         if (!res.ok) return;
         const json = await res.json();
         if (json.success && json.data) {
           const d = json.data;
-          if (d.headline) document.getElementById('input_headline').value = d.headline;
-          if (d.intro_1) document.getElementById('input_intro_1').value = d.intro_1;
-          if (d.intro_2) document.getElementById('input_intro_2').value = d.intro_2;
+          document.getElementById('input_headline').value = d.headline || '';
+          document.getElementById('input_intro_1').value = d.intro_1 || '';
+          document.getElementById('input_intro_2').value = d.intro_2 || '';
           if (d.photo_couple) {
             document.getElementById('input_photo_couple').value = d.photo_couple;
-            document.getElementById('preview_photo_couple').src = d.photo_couple;
+            document.getElementById('preview_photo_couple').src = normalizeAssetUrl(d.photo_couple, '../aset/section2_fotopengantin.webp');
           }
 
-          if (d.groom_nickname) document.getElementById('input_groom_nickname').value = d.groom_nickname;
-          if (d.groom_fullname) document.getElementById('input_groom_fullname').value = d.groom_fullname;
-          if (d.groom_parents) document.getElementById('input_groom_parents').value = d.groom_parents;
-          if (d.groom_instagram) document.getElementById('input_groom_instagram').value = d.groom_instagram;
+          document.getElementById('input_groom_nickname').value = d.groom_nickname || '';
+          document.getElementById('input_groom_fullname').value = d.groom_fullname || '';
+          document.getElementById('input_groom_parents').value = d.groom_parents || '';
+          document.getElementById('input_groom_instagram').value = d.groom_instagram || '';
           if (d.groom_photo) {
             document.getElementById('input_groom_photo').value = d.groom_photo;
-            document.getElementById('preview_groom_photo').src = d.groom_photo;
+            document.getElementById('preview_groom_photo').src = normalizeAssetUrl(d.groom_photo, '../aset/section2_fotopengantin(2).webp');
           }
 
-          if (d.bride_nickname) document.getElementById('input_bride_nickname').value = d.bride_nickname;
-          if (d.bride_fullname) document.getElementById('input_bride_fullname').value = d.bride_fullname;
-          if (d.bride_parents) document.getElementById('input_bride_parents').value = d.bride_parents;
-          if (d.bride_instagram) document.getElementById('input_bride_instagram').value = d.bride_instagram;
+          document.getElementById('input_bride_nickname').value = d.bride_nickname || '';
+          document.getElementById('input_bride_fullname').value = d.bride_fullname || '';
+          document.getElementById('input_bride_parents').value = d.bride_parents || '';
+          document.getElementById('input_bride_instagram').value = d.bride_instagram || '';
           if (d.bride_photo) {
             document.getElementById('input_bride_photo').value = d.bride_photo;
-            document.getElementById('preview_bride_photo').src = d.bride_photo;
+            document.getElementById('preview_bride_photo').src = normalizeAssetUrl(d.bride_photo, '../aset/section2_fotopengantin(3).webp');
           }
 
-          if (d.bottom_quote) document.getElementById('input_bottom_quote').value = d.bottom_quote;
+          document.getElementById('input_bottom_quote').value = d.bottom_quote || '';
 
           if (json.updated_at) {
             document.getElementById('lastUpdatedLabel').innerText = json.updated_at;

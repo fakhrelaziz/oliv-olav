@@ -22,11 +22,12 @@ if ($method === 'GET') {
     $q = trim($_GET['q'] ?? '');
     $status = trim($_GET['status'] ?? 'all');
     $limit = (int)($_GET['limit'] ?? 50);
+    $includeHidden = !empty($_GET['include_hidden']) && $_GET['include_hidden'] !== '0';
 
     try {
         $sql = "SELECT id, tamu_id, nama_pengirim, status_kehadiran, jumlah_kehadiran, pesan_ucapan, is_tampil, created_at 
                 FROM `doa_ucapan` 
-                WHERE is_tampil = 1";
+                WHERE " . ($includeHidden ? "1=1" : "is_tampil = 1");
         $params = [];
 
         if (!empty($q)) {
@@ -174,6 +175,73 @@ if ($method === 'POST' && ($action === 'create' || empty($action))) {
             ]
         ], 201);
 
+    } catch (\PDOException $e) {
+        jsonResponse(['success' => false, 'message' => 'Error: ' . $e->getMessage()], 500);
+    }
+}
+
+// --------------------------------------------------------------------
+// 2B. POST (action=update atau toggle_visibility) / PUT: Edit atau Moderasi Ucapan
+// --------------------------------------------------------------------
+if ($method === 'PUT' || ($method === 'POST' && ($action === 'update' || $action === 'toggle_visibility'))) {
+    $input = getJsonInput();
+    $id = (int)($input['id'] ?? $_GET['id'] ?? 0);
+
+    if ($id <= 0) {
+        jsonResponse(['success' => false, 'message' => 'ID ucapan tidak valid.'], 400);
+    }
+
+    try {
+        $stmtCur = $pdo->prepare("SELECT * FROM `doa_ucapan` WHERE `id` = :id LIMIT 1");
+        $stmtCur->execute([':id' => $id]);
+        $existing = $stmtCur->fetch();
+        if (!$existing) {
+            jsonResponse(['success' => false, 'message' => 'Ucapan tidak ditemukan.'], 404);
+        }
+
+        if ($action === 'toggle_visibility') {
+            $nextVis = isset($input['is_tampil']) ? ((int)$input['is_tampil'] ? 1 : 0) : ((int)$existing['is_tampil'] ? 0 : 1);
+            $pdo->prepare("UPDATE `doa_ucapan` SET `is_tampil` = :vis WHERE `id` = :id")
+                ->execute([':vis' => $nextVis, ':id' => $id]);
+
+            jsonResponse([
+                'success' => true,
+                'message' => $nextVis ? 'Ucapan ditampilkan di halaman publik.' : 'Ucapan disembunyikan dari halaman publik.',
+                'is_tampil' => $nextVis
+            ]);
+        }
+
+        $nama = trim($input['nama_pengirim'] ?? $existing['nama_pengirim']);
+        $pesan = trim($input['pesan_ucapan'] ?? $existing['pesan_ucapan']);
+        $status = trim($input['status_kehadiran'] ?? $existing['status_kehadiran']);
+        $isTampil = isset($input['is_tampil']) ? ((int)$input['is_tampil'] ? 1 : 0) : (int)$existing['is_tampil'];
+
+        if (empty($nama) || empty($pesan)) {
+            jsonResponse(['success' => false, 'message' => 'Nama dan pesan ucapan wajib diisi.'], 400);
+        }
+        if (!in_array($status, ['Hadir', 'Tidak Hadir', 'Masih Ragu'], true)) {
+            $status = $existing['status_kehadiran'];
+        }
+
+        $pdo->prepare("
+            UPDATE `doa_ucapan`
+            SET `nama_pengirim` = :nama,
+                `status_kehadiran` = :status,
+                `pesan_ucapan` = :pesan,
+                `is_tampil` = :vis
+            WHERE `id` = :id
+        ")->execute([
+            ':nama' => $nama,
+            ':status' => $status,
+            ':pesan' => $pesan,
+            ':vis' => $isTampil,
+            ':id' => $id
+        ]);
+
+        jsonResponse([
+            'success' => true,
+            'message' => 'Ucapan berhasil diperbarui.'
+        ]);
     } catch (\PDOException $e) {
         jsonResponse(['success' => false, 'message' => 'Error: ' . $e->getMessage()], 500);
     }

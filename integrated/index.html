@@ -178,13 +178,6 @@
         </div>
       </div>
 
-      <!-- Right sidebar text (Desktop) -->
-      <div class="absolute right-12 top-1/2 -translate-y-1/2 hidden md:flex flex-col items-end gap-2 text-right z-10">
-        <p id="hero-side-text" class="text-xs uppercase tracking-editorial text-warmwhite/80 leading-loose">
-          SAME<br>PEOPLE<br>BRIGHTER<br>DAYS
-        </p>
-      </div>
-
       <!-- Right bottom script text -->
       <div class="absolute right-12 md:right-32 bottom-24 md:bottom-40 z-10 text-right rotate-[-10deg]">
         <p id="hero-script-text" class="font-script text-4xl md:text-5xl text-warmwhite">A new<br>chapter<br>together</p>
@@ -407,22 +400,22 @@
           <!-- Left Column on Desktop: 3 Polaroid Photos (Pertama Kali Bertemu, Bertumbuh Bersama, Rings Forever and Always) -->
           <div class="hidden lg:flex lg:col-span-4 flex-col items-center justify-between space-y-10 pr-4">
             <!-- Polaroid 1: Couple holding hands in forest + flower sprig on left -->
-            <div class="relative w-64 xl:w-72">
+            <div class="relative w-64 xl:w-72" id="story-polaroid-wrap-1">
               <img src="../aset/section3_bunga.webp" class="absolute -left-10 bottom-2 w-24 h-auto z-20 pointer-events-none drop-shadow-md" alt="" />
-              <img src="../aset/section3_fotopengantin(2).webp" alt="Pertama Kali Bertemu" class="w-full h-auto drop-shadow-xl relative z-10" />
+              <img id="story-polaroid-1" src="../aset/section3_fotopengantin(2).webp" alt="Pertama Kali Bertemu" class="w-full h-auto drop-shadow-xl relative z-10" />
             </div>
 
             <!-- Polaroid 2: Couple sitting on grass ("Bertumbuh Bersama") -->
-            <div class="relative w-64 xl:w-72 -ml-4">
-              <img src="../aset/section3_fotopengantin(3).webp" alt="Bertumbuh Bersama" class="w-full h-auto drop-shadow-xl" />
+            <div class="relative w-64 xl:w-72 -ml-4" id="story-polaroid-wrap-2">
+              <img id="story-polaroid-2" src="../aset/section3_fotopengantin(3).webp" alt="Bertumbuh Bersama" class="w-full h-auto drop-shadow-xl" />
             </div>
 
             <!-- Polaroid 3: Wedding Rings + "Forever and Always ♡" -->
-            <div class="relative w-60 xl:w-64 ml-6 pt-2">
+            <div class="relative w-60 xl:w-64 ml-6 pt-2" id="story-polaroid-wrap-3">
               <div class="absolute -left-24 bottom-6 z-20 font-script text-2xl xl:text-3xl text-moss/85 -rotate-[12deg] leading-tight text-center pointer-events-none">
                 Forever and<br>Always<br><span class="text-lg">&hearts;</span>
               </div>
-              <img src="../aset/section3_fotopengantin(4).webp" alt="Cincin Pernikahan" class="w-full h-auto drop-shadow-xl relative z-10" />
+              <img id="story-polaroid-3" src="../aset/section3_fotopengantin(4).webp" alt="Cincin Pernikahan" class="w-full h-auto drop-shadow-xl relative z-10" />
             </div>
           </div>
 
@@ -502,16 +495,16 @@
           <!-- Right Column on Desktop: 2 Polaroid Photos (Holding Hands close-up & Sitting on grass) -->
           <div class="hidden lg:flex lg:col-span-3 flex-col items-center justify-center space-y-16 pt-28">
             <!-- Polaroid 4: Holding hands close-up + leaf sprig on right -->
-            <div class="relative w-48 xl:w-56">
+            <div class="relative w-48 xl:w-56" id="story-polaroid-wrap-4">
               <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-5 bg-[#d8d3c4]/70 rotate-2 z-20 shadow-sm"></div>
-              <img src="../aset/section3_fotopengantin(5).webp" alt="Genggam Tangan" class="w-full h-auto drop-shadow-xl relative z-10" />
+              <img id="story-polaroid-4" src="../aset/section3_fotopengantin(5).webp" alt="Genggam Tangan" class="w-full h-auto drop-shadow-xl relative z-10" />
               <img src="../aset/section5_bunga(2).webp" class="absolute -right-12 -bottom-6 w-28 h-auto z-0 pointer-events-none opacity-90" alt="" />
             </div>
 
             <!-- Polaroid 5: Sitting on grass in front of building -->
-            <div class="relative w-52 xl:w-60 ml-4">
+            <div class="relative w-52 xl:w-60 ml-4" id="story-polaroid-wrap-5">
               <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-5 bg-[#d8d3c4]/70 -rotate-1 z-20 shadow-sm"></div>
-              <img src="../aset/section3_fotopengantin(6).webp" alt="Bersama" class="w-full h-auto drop-shadow-xl relative z-10" />
+              <img id="story-polaroid-5" src="../aset/section3_fotopengantin(6).webp" alt="Bersama" class="w-full h-auto drop-shadow-xl relative z-10" />
             </div>
           </div>
 
@@ -525,22 +518,13 @@
           <div class="absolute inset-0 bg-moss/30 md:bg-transparent"></div>
         </div>
         
-        <div class="relative z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between">
-          <div class="text-center md:text-left w-full md:w-1/4 mb-16 md:mb-0 md:mt-24">
-            <p class="text-[10px] md:text-xs uppercase tracking-[0.3em] text-warmwhite/70 font-semibold leading-loose">SAME PEOPLE<br>BRIGHTER DAYS</p>
-          </div>
-          
-          <div class="text-center w-full md:w-1/2 mb-16 md:mb-0 relative">
-             <span class="text-8xl font-display text-warmwhite/30 absolute -top-12 left-4 md:-left-8">&ldquo;</span>
-             <p id="story-bottom-quote" class="font-display text-3xl md:text-5xl italic leading-tight text-warmwhite relative z-10 max-w-lg mx-auto">
+        <div class="relative z-10 w-full max-w-3xl mx-auto flex flex-col items-center justify-center">
+          <div class="text-center w-full relative">
+             <span class="text-8xl font-display text-warmwhite/30 absolute -top-12 left-4 md:left-0">&ldquo;</span>
+             <p id="story-bottom-quote" class="font-display text-3xl md:text-5xl italic leading-tight text-warmwhite relative z-10 max-w-xl mx-auto">
                Bukan tentang siapa yang sempurna, tapi tentang dua orang yang memilih untuk selalu berjuang bersama.
              </p>
              <div class="w-16 h-px bg-warmwhite/40 mx-auto mt-10"></div>
-          </div>
-          
-          <div class="text-center w-full md:w-1/4 border-t md:border-t-0 md:border-l border-warmwhite/30 pt-8 md:pt-6 md:pb-6 md:pl-12 flex flex-col items-center justify-center md:mt-12">
-            <div class="hidden md:block w-px h-8 bg-warmwhite/40 mb-5"></div>
-            <p class="text-[10px] md:text-xs uppercase tracking-[0.3em] text-warmwhite/70 font-semibold leading-loose">A NEW<br>CHAPTER<br>TOGETHER</p>
           </div>
         </div>
       </div>
@@ -565,12 +549,6 @@
           <div class="relative w-full max-w-2xl">
             <img id="event-header-photo" src="../aset/section4_header_cincin.webp" class="w-full h-auto object-cover block" alt="Cincin Pernikahan - A Special Day" />
           </div>
-        </div>
-        
-        <!-- Sidebar text -->
-        <div class="absolute right-6 md:right-10 top-12 hidden md:block text-[10px] uppercase tracking-[0.3em] text-warmwhite/80 text-right leading-loose font-semibold z-20">
-          SAME<br>PEOPLE<br>BRIGHTER<br>DAYS
-          <div class="w-px h-10 bg-warmwhite/40 ml-auto mt-3"></div>
         </div>
       </div>
 
@@ -717,7 +695,7 @@
                       <path stroke-linecap="round" stroke-linejoin="round" d="M5 17h14v-5l-2-5H7L5 12v5zm2 0v2m10-2v2M7.5 14.5h.01m8.99 0h.01" />
                     </svg>
                   </div>
-                  <p class="text-xs sm:text-sm text-moss/90">Tersedia area parkir</p>
+                  <p id="event-feature-parking" class="text-xs sm:text-sm text-moss/90">Tersedia area parkir</p>
                 </div>
                 <div class="flex items-center gap-4">
                   <div class="w-9 h-9 rounded-full bg-moss flex items-center justify-center shrink-0 shadow-sm">
@@ -726,7 +704,7 @@
                       <path stroke-linecap="round" stroke-linejoin="round" d="M6 11h12M9 17l-2 3m8-3l2 3M9 14h.01M15 14h.01" />
                     </svg>
                   </div>
-                  <p class="text-xs sm:text-sm text-moss/90">Dapat diakses dengan transportasi umum</p>
+                  <p id="event-feature-transit" class="text-xs sm:text-sm text-moss/90">Dapat diakses dengan transportasi umum</p>
                 </div>
              </div>
              
@@ -794,7 +772,7 @@
              <!-- Leaf decoration bottom-left -->
              <img src="../aset/section5_bunga.webp" class="absolute -bottom-4 -left-10 sm:-left-16 w-28 sm:w-36 md:w-44 z-20 pointer-events-none drop-shadow-xl" alt="" />
              <!-- Script top-right -->
-             <p class="absolute top-[16%] right-6 sm:right-10 font-script text-3xl sm:text-4xl md:text-5xl text-warmwhite rotate-[-4deg] drop-shadow-lg leading-[0.95]">Same<br>People<br>Brighter<br>Days</p>
+             <p id="gallery-hero-script" class="absolute top-[16%] right-6 sm:right-10 font-script text-3xl sm:text-4xl md:text-5xl text-warmwhite rotate-[-4deg] drop-shadow-lg leading-[0.95]">Same<br>People<br>Brighter<br>Days</p>
            </div>
         </div>
       </div>
@@ -974,14 +952,7 @@
           <img src="../aset/section5_bagianbawah.webp" class="w-full h-full object-cover object-center" alt="Flowers background" />
         </div>
         
-        <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between px-6 sm:px-12 md:px-20 gap-8">
-          <div class="flex flex-col items-center sm:items-start">
-            <div class="w-px h-5 bg-warmwhite/40 mb-3 hidden sm:block"></div>
-            <p class="text-[10px] md:text-xs uppercase tracking-[0.3em] text-warmwhite/85 leading-loose font-semibold text-center sm:text-left">
-              SAME<br>PEOPLE<br>BRIGHTER<br>DAYS
-            </p>
-            <div class="w-px h-5 bg-warmwhite/40 mt-3 hidden sm:block"></div>
-          </div>
+        <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center sm:justify-end px-6 sm:px-12 md:px-20 gap-8">
           <div class="sm:border-l border-warmwhite/40 sm:pl-8 md:pl-12 py-2 flex flex-col items-center justify-center">
             <p class="font-script text-4xl sm:text-5xl md:text-6xl text-warmwhite rotate-[-6deg] drop-shadow-lg text-center leading-[0.95]">
               More<br>Memories<br>to Come<br><span class="text-xl">&hearts;</span>
@@ -1010,11 +981,6 @@
            <div class="relative w-full max-w-xl">
              <img id="rsvp-banner-photo" src="../aset/section6(01).webp" class="w-full h-auto drop-shadow-2xl block" alt="Terima kasih atas doa dan kehadirannya" />
            </div>
-        </div>
-        
-        <div class="absolute right-6 md:right-10 top-12 hidden md:block text-[10px] uppercase tracking-[0.3em] text-warmwhite/75 text-right leading-loose font-semibold z-20">
-          SAME<br>PEOPLE<br>BRIGHTER<br>DAYS
-          <div class="w-px h-10 bg-warmwhite/40 ml-auto mt-3"></div>
         </div>
       </div>
 
@@ -1230,7 +1196,7 @@
       if (inputNamaEl) inputNamaEl.value = decodedName;
 
       // Coba verifikasi dengan database jika parameter berupa slug atau ID
-      fetch(`../api/tamu.php?q=${encodeURIComponent(decodedName)}`)
+      fetch(`../api/tamu.php?q=${encodeURIComponent(decodedName)}`, { cache: 'no-store' })
         .then(r => r.json())
         .then(res => {
           if (res.success && res.data && res.data.length > 0) {
@@ -1267,9 +1233,30 @@
     weddingSections.forEach((section) => weddingSectionObserver.observe(section));
 
     // ============================================
-    // SECTION 5: GALLERY LIGHTBOX MODAL
+    // ASSET HELPERS & SECTION 5 LIGHTBOX MODAL
     // ============================================
-    const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+    function normalizeAssetUrl(url, fallbackUrl = '../aset/default-image.jpg') {
+      const val = String(url || '').trim();
+      if (!val) return fallbackUrl;
+      if (/^(data:image\/|https?:\/\/|\/|\.\.\/)/i.test(val)) return val;
+      if (/^(aset|asetV2|uploads)\//i.test(val)) return '../' + val;
+      return val;
+    }
+
+    function attachImageFallback(imgEl, fallbackUrl = '../aset/default-image.jpg') {
+      if (!imgEl) return;
+      imgEl.onerror = () => {
+        if (imgEl.dataset.fallbackApplied === '1') return;
+        imgEl.dataset.fallbackApplied = '1';
+        imgEl.src = fallbackUrl;
+      };
+    }
+
+    let galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+
+    function refreshGalleryLightboxItems() {
+      galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+    }
 
     // Lightbox Logic
     const lightbox = document.getElementById('gallery-lightbox');
@@ -1283,6 +1270,7 @@
     let currentPhotoIndex = 0;
 
     function openLightbox(index) {
+      refreshGalleryLightboxItems();
       if (!lightbox || !galleryItems[index]) return;
       currentPhotoIndex = index;
       updateLightboxContent();
@@ -1333,18 +1321,27 @@
     }
 
     function showPrevPhoto() {
+      if (!galleryItems.length) return;
       currentPhotoIndex = (currentPhotoIndex - 1 + galleryItems.length) % galleryItems.length;
       updateLightboxContent();
     }
 
     function showNextPhoto() {
+      if (!galleryItems.length) return;
       currentPhotoIndex = (currentPhotoIndex + 1) % galleryItems.length;
       updateLightboxContent();
     }
 
-    galleryItems.forEach((item, index) => {
-      item.addEventListener('click', () => openLightbox(index));
-    });
+    const galleryGridContainer = document.getElementById('gallery-bento-grid');
+    if (galleryGridContainer) {
+      galleryGridContainer.addEventListener('click', (e) => {
+        const clickedItem = e.target.closest('.gallery-item');
+        if (!clickedItem) return;
+        refreshGalleryLightboxItems();
+        const idx = galleryItems.indexOf(clickedItem);
+        if (idx !== -1) openLightbox(idx);
+      });
+    }
 
     if (lightboxCloseBtn) lightboxCloseBtn.addEventListener('click', closeLightbox);
     if (lightboxPrevBtn) lightboxPrevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrevPhoto(); });
@@ -1392,18 +1389,26 @@
     // Load initial wishes from API if available
     async function loadLiveWishes() {
       try {
-        const res = await fetch('../api/rsvp.php?limit=10');
+        const res = await fetch('../api/rsvp.php?limit=20', { cache: 'no-store' });
         if (!res.ok) return;
         const json = await res.json();
-        if (json.success && Array.isArray(json.data) && json.data.length > 0) {
+        if (json.success && Array.isArray(json.data)) {
           if (wishesContainer) {
             wishesContainer.innerHTML = '';
+            if (json.data.length === 0) {
+              wishesContainer.innerHTML = `
+                <div class="bg-warmwhite/75 p-5 rounded-xl shadow-sm border border-moss/10 text-center">
+                  <p class="text-xs sm:text-sm text-moss/75">Belum ada doa &amp; ucapan. Jadilah yang pertama mengirimkan doa restu!</p>
+                </div>
+              `;
+              return;
+            }
             json.data.forEach(w => {
               const card = document.createElement('div');
               card.className = 'bg-warmwhite/75 p-5 rounded-xl shadow-sm border border-moss/10';
               card.innerHTML = `
                 <p class="font-serif font-semibold text-sm mb-0.5 text-moss">${escapeHtml(w.nama_pengirim)}</p>
-                <p class="text-[11px] text-moss/60 mb-2.5">${w.formatted_date || 'Beberapa hari lalu'}</p>
+                <p class="text-[11px] text-moss/60 mb-2.5">${escapeHtml(w.formatted_date || 'Beberapa hari lalu')}</p>
                 <p class="text-xs sm:text-sm text-moss/85 leading-relaxed">${escapeHtml(w.pesan_ucapan)}</p>
               `;
               wishesContainer.appendChild(card);
@@ -1414,14 +1419,15 @@
         // Fallback to static HTML if offline
       }
     }
+
     // Sync all 6 sections from backend API (Persisten MySQL)
     async function syncAllSectionsFromAPI() {
       try {
-        const res = await fetch('../api/konten.php?action=get_all_sections');
+        const res = await fetch('../api/konten.php?action=get_all_sections', { cache: 'no-store' });
         if (!res.ok) return;
         const json = await res.json();
-        if (!json.success || !json.data) return;
-        const d = json.data;
+        const d = json.sections || json.data;
+        if (!json.success || !d) return;
 
         // --- SECTION 1: HERO ---
         if (d.section_1_hero) {
@@ -1437,16 +1443,25 @@
           const scriptText = document.getElementById('hero-script-text');
           const city = document.getElementById('hero-city');
 
-          if (bgSrc && s1.bg_desktop) bgSrc.srcset = s1.bg_desktop;
-          if (bgImg && s1.bg_mobile) bgImg.src = s1.bg_mobile;
-          if (tagline && s1.tagline) tagline.innerText = s1.tagline;
+          if (bgSrc && s1.bg_desktop) bgSrc.srcset = normalizeAssetUrl(s1.bg_desktop, '../asetV2/background_herosection(desktop).webp');
+          if (bgImg && s1.bg_mobile) {
+            bgImg.src = normalizeAssetUrl(s1.bg_mobile, '../asetV2/background_herosection(mobile).webp');
+            attachImageFallback(bgImg, '../asetV2/background_herosection(mobile).webp');
+          }
+          if (tagline && s1.tagline !== undefined) tagline.innerText = s1.tagline;
           if (groomName && s1.groom_nickname) groomName.innerText = s1.groom_nickname;
           if (brideName && s1.bride_nickname) brideName.innerText = s1.bride_nickname;
-          if (weddingDate && s1.wedding_date) weddingDate.innerText = s1.wedding_date;
-          if (salamText && s1.salam_text) salamText.innerText = s1.salam_text;
-          if (sideText && s1.side_text) sideText.innerHTML = s1.side_text.replace(/\n/g, '<br>');
-          if (scriptText && s1.script_text) scriptText.innerHTML = s1.script_text.replace(/\n/g, '<br>');
-          if (city && s1.city) city.innerText = s1.city;
+          if (weddingDate && s1.wedding_date !== undefined) weddingDate.innerText = s1.wedding_date;
+          if (salamText && s1.salam_text !== undefined) salamText.innerText = s1.salam_text;
+          if (sideText && s1.side_text !== undefined) sideText.innerHTML = String(s1.side_text).replace(/\n/g, '<br>');
+          if (scriptText && s1.script_text !== undefined) scriptText.innerHTML = String(s1.script_text).replace(/\n/g, '<br>');
+          if (city && s1.city !== undefined) city.innerText = s1.city;
+
+          if (s1.groom_nickname && s1.bride_nickname) {
+            document.title = `${s1.groom_nickname} & ${s1.bride_nickname} — Wedding Invitation`;
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) metaDesc.setAttribute('content', `${s1.groom_nickname} & ${s1.bride_nickname} Wedding Invitation`);
+          }
         }
 
         // --- SECTION 2: MEMPELAI (ABOUT) ---
@@ -1468,21 +1483,30 @@
           const brideIg = document.getElementById('front-bride-instagram');
           const aboutQuote = document.getElementById('about-bottom-quote');
 
-          if (aboutHeadline && s2.headline) aboutHeadline.innerHTML = s2.headline.replace(/\n/g, '<br>');
-          if (aboutIntro1 && s2.intro_1) aboutIntro1.innerText = s2.intro_1;
-          if (aboutIntro2 && s2.intro_2) aboutIntro2.innerText = s2.intro_2;
-          if (photoCouple && s2.photo_couple) photoCouple.src = s2.photo_couple;
+          if (aboutHeadline && s2.headline !== undefined) aboutHeadline.innerHTML = String(s2.headline).replace(/\n/g, '<br>');
+          if (aboutIntro1 && s2.intro_1 !== undefined) aboutIntro1.innerText = s2.intro_1;
+          if (aboutIntro2 && s2.intro_2 !== undefined) aboutIntro2.innerText = s2.intro_2;
+          if (photoCouple && s2.photo_couple) {
+            photoCouple.src = normalizeAssetUrl(s2.photo_couple, '../aset/section2_fotopengantin.webp');
+            attachImageFallback(photoCouple, '../aset/section2_fotopengantin.webp');
+          }
           if (groomName && s2.groom_nickname) groomName.innerText = s2.groom_nickname;
           if (groomFull && s2.groom_fullname) groomFull.innerText = s2.groom_fullname;
-          if (groomParents && s2.groom_parents) groomParents.innerHTML = s2.groom_parents.replace(/\n/g, '<br>');
-          if (groomPhoto && s2.groom_photo) groomPhoto.src = s2.groom_photo;
+          if (groomParents && s2.groom_parents !== undefined) groomParents.innerHTML = String(s2.groom_parents).replace(/\n/g, '<br>');
+          if (groomPhoto && s2.groom_photo) {
+            groomPhoto.src = normalizeAssetUrl(s2.groom_photo, '../aset/section2_fotopengantinpria.webp');
+            attachImageFallback(groomPhoto, '../aset/section2_fotopengantinpria.webp');
+          }
           if (groomIg && s2.groom_instagram) groomIg.href = s2.groom_instagram;
           if (brideName && s2.bride_nickname) brideName.innerText = s2.bride_nickname;
           if (brideFull && s2.bride_fullname) brideFull.innerText = s2.bride_fullname;
-          if (brideParents && s2.bride_parents) brideParents.innerHTML = s2.bride_parents.replace(/\n/g, '<br>');
-          if (bridePhoto && s2.bride_photo) bridePhoto.src = s2.bride_photo;
+          if (brideParents && s2.bride_parents !== undefined) brideParents.innerHTML = String(s2.bride_parents).replace(/\n/g, '<br>');
+          if (bridePhoto && s2.bride_photo) {
+            bridePhoto.src = normalizeAssetUrl(s2.bride_photo, '../aset/section2_fotopengantinwanita.webp');
+            attachImageFallback(bridePhoto, '../aset/section2_fotopengantinwanita.webp');
+          }
           if (brideIg && s2.bride_instagram) brideIg.href = s2.bride_instagram;
-          if (aboutQuote && s2.bottom_quote) aboutQuote.innerHTML = '"' + s2.bottom_quote.replace(/\n/g, '<br>') + '"';
+          if (aboutQuote && s2.bottom_quote !== undefined) aboutQuote.innerHTML = '&ldquo;' + String(s2.bottom_quote).replace(/\n/g, '<br>') + '&rdquo;';
         }
 
         // --- SECTION 3: OUR STORY ---
@@ -1493,10 +1517,13 @@
           const storyHeroPhoto = document.getElementById('story-photo-hero');
           const storyQuote = document.getElementById('story-bottom-quote');
 
-          if (storyHeadline && s3.headline) storyHeadline.innerHTML = s3.headline.replace(/\n/g, '<br>');
-          if (storyIntro && s3.intro) storyIntro.innerText = s3.intro;
-          if (storyHeroPhoto && s3.photo_hero) storyHeroPhoto.src = s3.photo_hero;
-          if (storyQuote && s3.bottom_quote) storyQuote.innerText = s3.bottom_quote;
+          if (storyHeadline && s3.headline !== undefined) storyHeadline.innerHTML = String(s3.headline).replace(/\n/g, '<br>');
+          if (storyIntro && s3.intro !== undefined) storyIntro.innerText = s3.intro;
+          if (storyHeroPhoto && s3.photo_hero) {
+            storyHeroPhoto.src = normalizeAssetUrl(s3.photo_hero, '../aset/section3_fotopengantin.webp');
+            attachImageFallback(storyHeroPhoto, '../aset/section3_fotopengantin.webp');
+          }
+          if (storyQuote && s3.bottom_quote !== undefined) storyQuote.innerText = s3.bottom_quote;
         }
 
         // --- SECTION 4: EVENT & VENUE ---
@@ -1523,37 +1550,55 @@
           const venueIntro = document.getElementById('event-venue-intro');
           const venueName = document.getElementById('event-venue-name');
           const venueAddress = document.getElementById('event-venue-address');
+          const venueParking = document.getElementById('event-feature-parking');
+          const venueTransit = document.getElementById('event-feature-transit');
           const venuePhoto = document.getElementById('event-venue-photo');
           const mapsIframe = document.getElementById('event-maps-iframe');
           const mapsLink = document.getElementById('event-maps-link');
+          const routesLink = document.getElementById('event-routes-link');
           const venueQuote = document.getElementById('event-venue-quote');
 
-          if (evHeadline && s4.headline) evHeadline.innerHTML = s4.headline.replace(/\n/g, '<br>');
-          if (evIntro && s4.intro) evIntro.innerText = s4.intro;
-          if (evHeaderPhoto && s4.header_photo) evHeaderPhoto.src = s4.header_photo;
+          if (evHeadline && s4.headline !== undefined) evHeadline.innerHTML = String(s4.headline).replace(/\n/g, '<br>');
+          if (evIntro && s4.intro !== undefined) evIntro.innerText = s4.intro;
+          if (evHeaderPhoto && s4.header_photo) {
+            evHeaderPhoto.src = normalizeAssetUrl(s4.header_photo, '../aset/section4_fotopengantin.webp');
+            attachImageFallback(evHeaderPhoto, '../aset/section4_fotopengantin.webp');
+          }
 
-          if (akadName && s4.akad_name) akadName.innerHTML = s4.akad_name.replace(/\n/g, '<br>');
-          if (akadDate && s4.akad_date) akadDate.innerText = s4.akad_date;
-          if (akadTime && s4.akad_time) akadTime.innerText = s4.akad_time;
-          if (akadPlace && s4.akad_place) akadPlace.innerText = s4.akad_place;
-          if (akadAddress && s4.akad_address) akadAddress.innerHTML = s4.akad_address.replace(/\n/g, '<br>');
-          if (akadPhoto && s4.akad_photo) akadPhoto.src = s4.akad_photo;
+          if (akadName && s4.akad_name !== undefined) akadName.innerHTML = String(s4.akad_name).replace(/\n/g, '<br>');
+          if (akadDate && s4.akad_date !== undefined) akadDate.innerText = s4.akad_date;
+          if (akadTime && s4.akad_time !== undefined) akadTime.innerText = s4.akad_time;
+          if (akadPlace && s4.akad_place !== undefined) akadPlace.innerText = s4.akad_place;
+          if (akadAddress && s4.akad_address !== undefined) akadAddress.innerHTML = String(s4.akad_address).replace(/\n/g, '<br>');
+          if (akadPhoto && s4.akad_photo) {
+            akadPhoto.src = normalizeAssetUrl(s4.akad_photo, '../asetV2/dekorasi_akad_hd.webp');
+            attachImageFallback(akadPhoto, '../asetV2/dekorasi_akad_hd.webp');
+          }
 
-          if (resepsiName && s4.resepsi_name) resepsiName.innerHTML = s4.resepsi_name.replace(/\n/g, '<br>');
-          if (resepsiDate && s4.resepsi_date) resepsiDate.innerText = s4.resepsi_date;
-          if (resepsiTime && s4.resepsi_time) resepsiTime.innerText = s4.resepsi_time;
-          if (resepsiPlace && s4.resepsi_place) resepsiPlace.innerText = s4.resepsi_place;
-          if (resepsiAddress && s4.resepsi_address) resepsiAddress.innerHTML = s4.resepsi_address.replace(/\n/g, '<br>');
-          if (resepsiPhoto && s4.resepsi_photo) resepsiPhoto.src = s4.resepsi_photo;
+          if (resepsiName && s4.resepsi_name !== undefined) resepsiName.innerHTML = String(s4.resepsi_name).replace(/\n/g, '<br>');
+          if (resepsiDate && s4.resepsi_date !== undefined) resepsiDate.innerText = s4.resepsi_date;
+          if (resepsiTime && s4.resepsi_time !== undefined) resepsiTime.innerText = s4.resepsi_time;
+          if (resepsiPlace && s4.resepsi_place !== undefined) resepsiPlace.innerText = s4.resepsi_place;
+          if (resepsiAddress && s4.resepsi_address !== undefined) resepsiAddress.innerHTML = String(s4.resepsi_address).replace(/\n/g, '<br>');
+          if (resepsiPhoto && s4.resepsi_photo) {
+            resepsiPhoto.src = normalizeAssetUrl(s4.resepsi_photo, '../asetV2/tata_meja_taman_hd.webp');
+            attachImageFallback(resepsiPhoto, '../asetV2/tata_meja_taman_hd.webp');
+          }
 
-          if (venueHead && s4.venue_headline) venueHead.innerHTML = s4.venue_headline.replace(/\n/g, '<br>');
-          if (venueIntro && s4.venue_intro) venueIntro.innerText = s4.venue_intro;
-          if (venueName && s4.venue_name) venueName.innerText = s4.venue_name;
-          if (venueAddress && s4.venue_address) venueAddress.innerText = s4.venue_address;
-          if (venuePhoto && s4.venue_photo) venuePhoto.src = s4.venue_photo;
+          if (venueHead && s4.venue_headline !== undefined) venueHead.innerHTML = String(s4.venue_headline).replace(/\n/g, '<br>');
+          if (venueIntro && s4.venue_intro !== undefined) venueIntro.innerText = s4.venue_intro;
+          if (venueName && s4.venue_name !== undefined) venueName.innerText = s4.venue_name;
+          if (venueAddress && s4.venue_address !== undefined) venueAddress.innerText = s4.venue_address;
+          if (venueParking && s4.features_parking !== undefined) venueParking.innerText = s4.features_parking;
+          if (venueTransit && s4.features_transit !== undefined) venueTransit.innerText = s4.features_transit;
+          if (venuePhoto && s4.venue_photo) {
+            venuePhoto.src = normalizeAssetUrl(s4.venue_photo, '../aset/section4_bagianbawah.webp');
+            attachImageFallback(venuePhoto, '../aset/section4_bagianbawah.webp');
+          }
           if (mapsIframe && s4.maps_embed) mapsIframe.src = s4.maps_embed;
           if (mapsLink && s4.maps_link) mapsLink.href = s4.maps_link;
-          if (venueQuote && s4.bottom_quote) venueQuote.innerHTML = '“' + s4.bottom_quote.replace(/\n/g, '<br>') + '”';
+          if (routesLink && (s4.routes_link || s4.maps_link)) routesLink.href = s4.routes_link || s4.maps_link;
+          if (venueQuote && s4.bottom_quote !== undefined) venueQuote.innerHTML = '&ldquo;' + String(s4.bottom_quote).replace(/\n/g, '<br>') + '&rdquo;';
         }
 
         // --- SECTION 5: GALLERY ---
@@ -1562,12 +1607,18 @@
           const galHeadline = document.getElementById('gallery-headline');
           const galIntro = document.getElementById('gallery-intro');
           const galHero = document.getElementById('gallery-hero-photo');
+          const galScript = document.getElementById('gallery-hero-script');
           const galQuote = document.getElementById('gallery-bottom-quote');
 
-          if (galHeadline && s5.headline) galHeadline.innerHTML = s5.headline.replace(/\n/g, '<br>');
-          if (galIntro && s5.intro) galIntro.innerText = s5.intro;
-          if (galHero && s5.photo_hero) galHero.src = s5.photo_hero;
-          if (galQuote && s5.bottom_quote) galQuote.innerHTML = '“' + s5.bottom_quote.replace(/\n/g, '<br>') + '”';
+          if (galHeadline && s5.headline !== undefined) galHeadline.innerHTML = String(s5.headline).replace(/\n/g, '<br>');
+          if (galIntro && s5.intro !== undefined) galIntro.innerText = s5.intro;
+          const heroPhotoUrl = s5.hero_photo || s5.photo_hero;
+          if (galHero && heroPhotoUrl) {
+            galHero.src = normalizeAssetUrl(heroPhotoUrl, '../aset/section5_fotopengantin.webp');
+            attachImageFallback(galHero, '../aset/section5_fotopengantin.webp');
+          }
+          if (galScript && s5.hero_script !== undefined) galScript.innerHTML = String(s5.hero_script).replace(/\n/g, '<br>');
+          if (galQuote && s5.bottom_quote !== undefined) galQuote.innerHTML = '&ldquo;' + String(s5.bottom_quote).replace(/\n/g, '<br>') + '&rdquo;';
         }
 
         // --- SECTION 6: RSVP & PENUTUP ---
@@ -1586,18 +1637,24 @@
           const rFootCouple = document.getElementById('rsvp-footer-couple');
           const rFootDate = document.getElementById('rsvp-footer-date');
 
-          if (rHead && s6.headline) rHead.innerHTML = s6.headline.replace(/\n/g, '<br>');
-          if (rIntro && s6.intro) rIntro.innerText = s6.intro;
-          if (rBanner && s6.banner_image) rBanner.src = s6.banner_image;
-          if (rFormTitle && s6.form_title) rFormTitle.innerText = s6.form_title;
-          if (rFormIntro && s6.form_intro) rFormIntro.innerText = s6.form_intro;
-          if (rConfirmTitle && s6.confirmation_title) rConfirmTitle.innerHTML = s6.confirmation_title.replace(/\n/g, '<br>');
-          if (rConfirmIntro && s6.confirmation_intro) rConfirmIntro.innerText = s6.confirmation_intro;
-          if (rThanks && s6.thanks_script) rThanks.innerHTML = s6.thanks_script.replace(/\n/g, '<br>');
-          if (rClosingQuote && s6.closing_quote) rClosingQuote.innerHTML = '“' + s6.closing_quote.replace(/\n/g, '<br>') + '”';
-          if (rClosingSub && s6.closing_subtext) rClosingSub.innerHTML = s6.closing_subtext.replace(/\n/g, '<br>');
-          if (rFootCouple && s6.footer_couple) rFootCouple.innerText = s6.footer_couple;
-          if (rFootDate && s6.footer_date) rFootDate.innerText = s6.footer_date;
+          if (rHead && s6.headline !== undefined) rHead.innerHTML = String(s6.headline).replace(/\n/g, '<br>');
+          if (rIntro && s6.intro !== undefined) rIntro.innerText = s6.intro;
+          const bannerPhotoUrl = s6.banner_photo || s6.banner_image;
+          if (rBanner && bannerPhotoUrl) {
+            rBanner.src = normalizeAssetUrl(bannerPhotoUrl, '../aset/section6(01).webp');
+            attachImageFallback(rBanner, '../aset/section6(01).webp');
+          }
+          if (rFormTitle && s6.form_title !== undefined) rFormTitle.innerText = s6.form_title;
+          if (rFormIntro && s6.form_intro !== undefined) rFormIntro.innerText = s6.form_intro;
+          const confirmTitle = s6.confirm_box_title || s6.confirmation_title;
+          const confirmIntro = s6.confirm_box_intro || s6.confirmation_intro;
+          if (rConfirmTitle && confirmTitle !== undefined) rConfirmTitle.innerHTML = String(confirmTitle).replace(/\n/g, '<br>');
+          if (rConfirmIntro && confirmIntro !== undefined) rConfirmIntro.innerText = confirmIntro;
+          if (rThanks && s6.thanks_script !== undefined) rThanks.innerHTML = String(s6.thanks_script).replace(/\n/g, '<br>');
+          if (rClosingQuote && s6.closing_quote !== undefined) rClosingQuote.innerHTML = '&ldquo;' + String(s6.closing_quote).replace(/\n/g, '<br>') + '&rdquo;';
+          if (rClosingSub && s6.closing_subtext !== undefined) rClosingSub.innerHTML = String(s6.closing_subtext).replace(/\n/g, '<br>');
+          if (rFootCouple && s6.footer_couple !== undefined) rFootCouple.innerText = s6.footer_couple;
+          if (rFootDate && s6.footer_date !== undefined) rFootDate.innerText = s6.footer_date;
         }
       } catch(e) {
         console.warn('syncAllSectionsFromAPI error:', e);
@@ -1607,55 +1664,167 @@
 
     loadLiveWishes();
 
-    // Sync bride & groom profile from database if edited in dashboard
-    async function syncProfileFromAPI() {
-      try {
-        const res = await fetch('../api/konten.php?action=pengantin');
-        if (!res.ok) return;
-        const json = await res.json();
-        if (json.success && json.groom && json.bride) {
-          const groomNameEl = document.getElementById('front-groom-name');
-          const groomParentsEl = document.getElementById('front-groom-parents');
-          const brideNameEl = document.getElementById('front-bride-name');
-          const brideParentsEl = document.getElementById('front-bride-parents');
-
-          if (groomNameEl && json.groom.nama_panggilan) groomNameEl.innerText = json.groom.nama_panggilan;
-          if (groomParentsEl && json.groom.nama_ayah) groomParentsEl.innerHTML = 'Putra pertama dari<br>' + json.groom.nama_ayah;
-          if (brideNameEl && json.bride.nama_panggilan) brideNameEl.innerText = json.bride.nama_panggilan;
-          if (brideParentsEl && json.bride.nama_ayah) brideParentsEl.innerHTML = 'Putri kedua dari<br>' + json.bride.nama_ayah;
-        }
-      } catch(e) {}
-    }
-    syncProfileFromAPI();
-
-    // Sync story milestones from database
+    // Sync story milestones from database (timeline + desktop polaroids)
     async function syncStoryFromAPI() {
       try {
-        const res = await fetch('../api/story.php');
+        const res = await fetch('../api/story.php', { cache: 'no-store' });
         if (!res.ok) return;
         const json = await res.json();
-        if (json.success && Array.isArray(json.data) && json.data.length > 0) {
+        if (json.success && Array.isArray(json.data)) {
+          const stories = json.data;
           const container = document.getElementById('story-timeline-container');
+          const defaultStoryImgs = [
+            '../aset/section3_fotopengantin(2).webp',
+            '../aset/section3_fotopengantin(3).webp',
+            '../aset/section3_fotopengantin(5).webp',
+            '../aset/section3_fotopengantin(6).webp',
+            '../aset/section3_fotopengantin(4).webp'
+          ];
           if (container) {
             container.innerHTML = '';
-            json.data.forEach((st) => {
-              const item = document.createElement('div');
-              item.className = 'relative';
-              item.innerHTML = `
-                <div class="absolute -left-[32px] sm:-left-[44px] lg:-left-[40px] top-1.5 w-3.5 h-3.5 rounded-full border-[1.5px] border-moss bg-paper z-10"></div>
-                <p class="text-xs sm:text-sm text-moss/75 mb-1 font-serif">${escapeHtml(st.tanggal_momen)}</p>
-                <h3 class="font-display text-2xl sm:text-3xl font-semibold mb-2.5 text-moss">${escapeHtml(st.judul)}</h3>
-                <p class="text-xs sm:text-sm leading-relaxed text-moss/80 max-w-md">
-                  ${escapeHtml(st.deskripsi)}
-                </p>
-              `;
-              container.appendChild(item);
-            });
+            if (stories.length === 0) {
+              container.innerHTML = '<p class="text-xs sm:text-sm text-moss/70">Belum ada kisah perjalanan yang ditambahkan.</p>';
+            } else {
+              stories.forEach((st, idx) => {
+                const fallbackImg = defaultStoryImgs[idx % defaultStoryImgs.length];
+                const imgSrc = normalizeAssetUrl(st.foto_url, fallbackImg);
+                const item = document.createElement('div');
+                item.className = 'relative';
+                item.innerHTML = `
+                  <div class="absolute -left-[32px] sm:-left-[44px] lg:-left-[40px] top-1.5 w-3.5 h-3.5 rounded-full border-[1.5px] border-moss bg-paper z-10"></div>
+                  <p class="text-xs sm:text-sm text-moss/75 mb-1 font-serif">${escapeHtml(st.tanggal_momen)}</p>
+                  <h3 class="font-display text-2xl sm:text-3xl font-semibold mb-2.5 text-moss">${escapeHtml(st.judul)}</h3>
+                  <p class="text-xs sm:text-sm leading-relaxed text-moss/80 max-w-md">
+                    ${escapeHtml(st.deskripsi)}
+                  </p>
+                  ${st.foto_url ? `<div class="mt-5 lg:hidden w-52 sm:w-60"><img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(st.judul)}" class="w-full h-auto drop-shadow-lg story-mobile-img" /></div>` : ''}
+                `;
+                container.appendChild(item);
+                const mobImg = item.querySelector('.story-mobile-img');
+                if (mobImg) attachImageFallback(mobImg, fallbackImg);
+              });
+            }
+          }
+
+          // Update desktop polaroid collage slots (up to 5) from database milestones
+          for (let i = 0; i < 5; i++) {
+            const imgEl = document.getElementById(`story-polaroid-${i + 1}`);
+            const wrapEl = document.getElementById(`story-polaroid-wrap-${i + 1}`);
+            if (!imgEl || !wrapEl) continue;
+            if (stories[i] && stories[i].foto_url) {
+              const fallback = defaultStoryImgs[i];
+              wrapEl.classList.remove('hidden');
+              imgEl.src = normalizeAssetUrl(stories[i].foto_url, fallback);
+              imgEl.alt = stories[i].judul || 'Momen Kisah Cinta';
+              attachImageFallback(imgEl, fallback);
+            } else if (stories[i]) {
+              wrapEl.classList.remove('hidden');
+            } else {
+              wrapEl.classList.add('hidden');
+            }
           }
         }
       } catch(e) {}
     }
     syncStoryFromAPI();
+
+    // Sync gallery bento grid from database
+    function createGalleryCardHtml(photo, wrapperClasses = 'h-48 sm:h-full', extraStyle = '') {
+      const caption = photo.keterangan || photo.judul || 'Momen Bahagia';
+      const alt = photo.judul || 'Galeri Pernikahan';
+      const src = normalizeAssetUrl(photo.foto_url, '../aset/default-image.jpg');
+      return `
+        <div class="gallery-item cursor-pointer overflow-hidden shadow-md group relative rounded-lg transition-all duration-300 ${wrapperClasses}"
+             ${extraStyle ? `style="${extraStyle}"` : ''}
+             data-category="${escapeHtml(photo.kategori || 'prewedding')}"
+             data-lightbox-src="${escapeHtml(src)}"
+             data-caption="${escapeHtml(caption)}">
+          <img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" class="w-full h-full object-cover transition duration-500 group-hover:scale-105 dynamic-gallery-img" />
+          <div class="absolute inset-0 bg-moss/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span class="w-9 h-9 rounded-full bg-warmwhite/90 text-moss flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition duration-300">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
+            </span>
+          </div>
+        </div>
+      `;
+    }
+
+    async function syncGalleryFromAPI() {
+      const grid = document.getElementById('gallery-bento-grid');
+      if (!grid) return;
+      try {
+        const res = await fetch('../api/galeri.php', { cache: 'no-store' });
+        if (!res.ok) return;
+        const json = await res.json();
+        if (!json.success || !Array.isArray(json.data)) return;
+
+        const photos = json.data;
+        if (photos.length === 0) {
+          grid.innerHTML = `
+            <div class="md:col-span-12 py-12 text-center bg-warmwhite/40 rounded-xl border border-moss/15">
+              <p class="text-sm text-moss/75 font-serif">Belum ada foto di galeri.</p>
+            </div>
+          `;
+          refreshGalleryLightboxItems();
+          return;
+        }
+
+        let html = '';
+        // If fewer than 10 photos, render a clean balanced grid so no awkward empty gaps appear
+        if (photos.length < 10) {
+          html = `<div class="md:col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 md:gap-4">` +
+            photos.map(p => createGalleryCardHtml(p, 'h-64 sm:h-72')).join('') +
+            `</div>`;
+        } else {
+          // 10-photo editorial bento layout (+ any extra photos cleanly appended below)
+          const leftHtml = `
+            <div class="md:col-span-4 flex flex-col gap-3.5 md:gap-4">
+              ${createGalleryCardHtml(photos[0], 'flex-1 min-h-[300px] md:min-h-[360px]')}
+              ${createGalleryCardHtml(photos[1], 'h-48 sm:h-52 md:h-56')}
+            </div>
+          `;
+          const rightTopHtml = `
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 md:gap-4 h-auto sm:h-44 md:h-48">
+              ${createGalleryCardHtml(photos[2], 'h-48 sm:h-full')}
+              ${createGalleryCardHtml(photos[3], 'h-48 sm:h-full')}
+              ${createGalleryCardHtml(photos[4], 'h-48 sm:h-full')}
+            </div>
+          `;
+          const rightLowerHtml = `
+            <div class="grid grid-cols-1 sm:grid-cols-12 gap-3.5 md:gap-4 flex-1">
+              <div class="sm:col-span-8 flex flex-col gap-3.5 md:gap-4">
+                <div class="grid grid-cols-2 gap-3.5 md:gap-4 h-40 sm:h-44">
+                  ${createGalleryCardHtml(photos[5], 'h-full')}
+                  ${createGalleryCardHtml(photos[6], 'h-full')}
+                </div>
+                <div class="flex gap-3.5 md:gap-4 h-48 sm:h-52 md:h-56 w-full">
+                  ${createGalleryCardHtml(photos[7], 'h-full min-w-0', 'flex: 7 1 58%; width: 58%;')}
+                  ${createGalleryCardHtml(photos[8], 'h-full min-w-0', 'flex: 5 1 42%; width: 42%;')}
+                </div>
+              </div>
+              <div class="sm:col-span-4 relative overflow-visible">
+                ${createGalleryCardHtml(photos[9], 'w-full h-72 sm:h-full')}
+                <img src="../aset/section5_bunga(2).webp" class="absolute -bottom-14 -right-6 sm:-right-10 w-28 sm:w-36 md:w-40 z-20 pointer-events-none drop-shadow-md" alt="" />
+              </div>
+            </div>
+          `;
+          html = leftHtml + `<div class="md:col-span-8 flex flex-col gap-3.5 md:gap-4">${rightTopHtml}${rightLowerHtml}</div>`;
+
+          if (photos.length > 10) {
+            html += `<div class="md:col-span-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5 md:gap-4 mt-1">` +
+              photos.slice(10).map(p => createGalleryCardHtml(p, 'h-60 sm:h-64')).join('') +
+              `</div>`;
+          }
+        }
+
+        grid.innerHTML = html;
+        grid.querySelectorAll('.dynamic-gallery-img').forEach(img => attachImageFallback(img, '../aset/default-image.jpg'));
+        refreshGalleryLightboxItems();
+      } catch(e) {
+        console.warn('syncGalleryFromAPI error:', e);
+      }
+    }
+    syncGalleryFromAPI();
 
     if (rsvpForm) {
       rsvpForm.addEventListener('submit', async function(e) {
@@ -1690,7 +1859,11 @@
             })
           });
           const result = await res.json();
-          prependWishCard(nama, pesan, 'Baru saja');
+          if (!res.ok || !result.success) {
+            alert(result.message || 'Gagal mengirim ucapan.');
+            return;
+          }
+          await loadLiveWishes();
           if (pesanInput) pesanInput.value = '';
           alert(result.message || 'Terima kasih atas doa, harapan, dan konfirmasi kehadiran Anda! 🤍');
         } catch(err) {
