@@ -103,51 +103,57 @@
         </div>
       </div>
       
-      <!-- Confirmation Status Box (matching mockup/6.png) -->
+      <!-- Tanda Kasih / Wedding Gift (QRIS & Rekening) Box -->
       <div class="px-6 sm:px-10 md:px-16 lg:px-20 pb-20 relative max-w-6xl mx-auto">
-        <div class="bg-[#b2b5a6]/80 rounded-2xl p-8 md:p-10 flex flex-col lg:flex-row gap-8 items-center shadow-md">
-          <div class="lg:w-[32%] text-center lg:text-left">
-            <h3 class="font-display text-2xl sm:text-3xl mb-3 text-moss leading-snug">Konfirmasi<br>Kehadiran</h3>
-            <p class="text-xs sm:text-sm text-moss/85 leading-relaxed">Mohon konfirmasi kehadiran Anda agar kami dapat mempersiapkan segala sesuatunya dengan lebih baik.</p>
+        <div class="bg-[#b2b5a6]/85 rounded-2xl p-7 sm:p-8 md:p-10 flex flex-col lg:flex-row gap-8 items-center shadow-md border border-moss/10">
+          <div class="lg:w-[34%] text-center lg:text-left">
+            <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.25em] text-moss/80 bg-paper/70 px-3 py-1 rounded-full mb-3 border border-moss/15">
+              <span>Amplop Digital</span>
+            </span>
+            <h3 class="font-display text-2xl sm:text-3xl mb-3 text-moss leading-snug">Tanda<br>Kasih</h3>
+            <p class="text-xs sm:text-sm text-moss/85 leading-relaxed">Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun apabila memberi adalah ungkapan tanda kasih, Anda dapat mengirimkannya secara cashless melalui QRIS atau transfer rekening berikut.</p>
           </div>
           
-          <div class="lg:w-[68%] grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
-            <!-- Hadir -->
-            <div class="bg-paper/90 border-2 border-moss/70 rounded-xl p-5 text-center shadow-sm flex flex-col items-center">
-              <svg class="w-6 h-6 text-moss mb-2.5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M9 11a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm6 0a3 3 0 100-6 3 3 0 000 6zm-6 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm6 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45v2h6v-2c0-2.33-4.67-3.5-7-3.5z" />
-              </svg>
-              <p class="font-serif font-semibold text-sm mb-1.5 text-moss">Hadir</p>
-              <p class="text-xs text-moss/80 leading-relaxed">Dengan senang<br>hati akan hadir.</p>
+          <div class="lg:w-[66%] grid grid-cols-1 sm:grid-cols-2 gap-5 w-full items-stretch">
+            <!-- Card 1: Scan QRIS -->
+            <div class="bg-paper/95 border border-moss/25 rounded-xl p-5 text-center shadow-sm flex flex-col items-center justify-between">
+              <div class="w-full flex flex-col items-center">
+                <div class="flex items-center justify-between w-full mb-3 px-1">
+                  <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-moss/75">QRIS All Payment</span>
+                  <span class="text-[10px] font-bold tracking-wider bg-moss text-warmwhite px-2 py-0.5 rounded">QRIS</span>
+                </div>
+                <div class="w-44 h-44 sm:w-48 sm:h-48 bg-white rounded-xl p-2.5 border border-moss/15 shadow-inner flex items-center justify-center overflow-hidden">
+                  <img src="../aset/qris_default.webp" alt="QRIS Tanda Kasih Fakhrel &amp; Olivia" class="w-full h-full object-contain" />
+                </div>
+                <p class="font-serif font-semibold text-sm text-moss mt-3">Fakhrel &amp; Olivia Wedding</p>
+                <p class="text-[11px] text-moss/70 mt-0.5">Mendukung M-Banking, GoPay, OVO, DANA, ShopeePay</p>
+              </div>
             </div>
-            <!-- Tidak Hadir -->
-            <div class="bg-paper/65 border border-moss/15 rounded-xl p-5 text-center hover:bg-paper/80 transition flex flex-col items-center">
-              <svg class="w-6 h-6 text-moss/75 mb-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
-                <circle cx="12" cy="12" r="9" />
-                <path stroke-linecap="round" d="M15 9l-6 6M9 9l6 6" />
-              </svg>
-              <p class="font-serif font-semibold text-sm mb-1.5 text-moss/90">Tidak Hadir</p>
-              <p class="text-xs text-moss/75 leading-relaxed">Maaf, belum<br>bisa hadir.</p>
-            </div>
-            <!-- Masih Ragu -->
-            <div class="bg-paper/65 border border-moss/15 rounded-xl p-5 text-center hover:bg-paper/80 transition flex flex-col items-center">
-              <svg class="w-6 h-6 text-moss/75 mb-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
-                <circle cx="12" cy="12" r="9" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9.5 9.5a2.5 2.5 0 113.8 2.1c-.7.4-1.3 1-1.3 1.9m0 3h.01" />
-              </svg>
-              <p class="font-serif font-semibold text-sm mb-1.5 text-moss/90">Masih Ragu</p>
-              <p class="text-xs text-moss/75 leading-relaxed">Masih dalam<br>konfirmasi.</p>
+
+            <!-- Card 2: Transfer Rekening -->
+            <div class="bg-paper/90 border border-moss/20 rounded-xl p-5 text-left shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-4 pb-2.5 border-b border-moss/10">
+                  <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-moss/75">Transfer Bank</span>
+                </div>
+                <p class="font-display text-xl text-moss font-semibold mb-3">Bank BCA</p>
+                <div class="bg-white/85 border border-moss/15 rounded-xl p-3.5 mb-3">
+                  <span class="block text-[10px] uppercase tracking-[0.18em] text-moss/60 mb-1">Nomor Rekening</span>
+                  <span class="font-mono text-base sm:text-lg font-bold tracking-wider text-moss">8291045678</span>
+                </div>
+                <p class="text-xs text-moss/80">Atas Nama: <strong class="font-semibold text-moss">Fakhrel &amp; Olivia</strong></p>
+              </div>
             </div>
           </div>
         </div>
       </div>
       
-      <!-- Closing Footer Area (matching mockup/6.png) -->
-      <div class="px-6 sm:px-10 md:px-16 lg:px-20 pb-20 pt-4 flex flex-col md:flex-row items-center justify-between relative max-w-6xl mx-auto">
+      <!-- Closing Footer Area -->
+      <div class="px-6 sm:px-10 md:px-16 lg:px-20 pb-24 pt-6 flex flex-col md:flex-row items-center justify-between relative max-w-6xl mx-auto">
         <div class="w-full md:w-5/12 mb-12 md:mb-0 flex justify-center md:justify-start pl-0 md:pl-8">
           <div class="text-center">
-            <p class="font-script text-5xl sm:text-6xl text-warmwhite drop-shadow-sm -rotate-[8deg] leading-[0.95]">Terima<br>Kasih</p>
-            <p class="text-warmwhite/70 text-lg mt-1">&hearts;</p>
+            <p class="font-script text-5xl sm:text-6xl text-moss drop-shadow-sm -rotate-[8deg] leading-[0.95]">Terima<br>Kasih</p>
+            <p class="text-moss/70 text-lg mt-2">&hearts;</p>
           </div>
         </div>
         
@@ -159,10 +165,10 @@
               Terima kasih telah menjadi<br>bagian dari hari istimewa kami.
             </p>
             
-            <div class="flex flex-col items-center relative pt-2">
+            <div class="flex flex-col items-center md:items-start relative pt-2">
                <div class="w-10 h-px bg-moss/40 mb-4"></div>
-               <p class="text-[11px] uppercase tracking-[0.28em] font-medium text-warmwhite drop-shadow-sm mb-1">FAKHREL &amp; OLIVIA</p>
-               <p class="text-[11px] uppercase tracking-[0.28em] text-warmwhite/90 drop-shadow-sm">25 OKTOBER 2026</p>
+               <p class="text-xs uppercase tracking-[0.28em] font-semibold text-moss mb-1">FAKHREL &amp; OLIVIA</p>
+               <p class="text-[11px] uppercase tracking-[0.28em] text-moss/80 font-medium">25 OKTOBER 2026</p>
                <img src="../aset/section5_bunga(2).webp" class="absolute -top-4 right-2 sm:right-8 w-20 sm:w-24 opacity-90 pointer-events-none" alt="" />
             </div>
           </div>

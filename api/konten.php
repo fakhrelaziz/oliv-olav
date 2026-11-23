@@ -442,8 +442,13 @@ function getDefaultSectionData($key = null) {
                 'banner_photo' => '../aset/section6(01).webp',
                 'form_title' => 'Kirim Ucapan',
                 'form_intro' => 'Tuliskan doa, harapan, dan ucapan terbaik untuk kami.',
-                'confirm_box_title' => "Konfirmasi\nKehadiran",
-                'confirm_box_intro' => 'Mohon konfirmasi kehadiran Anda agar kami dapat mempersiapkan segala sesuatunya dengan lebih baik.',
+                'confirm_box_title' => "Tanda\nKasih",
+                'confirm_box_intro' => 'Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun apabila memberi adalah ungkapan tanda kasih, Anda dapat mengirimkannya secara cashless melalui QRIS atau transfer rekening berikut.',
+                'qris_photo' => '../aset/qris_default.webp',
+                'qris_name' => 'Fakhrel & Olivia Wedding',
+                'bank_name' => 'Bank BCA',
+                'bank_number' => '8291045678',
+                'bank_holder' => 'Fakhrel & Olivia',
                 'thanks_script' => "Terima\nKasih",
                 'closing_quote' => "Doa Anda adalah hadiah\nterindah bagi kami.",
                 'closing_subtext' => 'Terima kasih telah menjadi bagian dari hari istimewa kami.',
@@ -480,6 +485,14 @@ if ($method === 'GET' && ($action === 'sections' || $action === 'get_all_section
                 $mergedSec = array_merge($def['data'], $dbData[$k]);
                 if ($k === 'section_4_event' && ($mergedSec['resepsi_photo'] ?? '') === '../aset/section4_fotopengantin(2).webp') {
                     $mergedSec['resepsi_photo'] = '../asetV2/tata_meja_taman_hd.webp';
+                }
+                if ($k === 'section_6_rsvp') {
+                    if (in_array(trim($mergedSec['confirm_box_title'] ?? ''), ["Konfirmasi\nKehadiran", "Konfirmasi\r\nKehadiran", "Konfirmasi Kehadiran"], true)) {
+                        $mergedSec['confirm_box_title'] = $def['data']['confirm_box_title'];
+                    }
+                    if (strpos($mergedSec['confirm_box_intro'] ?? '', 'Mohon konfirmasi kehadiran Anda') !== false) {
+                        $mergedSec['confirm_box_intro'] = $def['data']['confirm_box_intro'];
+                    }
                 }
                 $finalSections[$k] = $mergedSec;
             } else {
@@ -593,6 +606,14 @@ if ($method === 'GET' && ($action === 'get_section' || !empty($_GET['key']))) {
         if ($key === 'section_4_event' && ($data['resepsi_photo'] ?? '') === '../aset/section4_fotopengantin(2).webp') {
             $data['resepsi_photo'] = '../asetV2/tata_meja_taman_hd.webp';
         }
+        if ($key === 'section_6_rsvp') {
+            if (in_array(trim($data['confirm_box_title'] ?? ''), ["Konfirmasi\nKehadiran", "Konfirmasi\r\nKehadiran", "Konfirmasi Kehadiran"], true)) {
+                $data['confirm_box_title'] = $default['data']['confirm_box_title'];
+            }
+            if (strpos($data['confirm_box_intro'] ?? '', 'Mohon konfirmasi kehadiran Anda') !== false) {
+                $data['confirm_box_intro'] = $default['data']['confirm_box_intro'];
+            }
+        }
 
         jsonResponse([
             'success' => true,
@@ -659,7 +680,7 @@ if ($method === 'POST' && ($action === 'save_section' || $action === 'save')) {
         $imageKeys = [
             'bg_desktop', 'bg_mobile', 'photo_couple', 'groom_photo', 'bride_photo',
             'photo_hero', 'header_photo', 'akad_photo', 'resepsi_photo', 'venue_photo',
-            'hero_photo', 'banner_photo'
+            'hero_photo', 'banner_photo', 'qris_photo'
         ];
         foreach ($imageKeys as $imgKey) {
             if (array_key_exists($imgKey, $merged) && trim((string)$merged[$imgKey]) === '' && isset($default['data'][$imgKey])) {

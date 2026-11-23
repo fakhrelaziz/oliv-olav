@@ -207,11 +207,11 @@
           </div>
         </div>
 
-        <!-- Card 2: Form Ucapan & Box Konfirmasi -->
+        <!-- Card 2: Form Ucapan & Box Tanda Kasih (QRIS & Rekening) -->
         <div class="bg-cardBg rounded-3xl p-7 border border-borderSoft/80 shadow-[0_2px_15px_rgba(40,51,34,0.03)] space-y-5">
           <h3 class="font-display text-xl font-semibold text-ink border-b border-borderSoft/60 pb-3 flex items-center space-x-2">
-            <i data-lucide="check-square" class="w-4 h-4 text-moss"></i>
-            <span>Teks Form &amp; Box Konfirmasi Kehadiran</span>
+            <i data-lucide="qr-code" class="w-4 h-4 text-moss"></i>
+            <span>Form Ucapan &amp; Box Tanda Kasih (QRIS / Rekening)</span>
           </h3>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -226,13 +226,54 @@
             </div>
 
             <div>
-              <label class="block text-xs font-semibold text-ink mb-1.5">Judul Box Konfirmasi Kehadiran</label>
-              <textarea id="input_confirm_box_title" rows="2" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition leading-relaxed resize-none" placeholder="Konfirmasi&#10;Kehadiran"></textarea>
+              <label class="block text-xs font-semibold text-ink mb-1.5">Judul Box Tanda Kasih (QRIS)</label>
+              <textarea id="input_confirm_box_title" rows="2" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition leading-relaxed resize-none" placeholder="Tanda&#10;Kasih"></textarea>
             </div>
 
             <div>
-              <label class="block text-xs font-semibold text-ink mb-1.5">Teks Box Konfirmasi Kehadiran</label>
-              <textarea id="input_confirm_box_intro" rows="2" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition leading-relaxed resize-none" placeholder="Mohon konfirmasi kehadiran Anda agar kami dapat mempersiapkan segala sesuatunya dengan lebih baik."></textarea>
+              <label class="block text-xs font-semibold text-ink mb-1.5">Teks Pengantar Box Tanda Kasih</label>
+              <textarea id="input_confirm_box_intro" rows="2" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition leading-relaxed resize-none" placeholder="Doa restu Anda merupakan karunia yang sangat berarti bagi kami..."></textarea>
+            </div>
+          </div>
+
+          <div class="border-t border-borderSoft/60 pt-5 grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+            <div class="md:col-span-5 bg-cardMuted/60 rounded-2xl p-4 border border-borderSoft">
+              <label class="block text-xs font-semibold text-ink mb-2">Gambar Kode QRIS</label>
+              <div class="w-36 h-36 mx-auto rounded-xl overflow-hidden border border-borderSoft bg-white mb-3 p-2 flex items-center justify-center">
+                <img id="preview_qris_photo" src="../aset/qris_default.webp" alt="Preview QRIS" class="w-full h-full object-contain">
+              </div>
+              <input type="hidden" id="input_qris_photo" value="../aset/qris_default.webp">
+              <div class="flex flex-wrap items-center justify-center gap-2 mb-2">
+                <label class="inline-flex items-center space-x-1.5 bg-moss text-white px-3 py-1.5 rounded-xl text-[11px] font-medium cursor-pointer hover:bg-moss/90 transition">
+                  <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                  <span>Upload QRIS</span>
+                  <input type="file" accept="image/*" class="hidden" onchange="uploadImageFile(this, 'input_qris_photo', 'preview_qris_photo', 'status_qris_photo')">
+                </label>
+                <button type="button" onclick="resetImageField('input_qris_photo', 'preview_qris_photo', '../aset/qris_default.webp', 'status_qris_photo')" class="inline-flex items-center space-x-1 bg-white border border-borderSoft text-inkMuted hover:text-red-700 hover:border-red-200 px-2.5 py-1.5 rounded-xl text-[11px] font-medium transition">
+                  <i data-lucide="rotate-ccw" class="w-3 h-3"></i>
+                  <span>Reset Default</span>
+                </button>
+              </div>
+              <span id="status_qris_photo" class="block text-center text-[11px] text-inkMuted">Gunakan gambar QRIS rasio 1:1 yang jelas dipindai</span>
+            </div>
+
+            <div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="sm:col-span-2">
+                <label class="block text-xs font-semibold text-ink mb-1.5">Nama Merchant / Atas Nama QRIS</label>
+                <input type="text" id="input_qris_name" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition" placeholder="a.n. Fakhrel &amp; Olivia Wedding">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-ink mb-1.5">Nama Bank / E-Wallet</label>
+                <input type="text" id="input_bank_name" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition" placeholder="Bank BCA">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-ink mb-1.5">Nomor Rekening</label>
+                <input type="text" id="input_bank_number" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition font-mono" placeholder="8291045678">
+              </div>
+              <div class="sm:col-span-2">
+                <label class="block text-xs font-semibold text-ink mb-1.5">Atas Nama Pemilik Rekening</label>
+                <input type="text" id="input_bank_holder" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition" placeholder="Fakhrel &amp; Olivia">
+              </div>
             </div>
           </div>
         </div>
@@ -317,6 +358,7 @@
     }
 
     attachImageFallback(document.getElementById('preview_banner_photo'), '../aset/section6(01).webp');
+    attachImageFallback(document.getElementById('preview_qris_photo'), '../aset/qris_default.webp');
 
     async function loadPenutupData() {
       try {
@@ -335,6 +377,14 @@
           document.getElementById('input_form_intro').value = d.form_intro || '';
           document.getElementById('input_confirm_box_title').value = d.confirm_box_title || '';
           document.getElementById('input_confirm_box_intro').value = d.confirm_box_intro || '';
+          if (d.qris_photo) {
+            document.getElementById('input_qris_photo').value = d.qris_photo;
+            document.getElementById('preview_qris_photo').src = normalizeAssetUrl(d.qris_photo, '../aset/qris_default.webp');
+          }
+          document.getElementById('input_qris_name').value = d.qris_name || 'Fakhrel & Olivia Wedding';
+          document.getElementById('input_bank_name').value = d.bank_name || 'Bank BCA';
+          document.getElementById('input_bank_number').value = d.bank_number || '8291045678';
+          document.getElementById('input_bank_holder').value = d.bank_holder || 'Fakhrel & Olivia';
           document.getElementById('input_thanks_script').value = d.thanks_script || '';
           document.getElementById('input_closing_quote').value = d.closing_quote || '';
           document.getElementById('input_closing_subtext').value = d.closing_subtext || '';
@@ -368,6 +418,11 @@
           form_intro: document.getElementById('input_form_intro').value.trim(),
           confirm_box_title: document.getElementById('input_confirm_box_title').value.trim(),
           confirm_box_intro: document.getElementById('input_confirm_box_intro').value.trim(),
+          qris_photo: document.getElementById('input_qris_photo').value.trim(),
+          qris_name: document.getElementById('input_qris_name').value.trim(),
+          bank_name: document.getElementById('input_bank_name').value.trim(),
+          bank_number: document.getElementById('input_bank_number').value.trim(),
+          bank_holder: document.getElementById('input_bank_holder').value.trim(),
           thanks_script: document.getElementById('input_thanks_script').value.trim(),
           closing_quote: document.getElementById('input_closing_quote').value.trim(),
           closing_subtext: document.getElementById('input_closing_subtext').value.trim(),

@@ -1213,51 +1213,112 @@
         </div>
       </div>
       
-      <!-- Confirmation Status Box (matching mockup/6.png) -->
+      <!-- Tanda Kasih / Wedding Gift (QRIS & Rekening) Box -->
       <div class="px-6 sm:px-10 md:px-16 lg:px-20 pb-20 relative max-w-6xl mx-auto">
-        <div class="bg-[#b2b5a6]/80 rounded-2xl p-8 md:p-10 flex flex-col lg:flex-row gap-8 items-center shadow-md">
-          <div class="lg:w-[32%] text-center lg:text-left">
-            <h3 id="rsvp-confirm-title" class="font-display text-2xl sm:text-3xl mb-3 text-moss leading-snug">Konfirmasi<br>Kehadiran</h3>
-            <p id="rsvp-confirm-intro" class="text-xs sm:text-sm text-moss/85 leading-relaxed">Mohon konfirmasi kehadiran Anda agar kami dapat mempersiapkan segala sesuatunya dengan lebih baik.</p>
+        <div class="bg-[#b2b5a6]/85 rounded-2xl p-7 sm:p-8 md:p-10 flex flex-col lg:flex-row gap-8 items-center shadow-md border border-moss/10">
+          <div class="lg:w-[34%] text-center lg:text-left">
+            <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.25em] text-moss/80 bg-paper/70 px-3 py-1 rounded-full mb-3 border border-moss/15">
+              <svg class="w-3.5 h-3.5 text-moss" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+              </svg>
+              <span>Amplop Digital</span>
+            </span>
+            <h3 id="rsvp-confirm-title" class="font-display text-2xl sm:text-3xl mb-3 text-moss leading-snug">Tanda<br>Kasih</h3>
+            <p id="rsvp-confirm-intro" class="text-xs sm:text-sm text-moss/85 leading-relaxed">Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun apabila memberi adalah ungkapan tanda kasih, Anda dapat mengirimkannya secara cashless melalui QRIS atau transfer rekening berikut.</p>
           </div>
           
-          <div class="lg:w-[68%] grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
-            <!-- Hadir -->
-            <div class="bg-paper/90 border-2 border-moss/70 rounded-xl p-5 text-center shadow-sm flex flex-col items-center">
-              <svg class="w-6 h-6 text-moss mb-2.5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M9 11a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm6 0a3 3 0 100-6 3 3 0 000 6zm-6 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm6 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45v2h6v-2c0-2.33-4.67-3.5-7-3.5z" />
-              </svg>
-              <p class="font-serif font-semibold text-sm mb-1.5 text-moss">Hadir</p>
-              <p class="text-xs text-moss/80 leading-relaxed">Dengan senang<br>hati akan hadir.</p>
+          <div class="lg:w-[66%] grid grid-cols-1 sm:grid-cols-2 gap-5 w-full items-stretch">
+            <!-- Card 1: Scan QRIS -->
+            <div class="bg-paper/95 border border-moss/25 rounded-xl p-5 text-center shadow-sm flex flex-col items-center justify-between">
+              <div class="w-full flex flex-col items-center">
+                <div class="flex items-center justify-between w-full mb-3 px-1">
+                  <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-moss/75">QRIS All Payment</span>
+                  <span class="text-[10px] font-bold tracking-wider bg-moss text-warmwhite px-2 py-0.5 rounded">QRIS</span>
+                </div>
+                <button type="button" onclick="openQrisZoomModal()" class="group relative w-44 h-44 sm:w-48 sm:h-48 bg-white rounded-xl p-2.5 border border-moss/15 shadow-inner flex items-center justify-center overflow-hidden cursor-pointer focus:outline-none" title="Klik untuk memperbesar QRIS">
+                  <img id="rsvp-qris-image" src="../aset/qris_default.webp" alt="QRIS Tanda Kasih Fakhrel &amp; Olivia" class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.03]" />
+                  <span class="absolute inset-x-2 bottom-2 bg-moss/90 text-warmwhite text-[10px] py-1 px-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Klik untuk Perbesar</span>
+                </button>
+                <p id="rsvp-qris-name" class="font-serif font-semibold text-sm text-moss mt-3">Fakhrel &amp; Olivia Wedding</p>
+                <p class="text-[11px] text-moss/70 mt-0.5">Mendukung M-Banking, GoPay, OVO, DANA, ShopeePay</p>
+              </div>
+              <div class="flex items-center justify-center gap-2.5 w-full mt-4 pt-3 border-t border-moss/10">
+                <button type="button" onclick="openQrisZoomModal()" class="flex-1 inline-flex items-center justify-center gap-1.5 bg-moss/10 hover:bg-moss/20 text-moss text-xs font-medium py-2 px-3 rounded-lg transition">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16zm0-11v6m-3-3h6" />
+                  </svg>
+                  <span>Perbesar QR</span>
+                </button>
+                <a id="rsvp-qris-download" href="../aset/qris_default.webp" download="QRIS-Fakhrel-Olivia.webp" class="flex-1 inline-flex items-center justify-center gap-1.5 bg-moss text-warmwhite hover:bg-moss/90 text-xs font-medium py-2 px-3 rounded-lg transition">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
+                  </svg>
+                  <span>Unduh QRIS</span>
+                </a>
+              </div>
             </div>
-            <!-- Tidak Hadir -->
-            <div class="bg-paper/65 border border-moss/15 rounded-xl p-5 text-center hover:bg-paper/80 transition flex flex-col items-center">
-              <svg class="w-6 h-6 text-moss/75 mb-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
-                <circle cx="12" cy="12" r="9" />
-                <path stroke-linecap="round" d="M15 9l-6 6M9 9l6 6" />
-              </svg>
-              <p class="font-serif font-semibold text-sm mb-1.5 text-moss/90">Tidak Hadir</p>
-              <p class="text-xs text-moss/75 leading-relaxed">Maaf, belum<br>bisa hadir.</p>
-            </div>
-            <!-- Masih Ragu -->
-            <div class="bg-paper/65 border border-moss/15 rounded-xl p-5 text-center hover:bg-paper/80 transition flex flex-col items-center">
-              <svg class="w-6 h-6 text-moss/75 mb-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
-                <circle cx="12" cy="12" r="9" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9.5 9.5a2.5 2.5 0 113.8 2.1c-.7.4-1.3 1-1.3 1.9m0 3h.01" />
-              </svg>
-              <p class="font-serif font-semibold text-sm mb-1.5 text-moss/90">Masih Ragu</p>
-              <p class="text-xs text-moss/75 leading-relaxed">Masih dalam<br>konfirmasi.</p>
+
+            <!-- Card 2: Transfer Rekening -->
+            <div class="bg-paper/90 border border-moss/20 rounded-xl p-5 text-left shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-4 pb-2.5 border-b border-moss/10">
+                  <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-moss/75">Transfer Bank</span>
+                  <svg class="w-5 h-5 text-moss/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                  </svg>
+                </div>
+                <p id="rsvp-bank-name" class="font-display text-xl text-moss font-semibold mb-3">Bank BCA</p>
+                <div class="bg-white/85 border border-moss/15 rounded-xl p-3.5 mb-3">
+                  <span class="block text-[10px] uppercase tracking-[0.18em] text-moss/60 mb-1">Nomor Rekening</span>
+                  <div class="flex items-center justify-between gap-2">
+                    <span id="rsvp-bank-number" class="font-mono text-base sm:text-lg font-bold tracking-wider text-moss select-all">8291045678</span>
+                    <button type="button" id="btn-copy-rekening" onclick="copyWeddingBankNumber()" class="inline-flex items-center gap-1 bg-moss text-warmwhite hover:bg-moss/90 text-[11px] font-medium px-3 py-1.5 rounded-lg transition shrink-0">
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+                      </svg>
+                      <span id="btn-copy-rekening-label">Salin</span>
+                    </button>
+                  </div>
+                </div>
+                <p class="text-xs text-moss/80">Atas Nama: <strong id="rsvp-bank-holder" class="font-semibold text-moss">Fakhrel &amp; Olivia</strong></p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-moss/10 flex items-center gap-2 text-[11px] text-moss/75 leading-snug">
+                <svg class="w-4 h-4 text-moss shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                <span>Klik tombol <strong>Salin</strong> untuk menyalin nomor rekening atau pindai kode <strong>QRIS</strong> di samping.</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Lightbox Modal Zoom QRIS -->
+      <div id="qris-zoom-modal" class="fixed inset-0 z-[120] hidden items-center justify-center bg-black/75 backdrop-blur-sm p-4" onclick="if(event.target===this) closeQrisZoomModal()">
+        <div class="bg-paper rounded-2xl max-w-sm w-full p-6 text-center shadow-2xl border border-moss/20 relative">
+          <button type="button" onclick="closeQrisZoomModal()" class="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-moss/10 hover:bg-moss/20 text-moss flex items-center justify-center transition" aria-label="Tutup QRIS">
+            &times;
+          </button>
+          <p class="text-[10px] font-semibold uppercase tracking-[0.25em] text-moss/70 mb-1">Pindai Kode QRIS</p>
+          <h4 id="qris-modal-title" class="font-display text-xl text-moss mb-4">Fakhrel &amp; Olivia Wedding</h4>
+          <div class="bg-white rounded-xl p-3 border border-moss/15 shadow-inner mx-auto max-w-[280px]">
+            <img id="qris-modal-image" src="../aset/qris_default.webp" alt="QRIS Fakhrel &amp; Olivia" class="w-full h-auto object-contain" />
+          </div>
+          <p class="text-xs text-moss/75 mt-3 mb-4">Arahkan kamera aplikasi M-Banking atau E-Wallet Anda ke kode QR di atas.</p>
+          <button type="button" onclick="closeQrisZoomModal()" class="w-full bg-moss text-warmwhite hover:bg-moss/90 text-xs font-medium py-2.5 rounded-xl transition">
+            Tutup Pratinjau
+          </button>
+        </div>
+      </div>
       
-      <!-- Closing Footer Area (matching mockup/6.png) -->
-      <div class="px-6 sm:px-10 md:px-16 lg:px-20 pb-20 pt-4 flex flex-col md:flex-row items-center justify-between relative max-w-6xl mx-auto">
+      <!-- Closing Footer Area -->
+      <div class="px-6 sm:px-10 md:px-16 lg:px-20 pb-24 pt-6 flex flex-col md:flex-row items-center justify-between relative max-w-6xl mx-auto">
         <div class="w-full md:w-5/12 mb-12 md:mb-0 flex justify-center md:justify-start pl-0 md:pl-8">
           <div class="text-center">
-            <p id="rsvp-thanks-script" class="font-script text-5xl sm:text-6xl text-warmwhite drop-shadow-sm -rotate-[8deg] leading-[0.95]">Terima<br>Kasih</p>
-            <p class="text-warmwhite/70 text-lg mt-1">&hearts;</p>
+            <p id="rsvp-thanks-script" class="font-script text-5xl sm:text-6xl text-moss drop-shadow-sm -rotate-[8deg] leading-[0.95]">Terima<br>Kasih</p>
+            <p class="text-moss/70 text-lg mt-2">&hearts;</p>
           </div>
         </div>
         
@@ -1269,10 +1330,10 @@
               Terima kasih telah menjadi<br>bagian dari hari istimewa kami.
             </p>
             
-            <div class="flex flex-col items-center relative pt-2">
+            <div class="flex flex-col items-center md:items-start relative pt-2">
                <div class="w-10 h-px bg-moss/40 mb-4"></div>
-               <p id="rsvp-footer-couple" class="text-[11px] uppercase tracking-[0.28em] font-medium text-warmwhite drop-shadow-sm mb-1">FAKHREL &amp; OLIVIA</p>
-               <p id="rsvp-footer-date" class="text-[11px] uppercase tracking-[0.28em] text-warmwhite/90 drop-shadow-sm">25 OKTOBER 2026</p>
+               <p id="rsvp-footer-couple" class="text-xs uppercase tracking-[0.28em] font-semibold text-moss mb-1">FAKHREL &amp; OLIVIA</p>
+               <p id="rsvp-footer-date" class="text-[11px] uppercase tracking-[0.28em] text-moss/80 font-medium">25 OKTOBER 2026</p>
                <img src="../aset/section5_bunga(2).webp" class="absolute -top-4 right-2 sm:right-8 w-20 sm:w-24 opacity-90 pointer-events-none" alt="" />
             </div>
           </div>
@@ -1946,6 +2007,14 @@
           const rFormIntro = document.getElementById('rsvp-form-intro');
           const rConfirmTitle = document.getElementById('rsvp-confirm-title');
           const rConfirmIntro = document.getElementById('rsvp-confirm-intro');
+          const rQrisImg = document.getElementById('rsvp-qris-image');
+          const rQrisModalImg = document.getElementById('qris-modal-image');
+          const rQrisDownload = document.getElementById('rsvp-qris-download');
+          const rQrisName = document.getElementById('rsvp-qris-name');
+          const rQrisModalTitle = document.getElementById('qris-modal-title');
+          const rBankName = document.getElementById('rsvp-bank-name');
+          const rBankNumber = document.getElementById('rsvp-bank-number');
+          const rBankHolder = document.getElementById('rsvp-bank-holder');
           const rThanks = document.getElementById('rsvp-thanks-script');
           const rClosingQuote = document.getElementById('rsvp-closing-quote');
           const rClosingSub = document.getElementById('rsvp-closing-subtext');
@@ -1965,6 +2034,25 @@
           const confirmIntro = s6.confirm_box_intro || s6.confirmation_intro;
           if (rConfirmTitle && confirmTitle !== undefined) rConfirmTitle.innerHTML = String(confirmTitle).replace(/\n/g, '<br>');
           if (rConfirmIntro && confirmIntro !== undefined) rConfirmIntro.innerText = confirmIntro;
+          if (s6.qris_photo) {
+            const qrisUrl = normalizeAssetUrl(s6.qris_photo, '../aset/qris_default.webp');
+            if (rQrisImg) {
+              rQrisImg.src = qrisUrl;
+              attachImageFallback(rQrisImg, '../aset/qris_default.webp');
+            }
+            if (rQrisModalImg) {
+              rQrisModalImg.src = qrisUrl;
+              attachImageFallback(rQrisModalImg, '../aset/qris_default.webp');
+            }
+            if (rQrisDownload) rQrisDownload.href = qrisUrl;
+          }
+          if (s6.qris_name) {
+            if (rQrisName) rQrisName.innerText = s6.qris_name;
+            if (rQrisModalTitle) rQrisModalTitle.innerText = s6.qris_name;
+          }
+          if (rBankName && s6.bank_name) rBankName.innerText = s6.bank_name;
+          if (rBankNumber && s6.bank_number) rBankNumber.innerText = s6.bank_number;
+          if (rBankHolder && s6.bank_holder) rBankHolder.innerText = s6.bank_holder;
           if (rThanks && s6.thanks_script !== undefined) rThanks.innerHTML = String(s6.thanks_script).replace(/\n/g, '<br>');
           if (rClosingQuote && s6.closing_quote !== undefined) rClosingQuote.innerHTML = '&ldquo;' + String(s6.closing_quote).replace(/\n/g, '<br>') + '&rdquo;';
           if (rClosingSub && s6.closing_subtext !== undefined) rClosingSub.innerHTML = String(s6.closing_subtext).replace(/\n/g, '<br>');
@@ -1976,6 +2064,45 @@
       }
     }
     syncAllSectionsFromAPI();
+
+    function openQrisZoomModal() {
+      const modal = document.getElementById('qris-zoom-modal');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeQrisZoomModal() {
+      const modal = document.getElementById('qris-zoom-modal');
+      if (!modal) return;
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    async function copyWeddingBankNumber() {
+      const numEl = document.getElementById('rsvp-bank-number');
+      const labelEl = document.getElementById('btn-copy-rekening-label');
+      if (!numEl) return;
+      const rawNumber = (numEl.innerText || '').replace(/\s+/g, '');
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(rawNumber);
+        } else {
+          const temp = document.createElement('input');
+          temp.value = rawNumber;
+          document.body.appendChild(temp);
+          temp.select();
+          document.execCommand('copy');
+          document.body.removeChild(temp);
+        }
+        if (labelEl) {
+          labelEl.innerText = 'Tersalin ✓';
+          setTimeout(() => { labelEl.innerText = 'Salin'; }, 2200);
+        }
+      } catch (err) {
+        console.warn('Copy bank number error:', err);
+      }
+    }
 
     loadLiveWishes();
 
