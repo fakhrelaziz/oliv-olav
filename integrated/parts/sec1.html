@@ -13,8 +13,8 @@
       <header class="wedding-header absolute top-0 left-0 w-full z-30 px-6 py-6 md:px-16 md:py-8">
         <div class="flex items-center justify-between">
           <a href="#home" class="text-2xl font-display uppercase tracking-widest text-warmwhite" aria-label="Kembali ke halaman utama">REL|LIV</a>
-          <a href="#about" class="inline-flex items-center gap-2 border border-warmwhite/80 rounded-full px-5 py-2 text-sm text-warmwhite hover:bg-warmwhite hover:text-moss transition">
-            Buka Undangan <span aria-hidden="true">&#9993;</span>
+          <a href="#rsvp" class="inline-flex items-center gap-2 border border-warmwhite/80 rounded-full px-5 py-2 text-xs sm:text-sm text-warmwhite hover:bg-warmwhite hover:text-moss transition">
+            Konfirmasi RSVP <span aria-hidden="true">&#9993;</span>
           </a>
         </div>
 
@@ -86,7 +86,7 @@
       </header>
 
       <!-- Main content hero -->
-      <div class="relative z-10 flex h-full min-h-[100svh] flex-col justify-start pt-20 pb-40 md:pt-24 md:pb-52 lg:pb-56 px-6 md:px-16">
+      <div class="relative z-10 flex h-full min-h-[100svh] flex-col justify-start pt-20 pb-44 md:pt-24 md:pb-52 lg:pb-56 px-6 md:px-16">
         
         <div class="max-w-xl">
           <div class="flex items-center gap-4 mb-3">
@@ -100,31 +100,60 @@
             Olivia
           </h1>
           
-          <p class="mt-5 md:mt-6 text-sm uppercase tracking-[0.3em] text-warmwhite">
+          <p class="mt-4 md:mt-5 text-sm uppercase tracking-[0.3em] text-warmwhite">
             25 OCTOBER 2026
           </p>
+
+          <!-- Editorial Countdown Timer -->
+          <div id="hero-countdown" class="mt-4 inline-flex items-center gap-3 sm:gap-4 px-4 py-2 rounded-2xl bg-moss/45 border border-warmwhite/20 backdrop-blur-sm" aria-label="Hitung mundur menuju hari pernikahan">
+            <div class="text-center min-w-[2.6rem]">
+              <span id="cd-days" class="block font-display text-xl sm:text-2xl md:text-3xl leading-none text-warmwhite font-semibold">00</span>
+              <span class="block text-[9px] uppercase tracking-[0.22em] text-warmwhite/70 mt-1">Hari</span>
+            </div>
+            <span class="h-6 w-px bg-warmwhite/20" aria-hidden="true"></span>
+            <div class="text-center min-w-[2.4rem]">
+              <span id="cd-hours" class="block font-display text-xl sm:text-2xl md:text-3xl leading-none text-warmwhite font-semibold">00</span>
+              <span class="block text-[9px] uppercase tracking-[0.22em] text-warmwhite/70 mt-1">Jam</span>
+            </div>
+            <span class="h-6 w-px bg-warmwhite/20" aria-hidden="true"></span>
+            <div class="text-center min-w-[2.4rem]">
+              <span id="cd-minutes" class="block font-display text-xl sm:text-2xl md:text-3xl leading-none text-warmwhite font-semibold">00</span>
+              <span class="block text-[9px] uppercase tracking-[0.22em] text-warmwhite/70 mt-1">Menit</span>
+            </div>
+            <span class="h-6 w-px bg-warmwhite/20" aria-hidden="true"></span>
+            <div class="text-center min-w-[2.4rem]">
+              <span id="cd-seconds" class="block font-display text-xl sm:text-2xl md:text-3xl leading-none text-warmwhite font-semibold">00</span>
+              <span class="block text-[9px] uppercase tracking-[0.22em] text-warmwhite/70 mt-1">Detik</span>
+            </div>
+          </div>
           
-          <div class="mt-7 md:mt-9">
-            <p class="text-base md:text-lg font-display text-warmwhite">Kepada Yth,</p>
-            <p id="nama-tamu" class="text-2xl md:text-3xl font-display text-warmwhite mb-3 leading-tight">Bapak/Ibu/Saudara/i</p>
-            <p class="text-xs sm:text-sm md:text-base text-warmwhite/80 max-w-sm mb-5 leading-relaxed">
+          <div class="mt-5 md:mt-6">
+            <p class="text-xs uppercase tracking-[0.22em] text-warmwhite/75 mb-1">Selamat Datang,</p>
+            <p id="nama-tamu" class="text-2xl md:text-3xl font-display text-warmwhite mb-2 leading-tight">Bapak/Ibu/Saudara/i</p>
+            <p class="text-xs sm:text-sm text-warmwhite/80 max-w-sm mb-4 leading-relaxed">
               Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir dalam hari bahagia kami.
             </p>
             
-            <a href="#about" class="inline-flex items-center gap-4 bg-warmwhite text-moss px-6 py-2.5 md:py-3 rounded-full text-sm md:text-base font-medium hover:bg-white transition">
-              Buka Undangan &rarr;
-            </a>
+            <div class="flex flex-wrap items-center gap-3">
+              <a href="#about" class="inline-flex items-center gap-3 bg-warmwhite text-moss px-6 py-2.5 md:py-3 rounded-full text-xs sm:text-sm md:text-base font-medium hover:bg-white transition shadow-md">
+                <span>Jelajahi Undangan</span>
+                <span aria-hidden="true">&darr;</span>
+              </a>
+              <a href="#event" class="inline-flex items-center gap-2 border border-warmwhite/60 bg-moss/35 backdrop-blur-sm text-warmwhite px-5 py-2.5 md:py-3 rounded-full text-xs sm:text-sm md:text-base font-medium hover:bg-warmwhite/15 transition">
+                <span>Lihat Acara</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Right bottom script text -->
-      <div class="absolute right-12 md:right-32 bottom-20 md:bottom-28 z-10 text-right rotate-[-10deg]">
+      <div class="absolute right-5 sm:right-10 md:right-32 bottom-24 sm:bottom-28 z-10 text-right rotate-[-10deg]">
         <p class="font-script text-4xl md:text-5xl text-warmwhite">A new<br>chapter<br>together</p>
       </div>
 
       <!-- Bottom decorations — aligned to bottom-left below CTA button matching mockup/1.png -->
-      <picture class="absolute bottom-0 left-0 z-[5] pointer-events-none w-[78%] sm:w-[60%] md:w-[46%] lg:w-[44%] max-w-[640px]">
+      <picture class="absolute -bottom-px left-0 z-[5] pointer-events-none w-[84%] sm:w-[64%] md:w-[46%] lg:w-[44%] max-w-[640px]">
         <source media="(min-width: 768px)" srcset="../aset/elemen_bagian_hero_section(desktop).webp">
         <img src="../aset/elemen_bagian_hero_section(mobile).webp" alt="Leaves decoration" class="block w-full h-auto object-contain object-left-bottom" />
       </picture>

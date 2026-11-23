@@ -54,7 +54,7 @@ if (audio instanceof HTMLAudioElement
     updatePlaybackState();
   });
 
-  document.querySelectorAll('a[href="#about"]').forEach((link) => {
+  document.querySelectorAll('a[href="#about"], #btn-open-invitation').forEach((link) => {
     link.addEventListener('click', () => {
       if (audio.paused) {
         void playAudio();

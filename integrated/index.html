@@ -41,7 +41,123 @@
   <link rel="stylesheet" href="../integrated/style.css" />
   <script src="../integrated/audio.js" defer></script>
 </head>
-<body class="bg-moss text-warmwhite antialiased overflow-x-hidden">
+<body class="bg-moss text-warmwhite antialiased overflow-x-hidden cover-locked">
+  <!-- ================================================================== -->
+  <!-- OPENING COVER (CINEMATIC GATE SEBELUM MASUK KE 6 SECTION UTAMA)    -->
+  <!-- ================================================================== -->
+  <div id="opening-cover" class="opening-cover" role="dialog" aria-modal="true" aria-label="Cover Undangan Pernikahan Fakhrel dan Olivia">
+    <!-- Layer 1: Cinematic Crossfade Media Stage (Slideshow Foto + Video) -->
+    <div class="opening-cover-stage" aria-hidden="true">
+      <!-- Slide 1 -->
+      <div class="opening-cover-slide is-active" data-cover-slide="0">
+        <picture>
+          <source id="cover-slide0-source" media="(min-width: 768px)" srcset="../asetV2/background_herosection(desktop).webp" />
+          <img id="cover-slide0-img" src="../asetV2/background_herosection.webp" alt="" class="opening-cover-media" />
+        </picture>
+      </div>
+      <!-- Slide 2 -->
+      <div class="opening-cover-slide" data-cover-slide="1">
+        <picture>
+          <source media="(min-width: 768px)" srcset="../aset/section5_fotopengantin.webp" />
+          <img src="../asetV2/section5_galerifoto(9).webp" alt="" class="opening-cover-media" />
+        </picture>
+      </div>
+      <!-- Slide 3 -->
+      <div class="opening-cover-slide" data-cover-slide="2">
+        <picture>
+          <source media="(min-width: 768px)" srcset="../asetV2/section5_galerifoto(8).webp" />
+          <img src="../asetV2/foto_hd_soft.webp" alt="" class="opening-cover-media" />
+        </picture>
+      </div>
+      <!-- Slide 4 -->
+      <div class="opening-cover-slide" data-cover-slide="3">
+        <picture>
+          <source media="(min-width: 768px)" srcset="../aset/section3_fotopengantin.webp" />
+          <img src="../asetV2/hd_3.webp" alt="" class="opening-cover-media" />
+        </picture>
+      </div>
+      <!-- Slide 5: Ambient Cinematic Video -->
+      <div class="opening-cover-slide" data-cover-slide="4">
+        <video id="opening-cover-video" class="opening-cover-media" src="../asetV2/vid_1.mp4" poster="../asetV2/cover_hd.webp" muted loop playsinline preload="metadata"></video>
+      </div>
+    </div>
+
+    <!-- Layer 2: Editorial Vignette, Sheer White Wedding Drapery, Double Hairline Frame & Visible Leaf/Floral Ornaments -->
+    <div class="opening-cover-overlay" aria-hidden="true">
+      <div class="opening-cover-drapes">
+        <img src="../aset/cover_drape_top.webp" alt="" class="opening-cover-drape-top" />
+        <img src="../aset/cover_drape_sheer.webp" alt="" class="opening-cover-drape opening-cover-drape-left" />
+        <img src="../aset/cover_drape_sheer.webp" alt="" class="opening-cover-drape opening-cover-drape-right" />
+        <img src="../aset/cover_floral_left.webp" alt="" class="opening-cover-floral opening-cover-floral-left" />
+        <img src="../aset/cover_floral_right.webp" alt="" class="opening-cover-floral opening-cover-floral-right" />
+      </div>
+      <div class="opening-cover-frame">
+        <img src="../aset/section3_bunga.webp" alt="" class="opening-cover-ornament opening-cover-ornament-bl" />
+        <img src="../aset/section5_bunga(2).webp" alt="" class="opening-cover-ornament opening-cover-ornament-tr" />
+      </div>
+    </div>
+
+    <!-- Layer 3: Editorial Content & Interactive CTA -->
+    <div class="opening-cover-content">
+      <!-- Top Bar: Brand Monogram & Location -->
+      <div class="opening-cover-topbar">
+        <span class="font-display text-xl sm:text-2xl uppercase tracking-[0.28em] text-warmwhite">REL|LIV</span>
+        <span class="opening-cover-topbar-line" aria-hidden="true"></span>
+        <span id="cover-city" class="text-[10px] sm:text-xs uppercase tracking-[0.28em] text-warmwhite/75">JAKARTA, INDONESIA</span>
+      </div>
+
+      <!-- Center Title Block -->
+      <div class="opening-cover-center">
+        <div class="flex items-center justify-center gap-3 sm:gap-4 mb-3">
+          <span class="h-px w-8 sm:w-12 bg-warmwhite/60"></span>
+          <p id="cover-tagline" class="text-[10px] sm:text-xs uppercase tracking-[0.34em] text-warmwhite/90">THE WEDDING OF</p>
+          <span class="h-px w-8 sm:w-12 bg-warmwhite/60"></span>
+        </div>
+
+        <h1 class="opening-cover-title font-display text-warmwhite font-light">
+          <span id="cover-groom-name">Fakhrel</span>
+          <span class="opening-cover-and font-script italic lowercase">and</span>
+          <span id="cover-bride-name">Olivia</span>
+        </h1>
+
+        <p id="cover-wedding-date" class="mt-3 sm:mt-4 text-xs sm:text-sm uppercase tracking-[0.32em] text-warmwhite/90">
+          25 OCTOBER 2026
+        </p>
+      </div>
+
+      <!-- Bottom Guest Personalization Card & Primary Button -->
+      <div class="opening-cover-bottom">
+        <div class="opening-cover-guest-card">
+          <p class="font-display text-sm sm:text-base italic text-warmwhite/85">Kepada Yth.</p>
+          <p class="text-[10px] uppercase tracking-[0.22em] text-warmwhite/60 mt-0.5">Bapak / Ibu / Saudara / i</p>
+          <p id="cover-nama-tamu" class="font-display text-2xl sm:text-3xl md:text-4xl text-warmwhite font-medium leading-tight mt-1.5 mb-2.5">
+            Tamu Undangan
+          </p>
+          <p id="cover-salam-text" class="text-xs sm:text-sm text-warmwhite/80 max-w-md mx-auto leading-relaxed mb-5">
+            Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir dalam hari bahagia kami.
+          </p>
+
+          <button type="button" id="btn-open-invitation" class="opening-cover-btn group">
+            <svg class="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <span>Buka Undangan</span>
+            <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+          </button>
+        </div>
+
+        <!-- Minimal Slide Progress Indicators -->
+        <div class="opening-cover-dots" role="tablist" aria-label="Slide Foto Cover">
+          <button type="button" class="opening-cover-dot is-active" data-cover-dot="0" aria-label="Slide 1"></button>
+          <button type="button" class="opening-cover-dot" data-cover-dot="1" aria-label="Slide 2"></button>
+          <button type="button" class="opening-cover-dot" data-cover-dot="2" aria-label="Slide 3"></button>
+          <button type="button" class="opening-cover-dot" data-cover-dot="3" aria-label="Slide 4"></button>
+          <button type="button" class="opening-cover-dot" data-cover-dot="4" aria-label="Slide 5 Video"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <main id="integrated-content">
     <aside class="audio-player" aria-label="Kontrol musik undangan">
       <audio id="wedding-audio" autoplay loop preload="auto">
@@ -73,8 +189,8 @@
       <header class="wedding-header absolute top-0 left-0 w-full z-30 px-6 py-6 md:px-16 md:py-8">
         <div class="flex items-center justify-between">
           <a href="#home" class="text-2xl font-display uppercase tracking-widest text-warmwhite" aria-label="Kembali ke halaman utama">REL|LIV</a>
-          <a href="#about" class="inline-flex items-center gap-2 border border-warmwhite/80 rounded-full px-5 py-2 text-sm text-warmwhite hover:bg-warmwhite hover:text-moss transition">
-            Buka Undangan <span aria-hidden="true">&#9993;</span>
+          <a href="#rsvp" class="inline-flex items-center gap-2 border border-warmwhite/80 rounded-full px-5 py-2 text-xs sm:text-sm text-warmwhite hover:bg-warmwhite hover:text-moss transition">
+            Konfirmasi RSVP <span aria-hidden="true">&#9993;</span>
           </a>
         </div>
 
@@ -146,7 +262,7 @@
       </header>
 
       <!-- Main content hero -->
-      <div class="relative z-10 flex h-full min-h-[100svh] flex-col justify-start pt-20 pb-40 md:pt-24 md:pb-52 lg:pb-56 px-6 md:px-16">
+      <div class="relative z-10 flex h-full min-h-[100svh] flex-col justify-start pt-20 pb-44 md:pt-24 md:pb-52 lg:pb-56 px-6 md:px-16">
         
         <div class="max-w-xl">
           <div class="flex items-center gap-4 mb-3">
@@ -160,31 +276,60 @@
             <span id="hero-bride-name">Olivia</span>
           </h1>
           
-          <p id="hero-wedding-date" class="mt-5 md:mt-6 text-sm uppercase tracking-[0.3em] text-warmwhite">
+          <p id="hero-wedding-date" class="mt-4 md:mt-5 text-sm uppercase tracking-[0.3em] text-warmwhite">
             25 OCTOBER 2026
           </p>
+
+          <!-- Editorial Countdown Timer -->
+          <div id="hero-countdown" class="mt-4 inline-flex items-center gap-3 sm:gap-4 px-4 py-2 rounded-2xl bg-moss/45 border border-warmwhite/20 backdrop-blur-sm" aria-label="Hitung mundur menuju hari pernikahan">
+            <div class="text-center min-w-[2.6rem]">
+              <span id="cd-days" class="block font-display text-xl sm:text-2xl md:text-3xl leading-none text-warmwhite font-semibold">00</span>
+              <span class="block text-[9px] uppercase tracking-[0.22em] text-warmwhite/70 mt-1">Hari</span>
+            </div>
+            <span class="h-6 w-px bg-warmwhite/20" aria-hidden="true"></span>
+            <div class="text-center min-w-[2.4rem]">
+              <span id="cd-hours" class="block font-display text-xl sm:text-2xl md:text-3xl leading-none text-warmwhite font-semibold">00</span>
+              <span class="block text-[9px] uppercase tracking-[0.22em] text-warmwhite/70 mt-1">Jam</span>
+            </div>
+            <span class="h-6 w-px bg-warmwhite/20" aria-hidden="true"></span>
+            <div class="text-center min-w-[2.4rem]">
+              <span id="cd-minutes" class="block font-display text-xl sm:text-2xl md:text-3xl leading-none text-warmwhite font-semibold">00</span>
+              <span class="block text-[9px] uppercase tracking-[0.22em] text-warmwhite/70 mt-1">Menit</span>
+            </div>
+            <span class="h-6 w-px bg-warmwhite/20" aria-hidden="true"></span>
+            <div class="text-center min-w-[2.4rem]">
+              <span id="cd-seconds" class="block font-display text-xl sm:text-2xl md:text-3xl leading-none text-warmwhite font-semibold">00</span>
+              <span class="block text-[9px] uppercase tracking-[0.22em] text-warmwhite/70 mt-1">Detik</span>
+            </div>
+          </div>
           
-          <div class="mt-7 md:mt-9">
-            <p class="text-base md:text-lg font-display text-warmwhite">Kepada Yth,</p>
-            <p id="nama-tamu" class="text-2xl md:text-3xl font-display text-warmwhite mb-3 leading-tight">Bapak/Ibu/Saudara/i</p>
-            <p id="hero-salam-text" class="text-xs sm:text-sm md:text-base text-warmwhite/80 max-w-sm mb-5 leading-relaxed">
+          <div class="mt-5 md:mt-6">
+            <p class="text-xs uppercase tracking-[0.22em] text-warmwhite/75 mb-1">Selamat Datang,</p>
+            <p id="nama-tamu" class="text-2xl md:text-3xl font-display text-warmwhite mb-2 leading-tight">Bapak/Ibu/Saudara/i</p>
+            <p id="hero-salam-text" class="text-xs sm:text-sm text-warmwhite/80 max-w-sm mb-4 leading-relaxed">
               Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir dalam hari bahagia kami.
             </p>
             
-            <a href="#about" class="inline-flex items-center gap-4 bg-warmwhite text-moss px-6 py-2.5 md:py-3 rounded-full text-sm md:text-base font-medium hover:bg-white transition">
-              Buka Undangan &rarr;
-            </a>
+            <div class="flex flex-wrap items-center gap-3">
+              <a href="#about" class="inline-flex items-center gap-3 bg-warmwhite text-moss px-6 py-2.5 md:py-3 rounded-full text-xs sm:text-sm md:text-base font-medium hover:bg-white transition shadow-md">
+                <span>Jelajahi Undangan</span>
+                <span aria-hidden="true">&darr;</span>
+              </a>
+              <a href="#event" class="inline-flex items-center gap-2 border border-warmwhite/60 bg-moss/35 backdrop-blur-sm text-warmwhite px-5 py-2.5 md:py-3 rounded-full text-xs sm:text-sm md:text-base font-medium hover:bg-warmwhite/15 transition">
+                <span>Lihat Acara</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Right bottom script text -->
-      <div class="absolute right-12 md:right-32 bottom-20 md:bottom-28 z-10 text-right rotate-[-10deg]">
+      <div class="absolute right-5 sm:right-10 md:right-32 bottom-24 sm:bottom-28 z-10 text-right rotate-[-10deg]">
         <p id="hero-script-text" class="font-script text-4xl md:text-5xl text-warmwhite">A new<br>chapter<br>together</p>
       </div>
 
       <!-- Bottom decorations — aligned to bottom-left below CTA button matching mockup/1.png -->
-      <picture class="absolute bottom-0 left-0 z-[5] pointer-events-none w-[78%] sm:w-[60%] md:w-[46%] lg:w-[44%] max-w-[640px]">
+      <picture class="absolute -bottom-px left-0 z-[5] pointer-events-none w-[84%] sm:w-[64%] md:w-[46%] lg:w-[44%] max-w-[640px]">
         <source media="(min-width: 768px)" srcset="../aset/elemen_bagian_hero_section(desktop).webp">
         <img src="../aset/elemen_bagian_hero_section(mobile).webp" alt="Leaves decoration" class="block w-full h-auto object-contain object-left-bottom" />
       </picture>
@@ -1188,11 +1333,13 @@
     const urlParams = new URLSearchParams(window.location.search);
     const tamuParam = urlParams.get('to') || urlParams.get('tamu');
     const namaTamuEl = document.getElementById('nama-tamu');
+    const coverNamaTamuEl = document.getElementById('cover-nama-tamu');
     const inputNamaEl = document.getElementById('input-nama-tamu');
 
     if (tamuParam) {
       const decodedName = decodeURIComponent(tamuParam).replace(/\+/g, ' ');
       if (namaTamuEl) namaTamuEl.textContent = decodedName;
+      if (coverNamaTamuEl) coverNamaTamuEl.textContent = decodedName;
       if (inputNamaEl) inputNamaEl.value = decodedName;
 
       // Coba verifikasi dengan database jika parameter berupa slug atau ID
@@ -1202,11 +1349,157 @@
           if (res.success && res.data && res.data.length > 0) {
             const matched = res.data[0];
             if (namaTamuEl) namaTamuEl.textContent = matched.nama;
+            if (coverNamaTamuEl) coverNamaTamuEl.textContent = matched.nama;
             if (inputNamaEl) inputNamaEl.value = matched.nama;
           }
         })
         .catch(() => {});
     }
+
+    // ============================================
+    // OPENING COVER: CINEMATIC CROSSFADE & GATE TRANSITION
+    // ============================================
+    (function initOpeningCover() {
+      const coverEl = document.getElementById('opening-cover');
+      const openBtn = document.getElementById('btn-open-invitation');
+      if (!coverEl || !openBtn) return;
+
+      const slides = Array.from(coverEl.querySelectorAll('.opening-cover-slide'));
+      const dots = Array.from(coverEl.querySelectorAll('.opening-cover-dot'));
+      const coverVideo = document.getElementById('opening-cover-video');
+      let activeSlideIdx = 0;
+      let slideTimer = null;
+      let isCoverOpened = false;
+
+      function goToCoverSlide(nextIdx) {
+        if (isCoverOpened || slides.length === 0) return;
+        activeSlideIdx = (nextIdx + slides.length) % slides.length;
+        slides.forEach((s, idx) => {
+          s.classList.toggle('is-active', idx === activeSlideIdx);
+        });
+        dots.forEach((d, idx) => {
+          d.classList.toggle('is-active', idx === activeSlideIdx);
+        });
+        if (coverVideo) {
+          const isVideoSlide = slides[activeSlideIdx] && slides[activeSlideIdx].contains(coverVideo);
+          if (isVideoSlide) {
+            coverVideo.currentTime = 0;
+            coverVideo.play().catch(() => {});
+          } else {
+            coverVideo.pause();
+          }
+        }
+      }
+
+      function startSlideTimer() {
+        stopSlideTimer();
+        slideTimer = window.setInterval(() => {
+          goToCoverSlide(activeSlideIdx + 1);
+        }, 4500);
+      }
+
+      function stopSlideTimer() {
+        if (slideTimer !== null) {
+          clearInterval(slideTimer);
+          slideTimer = null;
+        }
+      }
+
+      dots.forEach((dot, idx) => {
+        dot.addEventListener('click', () => {
+          goToCoverSlide(idx);
+          startSlideTimer();
+        });
+      });
+
+      function openInvitationGate() {
+        if (isCoverOpened) return;
+        isCoverOpened = true;
+        stopSlideTimer();
+
+        // Pastikan posisi halaman utama dimulai dari Section 1: Home (#home)
+        window.scrollTo({ top: 0, behavior: 'instant' });
+
+        document.body.classList.remove('cover-locked');
+        coverEl.classList.add('is-opened');
+        coverEl.setAttribute('aria-hidden', 'true');
+
+        window.setTimeout(() => {
+          if (coverVideo) coverVideo.pause();
+          coverEl.style.display = 'none';
+        }, 950);
+      }
+
+      openBtn.addEventListener('click', openInvitationGate);
+      startSlideTimer();
+    })();
+
+    // ============================================
+    // SECTION 1: LIVE COUNTDOWN MENUJU HARI PERNIKAHAN
+    // ============================================
+    let weddingTargetTimestamp = new Date('2026-10-25T08:00:00+07:00').getTime();
+
+    function updateWeddingCountdownTarget(dateStr) {
+      if (!dateStr) return;
+      const monthMap = {
+        januari: '01', january: '01', jan: '01',
+        februari: '02', february: '02', feb: '02',
+        maret: '03', march: '03', mar: '03',
+        april: '04', apr: '04',
+        mei: '05', may: '05',
+        juni: '06', june: '06', jun: '06',
+        juli: '07', july: '07', jul: '07',
+        agustus: '08', august: '08', aug: '08', agu: '08',
+        september: '09', sep: '09',
+        oktober: '10', october: '10', oct: '10', okt: '10',
+        november: '11', nov: '11',
+        desember: '12', december: '12', dec: '12', des: '12'
+      };
+      const m = String(dateStr).trim().match(/(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})/);
+      if (m) {
+        const day = m[1].padStart(2, '0');
+        const mon = monthMap[m[2].toLowerCase()];
+        const yr = m[3];
+        if (mon) {
+          const parsed = new Date(`${yr}-${mon}-${day}T08:00:00+07:00`).getTime();
+          if (!Number.isNaN(parsed)) weddingTargetTimestamp = parsed;
+        }
+      }
+    }
+
+    (function initHeroCountdown() {
+      const elDays = document.getElementById('cd-days');
+      const elHours = document.getElementById('cd-hours');
+      const elMinutes = document.getElementById('cd-minutes');
+      const elSeconds = document.getElementById('cd-seconds');
+      if (!elDays || !elHours || !elMinutes || !elSeconds) return;
+
+      function tick() {
+        const now = Date.now();
+        let target = weddingTargetTimestamp;
+        if (target <= now) {
+          const d = new Date(target);
+          while (d.getTime() <= now) {
+            d.setFullYear(d.getFullYear() + 1);
+          }
+          target = d.getTime();
+        }
+        const diff = Math.max(0, target - now);
+        const totalSec = Math.floor(diff / 1000);
+        const days = Math.floor(totalSec / 86400);
+        const hours = Math.floor((totalSec % 86400) / 3600);
+        const minutes = Math.floor((totalSec % 3600) / 60);
+        const seconds = totalSec % 60;
+
+        elDays.textContent = String(days).padStart(2, '0');
+        elHours.textContent = String(hours).padStart(2, '0');
+        elMinutes.textContent = String(minutes).padStart(2, '0');
+        elSeconds.textContent = String(seconds).padStart(2, '0');
+      }
+
+      tick();
+      window.setInterval(tick, 1000);
+    })();
 
     const weddingHeader = document.querySelector('.wedding-header');
     const weddingNav = document.querySelector('.wedding-floating-nav');
@@ -1451,11 +1744,33 @@
           if (tagline && s1.tagline !== undefined) tagline.innerText = s1.tagline;
           if (groomName && s1.groom_nickname) groomName.innerText = s1.groom_nickname;
           if (brideName && s1.bride_nickname) brideName.innerText = s1.bride_nickname;
-          if (weddingDate && s1.wedding_date !== undefined) weddingDate.innerText = s1.wedding_date;
+          if (weddingDate && s1.wedding_date !== undefined) {
+            weddingDate.innerText = s1.wedding_date;
+            if (typeof updateWeddingCountdownTarget === 'function') {
+              updateWeddingCountdownTarget(s1.wedding_date);
+            }
+          }
           if (salamText && s1.salam_text !== undefined) salamText.innerText = s1.salam_text;
           if (sideText && s1.side_text !== undefined) sideText.innerHTML = String(s1.side_text).replace(/\n/g, '<br>');
           if (scriptText && s1.script_text !== undefined) scriptText.innerHTML = String(s1.script_text).replace(/\n/g, '<br>');
           if (city && s1.city !== undefined) city.innerText = s1.city;
+
+          // Sinkronkan juga ke elemen Opening Cover
+          const coverSlide0Src = document.getElementById('cover-slide0-source');
+          const coverTagline = document.getElementById('cover-tagline');
+          const coverGroom = document.getElementById('cover-groom-name');
+          const coverBride = document.getElementById('cover-bride-name');
+          const coverDate = document.getElementById('cover-wedding-date');
+          const coverSalam = document.getElementById('cover-salam-text');
+          const coverCity = document.getElementById('cover-city');
+
+          if (coverSlide0Src && s1.bg_desktop) coverSlide0Src.srcset = normalizeAssetUrl(s1.bg_desktop, '../asetV2/background_herosection(desktop).webp');
+          if (coverTagline && s1.tagline !== undefined) coverTagline.innerText = s1.tagline;
+          if (coverGroom && s1.groom_nickname) coverGroom.innerText = s1.groom_nickname;
+          if (coverBride && s1.bride_nickname) coverBride.innerText = s1.bride_nickname;
+          if (coverDate && s1.wedding_date !== undefined) coverDate.innerText = s1.wedding_date;
+          if (coverSalam && s1.salam_text !== undefined) coverSalam.innerText = s1.salam_text;
+          if (coverCity && s1.city !== undefined) coverCity.innerText = s1.city;
 
           if (s1.groom_nickname && s1.bride_nickname) {
             document.title = `${s1.groom_nickname} & ${s1.bride_nickname} — Wedding Invitation`;
