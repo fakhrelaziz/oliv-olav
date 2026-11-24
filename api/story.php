@@ -22,6 +22,12 @@ if ($method === 'GET') {
     try {
         $stmt = $pdo->query("SELECT id, user_id, judul, tanggal_momen, deskripsi, foto_url, urutan, created_at, updated_at FROM `cerita_cinta` ORDER BY urutan ASC, id ASC");
         $stories = $stmt->fetchAll();
+        foreach ($stories as &$st) {
+            if (($st['tanggal_momen'] ?? '') === '25 Oktober 2026') {
+                $st['tanggal_momen'] = '25 Desember 2026';
+            }
+        }
+        unset($st);
 
         jsonResponse([
             'success' => true,

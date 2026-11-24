@@ -100,30 +100,50 @@
             Olivia
           </h1>
           
-          <p class="mt-4 md:mt-5 text-sm uppercase tracking-[0.3em] text-warmwhite">
-            25 OCTOBER 2026
-          </p>
+          <!-- Tanggal & Editorial Countdown Timer -->
+          <div class="mt-4 md:mt-5 max-w-md">
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <p class="text-xs sm:text-sm uppercase tracking-[0.32em] text-warmwhite font-medium">
+                25 DESEMBER 2026
+              </p>
+              <span class="text-warmwhite/40 text-xs" aria-hidden="true">&bull;</span>
+              <span class="font-script text-xl sm:text-2xl text-warmwhite/90 -rotate-1">Menuju hari bahagia</span>
+            </div>
 
-          <!-- Editorial Countdown Timer -->
-          <div id="hero-countdown" class="mt-4 inline-flex items-center gap-3 sm:gap-4 px-4 py-2 rounded-2xl bg-moss/45 border border-warmwhite/20 backdrop-blur-sm" aria-label="Hitung mundur menuju hari pernikahan">
-            <div class="text-center min-w-[2.6rem]">
-              <span id="cd-days" class="block font-display text-xl sm:text-2xl md:text-3xl leading-none text-warmwhite font-semibold">00</span>
-              <span class="block text-[9px] uppercase tracking-[0.22em] text-warmwhite/70 mt-1">Hari</span>
-            </div>
-            <span class="h-6 w-px bg-warmwhite/20" aria-hidden="true"></span>
-            <div class="text-center min-w-[2.4rem]">
-              <span id="cd-hours" class="block font-display text-xl sm:text-2xl md:text-3xl leading-none text-warmwhite font-semibold">00</span>
-              <span class="block text-[9px] uppercase tracking-[0.22em] text-warmwhite/70 mt-1">Jam</span>
-            </div>
-            <span class="h-6 w-px bg-warmwhite/20" aria-hidden="true"></span>
-            <div class="text-center min-w-[2.4rem]">
-              <span id="cd-minutes" class="block font-display text-xl sm:text-2xl md:text-3xl leading-none text-warmwhite font-semibold">00</span>
-              <span class="block text-[9px] uppercase tracking-[0.22em] text-warmwhite/70 mt-1">Menit</span>
-            </div>
-            <span class="h-6 w-px bg-warmwhite/20" aria-hidden="true"></span>
-            <div class="text-center min-w-[2.4rem]">
-              <span id="cd-seconds" class="block font-display text-xl sm:text-2xl md:text-3xl leading-none text-warmwhite font-semibold">00</span>
-              <span class="block text-[9px] uppercase tracking-[0.22em] text-warmwhite/70 mt-1">Detik</span>
+            <div id="hero-countdown" class="mt-2.5 py-2.5 border-y border-warmwhite/25 flex items-center justify-between sm:justify-start sm:gap-7 max-w-[22rem]" aria-label="Hitung mundur menuju hari pernikahan">
+              <div class="text-left">
+                <div class="flex items-baseline gap-1">
+                  <span id="cd-days" class="font-display text-2xl sm:text-3xl md:text-[2.15rem] leading-none text-warmwhite font-normal" style="font-variant-numeric: lining-nums tabular-nums;">00</span>
+                </div>
+                <span class="block font-display italic text-xs sm:text-sm text-warmwhite/75 tracking-wide mt-0.5">Hari</span>
+              </div>
+
+              <span class="text-warmwhite/35 text-[10px] select-none" aria-hidden="true">&#10022;</span>
+
+              <div class="text-left">
+                <div class="flex items-baseline gap-1">
+                  <span id="cd-hours" class="font-display text-2xl sm:text-3xl md:text-[2.15rem] leading-none text-warmwhite font-normal" style="font-variant-numeric: lining-nums tabular-nums;">00</span>
+                </div>
+                <span class="block font-display italic text-xs sm:text-sm text-warmwhite/75 tracking-wide mt-0.5">Jam</span>
+              </div>
+
+              <span class="text-warmwhite/35 text-[10px] select-none" aria-hidden="true">&#10022;</span>
+
+              <div class="text-left">
+                <div class="flex items-baseline gap-1">
+                  <span id="cd-minutes" class="font-display text-2xl sm:text-3xl md:text-[2.15rem] leading-none text-warmwhite font-normal" style="font-variant-numeric: lining-nums tabular-nums;">00</span>
+                </div>
+                <span class="block font-display italic text-xs sm:text-sm text-warmwhite/75 tracking-wide mt-0.5">Menit</span>
+              </div>
+
+              <span class="text-warmwhite/35 text-[10px] select-none" aria-hidden="true">&#10022;</span>
+
+              <div class="text-left">
+                <div class="flex items-baseline gap-1">
+                  <span id="cd-seconds" class="font-display text-2xl sm:text-3xl md:text-[2.15rem] leading-none text-warmwhite font-normal" style="font-variant-numeric: lining-nums tabular-nums;">00</span>
+                </div>
+                <span class="block font-display italic text-xs sm:text-sm text-warmwhite/75 tracking-wide mt-0.5">Detik</span>
+              </div>
             </div>
           </div>
           

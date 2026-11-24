@@ -340,7 +340,7 @@ function getDefaultSectionData($key = null) {
                 'couple_title' => 'Fakhrel and Olivia',
                 'groom_nickname' => 'Fakhrel',
                 'bride_nickname' => 'Olivia',
-                'wedding_date' => '25 OCTOBER 2026',
+                'wedding_date' => '25 DESEMBER 2026',
                 'salam_text' => 'Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir dalam hari bahagia kami.',
                 'side_text' => "SAME\nPEOPLE\nBRIGHTER\nDAYS",
                 'script_text' => "A new\nchapter\ntogether",
@@ -394,13 +394,13 @@ function getDefaultSectionData($key = null) {
                 'intro' => 'Dengan penuh rasa syukur, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam rangkaian acara pernikahan kami.',
                 'header_photo' => '../aset/section4_header_cincin.webp',
                 'akad_name' => 'Akad Nikah',
-                'akad_date' => 'Minggu, 25 Oktober 2026',
+                'akad_date' => 'Jumat, 25 Desember 2026',
                 'akad_time' => '08.00 - 10.00 WIB',
                 'akad_place' => 'The Glass House, Jakarta',
                 'akad_address' => 'Jl. Bunga Melati No. 12, Jakarta Selatan',
                 'akad_photo' => '../aset/section4_fotoakadnikah.webp',
                 'resepsi_name' => 'Resepsi Pernikahan',
-                'resepsi_date' => 'Minggu, 25 Oktober 2026',
+                'resepsi_date' => 'Jumat, 25 Desember 2026',
                 'resepsi_time' => '11.00 - 14.00 WIB',
                 'resepsi_place' => 'The Glass House, Jakarta',
                 'resepsi_address' => 'Jl. Bunga Melati No. 12, Jakarta Selatan',
@@ -453,7 +453,7 @@ function getDefaultSectionData($key = null) {
                 'closing_quote' => "Doa Anda adalah hadiah\nterindah bagi kami.",
                 'closing_subtext' => 'Terima kasih telah menjadi bagian dari hari istimewa kami.',
                 'footer_couple' => 'FAKHREL & OLIVIA',
-                'footer_date' => '25 OKTOBER 2026'
+                'footer_date' => '25 DESEMBER 2026'
             ]
         ]
     ];
@@ -487,12 +487,20 @@ if ($method === 'GET' && ($action === 'sections' || $action === 'get_all_section
                     $mergedSec['resepsi_photo'] = '../aset/section4_fotoresepsipernikahan.webp';
                 }
                 foreach ($mergedSec as $mk => $mv) {
-                    if (is_string($mv) && stripos($mv, 'asetV2/') !== false) {
-                        $mergedSec[$mk] = str_ireplace(
-                            ['asetV2/dekorasi_akad_hd.webp', 'asetV2/tata_meja_taman_hd.webp', 'asetV2/'],
-                            ['aset/section4_fotoakadnikah.webp', 'aset/section4_fotoresepsipernikahan.webp', 'aset/'],
+                    if (is_string($mv)) {
+                        if (stripos($mv, 'asetV2/') !== false) {
+                            $mv = str_ireplace(
+                                ['asetV2/dekorasi_akad_hd.webp', 'asetV2/tata_meja_taman_hd.webp', 'asetV2/'],
+                                ['aset/section4_fotoakadnikah.webp', 'aset/section4_fotoresepsipernikahan.webp', 'aset/'],
+                                $mv
+                            );
+                        }
+                        $mv = str_replace(
+                            ['Minggu, 25 Oktober 2026', 'Sabtu, 25 Oktober 2026', '25 OCTOBER 2026', '25 OKTOBER 2026', '25 Oktober 2026'],
+                            ['Jumat, 25 Desember 2026', 'Jumat, 25 Desember 2026', '25 DESEMBER 2026', '25 DESEMBER 2026', '25 Desember 2026'],
                             $mv
                         );
+                        $mergedSec[$mk] = $mv;
                     }
                 }
                 if ($k === 'section_6_rsvp') {
@@ -616,12 +624,20 @@ if ($method === 'GET' && ($action === 'get_section' || !empty($_GET['key']))) {
             $data['resepsi_photo'] = '../aset/section4_fotoresepsipernikahan.webp';
         }
         foreach ($data as $dk => $dv) {
-            if (is_string($dv) && stripos($dv, 'asetV2/') !== false) {
-                $data[$dk] = str_ireplace(
-                    ['asetV2/dekorasi_akad_hd.webp', 'asetV2/tata_meja_taman_hd.webp', 'asetV2/'],
-                    ['aset/section4_fotoakadnikah.webp', 'aset/section4_fotoresepsipernikahan.webp', 'aset/'],
+            if (is_string($dv)) {
+                if (stripos($dv, 'asetV2/') !== false) {
+                    $dv = str_ireplace(
+                        ['asetV2/dekorasi_akad_hd.webp', 'asetV2/tata_meja_taman_hd.webp', 'asetV2/'],
+                        ['aset/section4_fotoakadnikah.webp', 'aset/section4_fotoresepsipernikahan.webp', 'aset/'],
+                        $dv
+                    );
+                }
+                $dv = str_replace(
+                    ['Minggu, 25 Oktober 2026', 'Sabtu, 25 Oktober 2026', '25 OCTOBER 2026', '25 OKTOBER 2026', '25 Oktober 2026'],
+                    ['Jumat, 25 Desember 2026', 'Jumat, 25 Desember 2026', '25 DESEMBER 2026', '25 DESEMBER 2026', '25 Desember 2026'],
                     $dv
                 );
+                $data[$dk] = $dv;
             }
         }
         if ($key === 'section_6_rsvp') {
