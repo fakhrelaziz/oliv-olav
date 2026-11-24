@@ -249,16 +249,16 @@
             <div>
               <label class="block text-xs font-semibold text-ink mb-1">Foto / Dekorasi Lengkung Akad</label>
               <div class="flex items-center space-x-3.5 p-3 rounded-2xl bg-cardMuted border border-borderSoft">
-                <img id="preview_akad_photo" src="../asetV2/dekorasi_akad_hd.webp" alt="Dekorasi Akad" onclick="document.getElementById('file_akad_photo').click()" class="w-14 h-18 object-cover rounded-xl border border-borderSoft shadow-sm cursor-pointer hover:opacity-90 transition">
+                <img id="preview_akad_photo" src="../aset/section4_fotoakadnikah.webp" alt="Dekorasi Akad" onclick="document.getElementById('file_akad_photo').click()" class="w-14 h-18 object-cover rounded-xl border border-borderSoft shadow-sm cursor-pointer hover:opacity-90 transition">
                 <div class="flex-1">
-                  <input type="hidden" id="input_akad_photo" value="../asetV2/dekorasi_akad_hd.webp">
+                  <input type="hidden" id="input_akad_photo" value="../aset/section4_fotoakadnikah.webp">
                   <input type="file" id="file_akad_photo" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" onchange="uploadPhotoFile(this, 'input_akad_photo', 'preview_akad_photo', 'status_akad_photo', 'event_akad')">
                   <div class="flex flex-wrap items-center gap-2">
                     <button type="button" onclick="document.getElementById('file_akad_photo').click()" class="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-white hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition shadow-sm">
                       <i data-lucide="upload" class="w-3.5 h-3.5"></i>
                       <span>Upload Foto Akad</span>
                     </button>
-                    <button type="button" onclick="resetPhotoFieldToDefault('section_4_event', 'akad_photo', '../asetV2/dekorasi_akad_hd.webp', 'input_akad_photo', 'preview_akad_photo', 'status_akad_photo')" class="inline-flex items-center space-x-1 px-2.5 py-2 rounded-xl bg-white hover:bg-rose-50 border border-borderSoft text-[11px] font-medium text-inkMuted hover:text-rose-600 transition">
+                    <button type="button" onclick="resetPhotoFieldToDefault('section_4_event', 'akad_photo', '../aset/section4_fotoakadnikah.webp', 'input_akad_photo', 'preview_akad_photo', 'status_akad_photo')" class="inline-flex items-center space-x-1 px-2.5 py-2 rounded-xl bg-white hover:bg-rose-50 border border-borderSoft text-[11px] font-medium text-inkMuted hover:text-rose-600 transition">
                       <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
                       <span>Reset</span>
                     </button>
@@ -308,16 +308,16 @@
             <div>
               <label class="block text-xs font-semibold text-ink mb-1">Foto / Dekorasi Lengkung Resepsi</label>
               <div class="flex items-center space-x-3.5 p-3 rounded-2xl bg-cardMuted border border-borderSoft">
-                <img id="preview_resepsi_photo" src="../asetV2/tata_meja_taman_hd.webp" alt="Dekorasi Resepsi" onclick="document.getElementById('file_resepsi_photo').click()" class="w-14 h-18 object-cover rounded-xl border border-borderSoft shadow-sm cursor-pointer hover:opacity-90 transition">
+                <img id="preview_resepsi_photo" src="../aset/section4_fotoresepsipernikahan.webp" alt="Dekorasi Resepsi" onclick="document.getElementById('file_resepsi_photo').click()" class="w-14 h-18 object-cover rounded-xl border border-borderSoft shadow-sm cursor-pointer hover:opacity-90 transition">
                 <div class="flex-1">
-                  <input type="hidden" id="input_resepsi_photo" value="../asetV2/tata_meja_taman_hd.webp">
+                  <input type="hidden" id="input_resepsi_photo" value="../aset/section4_fotoresepsipernikahan.webp">
                   <input type="file" id="file_resepsi_photo" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" onchange="uploadPhotoFile(this, 'input_resepsi_photo', 'preview_resepsi_photo', 'status_resepsi_photo', 'event_resepsi')">
                   <div class="flex flex-wrap items-center gap-2">
                     <button type="button" onclick="document.getElementById('file_resepsi_photo').click()" class="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-white hover:bg-[#E5ECE0] border border-borderSoft text-xs font-semibold text-moss transition shadow-sm">
                       <i data-lucide="upload" class="w-3.5 h-3.5"></i>
                       <span>Upload Foto Resepsi</span>
                     </button>
-                    <button type="button" onclick="resetPhotoFieldToDefault('section_4_event', 'resepsi_photo', '../asetV2/tata_meja_taman_hd.webp', 'input_resepsi_photo', 'preview_resepsi_photo', 'status_resepsi_photo')" class="inline-flex items-center space-x-1 px-2.5 py-2 rounded-xl bg-white hover:bg-rose-50 border border-borderSoft text-[11px] font-medium text-inkMuted hover:text-rose-600 transition">
+                    <button type="button" onclick="resetPhotoFieldToDefault('section_4_event', 'resepsi_photo', '../aset/section4_fotoresepsipernikahan.webp', 'input_resepsi_photo', 'preview_resepsi_photo', 'status_resepsi_photo')" class="inline-flex items-center space-x-1 px-2.5 py-2 rounded-xl bg-white hover:bg-rose-50 border border-borderSoft text-[11px] font-medium text-inkMuted hover:text-rose-600 transition">
                       <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
                       <span>Reset</span>
                     </button>
@@ -458,8 +458,8 @@
     }
 
     attachImageFallback(document.getElementById('preview_header_photo'), '../aset/section4_header_cincin.webp');
-    attachImageFallback(document.getElementById('preview_akad_photo'), '../asetV2/dekorasi_akad_hd.webp');
-    attachImageFallback(document.getElementById('preview_resepsi_photo'), '../asetV2/tata_meja_taman_hd.webp');
+    attachImageFallback(document.getElementById('preview_akad_photo'), '../aset/section4_fotoakadnikah.webp');
+    attachImageFallback(document.getElementById('preview_resepsi_photo'), '../aset/section4_fotoresepsipernikahan.webp');
     attachImageFallback(document.getElementById('preview_venue_photo'), '../aset/section4_bagianbawah.webp');
 
     async function loadAcaraData() {
@@ -483,7 +483,7 @@
           document.getElementById('input_akad_address').value = d.akad_address || '';
           if (d.akad_photo) {
             document.getElementById('input_akad_photo').value = d.akad_photo;
-            document.getElementById('preview_akad_photo').src = normalizeAssetUrl(d.akad_photo, '../asetV2/dekorasi_akad_hd.webp');
+            document.getElementById('preview_akad_photo').src = normalizeAssetUrl(d.akad_photo, '../aset/section4_fotoakadnikah.webp');
           }
 
           document.getElementById('input_resepsi_name').value = d.resepsi_name || '';
@@ -493,7 +493,7 @@
           document.getElementById('input_resepsi_address').value = d.resepsi_address || '';
           if (d.resepsi_photo) {
             document.getElementById('input_resepsi_photo').value = d.resepsi_photo;
-            document.getElementById('preview_resepsi_photo').src = normalizeAssetUrl(d.resepsi_photo, '../asetV2/tata_meja_taman_hd.webp');
+            document.getElementById('preview_resepsi_photo').src = normalizeAssetUrl(d.resepsi_photo, '../aset/section4_fotoresepsipernikahan.webp');
           }
 
           document.getElementById('input_venue_headline').value = d.venue_headline || '';

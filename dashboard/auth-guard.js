@@ -87,8 +87,13 @@ async function handleLogout(e) {
  * Normalisasi path aset agar mendukung Data URI, Blob, HTTP(S), absolute path (/...), dan relative path (../...).
  */
 function normalizeAssetUrl(url, fallback = '') {
-  const raw = String(url || '').trim();
+  let raw = String(url || '').trim();
   if (!raw) return fallback;
+  raw = raw
+    .replace(/asetV2\/dekorasi_akad_hd\.webp/gi, 'aset/section4_fotoakadnikah.webp')
+    .replace(/asetV2\/tata_meja_taman_hd\.webp/gi, 'aset/section4_fotoresepsipernikahan.webp')
+    .replace(/asetV2\/background_herosection\(mobile\)\.webp/gi, 'aset/background_herosection.webp')
+    .replace(/asetV2\//gi, 'aset/');
   if (
     raw.startsWith('data:') ||
     raw.startsWith('blob:') ||

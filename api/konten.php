@@ -334,7 +334,7 @@ function getDefaultSectionData($key = null) {
             'section_number' => 1,
             'nama_section' => 'Section 1: Hero & Pembuka',
             'subpage' => 'section-hero.html',
-            'thumbnail' => '../asetV2/background_herosection(desktop).webp',
+            'thumbnail' => '../aset/background_herosection(desktop).webp',
             'data' => [
                 'tagline' => 'THE WEDDING OF',
                 'couple_title' => 'Fakhrel and Olivia',
@@ -345,8 +345,8 @@ function getDefaultSectionData($key = null) {
                 'side_text' => "SAME\nPEOPLE\nBRIGHTER\nDAYS",
                 'script_text' => "A new\nchapter\ntogether",
                 'city' => 'JAKARTA, INDONESIA',
-                'bg_desktop' => '../asetV2/background_herosection(desktop).webp',
-                'bg_mobile' => '../asetV2/background_herosection.webp'
+                'bg_desktop' => '../aset/background_herosection(desktop).webp',
+                'bg_mobile' => '../aset/background_herosection.webp'
             ]
         ],
         'section_2_about' => [
@@ -388,7 +388,7 @@ function getDefaultSectionData($key = null) {
             'section_number' => 4,
             'nama_section' => 'Section 4: Waktu & Lokasi Acara',
             'subpage' => 'acara.html',
-            'thumbnail' => '../asetV2/dekorasi_akad_hd.webp',
+            'thumbnail' => '../aset/section4_fotoakadnikah.webp',
             'data' => [
                 'headline' => "Waktu\nPernikahan",
                 'intro' => 'Dengan penuh rasa syukur, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam rangkaian acara pernikahan kami.',
@@ -398,13 +398,13 @@ function getDefaultSectionData($key = null) {
                 'akad_time' => '08.00 - 10.00 WIB',
                 'akad_place' => 'The Glass House, Jakarta',
                 'akad_address' => 'Jl. Bunga Melati No. 12, Jakarta Selatan',
-                'akad_photo' => '../asetV2/dekorasi_akad_hd.webp',
+                'akad_photo' => '../aset/section4_fotoakadnikah.webp',
                 'resepsi_name' => 'Resepsi Pernikahan',
                 'resepsi_date' => 'Minggu, 25 Oktober 2026',
                 'resepsi_time' => '11.00 - 14.00 WIB',
                 'resepsi_place' => 'The Glass House, Jakarta',
                 'resepsi_address' => 'Jl. Bunga Melati No. 12, Jakarta Selatan',
-                'resepsi_photo' => '../asetV2/tata_meja_taman_hd.webp',
+                'resepsi_photo' => '../aset/section4_fotoresepsipernikahan.webp',
                 'venue_headline' => 'Temui Kami Di Sini',
                 'venue_intro' => 'Kami sangat berharap kehadiran Bapak/Ibu/Saudara/i untuk menjadi bagian dari hari istimewa ini.',
                 'venue_name' => 'The Backyard Cafe',
@@ -484,7 +484,16 @@ if ($method === 'GET' && ($action === 'sections' || $action === 'get_all_section
             if (isset($dbData[$k]) && is_array($dbData[$k])) {
                 $mergedSec = array_merge($def['data'], $dbData[$k]);
                 if ($k === 'section_4_event' && ($mergedSec['resepsi_photo'] ?? '') === '../aset/section4_fotopengantin(2).webp') {
-                    $mergedSec['resepsi_photo'] = '../asetV2/tata_meja_taman_hd.webp';
+                    $mergedSec['resepsi_photo'] = '../aset/section4_fotoresepsipernikahan.webp';
+                }
+                foreach ($mergedSec as $mk => $mv) {
+                    if (is_string($mv) && stripos($mv, 'asetV2/') !== false) {
+                        $mergedSec[$mk] = str_ireplace(
+                            ['asetV2/dekorasi_akad_hd.webp', 'asetV2/tata_meja_taman_hd.webp', 'asetV2/'],
+                            ['aset/section4_fotoakadnikah.webp', 'aset/section4_fotoresepsipernikahan.webp', 'aset/'],
+                            $mv
+                        );
+                    }
                 }
                 if ($k === 'section_6_rsvp') {
                     if (in_array(trim($mergedSec['confirm_box_title'] ?? ''), ["Konfirmasi\nKehadiran", "Konfirmasi\r\nKehadiran", "Konfirmasi Kehadiran"], true)) {
@@ -604,7 +613,16 @@ if ($method === 'GET' && ($action === 'get_section' || !empty($_GET['key']))) {
             $updatedAt = $row['updated_at'];
         }
         if ($key === 'section_4_event' && ($data['resepsi_photo'] ?? '') === '../aset/section4_fotopengantin(2).webp') {
-            $data['resepsi_photo'] = '../asetV2/tata_meja_taman_hd.webp';
+            $data['resepsi_photo'] = '../aset/section4_fotoresepsipernikahan.webp';
+        }
+        foreach ($data as $dk => $dv) {
+            if (is_string($dv) && stripos($dv, 'asetV2/') !== false) {
+                $data[$dk] = str_ireplace(
+                    ['asetV2/dekorasi_akad_hd.webp', 'asetV2/tata_meja_taman_hd.webp', 'asetV2/'],
+                    ['aset/section4_fotoakadnikah.webp', 'aset/section4_fotoresepsipernikahan.webp', 'aset/'],
+                    $dv
+                );
+            }
         }
         if ($key === 'section_6_rsvp') {
             if (in_array(trim($data['confirm_box_title'] ?? ''), ["Konfirmasi\nKehadiran", "Konfirmasi\r\nKehadiran", "Konfirmasi Kehadiran"], true)) {
