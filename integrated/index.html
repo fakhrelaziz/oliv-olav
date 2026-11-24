@@ -163,13 +163,10 @@
       <audio id="wedding-audio" autoplay loop preload="auto">
         <source src="../aset/sound_undangan_terbuangdalamwaktu.mp3.mpeg" type="audio/mpeg" />
       </audio>
-      <button class="audio-toggle" id="audio-toggle" type="button" aria-label="Putar musik" aria-pressed="false" title="Putar musik">
-        <svg class="audio-icon" width="22" height="22" data-audio-play viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M9 6.5v11l8-5.5-8-5.5Z" fill="currentColor" />
-        </svg>
-        <svg class="audio-icon" width="22" height="22" data-audio-pause viewBox="0 0 24 24" aria-hidden="true" hidden>
-          <path d="M7.5 6.5h3.5v11H7.5zM13 6.5h3.5v11H13z" fill="currentColor" />
-        </svg>
+      <button class="audio-toggle" id="audio-toggle" type="button" aria-label="Putar musik" aria-pressed="false" title="Putar / Jeda Musik Latar">
+        <img src="../aset/vinyl_record_icon.webp" alt="" class="audio-vinyl-disc" />
+        <svg class="audio-icon audio-state-hidden" width="1" height="1" data-audio-play viewBox="0 0 24 24" aria-hidden="true"></svg>
+        <svg class="audio-icon audio-state-hidden" width="1" height="1" data-audio-pause viewBox="0 0 24 24" aria-hidden="true" hidden></svg>
       </button>
       <span class="audio-status" id="audio-status" aria-live="polite"></span>
     </aside>
@@ -922,78 +919,98 @@
         </div>
       </div>
 
-      <!-- Gallery Grid (matching mockup/5.png 10-Photo Bento Composition) -->
+      <!-- Gallery Grid (10-Photo Editorial Bento Composition + 4 Photobooth Strips) -->
       <div class="px-6 sm:px-10 md:px-16 lg:px-20 pt-10 md:pt-14 pb-16 max-w-7xl mx-auto relative z-10">
+
+        <!-- Category Filter Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-moss/15">
+          <div>
+            <p class="text-[10px] uppercase tracking-[0.28em] text-moss/65 font-semibold mb-1">KURASI VISUAL</p>
+            <h3 class="font-display text-2xl sm:text-3xl text-moss">Koleksi Foto &amp; Momen</h3>
+          </div>
+          <div id="gallery-filter-bar" class="flex flex-wrap items-center gap-2">
+            <button type="button" onclick="filterPublicGallery('all', this)" class="gallery-filter-pill px-4 py-2 rounded-full text-xs font-medium bg-moss text-warmwhite shadow-sm transition">
+              Semua Momen
+            </button>
+            <button type="button" onclick="filterPublicGallery('prewedding', this)" class="gallery-filter-pill px-4 py-2 rounded-full text-xs font-medium bg-warmwhite/80 text-moss hover:bg-moss/10 border border-moss/20 transition">
+              Prewedding Outdoor
+            </button>
+            <button type="button" onclick="filterPublicGallery('keseharian', this)" class="gallery-filter-pill px-4 py-2 rounded-full text-xs font-medium bg-warmwhite/80 text-moss hover:bg-moss/10 border border-moss/20 transition">
+              Keseharian &amp; Candid
+            </button>
+            <button type="button" onclick="filterPublicGallery('acara', this)" class="gallery-filter-pill px-4 py-2 rounded-full text-xs font-medium bg-warmwhite/80 text-moss hover:bg-moss/10 border border-moss/20 transition">
+              Detail &amp; Cincin
+            </button>
+            <button type="button" onclick="filterPublicGallery('photobooth', this)" class="gallery-filter-pill px-4 py-2 rounded-full text-xs font-medium bg-warmwhite/80 text-moss hover:bg-moss/10 border border-moss/20 transition">
+              Photobooth Strip
+            </button>
+          </div>
+        </div>
         
-        <!-- 10-Photo Editorial Bento Grid matching mockup/5.png -->
+        <!-- 10-Photo Editorial Bento Grid -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-3.5 md:gap-4 items-stretch" id="gallery-bento-grid">
           
-          <!-- Left Column (4 cols): Tall walking photo + Bottom-left "A chapter of us" card photo -->
+          <!-- Left Column (4 cols): Tall walking photo + Bottom-left Engagement Rings HD card -->
           <div class="md:col-span-4 flex flex-col gap-3.5 md:gap-4">
-            <!-- 1. Tall Walking Photo -->
-            <div class="gallery-item cursor-pointer overflow-hidden shadow-md group flex-1 min-h-[300px] md:min-h-[360px] relative rounded-lg transition-all duration-300"
+            <!-- 1. Tall Walking Photo under Trees -->
+            <div class="gallery-item cursor-pointer overflow-hidden shadow-md group flex-1 min-h-[300px] md:min-h-[360px] relative rounded-xl transition-all duration-300"
                  data-category="prewedding"
                  data-lightbox-src="../aset/section5_galerifoto(5).webp"
-                 data-caption="Fakhrel &amp; Olivia — Berjalan Bersama di Bawah Pepohonan">
-              <img src="../aset/section5_galerifoto(5).webp" alt="Fakhrel &amp; Olivia berjalan bersama" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" />
-              <div class="absolute inset-0 bg-moss/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span class="w-10 h-10 rounded-full bg-warmwhite/90 text-moss flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition duration-300">
-                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
-                </span>
+                 data-caption="Melangkah Bersama di Bawah Rindang Pepohonan">
+              <img src="../aset/section5_galerifoto(5).webp" alt="Melangkah Bersama di Bawah Rindang Pepohonan" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                <span class="text-[10px] uppercase tracking-[0.2em] text-warmwhite/80">Prewedding</span>
+                <p class="font-serif text-xs sm:text-sm text-warmwhite font-medium">Melangkah Bersama di Bawah Rindang Pepohonan</p>
               </div>
             </div>
-            <!-- 2. "A chapter of us" Flatlay Card -->
-            <div class="gallery-item cursor-pointer overflow-hidden shadow-md group h-48 sm:h-52 md:h-56 relative rounded-lg transition-all duration-300"
-                 data-category="acara prewedding"
-                 data-lightbox-src="../aset/section5_galerifoto(3).webp"
-                 data-caption="A Chapter of Us — Cincin &amp; Buket Bunga">
-              <img src="../aset/section5_galerifoto(3).webp" alt="A chapter of us" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" />
-              <div class="absolute inset-0 bg-moss/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span class="w-10 h-10 rounded-full bg-warmwhite/90 text-moss flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition duration-300">
-                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
-                </span>
+            <!-- 2. Engagement Rings HD on White Roses -->
+            <div class="gallery-item cursor-pointer overflow-hidden shadow-md group h-48 sm:h-52 md:h-56 relative rounded-xl transition-all duration-300"
+                 data-category="acara"
+                 data-lightbox-src="../asetV2/cincin_tunangan_hd.webp"
+                 data-caption="Simbol Ikatan Suci &amp; Janji Setia">
+              <img src="../asetV2/cincin_tunangan_hd.webp" alt="Simbol Ikatan Suci &amp; Janji Setia" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                <span class="text-[10px] uppercase tracking-[0.2em] text-warmwhite/80">Detail &amp; Cincin</span>
+                <p class="font-serif text-xs sm:text-sm text-warmwhite font-medium">Simbol Ikatan Suci &amp; Janji Setia</p>
               </div>
             </div>
           </div>
 
           <!-- Center & Right Area (8 cols) -->
           <div class="md:col-span-8 flex flex-col gap-3.5 md:gap-4">
-            <!-- Top Row of 3 Photos (Bouquet, Looking at Sky, Lakefront Arch) -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 md:gap-4 h-auto sm:h-44 md:h-48">
-              <!-- 3. Flower Bouquet -->
-              <div class="gallery-item cursor-pointer overflow-hidden shadow-md group h-48 sm:h-full relative rounded-lg transition-all duration-300"
-                   data-category="acara"
-                   data-lightbox-src="../aset/section5_galerifoto.webp"
-                   data-caption="Buket Mawar Putih Hari Bahagia">
-                <img src="../aset/section5_galerifoto.webp" alt="Buket Bunga" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" />
-                <div class="absolute inset-0 bg-moss/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span class="w-9 h-9 rounded-full bg-warmwhite/90 text-moss flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition duration-300">
-                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
-                  </span>
+            <!-- Top Row of 3 HD Outdoor Photos -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 md:gap-4 h-auto sm:h-48 md:h-52">
+              <!-- 3. Holding Hands under Canopy (foto_hd_soft.webp) -->
+              <div class="gallery-item cursor-pointer overflow-hidden shadow-md group h-52 sm:h-full relative rounded-xl transition-all duration-300"
+                   data-category="prewedding"
+                   data-lightbox-src="../asetV2/foto_hd_soft.webp"
+                   data-caption="Genggaman Hangat Menuju Hari Bahagia">
+                <img src="../asetV2/foto_hd_soft.webp" alt="Genggaman Hangat Menuju Hari Bahagia" class="w-full h-full object-cover object-center transition duration-500 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3.5">
+                  <span class="text-[9px] uppercase tracking-[0.2em] text-warmwhite/80">Prewedding</span>
+                  <p class="font-serif text-xs text-warmwhite font-medium">Genggaman Hangat Menuju Hari Bahagia</p>
                 </div>
               </div>
-              <!-- 4. Looking up at Sky -->
-              <div class="gallery-item cursor-pointer overflow-hidden shadow-md group h-48 sm:h-full relative rounded-lg transition-all duration-300"
-                   data-category="prewedding keseharian"
-                   data-lightbox-src="../aset/section5_galerifoto(9).webp"
+              <!-- 4. Looking up at Blue Sky (asetV2/section5_galerifoto(9).webp) -->
+              <div class="gallery-item cursor-pointer overflow-hidden shadow-md group h-52 sm:h-full relative rounded-xl transition-all duration-300"
+                   data-category="prewedding"
+                   data-lightbox-src="../asetV2/section5_galerifoto(9).webp"
                    data-caption="Menatap Langit &amp; Merajut Masa Depan">
-                <img src="../aset/section5_galerifoto(9).webp" alt="Menatap Langit" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105" />
-                <div class="absolute inset-0 bg-moss/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span class="w-9 h-9 rounded-full bg-warmwhite/90 text-moss flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition duration-300">
-                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
-                  </span>
+                <img src="../asetV2/section5_galerifoto(9).webp" alt="Menatap Langit" class="w-full h-full object-cover object-[center_35%] transition duration-500 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3.5">
+                  <span class="text-[9px] uppercase tracking-[0.2em] text-warmwhite/80">Prewedding</span>
+                  <p class="font-serif text-xs text-warmwhite font-medium">Menatap Langit &amp; Merajut Masa Depan</p>
                 </div>
               </div>
-              <!-- 5. Stone Arch Lake -->
-              <div class="gallery-item cursor-pointer overflow-hidden shadow-md group h-48 sm:h-full relative rounded-lg transition-all duration-300"
-                   data-category="acara prewedding"
-                   data-lightbox-src="../aset/section5_galerifoto(2).webp"
-                   data-caption="Dekorasi Lengkung Romantis Tepi Danau">
-                <img src="../aset/section5_galerifoto(2).webp" alt="Dekorasi Danau" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" />
-                <div class="absolute inset-0 bg-moss/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span class="w-9 h-9 rounded-full bg-warmwhite/90 text-moss flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition duration-300">
-                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
-                  </span>
+              <!-- 5. Back-to-back Holding Hands (asetV2/langit_gandengan_hd.webp) -->
+              <div class="gallery-item cursor-pointer overflow-hidden shadow-md group h-52 sm:h-full relative rounded-xl transition-all duration-300"
+                   data-category="prewedding"
+                   data-lightbox-src="../asetV2/langit_gandengan_hd.webp"
+                   data-caption="Saling Menjaga dalam Setiap Langkah">
+                <img src="../asetV2/langit_gandengan_hd.webp" alt="Saling Menjaga dalam Setiap Langkah" class="w-full h-full object-cover object-[center_45%] transition duration-500 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3.5">
+                  <span class="text-[9px] uppercase tracking-[0.2em] text-warmwhite/80">Prewedding</span>
+                  <p class="font-serif text-xs text-warmwhite font-medium">Saling Menjaga dalam Setiap Langkah</p>
                 </div>
               </div>
             </div>
@@ -1002,59 +1019,55 @@
             <div class="grid grid-cols-1 sm:grid-cols-12 gap-3.5 md:gap-4 flex-1">
               <!-- Center 2 rows (8 cols) -->
               <div class="sm:col-span-8 flex flex-col gap-3.5 md:gap-4">
-                <!-- Middle Row: Couple from Behind + Hands with Ring -->
-                <div class="grid grid-cols-2 gap-3.5 md:gap-4 h-40 sm:h-44">
-                  <!-- 6. Couple Leaning Head -->
-                  <div class="gallery-item cursor-pointer overflow-hidden shadow-md group h-full relative rounded-lg transition-all duration-300"
-                       data-category="prewedding keseharian"
-                       data-lightbox-src="../aset/section5_galerifoto(6).webp"
-                       data-caption="Bersandar Nyaman Sepanjang Waktu">
-                    <img src="../aset/section5_galerifoto(6).webp" alt="Bersandar" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" />
-                    <div class="absolute inset-0 bg-moss/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <span class="w-9 h-9 rounded-full bg-warmwhite/90 text-moss flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition duration-300">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
-                      </span>
+                <!-- Middle Row: Couple from Behind HD (cover_hd.webp) + A Chapter of Us Card -->
+                <div class="grid grid-cols-2 gap-3.5 md:gap-4 h-44 sm:h-48">
+                  <!-- 6. Couple Leaning Head HD (asetV2/cover_hd.webp) -->
+                  <div class="gallery-item cursor-pointer overflow-hidden shadow-md group h-full relative rounded-xl transition-all duration-300"
+                       data-category="keseharian"
+                       data-lightbox-src="../asetV2/cover_hd.webp"
+                       data-caption="Bersandar Tenang Menatap Hari Esok">
+                    <img src="../asetV2/cover_hd.webp" alt="Bersandar Tenang Menatap Hari Esok" class="w-full h-full object-cover object-bottom transition duration-500 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3.5">
+                      <span class="text-[9px] uppercase tracking-[0.2em] text-warmwhite/80">Keseharian</span>
+                      <p class="font-serif text-xs text-warmwhite font-medium">Bersandar Tenang Menatap Hari Esok</p>
                     </div>
                   </div>
-                  <!-- 7. Hands with Ring -->
-                  <div class="gallery-item cursor-pointer overflow-hidden shadow-md group h-full relative rounded-lg transition-all duration-300"
-                       data-category="acara prewedding"
-                       data-lightbox-src="../aset/section5_galerifoto_tangan.webp"
-                       data-caption="Genggaman Tangan &amp; Cincin Janji Suci">
-                    <img src="../aset/section5_galerifoto_tangan.webp" alt="Cincin di Tangan" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" />
-                    <div class="absolute inset-0 bg-moss/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <span class="w-9 h-9 rounded-full bg-warmwhite/90 text-moss flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition duration-300">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
-                      </span>
+                  <!-- 7. Closeup Holding Hands HD (aset/section2_fotopengantin.webp) -->
+                  <div class="gallery-item cursor-pointer overflow-hidden shadow-md group h-full relative rounded-xl transition-all duration-300"
+                       data-category="acara"
+                       data-lightbox-src="../aset/section2_fotopengantin.webp"
+                       data-caption="Genggaman Tangan yang Tak Pernah Lepas">
+                    <img src="../aset/section2_fotopengantin.webp" alt="Genggaman Tangan yang Tak Pernah Lepas" class="w-full h-full object-cover object-center transition duration-500 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3.5">
+                      <span class="text-[9px] uppercase tracking-[0.2em] text-warmwhite/80">Detail &amp; Cincin</span>
+                      <p class="font-serif text-xs text-warmwhite font-medium">Genggaman Tangan yang Tak Pernah Lepas</p>
                     </div>
                   </div>
                 </div>
-                <!-- Bottom Row: Couple Sitting on Grass + White Flowers -->
+                <!-- Bottom Row: Couple Laughing on Grass HD (hd_3.webp) + A Chapter of Us Card -->
                 <div class="flex gap-3.5 md:gap-4 h-48 sm:h-52 md:h-56 w-full">
-                  <!-- 8. Couple Sitting on Grass (58% width) -->
-                  <div class="gallery-item cursor-pointer overflow-hidden shadow-md group h-full relative rounded-lg transition-all duration-300 min-w-0"
+                  <!-- 8. Couple Laughing on Grass under Blue Sky (58% width) -->
+                  <div class="gallery-item cursor-pointer overflow-hidden shadow-md group h-full relative rounded-xl transition-all duration-300 min-w-0"
                        style="flex: 7 1 58%; width: 58%;"
-                       data-category="prewedding keseharian"
-                       data-lightbox-src="../aset/section5_galerifoto(8).webp"
-                       data-caption="Bercengkerama Hangat di Padang Rumput">
-                    <img src="../aset/section5_galerifoto(8).webp" alt="Duduk Bersama" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" />
-                    <div class="absolute inset-0 bg-moss/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <span class="w-9 h-9 rounded-full bg-warmwhite/90 text-moss flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition duration-300">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
-                      </span>
+                       data-category="keseharian"
+                       data-lightbox-src="../asetV2/hd_3.webp"
+                       data-caption="Tawa Hangat di Hamparan Padang Rumput">
+                    <img src="../asetV2/hd_3.webp" alt="Tawa Hangat di Hamparan Padang Rumput" class="w-full h-full object-cover object-bottom transition duration-500 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3.5">
+                      <span class="text-[9px] uppercase tracking-[0.2em] text-warmwhite/80">Keseharian</span>
+                      <p class="font-serif text-xs text-warmwhite font-medium">Tawa Hangat di Hamparan Padang Rumput</p>
                     </div>
                   </div>
-                  <!-- 9. White Flowers Macro (42% width) -->
-                  <div class="gallery-item cursor-pointer overflow-hidden shadow-md group h-full relative rounded-lg transition-all duration-300 min-w-0"
+                  <!-- 9. A Chapter of Us Flatlay Card (42% width) -->
+                  <div class="gallery-item cursor-pointer overflow-hidden shadow-md group h-full relative rounded-xl transition-all duration-300 min-w-0"
                        style="flex: 5 1 42%; width: 42%;"
                        data-category="acara"
-                       data-lightbox-src="../aset/section5_galerifoto(4).webp"
-                       data-caption="Bunga Putih Mekar Pertanda Kasih">
-                    <img src="../aset/section5_galerifoto(4).webp" alt="Bunga Putih" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" />
-                    <div class="absolute inset-0 bg-moss/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <span class="w-9 h-9 rounded-full bg-warmwhite/90 text-moss flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition duration-300">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
-                      </span>
+                       data-lightbox-src="../aset/section5_galerifoto(3).webp"
+                       data-caption="A Chapter of Us — Lembaran Kisah Kami">
+                    <img src="../aset/section5_galerifoto(3).webp" alt="A Chapter of Us — Lembaran Kisah Kami" class="w-full h-full object-cover object-center transition duration-500 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3.5">
+                      <span class="text-[9px] uppercase tracking-[0.2em] text-warmwhite/80">Detail &amp; Cincin</span>
+                      <p class="font-serif text-xs text-warmwhite font-medium">A Chapter of Us — Lembaran Kisah Kami</p>
                     </div>
                   </div>
                 </div>
@@ -1062,16 +1075,15 @@
 
               <!-- Right Tall Portrait (4 cols) -->
               <div class="sm:col-span-4 relative overflow-visible">
-                <!-- 10. Tall Portrait Photo -->
-                <div class="gallery-item cursor-pointer w-full h-72 sm:h-full overflow-hidden shadow-md group relative rounded-lg transition-all duration-300"
+                <!-- 10. Tall Standing Portrait (aset/section5_galerifoto(7)webp.webp) -->
+                <div class="gallery-item cursor-pointer w-full h-80 sm:h-full overflow-hidden shadow-md group relative rounded-xl transition-all duration-300"
                      data-category="prewedding"
                      data-lightbox-src="../aset/section5_galerifoto(7)webp.webp"
-                     data-caption="Fakhrel &amp; Olivia — Potret Kasih Abadi">
-                  <img src="../aset/section5_galerifoto(7)webp.webp" alt="Fakhrel &amp; Olivia" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" />
-                  <div class="absolute inset-0 bg-moss/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span class="w-10 h-10 rounded-full bg-warmwhite/90 text-moss flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition duration-300">
-                      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
-                    </span>
+                     data-caption="Potret Kasih di Bawah Langit Teduh">
+                  <img src="../aset/section5_galerifoto(7)webp.webp" alt="Potret Kasih di Bawah Langit Teduh" class="w-full h-full object-cover object-center transition duration-500 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-warmwhite/80">Prewedding</span>
+                    <p class="font-serif text-xs sm:text-sm text-warmwhite font-medium">Potret Kasih di Bawah Langit Teduh</p>
                   </div>
                 </div>
                 <!-- Botanical leaf overlapping bottom-right of tall photo as in mockup/5.png -->
@@ -1080,6 +1092,66 @@
             </div>
           </div>
 
+        </div>
+
+        <!-- Dedicated Showcase: Our Photobooth Strips (4 Picapica Strips in Full Uncropped Vertical Ratio) -->
+        <div id="gallery-photobooth-section" class="mt-16 pt-12 border-t border-moss/15">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3">
+            <div>
+              <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.26em] text-moss/75 bg-moss/10 px-3 py-1 rounded-full mb-2.5">
+                <svg class="w-3.5 h-3.5 text-moss" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                  <rect x="4" y="3" width="16" height="18" rx="2" />
+                  <line x1="8" y1="7" x2="16" y2="7" />
+                  <line x1="8" y1="12" x2="16" y2="12" />
+                  <line x1="8" y1="17" x2="16" y2="17" />
+                </svg>
+                <span>Picapica Memories · 23.09.2026</span>
+              </span>
+              <h3 class="font-display text-2xl sm:text-3xl md:text-4xl text-moss">Our Photobooth Strips</h3>
+            </div>
+          </div>
+
+          <div id="gallery-photobooth-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-5 sm:gap-6 md:gap-8 items-start">
+            <!-- Strip 1 -->
+            <div class="gallery-item cursor-pointer group flex flex-col items-center"
+                 data-category="photobooth keseharian"
+                 data-lightbox-src="../asetV2/photobooth_strip_1.webp"
+                 data-caption="Picapica Photobooth — Sweet Smiles (02:59 PM)">
+              <div class="w-full max-w-[200px] bg-white p-2 sm:p-2.5 rounded-xl shadow-lg border border-moss/15 transform -rotate-1 group-hover:rotate-0 group-hover:-translate-y-1.5 transition-all duration-300">
+                <img src="../asetV2/photobooth_strip_1.webp" alt="Picapica Photobooth Strip 1" class="w-full h-auto object-contain rounded-lg block" />
+              </div>
+            </div>
+
+            <!-- Strip 2 -->
+            <div class="gallery-item cursor-pointer group flex flex-col items-center"
+                 data-category="photobooth keseharian"
+                 data-lightbox-src="../asetV2/photobooth_strip_2.webp"
+                 data-caption="Picapica Photobooth — Peace &amp; Dimples (03:02 PM)">
+              <div class="w-full max-w-[200px] bg-white p-2 sm:p-2.5 rounded-xl shadow-lg border border-moss/15 transform rotate-1 group-hover:rotate-0 group-hover:-translate-y-1.5 transition-all duration-300">
+                <img src="../asetV2/photobooth_strip_2.webp" alt="Picapica Photobooth Strip 2" class="w-full h-auto object-contain rounded-lg block" />
+              </div>
+            </div>
+
+            <!-- Strip 3 (Noir Black Frame) -->
+            <div class="gallery-item cursor-pointer group flex flex-col items-center"
+                 data-category="photobooth keseharian"
+                 data-lightbox-src="../asetV2/photobooth_strip_3.webp"
+                 data-caption="Picapica Photobooth — Classic Noir Frame">
+              <div class="w-full max-w-[200px] bg-[#1a1d17] p-2 sm:p-2.5 rounded-xl shadow-lg border border-moss/25 transform -rotate-1 group-hover:rotate-0 group-hover:-translate-y-1.5 transition-all duration-300">
+                <img src="../asetV2/photobooth_strip_3.webp" alt="Picapica Photobooth Strip 3" class="w-full h-auto object-contain rounded-lg block" />
+              </div>
+            </div>
+
+            <!-- Strip 4 -->
+            <div class="gallery-item cursor-pointer group flex flex-col items-center"
+                 data-category="photobooth keseharian"
+                 data-lightbox-src="../asetV2/photobooth_strip_4.webp"
+                 data-caption="Picapica Photobooth — Playful &amp; Waving (03:06 PM)">
+              <div class="w-full max-w-[200px] bg-white p-2 sm:p-2.5 rounded-xl shadow-lg border border-moss/15 transform rotate-1 group-hover:rotate-0 group-hover:-translate-y-1.5 transition-all duration-300">
+                <img src="../asetV2/photobooth_strip_4.webp" alt="Picapica Photobooth Strip 4" class="w-full h-auto object-contain rounded-lg block" />
+              </div>
+            </div>
+          </div>
         </div>
         
         <!-- Quote below Gallery Grid -->
@@ -1686,15 +1758,58 @@
       updateLightboxContent();
     }
 
-    const galleryGridContainer = document.getElementById('gallery-bento-grid');
-    if (galleryGridContainer) {
-      galleryGridContainer.addEventListener('click', (e) => {
+    const gallerySectionContainer = document.getElementById('gallery');
+    if (gallerySectionContainer) {
+      gallerySectionContainer.addEventListener('click', (e) => {
         const clickedItem = e.target.closest('.gallery-item');
         if (!clickedItem) return;
         refreshGalleryLightboxItems();
         const idx = galleryItems.indexOf(clickedItem);
         if (idx !== -1) openLightbox(idx);
       });
+    }
+
+    function filterPublicGallery(category, btnEl) {
+      document.querySelectorAll('.gallery-filter-pill').forEach(btn => {
+        btn.className = 'gallery-filter-pill px-4 py-2 rounded-full text-xs font-medium bg-warmwhite/80 text-moss hover:bg-moss/10 border border-moss/20 transition';
+      });
+      if (btnEl) {
+        btnEl.className = 'gallery-filter-pill px-4 py-2 rounded-full text-xs font-medium bg-moss text-warmwhite shadow-sm transition';
+      }
+
+      const bentoGrid = document.getElementById('gallery-bento-grid');
+      const photoboothSection = document.getElementById('gallery-photobooth-section');
+
+      if (category === 'photobooth') {
+        if (bentoGrid) bentoGrid.classList.add('hidden');
+        if (photoboothSection) {
+          photoboothSection.classList.remove('hidden', 'mt-16', 'pt-12', 'border-t');
+          photoboothSection.classList.add('mt-2');
+        }
+        return;
+      }
+
+      if (bentoGrid) bentoGrid.classList.remove('hidden');
+      if (photoboothSection) {
+        photoboothSection.classList.remove('mt-2');
+        photoboothSection.classList.add('mt-16', 'pt-12', 'border-t');
+        if (category === 'all' || category === 'keseharian') {
+          photoboothSection.classList.remove('hidden');
+        } else {
+          photoboothSection.classList.add('hidden');
+        }
+      }
+
+      if (bentoGrid) {
+        bentoGrid.querySelectorAll('.gallery-item').forEach(item => {
+          const itemCat = (item.getAttribute('data-category') || '').toLowerCase();
+          if (category === 'all' || itemCat.includes(category)) {
+            item.classList.remove('opacity-20', 'scale-[0.97]', 'pointer-events-none');
+          } else {
+            item.classList.add('opacity-20', 'scale-[0.97]', 'pointer-events-none');
+          }
+        });
+      }
     }
 
     if (lightboxCloseBtn) lightboxCloseBtn.addEventListener('click', closeLightbox);
@@ -2170,22 +2285,41 @@
     }
     syncStoryFromAPI();
 
-    // Sync gallery bento grid from database
-    function createGalleryCardHtml(photo, wrapperClasses = 'h-48 sm:h-full', extraStyle = '') {
+    // Sync gallery bento grid & photobooth strips from database
+    function createGalleryCardHtml(photo, wrapperClasses = 'h-48 sm:h-full', extraStyle = '', imgObjPos = 'object-center') {
       const caption = photo.keterangan || photo.judul || 'Momen Bahagia';
       const alt = photo.judul || 'Galeri Pernikahan';
       const src = normalizeAssetUrl(photo.foto_url, '../aset/default-image.jpg');
+      const catLabel = (photo.kategori === 'acara') ? 'Detail & Cincin' : ((photo.kategori === 'keseharian') ? 'Keseharian' : 'Prewedding');
       return `
-        <div class="gallery-item cursor-pointer overflow-hidden shadow-md group relative rounded-lg transition-all duration-300 ${wrapperClasses}"
+        <div class="gallery-item cursor-pointer overflow-hidden shadow-md group relative rounded-xl transition-all duration-300 ${wrapperClasses}"
              ${extraStyle ? `style="${extraStyle}"` : ''}
              data-category="${escapeHtml(photo.kategori || 'prewedding')}"
              data-lightbox-src="${escapeHtml(src)}"
              data-caption="${escapeHtml(caption)}">
-          <img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" class="w-full h-full object-cover transition duration-500 group-hover:scale-105 dynamic-gallery-img" />
-          <div class="absolute inset-0 bg-moss/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <span class="w-9 h-9 rounded-full bg-warmwhite/90 text-moss flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition duration-300">
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
-            </span>
+          <img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" class="w-full h-full object-cover ${imgObjPos} transition duration-500 group-hover:scale-105 dynamic-gallery-img" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3.5">
+            <span class="text-[9px] uppercase tracking-[0.2em] text-warmwhite/80">${escapeHtml(catLabel)}</span>
+            <p class="font-serif text-xs text-warmwhite font-medium">${escapeHtml(alt)}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function createPhotoboothStripHtml(photo, idx) {
+      const caption = photo.keterangan || photo.judul || `Picapica Photobooth Strip #${idx + 1}`;
+      const title = photo.judul || `Strip #0${idx + 1}`;
+      const src = normalizeAssetUrl(photo.foto_url, '../asetV2/photobooth_strip_1.webp');
+      const isNoir = src.includes('strip_3') || title.toLowerCase().includes('noir');
+      const frameBg = isNoir ? 'bg-[#1a1d17] border-moss/25' : 'bg-white border-moss/15';
+      const tilt = (idx % 2 === 0) ? '-rotate-1' : 'rotate-1';
+      return `
+        <div class="gallery-item cursor-pointer group flex flex-col items-center"
+             data-category="photobooth ${escapeHtml(photo.kategori || 'keseharian')}"
+             data-lightbox-src="${escapeHtml(src)}"
+             data-caption="${escapeHtml(caption)}">
+          <div class="w-full max-w-[200px] ${frameBg} p-2 sm:p-2.5 rounded-xl shadow-lg border transform ${tilt} group-hover:rotate-0 group-hover:-translate-y-1.5 transition-all duration-300">
+            <img src="${escapeHtml(src)}" alt="${escapeHtml(title)}" class="w-full h-auto object-contain rounded-lg block dynamic-gallery-img" />
           </div>
         </div>
       `;
@@ -2193,6 +2327,8 @@
 
     async function syncGalleryFromAPI() {
       const grid = document.getElementById('gallery-bento-grid');
+      const stripGrid = document.getElementById('gallery-photobooth-grid');
+      const stripSection = document.getElementById('gallery-photobooth-section');
       if (!grid) return;
       try {
         const res = await fetch('../api/galeri.php', { cache: 'no-store' });
@@ -2200,25 +2336,32 @@
         const json = await res.json();
         if (!json.success || !Array.isArray(json.data)) return;
 
-        const photos = json.data;
-        if (photos.length === 0) {
+        const allPhotos = json.data;
+        if (allPhotos.length === 0) {
           grid.innerHTML = `
             <div class="md:col-span-12 py-12 text-center bg-warmwhite/40 rounded-xl border border-moss/15">
               <p class="text-sm text-moss/75 font-serif">Belum ada foto di galeri.</p>
             </div>
           `;
+          if (stripSection) stripSection.classList.add('hidden');
           refreshGalleryLightboxItems();
           return;
         }
 
+        // Pisahkan foto strip photobooth vs foto Bento Grid utama
+        const stripPhotos = allPhotos.filter(p => {
+          const u = String(p.foto_url || '').toLowerCase();
+          const t = String(p.judul || '').toLowerCase();
+          return u.includes('photobooth_strip') || u.includes('img_735') || t.includes('photobooth') || t.includes('picapica');
+        });
+        const photos = allPhotos.filter(p => !stripPhotos.includes(p));
+
         let html = '';
-        // If fewer than 10 photos, render a clean balanced grid so no awkward empty gaps appear
         if (photos.length < 10) {
           html = `<div class="md:col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 md:gap-4">` +
             photos.map(p => createGalleryCardHtml(p, 'h-64 sm:h-72')).join('') +
             `</div>`;
         } else {
-          // 10-photo editorial bento layout (+ any extra photos cleanly appended below)
           const leftHtml = `
             <div class="md:col-span-4 flex flex-col gap-3.5 md:gap-4">
               ${createGalleryCardHtml(photos[0], 'flex-1 min-h-[300px] md:min-h-[360px]')}
@@ -2226,26 +2369,26 @@
             </div>
           `;
           const rightTopHtml = `
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 md:gap-4 h-auto sm:h-44 md:h-48">
-              ${createGalleryCardHtml(photos[2], 'h-48 sm:h-full')}
-              ${createGalleryCardHtml(photos[3], 'h-48 sm:h-full')}
-              ${createGalleryCardHtml(photos[4], 'h-48 sm:h-full')}
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 md:gap-4 h-auto sm:h-48 md:h-52">
+              ${createGalleryCardHtml(photos[2], 'h-52 sm:h-full', '', 'object-center')}
+              ${createGalleryCardHtml(photos[3], 'h-52 sm:h-full', '', 'object-[center_35%]')}
+              ${createGalleryCardHtml(photos[4], 'h-52 sm:h-full', '', 'object-[center_45%]')}
             </div>
           `;
           const rightLowerHtml = `
             <div class="grid grid-cols-1 sm:grid-cols-12 gap-3.5 md:gap-4 flex-1">
               <div class="sm:col-span-8 flex flex-col gap-3.5 md:gap-4">
-                <div class="grid grid-cols-2 gap-3.5 md:gap-4 h-40 sm:h-44">
-                  ${createGalleryCardHtml(photos[5], 'h-full')}
+                <div class="grid grid-cols-2 gap-3.5 md:gap-4 h-44 sm:h-48">
+                  ${createGalleryCardHtml(photos[5], 'h-full', '', 'object-bottom')}
                   ${createGalleryCardHtml(photos[6], 'h-full')}
                 </div>
                 <div class="flex gap-3.5 md:gap-4 h-48 sm:h-52 md:h-56 w-full">
-                  ${createGalleryCardHtml(photos[7], 'h-full min-w-0', 'flex: 7 1 58%; width: 58%;')}
-                  ${createGalleryCardHtml(photos[8], 'h-full min-w-0', 'flex: 5 1 42%; width: 42%;')}
+                  ${createGalleryCardHtml(photos[7], 'h-full min-w-0', 'flex: 7 1 58%; width: 58%;', 'object-bottom')}
+                  ${createGalleryCardHtml(photos[8], 'h-full min-w-0', 'flex: 5 1 42%; width: 42%;', 'object-center')}
                 </div>
               </div>
               <div class="sm:col-span-4 relative overflow-visible">
-                ${createGalleryCardHtml(photos[9], 'w-full h-72 sm:h-full')}
+                ${createGalleryCardHtml(photos[9], 'w-full h-80 sm:h-full')}
                 <img src="../aset/section5_bunga(2).webp" class="absolute -bottom-14 -right-6 sm:-right-10 w-28 sm:w-36 md:w-40 z-20 pointer-events-none drop-shadow-md" alt="" />
               </div>
             </div>
@@ -2260,7 +2403,12 @@
         }
 
         grid.innerHTML = html;
-        grid.querySelectorAll('.dynamic-gallery-img').forEach(img => attachImageFallback(img, '../aset/default-image.jpg'));
+        if (stripGrid && stripPhotos.length > 0) {
+          if (stripSection) stripSection.classList.remove('hidden');
+          stripGrid.innerHTML = stripPhotos.map((sp, i) => createPhotoboothStripHtml(sp, i)).join('');
+        }
+
+        document.querySelectorAll('#gallery .dynamic-gallery-img').forEach(img => attachImageFallback(img, '../aset/default-image.jpg'));
         refreshGalleryLightboxItems();
       } catch(e) {
         console.warn('syncGalleryFromAPI error:', e);

@@ -232,18 +232,22 @@ INSERT INTO `acara` (`id`, `user_id`, `nama_acara`, `tanggal`, `waktu_mulai`, `w
 (1, 1, 'Akad Nikah', '2026-10-25', '08:00:00', '10:00:00', 'WIB', 'Masjid Al-Falah', 'Jl. Melawai No. 123, Kebayoran Baru, Jakarta Selatan', 'https://maps.google.com', 1),
 (2, 1, 'Resepsi Pernikahan', '2026-10-25', '19:00:00', '22:00:00', 'WIB', 'The Backyard Cafe', 'Jl. Melawai No. 123, Kebayoran Baru, Jakarta Selatan', 'https://maps.google.com', 2);
 
--- 4. Galeri Foto
-INSERT INTO `galeri_foto` (`id`, `user_id`, `judul`, `kategori`, `foto_url`, `urutan`, `is_featured`) VALUES
-(1, 1, 'Momen Bersama 1', 'prewedding', 'aset/section5_galerifoto.webp', 1, 1),
-(2, 1, 'Momen Bersama 2', 'prewedding', 'aset/section5_galerifoto(2).webp', 2, 0),
-(3, 1, 'Momen Bersama 3', 'prewedding', 'aset/section5_galerifoto(3).webp', 3, 0),
-(4, 1, 'Momen Bersama 4', 'prewedding', 'aset/section5_galerifoto(4).webp', 4, 0),
-(5, 1, 'Momen Bersama 5', 'acara', 'aset/section5_galerifoto(5).webp', 5, 0),
-(6, 1, 'Momen Bersama 6', 'acara', 'aset/section5_galerifoto(6).webp', 6, 0),
-(7, 1, 'Momen Bersama 7', 'keseharian', 'aset/section5_galerifoto(7)webp.webp', 7, 0),
-(8, 1, 'Momen Bersama 8', 'keseharian', 'aset/section5_galerifoto(8).webp', 8, 0),
-(9, 1, 'Momen Bersama 9', 'keseharian', 'aset/section5_galerifoto(9).webp', 9, 0),
-(10, 1, 'Highlight Utama', 'prewedding', 'aset/section5_fotopengantin.webp', 10, 1);
+-- 4. Galeri Foto (10 Slot Bento Grid HD + 4 Strip Photobooth Picapica)
+INSERT INTO `galeri_foto` (`id`, `user_id`, `judul`, `kategori`, `foto_url`, `keterangan`, `urutan`, `is_featured`) VALUES
+(1, 1, 'Melangkah Bersama di Bawah Rindang Pepohonan', 'prewedding', 'aset/section5_galerifoto(5).webp', 'Melangkah Bersama di Bawah Rindang Pepohonan', 1, 1),
+(2, 1, 'Simbol Ikatan Suci & Janji Setia', 'acara', 'asetV2/cincin_tunangan_hd.webp', 'Simbol Ikatan Suci & Janji Setia', 2, 0),
+(3, 1, 'Genggaman Hangat Menuju Hari Bahagia', 'prewedding', 'asetV2/foto_hd_soft.webp', 'Genggaman Hangat Menuju Hari Bahagia', 3, 1),
+(4, 1, 'Menatap Langit & Merajut Masa Depan', 'prewedding', 'asetV2/section5_galerifoto(9).webp', 'Menatap Langit & Merajut Masa Depan', 4, 0),
+(5, 1, 'Saling Menjaga dalam Setiap Langkah', 'prewedding', 'asetV2/langit_gandengan_hd.webp', 'Saling Menjaga dalam Setiap Langkah', 5, 0),
+(6, 1, 'Bersandar Tenang Menatap Hari Esok', 'keseharian', 'asetV2/cover_hd.webp', 'Bersandar Tenang Menatap Hari Esok', 6, 0),
+(7, 1, 'Genggaman Tangan yang Tak Pernah Lepas', 'acara', 'aset/section2_fotopengantin.webp', 'Genggaman Tangan yang Tak Pernah Lepas', 7, 0),
+(8, 1, 'Tawa Hangat di Hamparan Padang Rumput', 'keseharian', 'asetV2/hd_3.webp', 'Tawa Hangat di Hamparan Padang Rumput', 8, 1),
+(9, 1, 'A Chapter of Us — Lembaran Kisah Kami', 'acara', 'aset/section5_galerifoto(3).webp', 'A Chapter of Us — Lembaran Kisah Kami', 9, 0),
+(10, 1, 'Potret Kasih di Bawah Langit Teduh', 'prewedding', 'aset/section5_galerifoto(7)webp.webp', 'Potret Kasih di Bawah Langit Teduh', 10, 1),
+(11, 1, 'Picapica Photobooth — Sweet Smiles', 'keseharian', 'asetV2/photobooth_strip_1.webp', 'Picapica Studio · 09/23/2026 02:59 PM', 11, 0),
+(12, 1, 'Picapica Photobooth — Peace & Dimples', 'keseharian', 'asetV2/photobooth_strip_2.webp', 'Picapica Studio · 09/23/2026 03:02 PM', 12, 0),
+(13, 1, 'Picapica Photobooth — Classic Noir Frame', 'keseharian', 'asetV2/photobooth_strip_3.webp', 'Picapica Studio · Noir Edition 03:02 PM', 13, 0),
+(14, 1, 'Picapica Photobooth — Playful & Waving', 'keseharian', 'asetV2/photobooth_strip_4.webp', 'Picapica Studio · 09/23/2026 03:06 PM', 14, 0);
 
 -- 5. Daftar Manajemen Konten Acara
 INSERT INTO `konten_acara` (`id`, `user_id`, `judul`, `deskripsi`, `kategori`, `thumbnail_url`, `link_halaman`, `urutan`) VALUES
