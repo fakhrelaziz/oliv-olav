@@ -176,34 +176,32 @@
       <!-- Background images -->
       <picture class="absolute inset-0 z-0">
         <source id="hero-bg-source" media="(min-width: 768px)" srcset="../aset/background_herosection(desktop).webp">
-        <img id="hero-bg-img" src="../aset/background_herosection.webp" alt="Fakhrel & Olivia" class="h-full w-full object-cover object-center" />
+        <img id="hero-bg-img" src="../aset/background_herosection.webp" alt="Fakhrel & Olivia" class="h-full w-full object-cover object-[50%_22%] md:object-center" />
       </picture>
       
-      <!-- Overlay gradient -->
-      <div class="absolute inset-0 z-0 bg-gradient-to-b from-moss/60 via-transparent to-moss/80"></div>
+      <!-- Selective Editorial Gradient Overlay (keeps couple faces & hands crisp and unobstructed) -->
+      <div class="absolute inset-0 z-0 pointer-events-none md:hidden" style="background: linear-gradient(180deg, rgba(24,30,19,0.74) 0%, rgba(24,30,19,0.34) 24%, rgba(24,30,19,0.0) 40%, rgba(24,30,19,0.0) 60%, rgba(24,30,19,0.68) 80%, rgba(24,30,19,0.92) 100%);"></div>
+      <div class="absolute inset-0 z-0 pointer-events-none hidden md:block" style="background: linear-gradient(90deg, rgba(24,30,19,0.72) 0%, rgba(24,30,19,0.36) 38%, rgba(24,30,19,0.0) 66%), linear-gradient(180deg, rgba(24,30,19,0.42) 0%, rgba(24,30,19,0.0) 28%, rgba(24,30,19,0.0) 74%, rgba(24,30,19,0.74) 100%);"></div>
       
-      <!-- Navbar -->
-      <header class="wedding-header absolute top-0 left-0 w-full z-30 px-6 py-6 md:px-16 md:py-8">
+      <!-- Header & Scroll-Revealed Floating Navbar -->
+      <header class="wedding-header absolute top-0 left-0 w-full z-30 px-6 py-5 md:px-16 md:py-8">
         <div class="flex items-center justify-between">
-          <a href="#home" class="text-2xl font-display uppercase tracking-widest text-warmwhite" aria-label="Kembali ke halaman utama">REL|LIV</a>
-          <a href="#rsvp" class="inline-flex items-center gap-2 border border-warmwhite/80 rounded-full px-5 py-2 text-xs sm:text-sm text-warmwhite hover:bg-warmwhite hover:text-moss transition">
-            Konfirmasi RSVP <span aria-hidden="true">&#9993;</span>
-          </a>
+          <a href="#home" class="text-xl sm:text-2xl font-display uppercase tracking-widest text-warmwhite" aria-label="Kembali ke halaman utama">REL|LIV</a>
         </div>
 
-        <!-- Floating Vertical Pill Navbar -->
+        <!-- Slim Scroll-Revealed Floating Navbar -->
         <nav class="wedding-floating-nav" id="wedding-floating-nav" aria-label="Navigasi undangan">
           <a href="#home" class="wedding-nav-link wedding-nav-link-active" data-nav-target="home" aria-label="Home">
             <span class="wedding-nav-icon-wrap" aria-hidden="true">
-              <svg class="wedding-nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 3 3 10.5V21h6v-5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v5h6V10.5L12 3Z"/>
+              <svg class="wedding-nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5.5v-5.5a1 1 0 0 0-1-1h-3a1 1 0 0 0-1 1V21H4a1 1 0 0 1-1-1v-9.5Z"/>
               </svg>
             </span>
             <span class="wedding-nav-label">Home</span>
           </a>
           <a href="#about" class="wedding-nav-link" data-nav-target="about" aria-label="Mempelai">
             <span class="wedding-nav-icon-wrap" aria-hidden="true">
-              <svg class="wedding-nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="wedding-nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
               </svg>
             </span>
@@ -211,35 +209,32 @@
           </a>
           <a href="#story" class="wedding-nav-link" data-nav-target="story" aria-label="Our Story">
             <span class="wedding-nav-icon-wrap" aria-hidden="true">
-              <svg class="wedding-nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2Z"/>
-                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7Z"/>
+              <svg class="wedding-nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2Z"/>
+                <path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7Z"/>
               </svg>
             </span>
-            <span class="wedding-nav-label">Our Story</span>
+            <span class="wedding-nav-label">Story</span>
           </a>
           <a href="#event" class="wedding-nav-link" data-nav-target="event" aria-label="Event">
             <span class="wedding-nav-icon-wrap" aria-hidden="true">
-              <svg class="wedding-nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="18" height="18" x="3" y="4" rx="2"/>
-                <line x1="16" x2="16" y1="2" y2="6"/>
-                <line x1="8" x2="8" y1="2" y2="6"/>
+              <svg class="wedding-nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="17" x="3" y="4.5" rx="2"/>
+                <line x1="16" x2="16" y1="2.5" y2="6"/>
+                <line x1="8" x2="8" y1="2.5" y2="6"/>
                 <line x1="3" x2="21" y1="10" y2="10"/>
-                <circle cx="8" cy="14" r="1" fill="currentColor"/>
-                <circle cx="12" cy="14" r="1" fill="currentColor"/>
-                <circle cx="16" cy="14" r="1" fill="currentColor"/>
-                <circle cx="8" cy="17.5" r="1" fill="currentColor"/>
-                <circle cx="12" cy="17.5" r="1" fill="currentColor"/>
-                <circle cx="16" cy="17.5" r="1" fill="currentColor"/>
+                <circle cx="8.5" cy="14.5" r="0.7" fill="currentColor" stroke="none"/>
+                <circle cx="12" cy="14.5" r="0.7" fill="currentColor" stroke="none"/>
+                <circle cx="15.5" cy="14.5" r="0.7" fill="currentColor" stroke="none"/>
               </svg>
             </span>
             <span class="wedding-nav-label">Event</span>
           </a>
           <a href="#gallery" class="wedding-nav-link" data-nav-target="gallery" aria-label="Gallery">
             <span class="wedding-nav-icon-wrap" aria-hidden="true">
-              <svg class="wedding-nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="wedding-nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
                 <rect width="16" height="13" x="5" y="7" rx="1.5"/>
-                <circle cx="9.5" cy="11" r="1.2" fill="currentColor"/>
+                <circle cx="9.5" cy="11" r="1" fill="currentColor" stroke="none"/>
                 <path d="m21 16-4-3.5-5 5.5"/>
                 <path d="M3 16V5a2 2 0 0 1 2-2h11"/>
               </svg>
@@ -248,113 +243,114 @@
           </a>
           <a href="#rsvp" class="wedding-nav-link" data-nav-target="rsvp" aria-label="RSVP &amp; Ucapan">
             <span class="wedding-nav-icon-wrap" aria-hidden="true">
-              <svg class="wedding-nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="wedding-nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/>
-                <path d="M12 9.5c-.7-.8-1.7-.8-2.2 0-.5.7.1 1.6 1.4 2.5l.8.6.8-.6c1.3-.9 1.9-1.8 1.4-2.5-.5-.8-1.5-.8-2.2 0Z" fill="currentColor" stroke="none"/>
               </svg>
             </span>
-            <span class="wedding-nav-label">RSVP &amp;<br>Ucapan</span>
+            <span class="wedding-nav-label">RSVP<span class="hidden md:inline"> &amp;<br>Ucapan</span></span>
           </a>
         </nav>
       </header>
 
-      <!-- Main content hero -->
-      <div class="relative z-10 flex h-full min-h-[100svh] flex-col justify-start pt-20 pb-44 md:pt-24 md:pb-52 lg:pb-56 px-6 md:px-16">
+      <!-- Main content hero: Split Top & Bottom framing on mobile so the couple stays unobstructed in the center -->
+      <div class="relative z-10 flex h-full min-h-[100svh] flex-col justify-between md:justify-center pt-[4.5rem] pb-14 sm:pt-20 sm:pb-16 md:pt-24 md:pb-40 lg:pb-44 px-6 md:px-16">
         
+        <!-- Top Title Block (compact proportion over tree canopy) -->
         <div class="max-w-xl">
-          <div class="flex items-center gap-4 mb-3">
-            <div class="h-px w-12 bg-warmwhite"></div>
-            <p id="hero-tagline" class="text-xs uppercase tracking-editorial text-warmwhite">THE WEDDING OF</p>
+          <div class="flex items-center gap-3 mb-1.5 md:mb-3">
+            <div class="h-px w-8 md:w-12 bg-warmwhite/80"></div>
+            <p id="hero-tagline" class="text-[10px] sm:text-xs uppercase tracking-editorial text-warmwhite/90">THE WEDDING OF</p>
           </div>
           
-          <h1 id="hero-couple-title" class="font-display text-6xl sm:text-7xl md:text-[5.5rem] lg:text-[6.25rem] leading-[0.92] text-warmwhite font-light">
+          <h1 id="hero-couple-title" class="font-display text-[3.1rem] sm:text-[3.75rem] md:text-[5rem] lg:text-[5.75rem] leading-[0.86] text-warmwhite font-light">
             <span id="hero-groom-name">Fakhrel</span>
-            <span class="block font-script text-3xl sm:text-4xl md:text-5xl italic lowercase leading-[0.75] my-1.5 pl-3">and</span>
+            <span class="block font-script text-[1.6rem] sm:text-3xl md:text-4xl lg:text-5xl italic lowercase leading-[0.62] -my-0.5 md:my-0.5 pl-2 md:pl-3 text-warmwhite/95">and</span>
             <span id="hero-bride-name">Olivia</span>
           </h1>
           
-          <!-- Tanggal & Editorial Countdown Timer -->
-          <div class="mt-4 md:mt-5 max-w-md">
-            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <p id="hero-wedding-date" class="text-xs sm:text-sm uppercase tracking-[0.32em] text-warmwhite font-medium">
-                25 DESEMBER 2026
-              </p>
-              <span class="text-warmwhite/40 text-xs" aria-hidden="true">&bull;</span>
-              <span class="font-script text-xl sm:text-2xl text-warmwhite/90 -rotate-1">Menuju hari bahagia</span>
-            </div>
+          <p id="hero-wedding-date" class="mt-2.5 md:mt-4 text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.32em] text-warmwhite/95 font-medium">
+            25 DESEMBER 2026
+          </p>
+        </div>
 
-            <div id="hero-countdown" class="mt-2.5 py-2.5 border-y border-warmwhite/25 flex items-center justify-between sm:justify-start sm:gap-7 max-w-[22rem]" aria-label="Hitung mundur menuju hari pernikahan">
-              <div class="text-left">
-                <div class="flex items-baseline gap-1">
-                  <span id="cd-days" class="font-display text-2xl sm:text-3xl md:text-[2.15rem] leading-none text-warmwhite font-normal" style="font-variant-numeric: lining-nums tabular-nums;">00</span>
-                </div>
-                <span class="block font-display italic text-xs sm:text-sm text-warmwhite/75 tracking-wide mt-0.5">Hari</span>
-              </div>
-
-              <span class="text-warmwhite/35 text-[10px] select-none" aria-hidden="true">&#10022;</span>
-
-              <div class="text-left">
-                <div class="flex items-baseline gap-1">
-                  <span id="cd-hours" class="font-display text-2xl sm:text-3xl md:text-[2.15rem] leading-none text-warmwhite font-normal" style="font-variant-numeric: lining-nums tabular-nums;">00</span>
-                </div>
-                <span class="block font-display italic text-xs sm:text-sm text-warmwhite/75 tracking-wide mt-0.5">Jam</span>
-              </div>
-
-              <span class="text-warmwhite/35 text-[10px] select-none" aria-hidden="true">&#10022;</span>
-
-              <div class="text-left">
-                <div class="flex items-baseline gap-1">
-                  <span id="cd-minutes" class="font-display text-2xl sm:text-3xl md:text-[2.15rem] leading-none text-warmwhite font-normal" style="font-variant-numeric: lining-nums tabular-nums;">00</span>
-                </div>
-                <span class="block font-display italic text-xs sm:text-sm text-warmwhite/75 tracking-wide mt-0.5">Menit</span>
-              </div>
-
-              <span class="text-warmwhite/35 text-[10px] select-none" aria-hidden="true">&#10022;</span>
-
-              <div class="text-left">
-                <div class="flex items-baseline gap-1">
-                  <span id="cd-seconds" class="font-display text-2xl sm:text-3xl md:text-[2.15rem] leading-none text-warmwhite font-normal" style="font-variant-numeric: lining-nums tabular-nums;">00</span>
-                </div>
-                <span class="block font-display italic text-xs sm:text-sm text-warmwhite/75 tracking-wide mt-0.5">Detik</span>
-              </div>
-            </div>
-          </div>
+        <!-- Bottom Greeting & Single Primary CTA (anchored over lower grass gradient) -->
+        <div class="max-w-sm md:max-w-md mt-auto md:mt-10 pb-2 md:pb-0">
+          <p class="text-[10px] sm:text-xs uppercase tracking-[0.24em] text-warmwhite/75 mb-1">Selamat Datang,</p>
+          <p id="nama-tamu" class="text-xl sm:text-2xl md:text-3xl font-display text-warmwhite mb-1.5 leading-tight">Bapak/Ibu/Saudara/i</p>
+          <p id="hero-salam-text" class="text-xs sm:text-sm text-warmwhite/80 max-w-xs sm:max-w-sm mb-4 leading-relaxed">
+            Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir dalam hari bahagia kami.
+          </p>
           
-          <div class="mt-5 md:mt-6">
-            <p class="text-xs uppercase tracking-[0.22em] text-warmwhite/75 mb-1">Selamat Datang,</p>
-            <p id="nama-tamu" class="text-2xl md:text-3xl font-display text-warmwhite mb-2 leading-tight">Bapak/Ibu/Saudara/i</p>
-            <p id="hero-salam-text" class="text-xs sm:text-sm text-warmwhite/80 max-w-sm mb-4 leading-relaxed">
-              Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir dalam hari bahagia kami.
-            </p>
-            
-            <div class="flex flex-wrap items-center gap-3">
-              <a href="#about" class="inline-flex items-center gap-3 bg-warmwhite text-moss px-6 py-2.5 md:py-3 rounded-full text-xs sm:text-sm md:text-base font-medium hover:bg-white transition shadow-md">
-                <span>Jelajahi Undangan</span>
-                <span aria-hidden="true">&darr;</span>
-              </a>
-              <a href="#event" class="inline-flex items-center gap-2 border border-warmwhite/60 bg-moss/35 backdrop-blur-sm text-warmwhite px-5 py-2.5 md:py-3 rounded-full text-xs sm:text-sm md:text-base font-medium hover:bg-warmwhite/15 transition">
-                <span>Lihat Acara</span>
-              </a>
-            </div>
+          <div class="flex items-center">
+            <a href="#countdown" class="inline-flex items-center gap-3 bg-warmwhite text-moss px-6 py-2.5 md:py-3 rounded-full text-xs sm:text-sm md:text-base font-medium hover:bg-white transition shadow-md">
+              <span>Jelajahi Undangan</span>
+              <span aria-hidden="true">&darr;</span>
+            </a>
           </div>
         </div>
       </div>
 
-      <!-- Right bottom script text -->
-      <div class="absolute right-5 sm:right-10 md:right-32 bottom-24 sm:bottom-28 z-10 text-right rotate-[-10deg]">
-        <p id="hero-script-text" class="font-script text-4xl md:text-5xl text-warmwhite">A new<br>chapter<br>together</p>
+      <!-- Handwritten Script Accent: Empty top-right canopy on mobile, spacious bottom-right on desktop -->
+      <div class="absolute top-[4.4rem] right-5 sm:top-20 sm:right-8 md:top-auto md:bottom-24 md:right-28 lg:right-36 z-10 text-right rotate-[-7deg] md:rotate-[-10deg] pointer-events-none select-none">
+        <p id="hero-script-text" class="font-script text-[1.4rem] sm:text-2xl md:text-4xl lg:text-5xl leading-[0.94] text-warmwhite/75 md:text-warmwhite/90 drop-shadow-sm">A new<br>chapter<br>together</p>
       </div>
 
       <!-- Bottom decorations — aligned to bottom-left below CTA button matching mockup/1.png -->
-      <picture class="absolute -bottom-px left-0 z-[5] pointer-events-none w-[84%] sm:w-[64%] md:w-[46%] lg:w-[44%] max-w-[640px]">
+      <picture class="absolute -bottom-px left-0 z-[5] pointer-events-none w-[72%] sm:w-[56%] md:w-[44%] lg:w-[42%] max-w-[600px] opacity-90">
         <source media="(min-width: 768px)" srcset="../aset/elemen_bagian_hero_section(desktop).webp">
         <img src="../aset/elemen_bagian_hero_section(mobile).webp" alt="Leaves decoration" class="block w-full h-auto object-contain object-left-bottom" />
       </picture>
 
-
-
-      <div id="hero-city" class="absolute bottom-8 right-6 md:right-16 z-30 hidden md:block text-xs uppercase tracking-[0.3em] text-warmwhite/50">
+      <div id="hero-city" class="absolute bottom-8 right-6 md:right-24 z-20 hidden md:block text-xs uppercase tracking-[0.3em] text-warmwhite/50">
         JAKARTA, INDONESIA
+      </div>
+    </section>
+
+    <!-- SECTION 1B - DEDICATED EDITORIAL COUNTDOWN INTERLUDE -->
+    <section id="countdown" class="relative w-full overflow-hidden bg-[#22291C] text-warmwhite border-y border-warmwhite/10">
+      <img src="../aset/section2_bunga(2).webp" alt="" class="absolute -left-8 -bottom-10 w-32 sm:w-44 opacity-[0.12] pointer-events-none select-none rotate-12" />
+      <img src="../aset/section2_bunga(3).webp" alt="" class="absolute -right-8 -top-8 w-32 sm:w-44 opacity-[0.12] pointer-events-none select-none -rotate-12" />
+
+      <div class="relative z-10 max-w-3xl mx-auto px-6 py-14 sm:py-16 md:py-20 text-center">
+        <p class="text-[10px] sm:text-xs uppercase tracking-[0.34em] text-warmwhite/65 mb-2">Save The Date</p>
+        <p class="font-script text-3xl sm:text-4xl md:text-5xl text-warmwhite/95 leading-tight mb-1">Menuju Hari Bahagia</p>
+        <p id="countdown-wedding-date" class="text-xs sm:text-sm uppercase tracking-[0.3em] text-warmwhite/75 mb-7 sm:mb-9">25 DESEMBER 2026</p>
+
+        <!-- Bespoke Editorial Wedding Counter -->
+        <div id="hero-countdown" class="py-6 sm:py-7 border-y border-warmwhite/20 flex items-center justify-center gap-5 sm:gap-10 md:gap-14 max-w-xl mx-auto" aria-label="Hitung mundur menuju hari pernikahan">
+          <div class="text-center min-w-[3.4rem] sm:min-w-[4.5rem]">
+            <span id="cd-days" class="block font-display text-4xl sm:text-5xl md:text-6xl leading-none text-warmwhite font-light" style="font-variant-numeric: lining-nums tabular-nums;">00</span>
+            <span class="block font-display italic text-xs sm:text-sm md:text-base text-warmwhite/70 tracking-wide mt-2">Hari</span>
+          </div>
+
+          <span class="text-warmwhite/35 text-xs select-none" aria-hidden="true">&#10022;</span>
+
+          <div class="text-center min-w-[3.4rem] sm:min-w-[4.5rem]">
+            <span id="cd-hours" class="block font-display text-4xl sm:text-5xl md:text-6xl leading-none text-warmwhite font-light" style="font-variant-numeric: lining-nums tabular-nums;">00</span>
+            <span class="block font-display italic text-xs sm:text-sm md:text-base text-warmwhite/70 tracking-wide mt-2">Jam</span>
+          </div>
+
+          <span class="text-warmwhite/35 text-xs select-none" aria-hidden="true">&#10022;</span>
+
+          <div class="text-center min-w-[3.4rem] sm:min-w-[4.5rem]">
+            <span id="cd-minutes" class="block font-display text-4xl sm:text-5xl md:text-6xl leading-none text-warmwhite font-light" style="font-variant-numeric: lining-nums tabular-nums;">00</span>
+            <span class="block font-display italic text-xs sm:text-sm md:text-base text-warmwhite/70 tracking-wide mt-2">Menit</span>
+          </div>
+
+          <span class="text-warmwhite/35 text-xs select-none" aria-hidden="true">&#10022;</span>
+
+          <div class="text-center min-w-[3.4rem] sm:min-w-[4.5rem]">
+            <span id="cd-seconds" class="block font-display text-4xl sm:text-5xl md:text-6xl leading-none text-warmwhite font-light" style="font-variant-numeric: lining-nums tabular-nums;">00</span>
+            <span class="block font-display italic text-xs sm:text-sm md:text-base text-warmwhite/70 tracking-wide mt-2">Detik</span>
+          </div>
+        </div>
+
+        <div class="mt-7 sm:mt-8">
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Fakhrel+%26+Olivia&dates=20261225T010000Z/20261225T070000Z&details=Dengan+penuh+rasa+syukur%2C+kami+mengundang+Anda+dalam+hari+bahagia+Fakhrel+%26+Olivia.&location=The+Glass+House%2C+Jakarta" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-[11px] sm:text-xs uppercase tracking-[0.26em] text-warmwhite/80 hover:text-warmwhite border-b border-warmwhite/35 hover:border-warmwhite pb-1 transition">
+            <span>Simpan Tanggal di Kalender</span>
+            <span aria-hidden="true">&#8599;</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -1661,7 +1657,10 @@
 
     const updateWeddingNav = () => {
       if (!weddingHeader || !weddingNav) return;
+      const shouldShowNav = window.scrollY > 90;
       weddingHeader.classList.toggle('wedding-header-scrolled', window.scrollY > window.innerHeight * 0.65);
+      weddingNav.classList.toggle('is-nav-visible', shouldShowNav);
+      document.body.classList.toggle('nav-is-visible', shouldShowNav);
     };
 
     window.addEventListener('scroll', updateWeddingNav, { passive: true });
@@ -1670,8 +1669,11 @@
     const weddingSectionObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
+        const targetId = entry.target.id === 'countdown' ? 'home' : entry.target.id;
+        const hasMatch = Array.from(weddingNavLinks).some((l) => l.dataset.navTarget === targetId);
+        if (!hasMatch) return;
         weddingNavLinks.forEach((link) => {
-          link.classList.toggle('wedding-nav-link-active', link.dataset.navTarget === entry.target.id);
+          link.classList.toggle('wedding-nav-link-active', link.dataset.navTarget === targetId);
         });
       });
     }, { rootMargin: '-35% 0px -55% 0px' });
@@ -1947,6 +1949,8 @@
           if (brideName && s1.bride_nickname) brideName.innerText = s1.bride_nickname;
           if (weddingDate && s1.wedding_date !== undefined) {
             weddingDate.innerText = s1.wedding_date;
+            const cdDateEl = document.getElementById('countdown-wedding-date');
+            if (cdDateEl) cdDateEl.innerText = s1.wedding_date;
             if (typeof updateWeddingCountdownTarget === 'function') {
               updateWeddingCountdownTarget(s1.wedding_date);
             }

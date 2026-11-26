@@ -1954,31 +1954,39 @@ summary:focus-visible {
   outline: 2px solid #2C3424;
   outline-offset: 3px;
 }
-/* Floating vertical pill navigation */
+/* Slim Scroll-Revealed Floating Navigation */
 .wedding-floating-nav {
   position: fixed;
-  right: 1.5rem;
+  right: 1.25rem;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate3d(1.25rem, -50%, 0);
   z-index: 50;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.45rem 0.35rem;
-  width: 3.85rem;
+  gap: 0.2rem;
+  padding: 0.32rem 0.26rem;
+  width: 3.35rem;
   border-radius: 9999px;
-  background: #F6EBDD;
-  border: 1px solid rgba(195, 187, 165, 0.55);
+  background: rgba(246, 243, 234, 0.88);
+  border: 1px solid rgba(102, 100, 61, 0.16);
   box-shadow:
-    0 12px 36px rgba(26, 31, 21, 0.22),
-    0 2px 8px rgba(26, 31, 21, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+    0 10px 28px rgba(24, 30, 19, 0.14),
+    0 1px 4px rgba(24, 30, 19, 0.06);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  opacity: 0;
+  pointer-events: none;
   transition:
-    opacity 300ms ease,
-    transform 300ms ease,
+    opacity 360ms ease,
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 300ms ease;
+}
+
+.wedding-floating-nav.is-nav-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(0, -50%, 0);
 }
 
 .wedding-nav-link {
@@ -1987,17 +1995,15 @@ summary:focus-visible {
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 3.35rem;
-  padding: 0.45rem 0.15rem;
-  border-radius: 9999px;
-  color: #66643D;
+  min-height: 2.85rem;
+  padding: 0.32rem 0.12rem;
+  border-radius: 1.05rem;
+  color: rgba(74, 83, 62, 0.62);
   text-decoration: none;
   text-align: center;
   transition:
     background-color 220ms ease,
-    color 220ms ease,
-    transform 180ms ease,
-    box-shadow 220ms ease;
+    color 220ms ease;
   user-select: none;
   cursor: pointer;
 }
@@ -2006,93 +2012,96 @@ summary:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1.35rem;
-  height: 1.35rem;
-  margin-bottom: 0.2rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-bottom: 0.14rem;
   color: inherit;
 }
 
 .wedding-nav-icon {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.08rem;
+  height: 1.08rem;
   display: block;
   color: inherit;
 }
 
 .wedding-nav-label {
   font-family: 'Inter', sans-serif;
-  font-size: 0.6rem;
-  font-weight: 500;
-  line-height: 1.15;
+  font-size: 0.54rem;
+  font-weight: 400;
+  line-height: 1.1;
   color: inherit;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
   white-space: normal;
   text-align: center;
 }
 
 /* Hover for inactive */
 .wedding-nav-link:hover:not(.wedding-nav-link-active) {
-  background: rgba(102, 100, 61, 0.12);
-  color: #4A482A;
+  background: rgba(44, 52, 36, 0.06);
+  color: #2C3424;
 }
 
-/* Active state matching screenshot: moss olive capsule */
+/* Soft, understated luxury active indicator (no heavy dark circle) */
 .wedding-nav-link.wedding-nav-link-active {
-  background: #66643D;
-  color: #FAF8F2;
-  box-shadow: 0 4px 12px rgba(102, 100, 61, 0.35);
+  background: rgba(44, 52, 36, 0.11);
+  color: #242B1E;
+  box-shadow: none;
 }
 
-.wedding-nav-link.wedding-nav-link-active .wedding-nav-icon-wrap {
-  color: #FAF8F2;
+.wedding-nav-link.wedding-nav-link-active .wedding-nav-label {
+  font-weight: 500;
 }
 
+.wedding-nav-link.wedding-nav-link-active .wedding-nav-icon-wrap,
 .wedding-nav-link.wedding-nav-link-active .wedding-nav-icon {
-  color: #FAF8F2;
-  stroke: #FAF8F2;
+  color: #242B1E;
+  stroke: #242B1E;
 }
 
-.wedding-nav-link.wedding-nav-link-active .wedding-nav-icon path[fill="currentColor"] {
-  fill: #FAF8F2;
-}
-
-/* Small screens / mobile: horizontal bottom pill navbar */
+/* Small screens / mobile: slim translucent bottom pill navbar revealed on scroll */
 @media (max-width: 767px) {
   .wedding-floating-nav {
     top: auto;
-    bottom: max(0.75rem, env(safe-area-inset-bottom));
-    left: 0.65rem;
-    right: 0.65rem;
+    bottom: max(0.65rem, env(safe-area-inset-bottom));
+    left: 0.75rem;
+    right: 0.75rem;
     margin-inline: auto;
-    transform: none;
+    transform: translate3d(0, 1.35rem, 0);
     flex-direction: row;
     justify-content: space-between;
-    align-items: stretch;
+    align-items: center;
     width: auto;
-    max-width: 26rem;
-    padding: 0.35rem 0.35rem;
-    gap: 0.15rem;
-    border-radius: 9999px;
+    max-width: 23.5rem;
+    padding: 0.22rem 0.28rem;
+    gap: 0.1rem;
+    border-radius: 1.15rem;
+  }
+
+  .wedding-floating-nav.is-nav-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate3d(0, 0, 0);
   }
 
   .wedding-nav-link {
     flex: 1 1 0%;
     width: auto;
     min-width: 0;
-    min-height: 3.1rem;
-    padding: 0.32rem 0.12rem;
-    border-radius: 9999px;
+    min-height: 2.48rem;
+    padding: 0.24rem 0.1rem;
+    border-radius: 0.85rem;
   }
 
   .wedding-nav-icon-wrap {
-    width: 1.15rem;
-    height: 1.15rem;
-    margin-bottom: 0.12rem;
+    width: 1rem;
+    height: 1rem;
+    margin-bottom: 0.1rem;
   }
 
   .wedding-nav-icon {
-    width: 1.05rem;
-    height: 1.05rem;
+    width: 0.96rem;
+    height: 0.96rem;
   }
 
   .wedding-nav-label {
@@ -2102,8 +2111,18 @@ summary:focus-visible {
   }
 
   .audio-player {
-    right: max(0.85rem, env(safe-area-inset-right));
-    bottom: calc(5.15rem + env(safe-area-inset-bottom));
+    right: max(0.95rem, env(safe-area-inset-right));
+    bottom: max(1.05rem, env(safe-area-inset-bottom));
+    transition: bottom 380ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  body.nav-is-visible .audio-player {
+    bottom: calc(4.15rem + env(safe-area-inset-bottom));
+  }
+
+  .audio-toggle {
+    width: 3.1rem;
+    height: 3.1rem;
   }
 }
 
