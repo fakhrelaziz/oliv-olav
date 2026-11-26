@@ -511,9 +511,10 @@
         <div class="absolute inset-0 z-0 pointer-events-none">
           <img src="../aset/section2_bagianbawah.webp" class="w-full h-full object-cover object-left" alt="Background leaves" />
           <img src="../aset/section2_bagianbawah.webp" class="absolute inset-y-0 right-0 w-1/2 h-full object-cover object-right" style="-webkit-mask-image: linear-gradient(to left, black 60%, transparent 100%); mask-image: linear-gradient(to left, black 60%, transparent 100%);" alt="" aria-hidden="true" />
+          <div class="absolute inset-0 quote-banner-scrim-about" aria-hidden="true"></div>
         </div>
         <div class="relative z-10 max-w-xl md:max-w-2xl px-4 sm:px-8 text-warmwhite">
-          <p id="about-bottom-quote" class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
+          <p id="about-bottom-quote" class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight quote-banner-text-shadow">
             "Dua hati, satu tujuan,<br>melangkah bersama menuju selamanya."
           </p>
           <div class="h-px w-12 md:w-16 bg-warmwhite/80 mx-auto mt-6 md:mt-10"></div>
@@ -525,33 +526,38 @@
     <!-- SECTION 3 - OUR STORY -->
     <section id="story" class="relative w-full bg-paper text-moss overflow-hidden">
       
-      <!-- Top Title Area -->
-      <div class="bg-moss text-warmwhite px-6 md:px-16 lg:px-24 pt-24 pb-16 md:pb-20 flex flex-col lg:flex-row justify-between items-center relative overflow- visible">
+      <!-- Top Title Area (Luxury Editorial Scrapbook + Subtle Paper Grain) -->
+      <div class="story-album-surface bg-moss text-warmwhite px-6 md:px-16 lg:px-24 pt-14 sm:pt-20 md:pt-24 pb-10 sm:pb-14 md:pb-20 flex flex-col lg:flex-row justify-between items-center relative overflow-visible">
         
-        <div class="relative z-20 w-full lg:w-[40%] flex flex-col justify-center mb-12 lg:mb-0">
-          <p class="text-[10px] md:text-xs uppercase tracking-[0.3em] mb-4 text-warmwhite/70 font-semibold">OUR STORY</p>
-          <h2 id="story-headline" class="font-display text-5xl sm:text-6xl md:text-7xl mb-6 leading-[1.08]">Kisah<br>Cinta Kami</h2>
-          <div class="w-12 h-px bg-warmwhite/50 mb-6"></div>
-          <p id="story-intro" class="text-sm md:text-base leading-relaxed text-warmwhite/90 max-w-sm">
+        <div class="relative z-20 w-full lg:w-[40%] flex flex-col justify-center mb-0">
+          <p class="text-[10px] md:text-xs uppercase tracking-[0.3em] mb-2.5 md:mb-4 text-warmwhite/70 font-semibold">OUR STORY</p>
+          <h2 id="story-headline" class="font-display text-[2.55rem] sm:text-5xl md:text-6xl lg:text-7xl mb-4 md:mb-6 leading-[1.02]">Kisah<br>Cinta Kami</h2>
+          <div class="w-12 h-px bg-warmwhite/50 mb-4 md:mb-6"></div>
+          <p id="story-intro" class="text-[13.5px] sm:text-sm md:text-base leading-relaxed text-warmwhite/90 max-w-sm">
             Setiap perjalanan memiliki cerita, dan ini adalah cerita tentang dua hati yang dipertemukan, tumbuh bersama, dan memilih untuk melangkah ke masa depan yang sama.
           </p>
         </div>
         
-        <!-- Top Right Images Collage (matching mockup/3.png: tilted couple-from-behind photo + overlapping mountain polaroid collage) -->
-        <div class="relative z-20 w-full lg:w-[60%] h-[380px] sm:h-[460px] md:h-[500px] flex items-center justify-center lg:justify-end">
-          <!-- Left-center tilted couple from behind photo -->
-          <div class="relative w-[68%] sm:w-[60%] md:w-[58%] max-w-[420px] -Left-6 sm:-left-12 lg:-left-20 z-10 drop-shadow-2xl">
+        <!-- Scrapbook Collage Stage: Centered & proportionally enlarged on mobile (36-40px below intro), classic right editorial balance on desktop -->
+        <div class="relative z-20 w-full max-w-[350px] sm:max-w-[430px] mx-auto lg:max-w-none lg:mx-0 lg:w-[60%] mt-9 sm:mt-10 lg:mt-0 pb-14 sm:pb-16 lg:pb-0 lg:h-[500px] lg:flex lg:items-center lg:justify-end">
+          <!-- Main tilted couple-from-behind photo -->
+          <div class="relative w-[78%] sm:w-[72%] ml-0 mr-auto lg:w-[58%] lg:max-w-[420px] lg:mr-0 lg:-left-20 z-10 drop-shadow-2xl">
             <img id="story-photo-hero" src="../aset/section3_fotopengantin.webp" class="w-full h-auto object-contain" alt="Fakhrel & Olivia dari belakang" />
           </div>
-          <!-- Overlapping right polaroid + torn notes + flower stem -->
-          <div class="absolute right-0 sm:right-2 md:right-4 -bottom-12 md:-bottom-16 w-[48%] sm:w-[44%] md:w-[42%] max-w-[300px] z-30 drop-shadow-2xl">
+          <!-- Overlapping polaroid + torn notes + dried flower stem -->
+          <div class="absolute right-1 sm:right-2 lg:right-4 -bottom-6 sm:-bottom-8 lg:-bottom-16 w-[49%] sm:w-[46%] lg:w-[42%] max-w-[205px] sm:max-w-[235px] lg:max-w-[300px] z-30 drop-shadow-2xl">
             <img src="../aset/section3(01).webp" class="w-full h-auto object-contain" alt="Polaroid collage" />
           </div>
         </div>
       </div>
 
       <!-- Timeline Area (matching mockup/3.png: 3 Polaroids Left | Line + 5 Circles | 5 Story Blocks | 2 Polaroids Right) -->
-      <div class="px-6 sm:px-10 md:px-16 lg:px-20 py-20 md:py-28 max-w-7xl mx-auto relative overflow-hidden">
+      <div class="px-6 sm:px-10 md:px-16 lg:px-20 pt-14 pb-16 sm:pt-20 sm:pb-24 md:py-28 max-w-7xl mx-auto relative overflow-hidden">
+        <!-- Mobile Editorial Chapter Bridge into Timeline -->
+        <div class="lg:hidden flex items-center gap-3 mb-8 relative z-10">
+          <span class="w-8 h-px bg-moss/40" aria-hidden="true"></span>
+          <span class="font-script text-2xl text-moss/85 leading-none">Jejak Langkah Kami</span>
+        </div>
         
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-start relative z-10">
           
@@ -673,16 +679,16 @@
       <div class="relative w-full py-16 sm:py-24 md:py-32 lg:py-40 px-6 flex flex-col items-center justify-center text-center overflow-hidden bg-moss text-warmwhite">
         <div class="absolute inset-0 z-0 pointer-events-none">
           <img src="../aset/section3_bagianbawah.webp" class="w-full h-full object-cover object-left" alt="White flowers" />
-          <div class="absolute inset-0 bg-moss/30 md:bg-transparent"></div>
+          <div class="absolute inset-0 quote-banner-scrim-story" aria-hidden="true"></div>
         </div>
         
         <div class="relative z-10 w-full max-w-3xl mx-auto flex flex-col items-center justify-center">
           <div class="text-center w-full relative">
-             <span class="text-8xl font-display text-warmwhite/30 absolute -top-12 left-4 md:left-0">&ldquo;</span>
-             <p id="story-bottom-quote" class="font-display text-3xl md:text-5xl italic leading-tight text-warmwhite relative z-10 max-w-xl mx-auto">
+             <span class="text-8xl font-display text-warmwhite/45 absolute -top-12 left-4 md:left-0 quote-banner-text-shadow">&ldquo;</span>
+             <p id="story-bottom-quote" class="font-display text-3xl md:text-5xl italic leading-tight text-warmwhite relative z-10 max-w-xl mx-auto quote-banner-text-shadow">
                Bukan tentang siapa yang sempurna, tapi tentang dua orang yang memilih untuk selalu berjuang bersama.
              </p>
-             <div class="w-16 h-px bg-warmwhite/40 mx-auto mt-10"></div>
+             <div class="w-16 h-px bg-warmwhite/65 mx-auto mt-10"></div>
           </div>
         </div>
       </div>
@@ -1183,11 +1189,12 @@
       <div class="relative w-full min-h-[190px] sm:min-h-[230px] md:min-h-[270px] lg:min-h-[310px] py-12 sm:py-16 md:py-20 bg-moss overflow-hidden flex items-center">
         <div class="absolute inset-0 z-0 pointer-events-none">
           <img src="../aset/section5_bagianbawah.webp" class="w-full h-full object-cover object-center" alt="Flowers background" />
+          <div class="absolute inset-0 quote-banner-scrim-gallery" aria-hidden="true"></div>
         </div>
         
         <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center sm:justify-end px-6 sm:px-12 md:px-20 gap-8">
-          <div class="sm:border-l border-warmwhite/40 sm:pl-8 md:pl-12 py-2 flex flex-col items-center justify-center">
-            <p class="font-script text-4xl sm:text-5xl md:text-6xl text-warmwhite rotate-[-6deg] drop-shadow-lg text-center leading-[0.95]">
+          <div class="sm:border-l border-warmwhite/50 sm:pl-8 md:pl-12 py-2 flex flex-col items-center justify-center">
+            <p class="font-script text-4xl sm:text-5xl md:text-6xl text-warmwhite rotate-[-6deg] quote-banner-text-shadow text-center leading-[0.95]">
               More<br>Memories<br>to Come<br><span class="text-xl">&hearts;</span>
             </p>
           </div>

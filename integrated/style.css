@@ -714,6 +714,37 @@ details > summary::marker {
   letter-spacing: 0.2em;
 }
 
+/* Subtle archival fine paper grain texture for Section 3 Our Story header */
+.story-album-surface {
+  position: relative;
+  isolation: isolate;
+}
+
+.story-album-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 50% 45%,
+    rgba(232, 230, 217, 0.035) 0%,
+    rgba(16, 20, 12, 0.16) 100%
+  );
+}
+
+.story-album-surface::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.032;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 220px 220px;
+}
+
 /* Decorative branch on desktop */
 .story-branch {
   position: absolute;
@@ -2649,4 +2680,89 @@ body.cover-locked .audio-player {
   .opening-cover-dot {
     transition: none;
   }
+}
+
+/* ============================================================
+   QUOTE & PHOTO BANNER TEXT-AREA CONTRAST SCRIMS
+   Smooth dark botanical gradients localized to the text zone
+   so bright white blooms remain atmospheric at the edges while
+   keeping every word crisp and WCAG-compliant.
+   ============================================================ */
+.quote-banner-scrim-about {
+  background:
+    radial-gradient(
+      ellipse 76% 86% at 48% 48%,
+      rgba(18, 24, 15, 0.72) 0%,
+      rgba(18, 24, 15, 0.48) 52%,
+      rgba(18, 24, 15, 0.14) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(18, 24, 15, 0.24) 0%,
+      rgba(18, 24, 15, 0.08) 50%,
+      rgba(18, 24, 15, 0.26) 100%
+    );
+}
+
+.quote-banner-scrim-story {
+  background:
+    radial-gradient(
+      ellipse 74% 80% at 50% 50%,
+      rgba(18, 24, 15, 0.58) 0%,
+      rgba(18, 24, 15, 0.36) 56%,
+      rgba(18, 24, 15, 0.06) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(20, 26, 17, 0.34) 0%,
+      rgba(20, 26, 17, 0.56) 50%,
+      rgba(20, 26, 17, 0.38) 100%
+    );
+}
+
+@media (max-width: 767px) {
+  .quote-banner-scrim-story {
+    background:
+      radial-gradient(
+        ellipse 88% 82% at 50% 50%,
+        rgba(18, 24, 15, 0.62) 0%,
+        rgba(18, 24, 15, 0.38) 60%,
+        rgba(18, 24, 15, 0.08) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(20, 26, 17, 0.36) 0%,
+        rgba(20, 26, 17, 0.58) 50%,
+        rgba(20, 26, 17, 0.4) 100%
+      );
+  }
+}
+
+.quote-banner-scrim-gallery {
+  background:
+    radial-gradient(
+      ellipse 78% 85% at 50% 50%,
+      rgba(18, 24, 15, 0.66) 0%,
+      rgba(18, 24, 15, 0.42) 55%,
+      rgba(18, 24, 15, 0.14) 100%
+    );
+}
+
+@media (min-width: 640px) {
+  .quote-banner-scrim-gallery {
+    background:
+      linear-gradient(
+        to left,
+        rgba(18, 24, 15, 0.68) 0%,
+        rgba(18, 24, 15, 0.44) 36%,
+        rgba(18, 24, 15, 0.14) 68%,
+        rgba(18, 24, 15, 0.06) 100%
+      );
+  }
+}
+
+.quote-banner-text-shadow {
+  text-shadow:
+    0 2px 18px rgba(12, 16, 10, 0.62),
+    0 1px 4px rgba(12, 16, 10, 0.36);
 }
