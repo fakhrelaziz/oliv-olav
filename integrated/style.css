@@ -2221,9 +2221,21 @@ body.cover-locked .audio-player {
   background-color: #1a1f15;
 }
 
+/* Muted warm-olive filmic color wash to unify sky highlights with the botanical palette */
+.opening-cover-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: rgba(54, 65, 42, 0.24);
+  mix-blend-mode: color;
+}
+
 .opening-cover-slide {
   position: absolute;
   inset: 0;
+  z-index: 1;
   opacity: 0;
   transform: scale(1.0);
   transition:
@@ -2234,7 +2246,7 @@ body.cover-locked .audio-player {
 
 .opening-cover-slide.is-active {
   opacity: 1;
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 .opening-cover-slide picture {
@@ -2247,22 +2259,53 @@ body.cover-locked .audio-player {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: 50% 45%;
   display: block;
-  filter: brightness(0.88) contrast(1.03);
+  filter: saturate(0.76) sepia(0.14) hue-rotate(-5deg) brightness(0.93) contrast(1.04);
 }
 
+/* Mobile-first focal framing so the couple always stands cleanly in the open center window */
+.opening-cover-media-s1 {
+  object-position: 58% 44%;
+}
+
+.opening-cover-media-s2 {
+  object-position: 50% 62%;
+}
+
+.opening-cover-media-s3 {
+  object-position: 52% 68%;
+  transform: scale(1.12);
+  transform-origin: 52% 76%;
+}
+
+.opening-cover-media-s4 {
+  object-position: 50% 58%;
+}
+
+.opening-cover-media-s5 {
+  object-position: 50% 66%;
+}
+
+/* Selective top & bottom dark-olive gradient — center photo window stays clear and luminous */
 .opening-cover-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
   background:
-    radial-gradient(circle at 50% 38%, rgba(44, 52, 36, 0.16) 0%, rgba(20, 25, 16, 0.72) 85%),
-    linear-gradient(180deg, rgba(22, 27, 18, 0.65) 0%, rgba(36, 43, 29, 0.25) 45%, rgba(20, 25, 16, 0.88) 100%);
+    linear-gradient(
+      180deg,
+      rgba(22, 28, 18, 0.72) 0%,
+      rgba(22, 28, 18, 0.34) 24%,
+      rgba(22, 28, 18, 0.04) 41%,
+      rgba(22, 28, 18, 0.05) 57%,
+      rgba(20, 26, 16, 0.66) 77%,
+      rgba(16, 21, 13, 0.93) 100%
+    );
 }
 
-/* Sheer white wedding tulle / chiffon drapery on top, left & right sides */
+/* Whisper-thin warm-ivory wedding drapery on top, left & right edges */
 .opening-cover-drapes {
   position: absolute;
   inset: 0;
@@ -2273,17 +2316,19 @@ body.cover-locked .audio-player {
 
 .opening-cover-drape-top {
   position: absolute;
-  top: -0.35rem;
+  top: -0.55rem;
   left: -2%;
   width: 104%;
-  height: clamp(4.8rem, 15vh, 9.2rem);
+  height: clamp(2.1rem, 6.2vh, 4.6rem);
   max-width: none;
   object-fit: fill;
   object-position: top center;
   user-select: none;
   pointer-events: none;
-  opacity: 0.9;
-  filter: drop-shadow(0 10px 24px rgba(10, 14, 8, 0.35));
+  opacity: 0.34;
+  filter: sepia(0.22) saturate(0.72) brightness(0.92) drop-shadow(0 6px 16px rgba(10, 14, 8, 0.22));
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 22%, rgba(0, 0, 0, 0.45) 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 22%, rgba(0, 0, 0, 0.45) 60%, transparent 100%);
   transform-origin: top center;
   animation: coverDrapeBreezeTop 8s ease-in-out infinite alternate;
   will-change: transform, opacity;
@@ -2297,7 +2342,7 @@ body.cover-locked .audio-player {
     transform: scaleY(1) translate3d(0, 0, 0);
   }
   100% {
-    transform: scaleY(1.04) translate3d(0, 2px, 0);
+    transform: scaleY(1.03) translate3d(0, 1.5px, 0);
   }
 }
 
@@ -2306,13 +2351,15 @@ body.cover-locked .audio-player {
   top: -1%;
   bottom: -2%;
   height: 103%;
-  width: clamp(2.8rem, 8.8vw, 8.75rem);
+  width: clamp(1.25rem, 4.1vw, 4.1rem);
   max-width: none;
   object-fit: fill;
   user-select: none;
   pointer-events: none;
-  opacity: 0.88;
-  filter: drop-shadow(0 10px 24px rgba(10, 14, 8, 0.35));
+  opacity: 0.3;
+  filter: sepia(0.22) saturate(0.72) brightness(0.9) drop-shadow(0 6px 18px rgba(10, 14, 8, 0.18));
+  -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.92) 22%, rgba(0, 0, 0, 0.45) 62%, transparent 100%);
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.92) 22%, rgba(0, 0, 0, 0.45) 62%, transparent 100%);
   will-change: transform, opacity;
   transition:
     transform 1050ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -2320,13 +2367,13 @@ body.cover-locked .audio-player {
 }
 
 .opening-cover-drape-left {
-  left: -0.4rem;
+  left: -0.35rem;
   transform-origin: top left;
   animation: coverDrapeBreezeLeft 7.5s ease-in-out infinite alternate;
 }
 
 .opening-cover-drape-right {
-  right: -0.4rem;
+  right: -0.35rem;
   transform-origin: center center;
   transform: scaleX(-1);
   animation: coverDrapeBreezeRight 8.2s ease-in-out infinite alternate;
@@ -2337,7 +2384,7 @@ body.cover-locked .audio-player {
     transform: rotate(0deg) scaleX(1) translate3d(0, 0, 0);
   }
   100% {
-    transform: rotate(-0.65deg) scaleX(1.03) translate3d(2px, -2px, 0);
+    transform: rotate(-0.5deg) scaleX(1.02) translate3d(1.5px, -1.5px, 0);
   }
 }
 
@@ -2346,7 +2393,7 @@ body.cover-locked .audio-player {
     transform: scaleX(-1) rotate(0deg) translate3d(0, 0, 0);
   }
   100% {
-    transform: scaleX(-1.03) rotate(0.65deg) translate3d(-2px, -2px, 0);
+    transform: scaleX(-1.02) rotate(0.5deg) translate3d(-1.5px, -1.5px, 0);
   }
 }
 
@@ -2369,16 +2416,17 @@ body.cover-locked .audio-player {
   opacity: 0;
 }
 
-/* Botanical moss & white orchid floral installations at bottom-left and bottom-right base of drapes */
+/* Botanical moss & white orchid floral installations anchored cleanly at bottom corners */
 .opening-cover-floral {
   position: absolute;
-  bottom: -0.5rem;
+  bottom: -0.65rem;
   z-index: 2;
   height: auto;
   max-width: none;
+  opacity: 0.9;
   user-select: none;
   pointer-events: none;
-  filter: drop-shadow(0 14px 28px rgba(8, 12, 6, 0.58));
+  filter: drop-shadow(0 12px 24px rgba(8, 12, 6, 0.52));
   will-change: transform, opacity;
   transition:
     transform 1050ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -2386,15 +2434,15 @@ body.cover-locked .audio-player {
 }
 
 .opening-cover-floral-left {
-  left: -0.2rem;
-  width: clamp(5.2rem, 13.5vw, 11.5rem);
+  left: -0.45rem;
+  width: clamp(4.6rem, 15.5vw, 9.8rem);
   transform-origin: bottom left;
   animation: coverFloralSwayLeft 7s ease-in-out infinite alternate;
 }
 
 .opening-cover-floral-right {
-  right: -0.2rem;
-  width: clamp(5.6rem, 14.5vw, 12.5rem);
+  right: -0.45rem;
+  width: clamp(4.9rem, 16.5vw, 10.6rem);
   transform-origin: bottom right;
   animation: coverFloralSwayRight 7.8s ease-in-out infinite alternate;
 }
@@ -2404,7 +2452,7 @@ body.cover-locked .audio-player {
     transform: rotate(0deg) scale(1);
   }
   100% {
-    transform: rotate(0.7deg) scale(1.015);
+    transform: rotate(0.6deg) scale(1.012);
   }
 }
 
@@ -2413,7 +2461,7 @@ body.cover-locked .audio-player {
     transform: rotate(0deg) scale(1);
   }
   100% {
-    transform: rotate(-0.7deg) scale(1.015);
+    transform: rotate(-0.6deg) scale(1.012);
   }
 }
 
@@ -2429,59 +2477,14 @@ body.cover-locked .audio-player {
   opacity: 0;
 }
 
+/* Single delicate editorial hairline border frame */
 .opening-cover-frame {
   position: absolute;
-  inset: 0.9rem;
+  inset: 0.75rem;
   z-index: 3;
-  border: 1px solid rgba(232, 230, 217, 0.24);
-  border-radius: 1.25rem;
-  overflow: visible;
-}
-
-.opening-cover-frame::before {
-  content: "";
-  position: absolute;
-  inset: 0.35rem;
-  border: 1px solid rgba(232, 230, 217, 0.12);
-  border-radius: 1rem;
+  border: 1px solid rgba(232, 230, 217, 0.14);
+  border-radius: 0.65rem;
   pointer-events: none;
-}
-
-.opening-cover-ornament {
-  position: absolute;
-  z-index: 4;
-  pointer-events: none;
-  opacity: 0.96;
-  filter: drop-shadow(0 10px 22px rgba(8, 12, 6, 0.55));
-  transition:
-    transform 1050ms cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.opening-cover-ornament-bl {
-  left: 0.35rem;
-  bottom: 3.4rem;
-  width: 6.2rem;
-  height: auto;
-  transform: rotate(12deg);
-}
-
-.opening-cover-ornament-tr {
-  right: 0.15rem;
-  top: 0.65rem;
-  width: 6.8rem;
-  height: auto;
-  transform: rotate(185deg);
-}
-
-.opening-cover.is-opened .opening-cover-ornament-bl {
-  transform: translate3d(-45%, 10%, 0) rotate(0deg);
-  opacity: 0;
-}
-
-.opening-cover.is-opened .opening-cover-ornament-tr {
-  transform: translate3d(45%, -10%, 0) rotate(195deg);
-  opacity: 0;
 }
 
 .opening-cover-content {
@@ -2491,7 +2494,7 @@ body.cover-locked .audio-player {
   height: 100%;
   max-width: 72rem;
   margin-inline: auto;
-  padding: 2rem 1.75rem 2.1rem;
+  padding: 1.65rem 1.5rem 1.7rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -2504,33 +2507,34 @@ body.cover-locked .audio-player {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .opening-cover-topbar-line {
   flex: 1 1 auto;
   height: 1px;
-  background: linear-gradient(90deg, rgba(232, 230, 217, 0.08), rgba(232, 230, 217, 0.32), rgba(232, 230, 217, 0.08));
+  background: linear-gradient(90deg, rgba(232, 230, 217, 0.06), rgba(232, 230, 217, 0.28), rgba(232, 230, 217, 0.06));
 }
 
 .opening-cover-center {
-  margin-block: auto;
-  padding-block: 0.5rem;
+  margin-top: 0.85rem;
+  margin-bottom: auto;
+  padding-block: 0.25rem;
 }
 
 .opening-cover-title {
-  font-size: clamp(3.3rem, 8vw, 6.4rem);
-  line-height: 0.92;
+  font-size: clamp(2.7rem, 8.8vw, 5.4rem);
+  line-height: 0.9;
   letter-spacing: -0.01em;
-  text-shadow: 0 12px 32px rgba(15, 19, 12, 0.45);
+  text-shadow: 0 8px 26px rgba(12, 16, 10, 0.52);
 }
 
 .opening-cover-and {
   display: block;
-  font-size: clamp(2rem, 4.2vw, 3.35rem);
-  line-height: 0.78;
-  margin-block: 0.2rem;
-  color: rgba(232, 230, 217, 0.92);
+  font-size: clamp(1.65rem, 4.2vw, 2.95rem);
+  line-height: 0.72;
+  margin-block: 0.12rem;
+  color: rgba(232, 230, 217, 0.9);
 }
 
 .opening-cover-bottom {
@@ -2538,129 +2542,265 @@ body.cover-locked .audio-player {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.95rem;
+  gap: 1.05rem;
 }
 
-.opening-cover-guest-card {
+/* Cardless editorial guest lockup grounded directly by the bottom dark-olive gradient */
+.opening-cover-guest {
   width: 100%;
-  max-width: 28rem;
-  padding: 1.35rem 1.5rem 1.5rem;
-  border-radius: 1.35rem;
-  background: rgba(28, 34, 22, 0.54);
-  border: 1px solid rgba(232, 230, 217, 0.22);
-  box-shadow:
-    0 20px 50px rgba(10, 14, 8, 0.42),
-    inset 0 1px 0 rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  max-width: 24rem;
+  padding: 0 0.5rem;
+  text-shadow: 0 2px 16px rgba(10, 14, 8, 0.65);
 }
 
+.opening-cover-salutation {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Understated Editorial Ghost Hairline Button */
 .opening-cover-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.65rem;
-  padding: 0.8rem 1.9rem;
-  border-radius: 9999px;
-  background: #e8e6d9;
-  color: #2C3424;
+  padding: 0.74rem 1.85rem;
+  border-radius: 0.25rem;
+  background: rgba(22, 28, 18, 0.38);
+  color: #f0eee4;
   font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow:
-    0 10px 28px rgba(14, 18, 11, 0.38),
-    0 0 0 4px rgba(232, 230, 217, 0.14);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border: 1px solid rgba(232, 230, 217, 0.62);
+  box-shadow: 0 8px 24px rgba(10, 14, 8, 0.3);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   cursor: pointer;
   transition:
-    background-color 240ms ease,
-    transform 240ms ease,
-    box-shadow 240ms ease;
+    background-color 260ms ease,
+    color 260ms ease,
+    border-color 260ms ease,
+    transform 240ms ease;
 }
 
 .opening-cover-btn:hover {
-  background: #ffffff;
-  transform: translateY(-2px);
-  box-shadow:
-    0 14px 34px rgba(14, 18, 11, 0.46),
-    0 0 0 6px rgba(232, 230, 217, 0.2);
+  background: #e8e6d9;
+  color: #2C3424;
+  border-color: #e8e6d9;
+  transform: translateY(-1px);
 }
 
 .opening-cover-btn:active {
-  transform: translateY(0) scale(0.98);
+  transform: translateY(0) scale(0.985);
 }
 
+/* Minimal Hairline Slide Indicators */
 .opening-cover-dots {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.4rem;
 }
 
 .opening-cover-dot {
-  width: 0.42rem;
-  height: 0.42rem;
-  border-radius: 9999px;
+  width: 0.9rem;
+  height: 1.05rem;
+  padding: 0.47rem 0;
   border: 0;
-  padding: 0;
-  background: rgba(232, 230, 217, 0.35);
+  border-radius: 9999px;
+  background: rgba(232, 230, 217, 0.28);
+  background-clip: content-box;
   cursor: pointer;
   transition:
-    width 300ms ease,
-    background-color 300ms ease;
+    width 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 280ms ease;
+}
+
+.opening-cover-dot:hover {
+  background: rgba(232, 230, 217, 0.55);
+  background-clip: content-box;
 }
 
 .opening-cover-dot.is-active {
-  width: 1.45rem;
-  background: #e8e6d9;
+  width: 1.85rem;
+  background: rgba(232, 230, 217, 0.88);
+  background-clip: content-box;
 }
 
 @media (max-width: 767px) {
+  .opening-cover-drape-top {
+    top: -0.35rem;
+    opacity: 0.64;
+    height: clamp(3.6rem, 8.8vh, 5.2rem);
+    filter: sepia(0.12) saturate(0.84) brightness(0.96) drop-shadow(0 8px 18px rgba(10, 14, 8, 0.3));
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 58%, rgba(0, 0, 0, 0.78) 84%, transparent 100%);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 58%, rgba(0, 0, 0, 0.78) 84%, transparent 100%);
+  }
+
+  .opening-cover-drape {
+    opacity: 0.34;
+    width: clamp(1.25rem, 4.8vw, 2.3rem);
+  }
+
   .opening-cover-center {
-    margin-top: 1.1rem;
-    margin-bottom: auto;
-  }
-
-  .opening-cover-guest-card {
-    padding: 1.05rem 1.15rem 1.2rem;
-    background: rgba(24, 30, 19, 0.44);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-
-  .opening-cover-ornament-bl {
-    left: -0.1rem;
-    bottom: 13.8rem;
-    width: 4.8rem;
-    transform: rotate(18deg);
-  }
-
-  .opening-cover-ornament-tr {
-    right: 0.1rem;
-    top: 1.2rem;
-    width: 5.2rem;
+    margin-top: 1.25rem;
   }
 }
 
 @media (min-width: 768px) {
+  /* Restore previous full-bodied desktop Opening Cover design & lush drapes */
+  .opening-cover-stage::after {
+    display: none;
+  }
+
+  .opening-cover-slide.is-active {
+    transform: scale(1.06);
+  }
+
+  .opening-cover-media {
+    object-position: center;
+    filter: brightness(0.88) contrast(1.03);
+  }
+
+  .opening-cover-media-s1 {
+    object-position: 50% 35%;
+  }
+
+  .opening-cover-media-s2 {
+    object-position: 50% 26%;
+  }
+
+  .opening-cover-media-s3 {
+    object-position: 50% 66%;
+    transform: none;
+  }
+
+  .opening-cover-media-s4 {
+    object-position: 50% 56%;
+  }
+
+  .opening-cover-media-s5 {
+    object-position: 50% 62%;
+  }
+
+  .opening-cover-overlay {
+    background:
+      radial-gradient(circle at 50% 42%, rgba(44, 52, 36, 0.08) 0%, rgba(20, 25, 16, 0.56) 88%),
+      linear-gradient(180deg, rgba(22, 27, 18, 0.65) 0%, rgba(36, 43, 29, 0.14) 38%, rgba(24, 30, 19, 0.12) 56%, rgba(16, 21, 13, 0.92) 100%);
+  }
+
+  /* Restore previous lush top & side drapes on desktop */
+  .opening-cover-drape-top {
+    top: -0.35rem;
+    height: clamp(4.8rem, 15vh, 9.2rem);
+    opacity: 0.9;
+    filter: drop-shadow(0 10px 24px rgba(10, 14, 8, 0.35));
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .opening-cover-drape {
+    width: clamp(2.8rem, 8.8vw, 8.75rem);
+    opacity: 0.88;
+    filter: drop-shadow(0 10px 24px rgba(10, 14, 8, 0.35));
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .opening-cover-drape-left {
+    left: -0.4rem;
+  }
+
+  .opening-cover-drape-right {
+    right: -0.4rem;
+  }
+
+  .opening-cover-floral {
+    bottom: -0.5rem;
+    opacity: 1;
+    filter: drop-shadow(0 14px 28px rgba(8, 12, 6, 0.58));
+  }
+
+  .opening-cover-floral-left {
+    left: -0.2rem;
+    width: clamp(5.2rem, 13.5vw, 11.5rem);
+  }
+
+  .opening-cover-floral-right {
+    right: -0.2rem;
+    width: clamp(5.6rem, 14.5vw, 12.5rem);
+  }
+
   .opening-cover-frame {
     inset: 1.65rem;
+    border: 1px solid rgba(232, 230, 217, 0.24);
     border-radius: 1.6rem;
+    overflow: visible;
+  }
+
+  .opening-cover-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0.35rem;
+    border: 1px solid rgba(232, 230, 217, 0.12);
+    border-radius: 1.25rem;
+    pointer-events: none;
+  }
+
+  .opening-cover-ornament {
+    position: absolute;
+    z-index: 4;
+    pointer-events: none;
+    opacity: 0.96;
+    filter: drop-shadow(0 10px 22px rgba(8, 12, 6, 0.55));
+    transition:
+      transform 1050ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 900ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .opening-cover-ornament-bl {
+    left: 0.35rem;
+    bottom: 3.4rem;
     width: 11rem;
+    height: auto;
+    transform: rotate(12deg);
   }
 
   .opening-cover-ornament-tr {
+    right: 0.15rem;
+    top: 0.65rem;
     width: 10rem;
+    height: auto;
+    transform: rotate(185deg);
+  }
+
+  .opening-cover.is-opened .opening-cover-ornament-bl {
+    transform: translate3d(-45%, 10%, 0) rotate(0deg);
+    opacity: 0;
+  }
+
+  .opening-cover.is-opened .opening-cover-ornament-tr {
+    transform: translate3d(45%, -10%, 0) rotate(195deg);
+    opacity: 0;
   }
 
   .opening-cover-content {
-    padding: 3rem 3.5rem 2.75rem;
+    padding: 2.85rem 3.5rem 2.85rem;
+  }
+
+  .opening-cover-center {
+    margin-top: 2.4rem;
+    margin-bottom: auto;
+    padding-block: 0.5rem;
   }
 
   .opening-cover-title {
+    font-size: clamp(3.3rem, 8vw, 6.4rem);
+    line-height: 0.92;
+    text-shadow: 0 12px 32px rgba(15, 19, 12, 0.45);
     display: flex;
     align-items: baseline;
     justify-content: center;
@@ -2669,7 +2809,19 @@ body.cover-locked .audio-player {
 
   .opening-cover-and {
     display: inline-block;
+    font-size: clamp(2rem, 4.2vw, 3.35rem);
+    line-height: 0.78;
     margin-block: 0;
+    color: rgba(232, 230, 217, 0.92);
+  }
+
+  .opening-cover-bottom {
+    gap: 0.9rem;
+  }
+
+  /* Match mobile cardless guest greeting, Editorial Ghost Hairline CTA & hairline indicators on desktop */
+  .opening-cover-guest {
+    max-width: 28rem;
   }
 }
 
