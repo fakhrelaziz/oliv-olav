@@ -100,7 +100,7 @@
         </div>
     </div>
 
-    <!-- Tanda Kasih / Wedding Gift (QRIS & Rekening) -->
+    <!-- Tanda Kasih / Wedding Gift (DANA & SeaBank) -->
     <div class="px-6 sm:px-10 md:px-16 lg:px-20 pb-20 relative max-w-6xl mx-auto">
         <div class="bg-[#b2b5a6]/85 rounded-2xl p-7 sm:p-8 md:p-10 flex flex-col lg:flex-row gap-8 items-center shadow-md border border-moss/10">
             <div class="lg:w-[34%] text-center lg:text-left">
@@ -115,38 +115,40 @@
             </div>
 
             <div class="lg:w-[66%] grid grid-cols-1 sm:grid-cols-2 gap-5 w-full items-stretch">
-                <!-- Card 1: Scan QRIS -->
-                <div class="bg-paper/95 border border-moss/25 rounded-xl p-5 text-center shadow-sm flex flex-col items-center justify-between">
-                    <div class="w-full flex flex-col items-center">
-                        <div class="flex items-center justify-between w-full mb-3 px-1">
-                            <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-moss/75">QRIS All Payment</span>
-                            <span class="text-[10px] font-bold tracking-wider bg-moss text-warmwhite px-2 py-0.5 rounded">QRIS</span>
+                <!-- Card 1: E-Wallet DANA -->
+                <div class="bg-paper/95 border border-moss/20 rounded-xl p-5 text-left shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4 pb-2.5 border-b border-moss/10">
+                            <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-moss/75">E-Wallet</span>
+                            <span class="text-[10px] font-bold tracking-wider bg-moss text-warmwhite px-2.5 py-0.5 rounded">{{ strtoupper($rsvp['ewallet_name']) }}</span>
                         </div>
-                        <button type="button" data-qris-open class="group relative w-44 h-44 sm:w-48 sm:h-48 bg-white rounded-xl p-2.5 border border-moss/15 shadow-inner flex items-center justify-center overflow-hidden cursor-pointer focus:outline-none" title="Klik untuk memperbesar QRIS">
-                            <img id="rsvp-qris-image" src="{{ $rsvp['qris_photo'] }}" data-fallback="/aset/qris_default.webp" alt="QRIS Tanda Kasih {{ $rsvp['qris_name'] }}" class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy" />
-                            <span class="absolute inset-x-2 bottom-2 bg-moss/90 text-warmwhite text-[10px] py-1 px-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Klik untuk Perbesar</span>
-                        </button>
-                        <p id="rsvp-qris-name" class="font-serif font-semibold text-sm text-moss mt-3">{{ $rsvp['qris_name'] }}</p>
-                        <p class="text-[11px] text-moss/70 mt-0.5">Mendukung M-Banking, GoPay, OVO, DANA, ShopeePay</p>
+                        <p id="rsvp-ewallet-name" class="font-display text-xl text-moss font-semibold mb-3">{{ $rsvp['ewallet_name'] }}</p>
+                        <div class="bg-white/85 border border-moss/15 rounded-xl p-3.5 mb-3">
+                            <span class="block text-[10px] uppercase tracking-[0.18em] text-moss/60 mb-1">Nomor {{ $rsvp['ewallet_name'] }}</span>
+                            <div class="flex items-center justify-between gap-2">
+                                <span id="rsvp-ewallet-number" class="font-mono text-base sm:text-lg font-bold tracking-wider text-moss select-all">{{ $rsvp['ewallet_number'] }}</span>
+                                <button type="button" data-copy-target="rsvp-ewallet-number" class="inline-flex items-center gap-1 bg-moss text-warmwhite hover:bg-moss/90 text-[11px] font-medium px-3 py-1.5 rounded-lg transition shrink-0">
+                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+                                    </svg>
+                                    <span data-copy-label>Salin</span>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="text-xs text-moss/80">Atas Nama: <strong id="rsvp-ewallet-holder" class="font-semibold text-moss">{{ $rsvp['ewallet_holder'] }}</strong></p>
                     </div>
-                    <div class="flex items-center justify-center gap-2.5 w-full mt-4 pt-3 border-t border-moss/10">
-                        <button type="button" data-qris-open class="flex-1 inline-flex items-center justify-center gap-1.5 bg-moss/10 hover:bg-moss/20 text-moss text-xs font-medium py-2 px-3 rounded-lg transition">
-                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16zm0-11v6m-3-3h6" />
-                            </svg>
-                            <span>Perbesar QR</span>
-                        </button>
-                        <a id="rsvp-qris-download" href="{{ $rsvp['qris_photo'] }}" download="QRIS-Fakhrel-Olivia.webp" class="flex-1 inline-flex items-center justify-center gap-1.5 bg-moss text-warmwhite hover:bg-moss/90 text-xs font-medium py-2 px-3 rounded-lg transition">
-                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
-                            </svg>
-                            <span>Unduh QRIS</span>
-                        </a>
+
+                    <div class="mt-4 pt-3 border-t border-moss/10 flex items-center gap-2 text-[11px] text-moss/75 leading-snug">
+                        <svg class="w-4 h-4 text-moss shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        <span>Klik tombol <strong>Salin</strong> untuk menyalin nomor <strong>{{ $rsvp['ewallet_name'] }}</strong> di atas.</span>
                     </div>
                 </div>
 
-                <!-- Card 2: Transfer Rekening -->
-                <div class="bg-paper/90 border border-moss/20 rounded-xl p-5 text-left shadow-sm flex flex-col justify-between">
+                <!-- Card 2: Transfer Rekening SeaBank -->
+                <div class="bg-paper/95 border border-moss/20 rounded-xl p-5 text-left shadow-sm flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-4 pb-2.5 border-b border-moss/10">
                             <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-moss/75">Transfer Bank</span>
@@ -159,12 +161,12 @@
                             <span class="block text-[10px] uppercase tracking-[0.18em] text-moss/60 mb-1">Nomor Rekening</span>
                             <div class="flex items-center justify-between gap-2">
                                 <span id="rsvp-bank-number" class="font-mono text-base sm:text-lg font-bold tracking-wider text-moss select-all">{{ $rsvp['bank_number'] }}</span>
-                                <button type="button" id="btn-copy-rekening" class="inline-flex items-center gap-1 bg-moss text-warmwhite hover:bg-moss/90 text-[11px] font-medium px-3 py-1.5 rounded-lg transition shrink-0">
+                                <button type="button" id="btn-copy-rekening" data-copy-target="rsvp-bank-number" class="inline-flex items-center gap-1 bg-moss text-warmwhite hover:bg-moss/90 text-[11px] font-medium px-3 py-1.5 rounded-lg transition shrink-0">
                                     <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                                         <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                         <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
                                     </svg>
-                                    <span id="btn-copy-rekening-label">Salin</span>
+                                    <span id="btn-copy-rekening-label" data-copy-label>Salin</span>
                                 </button>
                             </div>
                         </div>
@@ -175,28 +177,10 @@
                         <svg class="w-4 h-4 text-moss shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                         </svg>
-                        <span>Klik tombol <strong>Salin</strong> untuk menyalin nomor rekening atau pindai kode <strong>QRIS</strong> di samping.</span>
+                        <span>Klik tombol <strong>Salin</strong> untuk menyalin nomor rekening <strong>{{ $rsvp['bank_name'] }}</strong> di atas.</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Lightbox Modal Zoom QRIS -->
-    <div id="qris-zoom-modal" class="fixed inset-0 z-[120] hidden items-center justify-center bg-black/75 backdrop-blur-sm p-4">
-        <div class="bg-paper rounded-2xl max-w-sm w-full p-6 text-center shadow-2xl border border-moss/20 relative">
-            <button type="button" data-qris-close class="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-moss/10 hover:bg-moss/20 text-moss flex items-center justify-center transition" aria-label="Tutup QRIS">
-                &times;
-            </button>
-            <p class="text-[10px] font-semibold uppercase tracking-[0.25em] text-moss/70 mb-1">Pindai Kode QRIS</p>
-            <h4 id="qris-modal-title" class="font-display text-xl text-moss mb-4">{{ $rsvp['qris_name'] }}</h4>
-            <div class="bg-white rounded-xl p-3 border border-moss/15 shadow-inner mx-auto max-w-[280px]">
-                <img id="qris-modal-image" src="{{ $rsvp['qris_photo'] }}" data-fallback="/aset/qris_default.webp" alt="QRIS {{ $rsvp['qris_name'] }}" class="w-full h-auto object-contain" />
-            </div>
-            <p class="text-xs text-moss/75 mt-3 mb-4">Arahkan kamera aplikasi M-Banking atau E-Wallet Anda ke kode QR di atas.</p>
-            <button type="button" data-qris-close class="w-full bg-moss text-warmwhite hover:bg-moss/90 text-xs font-medium py-2.5 rounded-xl transition">
-                Tutup Pratinjau
-            </button>
         </div>
     </div>
 

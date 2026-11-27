@@ -12,7 +12,7 @@ class SectionContentService
     public const IMAGE_KEYS = [
         'bg_desktop', 'bg_mobile', 'photo_couple', 'groom_photo', 'bride_photo',
         'photo_hero', 'header_photo', 'akad_photo', 'resepsi_photo', 'venue_photo',
-        'hero_photo', 'banner_photo', 'qris_photo',
+        'hero_photo', 'banner_photo',
     ];
 
     public const SLUG_TO_KEY = [
@@ -151,7 +151,7 @@ class SectionContentService
                 'section_number' => 6,
                 'slug' => 'penutup',
                 'nama_section' => 'Section 6: RSVP, Ucapan & Penutup',
-                'description' => 'Form doa & ucapan, kotak tanda kasih QRIS & rekening, kalimat penutup, dan footer.',
+                'description' => 'Form doa & ucapan, kotak tanda kasih DANA & transfer bank, kalimat penutup, dan footer.',
                 'route' => 'admin.konten.edit',
                 'route_params' => ['section' => 'penutup'],
                 'thumbnail' => '/aset/section6(01).webp',
@@ -162,11 +162,12 @@ class SectionContentService
                     'form_title' => 'Kirim Ucapan',
                     'form_intro' => 'Tuliskan doa, harapan, dan ucapan terbaik untuk kami.',
                     'confirm_box_title' => "Tanda\nKasih",
-                    'confirm_box_intro' => 'Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun apabila memberi adalah ungkapan tanda kasih, Anda dapat mengirimkannya secara cashless melalui QRIS atau transfer rekening berikut.',
-                    'qris_photo' => '/aset/qris_default.webp',
-                    'qris_name' => 'Fakhrel & Olivia Wedding',
-                    'bank_name' => 'Bank BCA',
-                    'bank_number' => '8291045678',
+                    'confirm_box_intro' => 'Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun apabila memberi adalah ungkapan tanda kasih, Anda dapat mengirimkannya secara cashless melalui DANA atau transfer rekening berikut.',
+                    'ewallet_name' => 'DANA',
+                    'ewallet_number' => '08566601948',
+                    'ewallet_holder' => 'Fakhrel & Olivia',
+                    'bank_name' => 'SeaBank',
+                    'bank_number' => '901905120917',
                     'bank_holder' => 'Fakhrel & Olivia',
                     'thanks_script' => "Terima\nKasih",
                     'closing_quote' => "Doa Anda adalah hadiah\nterindah bagi kami.",

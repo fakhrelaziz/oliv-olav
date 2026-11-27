@@ -32,7 +32,10 @@ class InvitationTest extends TestCase
             ->assertSee('Resepsi Pernikahan')
             ->assertSee('Our Photobooth Strips')
             ->assertSee('Tanda')
-            ->assertSee('8291045678');
+            ->assertSee('DANA')
+            ->assertSee('08566601948')
+            ->assertSee('SeaBank')
+            ->assertSee('901905120917');
     }
 
     public function test_public_invitation_personalizes_guest_via_query_parameter(): void

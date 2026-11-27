@@ -13,7 +13,7 @@
         'story' => ['anchor' => '#story', 'subtitle' => 'Our Story & Kisah Cinta', 'tags' => ['Headline Cerita', 'Paragraf Intro', 'Milestone Timeline', 'Quote Section']],
         'acara' => ['anchor' => '#event', 'subtitle' => 'Waktu & Lokasi Acara', 'tags' => ['Akad Nikah', 'Resepsi', 'Venue & Alamat', 'Google Maps']],
         'galeri' => ['anchor' => '#gallery', 'subtitle' => 'Galeri Foto & Momen', 'tags' => ['Headline Galeri', 'Hero Galeri', 'Foto Bento', 'Kategori & Caption']],
-        'penutup' => ['anchor' => '#rsvp', 'subtitle' => 'RSVP, Ucapan & Penutup', 'tags' => ['Doa & Ucapan', 'Tanda Kasih QRIS', 'Quote Syukur', 'Footer Penutup']],
+        'penutup' => ['anchor' => '#rsvp', 'subtitle' => 'RSVP, Ucapan & Penutup', 'tags' => ['Doa & Ucapan', 'DANA & SeaBank', 'Quote Syukur', 'Footer Penutup']],
     ];
 @endphp
 
