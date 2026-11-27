@@ -61,10 +61,12 @@
                 <button
                     type="button"
                     data-toggle-password="password"
-                    class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-inkAdmin transition"
+                    aria-pressed="false"
+                    class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-inkAdmin transition inline-flex items-center justify-center"
                     aria-label="Tampilkan atau sembunyikan password"
                 >
-                    <i data-lucide="eye" class="w-4 h-4"></i>
+                    <span data-eye-show class="inline-flex"><i data-lucide="eye" class="w-4 h-4"></i></span>
+                    <span data-eye-hide class="hidden"><i data-lucide="eye-off" class="w-4 h-4"></i></span>
                 </button>
             </div>
         </div>

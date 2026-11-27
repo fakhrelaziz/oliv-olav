@@ -220,7 +220,7 @@
                             <i data-lucide="upload" class="w-3.5 h-3.5"></i>
                             <span>Ganti / Upload Foto Baru</span>
                         </button>
-                        <span id="status_edit_story_photo" class="text-[10px] text-inkMuted block mt-1">Klik untuk mengganti foto momen</span>
+                        <span id="status_edit_story_photo" data-upload-status data-default-status="Klik untuk mengganti foto momen" class="text-[10px] text-inkMuted block mt-1">Klik untuk mengganti foto momen</span>
                     </div>
                 </div>
             </div>

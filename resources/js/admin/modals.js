@@ -38,7 +38,18 @@ export function initAdminUi() {
         if (!toggleBtn) return;
         const input = document.getElementById(toggleBtn.dataset.togglePassword || '');
         if (!input) return;
-        input.type = input.type === 'password' ? 'text' : 'password';
+        const showing = input.type === 'password';
+        input.type = showing ? 'text' : 'password';
+        toggleBtn.setAttribute('aria-pressed', showing ? 'true' : 'false');
+
+        const eyeShow = toggleBtn.querySelector('[data-eye-show]');
+        const eyeHide = toggleBtn.querySelector('[data-eye-hide]');
+        if (eyeShow && eyeHide) {
+            eyeShow.classList.toggle('hidden', showing);
+            eyeShow.classList.toggle('inline-flex', !showing);
+            eyeHide.classList.toggle('hidden', !showing);
+            eyeHide.classList.toggle('inline-flex', showing);
+        }
     });
 
     // 3. Copy invite link helper
@@ -113,6 +124,13 @@ export function initAdminUi() {
             form.setAttribute('action', actionUrl);
         }
 
+        modal.querySelectorAll('[data-upload-status]').forEach((statusEl) => {
+            if (statusEl.dataset.defaultStatus) {
+                statusEl.textContent = statusEl.dataset.defaultStatus;
+            }
+            statusEl.className = 'text-[10px] text-inkMuted block mt-1';
+        });
+
         Object.entries(payload).forEach(([key, val]) => {
             const field = modal.querySelector(`[data-field="${key}"]`);
             if (field) {
@@ -186,4 +204,48 @@ export function initAdminUi() {
             img.src = fb;
         });
     });
+
+    // 11. Client-side validation for forms requiring an uploaded image (e.g., Gallery create modal)
+    document.addEventListener('submit', (e) => {
+        const form = e.target;
+        if (!(form instanceof HTMLFormElement)) return;
+
+        if (form.dataset.uploading === '1') {
+            e.preventDefault();
+            showAdminToast('Foto masih dalam proses unggah, harap tunggu sebentar...');
+            return;
+        }
+
+        const requiredInputId = form.dataset.requireUpload;
+        if (!requiredInputId) return;
+
+        const targetInput = document.getElementById(requiredInputId);
+        if (!targetInput || targetInput.value.trim() === '') {
+            e.preventDefault();
+            const statusId = form.dataset.requireUploadStatus;
+            const statusEl = statusId ? document.getElementById(statusId) : null;
+            if (statusEl) {
+                statusEl.textContent = 'Silakan unggah foto terlebih dahulu sebelum menyimpan.';
+                statusEl.className = 'text-[10px] text-rose-600 font-medium block mt-1';
+            }
+            showAdminToast('Silakan unggah foto terlebih dahulu sebelum menyimpan.');
+        }
+    });
+
+    // 12. Live Google Maps iframe preview update on Section 4 (Acara)
+    const mapsInput = document.getElementById('maps_embed');
+    const mapsPreview = document.getElementById('adminMapsPreview');
+    if (mapsInput && mapsPreview) {
+        const updateMapsPreview = () => {
+            const raw = mapsInput.value.trim();
+            if (!raw) return;
+            const match = raw.match(/<iframe[^>]+src=["']([^"']+)["']/i);
+            const url = (match ? match[1] : raw).trim();
+            if (/^https?:\/\//i.test(url) && mapsPreview.getAttribute('src') !== url) {
+                mapsPreview.setAttribute('src', url);
+            }
+        };
+        mapsInput.addEventListener('change', updateMapsPreview);
+        mapsInput.addEventListener('blur', updateMapsPreview);
+    }
 }

@@ -64,13 +64,18 @@ class PublicRsvpTest extends TestCase
             ]);
 
         $this->assertDatabaseHas('doa_ucapan', [
+            'tamu_id' => $tamu->id,
             'nama_pengirim' => 'rama wijaya',
             'status_kehadiran' => 'Hadir',
             'is_tampil' => 1,
         ]);
 
+        $savedWish = DoaUcapan::query()->where('nama_pengirim', 'rama wijaya')->firstOrFail();
+        $this->assertNotEmpty($savedWish->ip_address);
+
         $tamu->refresh();
         $this->assertSame('Hadir', $tamu->status);
+        $this->assertSame(2, $tamu->jumlah_hadir_aktual);
     }
 
     public function test_rsvp_rejects_invalid_payload(): void

@@ -68,6 +68,13 @@
                             <option value="Tidak Hadir" @selected($statusFilter === 'Tidak Hadir')>Tidak Hadir</option>
                             <option value="Masih Ragu" @selected($statusFilter === 'Masih Ragu')>Masih Ragu</option>
                         </select>
+
+                        @if ($search !== '' || $statusFilter !== 'all')
+                            <a href="{{ route('admin.rsvp.index') }}" class="inline-flex items-center space-x-1 px-2.5 py-1.5 text-xs bg-white hover:bg-rose-50 border border-borderSoft rounded-xl text-inkMuted hover:text-rose-600 transition" title="Reset pencarian & filter">
+                                <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                                <span>Reset</span>
+                            </a>
+                        @endif
                     </form>
 
                     <a href="{{ route('admin.rsvp.export') }}" class="px-3 py-1.5 text-xs bg-cardMuted hover:bg-[#EFECE0] border border-borderSoft rounded-xl text-inkAdmin flex items-center space-x-1 transition">

@@ -198,10 +198,16 @@
                     <input type="text" id="features_transit" name="features_transit" value="{{ old('features_transit', $data['features_transit']) }}" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition">
                 </div>
 
-                <div class="md:col-span-2">
-                    <label for="maps_embed" class="block text-xs font-semibold text-inkAdmin mb-1.5">URL Embed Iframe Google Maps</label>
-                    <input type="text" id="maps_embed" name="maps_embed" value="{{ old('maps_embed', $data['maps_embed']) }}" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition font-mono">
-                    <span class="text-[10px] text-inkMuted mt-1 block">Tautan iframe embed peta Google Maps untuk menampilkan peta interaktif di website</span>
+                <div class="md:col-span-2 space-y-2">
+                    <label for="maps_embed" class="block text-xs font-semibold text-inkAdmin">URL Embed atau Kode Iframe Google Maps</label>
+                    <input type="text" id="maps_embed" name="maps_embed" value="{{ old('maps_embed', $data['maps_embed']) }}" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition font-mono" placeholder="https://www.google.com/maps/embed?... atau tempel langsung tag <iframe>">
+                    <span class="text-[10px] text-inkMuted block">Anda dapat menempel URL embed langsung atau seluruh kode <code>&lt;iframe ...&gt;</code> dari Google Maps — sistem akan otomatis mengekstrak URL-nya.</span>
+
+                    @if (filled($data['maps_embed']))
+                        <div class="mt-2 rounded-2xl overflow-hidden border border-borderSoft bg-cardMuted h-48">
+                            <iframe id="adminMapsPreview" src="{{ $data['maps_embed'] }}" width="100%" height="100%" style="border:0;" loading="lazy" title="Pratinjau Peta Google Maps"></iframe>
+                        </div>
+                    @endif
                 </div>
 
                 <div>

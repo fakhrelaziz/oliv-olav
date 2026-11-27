@@ -3,6 +3,28 @@
     $calendarTitle = urlencode("Pernikahan {$hero['groom_nickname']} & {$hero['bride_nickname']}");
     $calendarLocation = urlencode($event['akad_place'] ?? 'The Glass House, Jakarta');
     $calendarDetails = urlencode("Dengan penuh rasa syukur, kami mengundang Anda dalam hari bahagia {$hero['groom_nickname']} & {$hero['bride_nickname']}.");
+
+    $monthMap = [
+        'januari' => '01', 'january' => '01', 'jan' => '01',
+        'februari' => '02', 'february' => '02', 'feb' => '02',
+        'maret' => '03', 'march' => '03', 'mar' => '03',
+        'april' => '04', 'apr' => '04',
+        'mei' => '05', 'may' => '05',
+        'juni' => '06', 'june' => '06', 'jun' => '06',
+        'juli' => '07', 'july' => '07', 'jul' => '07',
+        'agustus' => '08', 'august' => '08', 'aug' => '08', 'agu' => '08',
+        'september' => '09', 'sep' => '09',
+        'oktober' => '10', 'october' => '10', 'oct' => '10', 'okt' => '10',
+        'november' => '11', 'nov' => '11',
+        'desember' => '12', 'december' => '12', 'dec' => '12', 'des' => '12',
+    ];
+    $calDateYmd = '20261225';
+    if (preg_match('/(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})/', (string) ($hero['wedding_date'] ?? ''), $dm)) {
+        $mon = $monthMap[strtolower($dm[2])] ?? null;
+        if ($mon) {
+            $calDateYmd = $dm[3] . $mon . str_pad($dm[1], 2, '0', STR_PAD_LEFT);
+        }
+    }
 @endphp
 
 <section id="countdown" class="relative w-full overflow-hidden bg-[#22291C] text-warmwhite border-y border-warmwhite/10">
@@ -30,7 +52,7 @@
         </div>
 
         <div class="mt-7 sm:mt-8">
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text={{ $calendarTitle }}&dates=20261225T010000Z/20261225T070000Z&details={{ $calendarDetails }}&location={{ $calendarLocation }}"
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text={{ $calendarTitle }}&dates={{ $calDateYmd }}T010000Z/{{ $calDateYmd }}T070000Z&details={{ $calendarDetails }}&location={{ $calendarLocation }}"
                target="_blank"
                rel="noopener"
                class="inline-flex items-center gap-2 text-[11px] sm:text-xs uppercase tracking-[0.26em] text-warmwhite/80 hover:text-warmwhite border-b border-warmwhite/35 hover:border-warmwhite pb-1 transition">

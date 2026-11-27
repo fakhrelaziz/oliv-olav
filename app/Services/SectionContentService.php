@@ -15,6 +15,17 @@ class SectionContentService
         'hero_photo', 'banner_photo',
     ];
 
+    public const REQUIRED_NON_EMPTY_KEYS = [
+        'groom_nickname',
+        'bride_nickname',
+        'wedding_date',
+        'maps_embed',
+        'ewallet_name',
+        'ewallet_number',
+        'bank_name',
+        'bank_number',
+    ];
+
     public const SLUG_TO_KEY = [
         'hero' => 'section_1_hero',
         'pengantin' => 'section_2_about',
@@ -279,12 +290,27 @@ class SectionContentService
             $filteredIncoming = array_intersect_key($incomingData, array_flip($allowedKeys));
             $merged = array_merge($def['data'], $prev, $filteredIncoming);
 
-            foreach (self::IMAGE_KEYS as $imgKey) {
-                if (array_key_exists($imgKey, $merged)) {
-                    $val = trim((string) $merged[$imgKey]);
-                    $merged[$imgKey] = $val === ''
-                        ? ($def['data'][$imgKey] ?? '')
-                        : MediaStorageService::normalizeAssetUrl($val, $def['data'][$imgKey] ?? '');
+            if ($key === 'section_4_event' && array_key_exists('maps_embed', $merged)) {
+                $merged['maps_embed'] = self::extractMapsEmbedUrl(
+                    (string) ($merged['maps_embed'] ?? ''),
+                    (string) ($def['data']['maps_embed'] ?? '')
+                );
+            }
+
+            foreach ($merged as $fieldKey => $value) {
+                if (in_array($fieldKey, self::IMAGE_KEYS, true)) {
+                    $val = trim((string) ($value ?? ''));
+                    $merged[$fieldKey] = $val === ''
+                        ? ($def['data'][$fieldKey] ?? '')
+                        : MediaStorageService::normalizeAssetUrl($val, $def['data'][$fieldKey] ?? '');
+                    continue;
+                }
+
+                $strVal = is_null($value) ? '' : (string) $value;
+                if (trim($strVal) === '' && in_array($fieldKey, self::REQUIRED_NON_EMPTY_KEYS, true)) {
+                    $merged[$fieldKey] = $def['data'][$fieldKey] ?? '';
+                } else {
+                    $merged[$fieldKey] = $strVal;
                 }
             }
 
@@ -361,6 +387,24 @@ class SectionContentService
 
             return $def['data'];
         });
+    }
+
+    public static function extractMapsEmbedUrl(string $raw, string $fallback = ''): string
+    {
+        $trimmed = trim($raw);
+        if ($trimmed === '') {
+            return $fallback;
+        }
+
+        if (preg_match('/<iframe[^>]+src=["\']([^"\']+)["\']/i', $trimmed, $matches)) {
+            $trimmed = trim(html_entity_decode($matches[1], ENT_QUOTES | ENT_HTML5, 'UTF-8'));
+        }
+
+        if (preg_match('#^https?://#i', $trimmed)) {
+            return $trimmed;
+        }
+
+        return $fallback;
     }
 
     private function mergeAndNormalize(string $key, array $defaults, array $saved): array

@@ -57,7 +57,7 @@ class GalleryController extends Controller
             'judul' => $validated['judul'],
             'kategori' => $validated['kategori'],
             'foto_url' => $newPhoto,
-            'keterangan' => $validated['keterangan'] ?? $galeri->keterangan,
+            'keterangan' => array_key_exists('keterangan', $validated) ? $validated['keterangan'] : $galeri->keterangan,
             'urutan' => $validated['urutan'] ?? $galeri->urutan,
         ]);
 

@@ -79,6 +79,21 @@ export function initMediaUploads() {
         const targetPreview = document.getElementById(fileInput.dataset.targetPreview || '');
         const targetStatus = document.getElementById(fileInput.dataset.targetStatus || '');
         const prefix = fileInput.dataset.uploadPrefix || 'img';
+        const parentForm = fileInput.closest('form');
+        const submitButtons = parentForm
+            ? [
+                  ...parentForm.querySelectorAll('button[type="submit"]'),
+                  ...(parentForm.id ? document.querySelectorAll(`button[type="submit"][form="${parentForm.id}"]`) : []),
+              ]
+            : [];
+
+        if (parentForm) {
+            parentForm.dataset.uploading = '1';
+            submitButtons.forEach((btn) => {
+                btn.disabled = true;
+                btn.classList.add('opacity-60', 'cursor-wait');
+            });
+        }
 
         if (targetStatus) {
             targetStatus.textContent = 'Mengompresi & mengunggah foto...';
@@ -130,6 +145,13 @@ export function initMediaUploads() {
             showAdminToast(err.message || 'Gagal mengunggah gambar.');
         } finally {
             fileInput.value = '';
+            if (parentForm) {
+                delete parentForm.dataset.uploading;
+                submitButtons.forEach((btn) => {
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-60', 'cursor-wait');
+                });
+            }
         }
     });
 

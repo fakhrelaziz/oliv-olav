@@ -69,23 +69,17 @@
                 <span>Ornamen Kaligrafi &amp; Lokasi Kota</span>
             </h3>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                <div>
-                    <label for="side_text" class="block text-xs font-semibold text-inkAdmin mb-1.5">Teks Ornamen Samping Kanan</label>
-                    <textarea id="side_text" name="side_text" rows="4" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition leading-relaxed resize-none">{{ old('side_text', $data['side_text']) }}</textarea>
-                    <span class="text-[10px] text-inkMuted mt-1 block">Teks vertikal di sisi kanan desktop (gunakan baris baru)</span>
-                </div>
-
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                     <label for="script_text" class="block text-xs font-semibold text-inkAdmin mb-1.5">Teks Script Kaligrafi Bawah</label>
                     <textarea id="script_text" name="script_text" rows="4" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition leading-relaxed resize-none">{{ old('script_text', $data['script_text']) }}</textarea>
-                    <span class="text-[10px] text-inkMuted mt-1 block">Teks tulisan sambung miring di kanan bawah</span>
+                    <span class="text-[10px] text-inkMuted mt-1 block">Teks tulisan sambung miring di kanan bawah hero (gunakan baris baru)</span>
                 </div>
 
                 <div>
                     <label for="city" class="block text-xs font-semibold text-inkAdmin mb-1.5">Kota / Lokasi Dasar</label>
                     <input type="text" id="city" name="city" value="{{ old('city', $data['city']) }}" class="w-full bg-cardMuted border border-borderSoft rounded-xl p-3 text-xs focus:outline-none focus:border-moss transition" placeholder="JAKARTA, INDONESIA">
-                    <span class="text-[10px] text-inkMuted mt-1 block">Teks kecil di sudut kanan bawah cover</span>
+                    <span class="text-[10px] text-inkMuted mt-1 block">Teks kecil di sudut kanan atas cover &amp; kanan bawah hero</span>
                 </div>
             </div>
         </div>

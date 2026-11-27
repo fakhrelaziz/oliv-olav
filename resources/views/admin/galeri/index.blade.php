@@ -84,7 +84,7 @@
 
                 <div class="absolute inset-0 bg-black/0 group-hover:bg-black/45 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                     <div class="flex items-center space-x-2">
-                        <button type="button" data-preview-image="{{ $imgUrl }}" data-preview-title="{{ $photo->judul }}" class="w-8 h-8 rounded-full bg-white/95 text-moss hover:bg-white flex items-center justify-center shadow" title="Perbesar">
+                        <button type="button" data-preview-image="{{ $imgUrl }}" data-preview-title="{{ $photo->judul . ($photo->keterangan ? ' — ' . $photo->keterangan : '') }}" class="w-8 h-8 rounded-full bg-white/95 text-moss hover:bg-white flex items-center justify-center shadow" title="Perbesar">
                             <i data-lucide="maximize-2" class="w-4 h-4"></i>
                         </button>
 
@@ -93,6 +93,7 @@
                                 data-edit-action="{{ route('admin.galeri.update', $photo) }}"
                                 data-edit-payload="{{ json_encode([
                                     'judul' => $photo->judul,
+                                    'keterangan' => $photo->keterangan ?? '',
                                     'kategori' => $photo->kategori,
                                     'urutan' => $photo->urutan,
                                     'foto_url' => $imgUrl,
@@ -144,11 +145,16 @@
 @push('modals')
     {{-- Modal Unggah Foto Baru --}}
     <x-admin.modal id="uploadPhotoModal" title="Unggah Foto Galeri">
-        <form action="{{ route('admin.galeri.store') }}" method="POST" class="space-y-4 text-xs">
+        <form action="{{ route('admin.galeri.store') }}" method="POST" data-require-upload="input_new_gallery_photo" data-require-upload-status="status_new_gallery_photo" class="space-y-4 text-xs">
             @csrf
             <div>
-                <label class="block font-medium mb-1">Judul / Keterangan Foto</label>
+                <label class="block font-medium mb-1">Judul Foto</label>
                 <input type="text" name="judul" required placeholder="Contoh: Momen Bahagia di Taman" class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
+            </div>
+
+            <div>
+                <label class="block font-medium mb-1">Caption / Keterangan Lightbox (Opsional)</label>
+                <input type="text" name="keterangan" placeholder="Contoh: Diambil saat sesi prewedding sore hari" class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
             </div>
 
             <div class="grid grid-cols-2 gap-3">
@@ -174,10 +180,10 @@
                     <div data-upload-placeholder class="flex flex-col items-center justify-center p-4 text-center">
                         <i data-lucide="upload-cloud" class="w-7 h-7 text-moss mb-1.5"></i>
                         <span class="text-xs font-semibold text-inkAdmin">Klik untuk Pilih Foto dari Perangkat</span>
-                        <span id="status_new_gallery_photo" class="text-[10px] text-inkMuted mt-0.5">Mendukung JPG, PNG, WEBP (Maks 10MB)</span>
+                        <span id="status_new_gallery_photo" data-upload-status data-default-status="Mendukung JPG, PNG, WEBP (Maks 10MB)" class="text-[10px] text-inkMuted mt-0.5">Mendukung JPG, PNG, WEBP (Maks 10MB)</span>
                     </div>
                 </div>
-                <input type="hidden" id="input_new_gallery_photo" name="foto_url" required>
+                <input type="hidden" id="input_new_gallery_photo" name="foto_url">
                 <input type="file" id="file_new_gallery_photo" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden"
                        data-upload-input
                        data-target-input="input_new_gallery_photo"
@@ -199,8 +205,13 @@
             @csrf
             @method('PUT')
             <div>
-                <label class="block font-medium mb-1">Judul / Caption Foto</label>
+                <label class="block font-medium mb-1">Judul Foto</label>
                 <input type="text" name="judul" data-field="judul" required class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
+            </div>
+
+            <div>
+                <label class="block font-medium mb-1">Caption / Keterangan Lightbox (Opsional)</label>
+                <input type="text" name="keterangan" data-field="keterangan" placeholder="Keterangan tambahan saat foto diperbesar" class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">
             </div>
 
             <div class="grid grid-cols-2 gap-3">
@@ -235,7 +246,7 @@
                             <i data-lucide="upload" class="w-3.5 h-3.5"></i>
                             <span>Upload Foto Baru</span>
                         </button>
-                        <span id="status_edit_gallery_photo" class="text-[10px] text-inkMuted block mt-1">Biarkan bila hanya mengganti judul/kategori</span>
+                        <span id="status_edit_gallery_photo" data-upload-status data-default-status="Biarkan bila hanya mengganti judul/kategori" class="text-[10px] text-inkMuted block mt-1">Biarkan bila hanya mengganti judul/kategori</span>
                     </div>
                 </div>
             </div>
@@ -273,6 +284,12 @@
                 section-slug="galeri"
                 field-key="hero_photo"
             />
+
+            <div>
+                <label class="block font-medium mb-1">Teks Kaligrafi di Foto Hero Galeri</label>
+                <textarea name="hero_script" rows="3" class="w-full px-3 py-2 rounded-xl bg-cardMuted border border-borderSoft focus:outline-none focus:border-moss">{{ $header['hero_script'] }}</textarea>
+                <span class="text-[10px] text-inkMuted mt-1 block">Gunakan baris baru untuk memisahkan tiap baris teks kaligrafi di sudut kanan foto</span>
+            </div>
 
             <div>
                 <label class="block font-medium mb-1">Quote Penutup Section 5</label>

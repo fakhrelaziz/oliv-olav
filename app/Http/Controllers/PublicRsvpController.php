@@ -35,21 +35,29 @@ class PublicRsvpController extends Controller
     {
         $validated = $request->validated();
 
+        $matchedTamu = Tamu::query()
+            ->whereRaw('LOWER(nama) = ?', [mb_strtolower($validated['nama_pengirim'])])
+            ->first();
+
         $wish = DoaUcapan::query()->create([
+            'tamu_id' => $matchedTamu?->id,
             'nama_pengirim' => $validated['nama_pengirim'],
             'status_kehadiran' => $validated['status_kehadiran'],
             'pesan_ucapan' => $validated['pesan_ucapan'],
             'is_tampil' => true,
+            'ip_address' => $request->ip(),
             'created_at' => now(),
         ]);
 
         // Sinkronisasi otomatis status tamu apabila nama terdaftar di daftar tamu
-        Tamu::query()
-            ->whereRaw('LOWER(nama) = ?', [mb_strtolower($validated['nama_pengirim'])])
-            ->update([
+        if ($matchedTamu) {
+            $matchedTamu->update([
                 'status' => $validated['status_kehadiran'],
-                'jumlah_hadir_aktual' => $validated['status_kehadiran'] === 'Hadir' ? 1 : 0,
+                'jumlah_hadir_aktual' => $validated['status_kehadiran'] === 'Hadir'
+                    ? max(1, (int) $matchedTamu->jumlah_undangan)
+                    : 0,
             ]);
+        }
 
         if ($request->expectsJson()) {
             return response()->json([

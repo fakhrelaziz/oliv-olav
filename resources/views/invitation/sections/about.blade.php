@@ -71,14 +71,16 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M5.5 20a6.5 6.5 0 0113 0H5.5z" />
                             </svg>
                         </a>
-                        <span class="w-px h-4 bg-moss/30"></span>
-                        <a id="front-groom-instagram" href="{{ $about['groom_instagram'] }}" target="_blank" rel="noopener" aria-label="Instagram {{ $about['groom_nickname'] }}" class="hover:text-moss transition">
-                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
-                                <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
-                                <circle cx="12" cy="12" r="4" />
-                                <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
-                            </svg>
-                        </a>
+                        @if (filled($about['groom_instagram'] ?? null))
+                            <span class="w-px h-4 bg-moss/30"></span>
+                            <a id="front-groom-instagram" href="{{ $about['groom_instagram'] }}" target="_blank" rel="noopener" aria-label="Instagram {{ $about['groom_nickname'] }}" class="hover:text-moss transition">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                                    <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
+                                    <circle cx="12" cy="12" r="4" />
+                                    <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+                                </svg>
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -113,14 +115,16 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M5.5 20a6.5 6.5 0 0113 0H5.5z" />
                             </svg>
                         </a>
-                        <span class="w-px h-4 bg-moss/30"></span>
-                        <a id="front-bride-instagram" href="{{ $about['bride_instagram'] }}" target="_blank" rel="noopener" aria-label="Instagram {{ $about['bride_nickname'] }}" class="hover:text-moss transition">
-                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
-                                <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
-                                <circle cx="12" cy="12" r="4" />
-                                <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
-                            </svg>
-                        </a>
+                        @if (filled($about['bride_instagram'] ?? null))
+                            <span class="w-px h-4 bg-moss/30"></span>
+                            <a id="front-bride-instagram" href="{{ $about['bride_instagram'] }}" target="_blank" rel="noopener" aria-label="Instagram {{ $about['bride_nickname'] }}" class="hover:text-moss transition">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                                    <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
+                                    <circle cx="12" cy="12" r="4" />
+                                    <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+                                </svg>
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>

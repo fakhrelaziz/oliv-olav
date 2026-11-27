@@ -68,8 +68,8 @@ class SectionContentController extends Controller
         $validated = $request->validated();
 
         if ($key === 'section_1_hero') {
-            $groom = trim((string) ($validated['groom_nickname'] ?? 'Fakhrel'));
-            $bride = trim((string) ($validated['bride_nickname'] ?? 'Olivia'));
+            $groom = trim((string) ($validated['groom_nickname'] ?? '')) ?: 'Fakhrel';
+            $bride = trim((string) ($validated['bride_nickname'] ?? '')) ?: 'Olivia';
             $validated['couple_title'] = "{$groom} and {$bride}";
         }
 

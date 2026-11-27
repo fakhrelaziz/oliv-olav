@@ -82,6 +82,13 @@
                         <option value="Masih Ragu" @selected($statusFilter === 'Masih Ragu')>Masih Ragu</option>
                         <option value="Tidak Hadir" @selected($statusFilter === 'Tidak Hadir')>Tidak Hadir</option>
                     </select>
+
+                    @if ($search !== '' || $statusFilter !== 'all')
+                        <a href="{{ route('admin.tamu.index') }}" class="inline-flex items-center space-x-1 px-3 py-2 text-xs bg-white hover:bg-rose-50 border border-borderSoft rounded-xl text-inkMuted hover:text-rose-600 transition" title="Reset pencarian & filter">
+                            <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                            <span>Reset</span>
+                        </a>
+                    @endif
                 </form>
 
                 <button type="button" data-modal-open="createGuestModal" class="px-4 py-2 rounded-xl bg-moss hover:bg-adminMossLight text-adminBg text-xs font-medium flex items-center space-x-2 transition shadow-sm">
@@ -107,7 +114,7 @@
                 <tbody class="divide-y divide-borderSoft/60">
                     @forelse ($guests as $guest)
                         @php
-                            $inviteUrl = route('invitation.show', ['to' => $guest->nama]);
+                            $inviteUrl = route('invitation.guest', $guest->slug);
                         @endphp
                         <tr class="hover:bg-cardMuted/80 transition" data-search-row="{{ mb_strtolower($guest->nama . ' ' . $guest->alamat . ' ' . $guest->no_telepon) }}">
                             <td class="py-3.5 px-4 text-inkMuted font-medium">{{ ($guests->currentPage() - 1) * $guests->perPage() + $loop->iteration }}</td>
